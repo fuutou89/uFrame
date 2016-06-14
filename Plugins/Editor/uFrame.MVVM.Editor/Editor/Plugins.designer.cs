@@ -17,7 +17,7 @@ namespace Invert.uFrame.MVVM {
     using System.Linq;
     
     
-    public class MVVMPluginBase : Invert.Core.GraphDesigner.DiagramPlugin {
+    public class uFrameMVVMBase : Invert.Core.GraphDesigner.DiagramPlugin {
         
         public override void Initialize(Invert.IOC.UFrameContainer container) {
         }
