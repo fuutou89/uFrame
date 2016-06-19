@@ -18,7 +18,11 @@ namespace Invert.uFrame.MVVM
         public override void Initialize(Invert.IOC.UFrameContainer container)
         {
             base.Initialize(container);
-            container.AddWorkspaceConfig<MvvmWorkspace>("MVVM");
+            SubSystem.Name = "SubSystem";
+            SceneType.Name = "Scene Type";
+            container.AddWorkspaceConfig<MvvmWorkspace>("MVVM")
+                .WithGraph<MVVMGraph>("MVVM", "Create MVVM")
+                .WithGraph<SubSystemGraph>("SubSystem", "Create SubSystem");
         }
 
     }

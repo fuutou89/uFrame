@@ -1,0 +1,8 @@
+{
+	"Identifier":"d418ca17-7b85-4123-a13f-128d95c9794d"	, 
+	"Time":"6/18/2016 1:53:20 PM"	, 
+	"Group":135320	, 
+	"DataRecordId":"f4fcfaae-da77-4810-b54f-78998a55c9b2"	, 
+	"Type":2	, 
+	"RecordType":"ShellNodeConfig, Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"	, 
+	"Data":"{\r\n\t\"Color\":0\t, \r\n\t\"NodeStyle\":0\t, \r\n\t\"Inheritable\":false\t, \r\n\t\"IsClass\":false\t, \r\n\t\"Row\":0\t, \r\n\t\"Column\":0\t, \r\n\t\"Visibility\":0\t, \r\n\t\"Name\":\"MVVM\"\t, \r\n\t\"Order\":0\t, \r\n\t\"GraphId\":\"b15f6874-81a3-4294-b0e3-2f998b1476cb\"\t, \r\n\t\"Identifier\":\"f4fcfaae-da77-4810-b54f-78998a55c9b2\"\t, \r\n\t\"Expanded\":false}\r\n"}

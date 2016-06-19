@@ -225,6 +225,7 @@ namespace Invert.Core.GraphDesigner
         public IEnumerator AddGraphItems(IEnumerable<IDiagramNode> items)
         {
             var dictionary = new Dictionary<string, IFilterItem>();
+            IFilterItem[] fitems = GraphData.CurrentFilter.FilterItems.ToArray<IFilterItem>();
             foreach (var item in GraphData.CurrentFilter.FilterItems)
             {
                 if (dictionary.ContainsKey(item.NodeId))

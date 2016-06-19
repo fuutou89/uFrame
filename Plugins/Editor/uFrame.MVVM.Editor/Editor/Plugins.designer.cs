@@ -19,7 +19,49 @@ namespace Invert.uFrame.MVVM {
     
     public class uFrameMVVMBase : Invert.Core.GraphDesigner.DiagramPlugin {
         
+        private Invert.Core.GraphDesigner.NodeConfig<SubSystemNode> _SubSystem;
+        
+        private Invert.Core.GraphDesigner.NodeConfig<SceneTypeNode> _SceneType;
+        
+        private Invert.Core.GraphDesigner.NodeConfig<MVVMNode> _MVVM;
+        
+        public Invert.Core.GraphDesigner.NodeConfig<SubSystemNode> SubSystem {
+            get {
+                return _SubSystem;
+            }
+            set {
+                _SubSystem = value;
+            }
+        }
+        
+        public Invert.Core.GraphDesigner.NodeConfig<SceneTypeNode> SceneType {
+            get {
+                return _SceneType;
+            }
+            set {
+                _SceneType = value;
+            }
+        }
+        
+        public Invert.Core.GraphDesigner.NodeConfig<MVVMNode> MVVM {
+            get {
+                return _MVVM;
+            }
+            set {
+                _MVVM = value;
+            }
+        }
+        
         public override void Initialize(Invert.IOC.UFrameContainer container) {
+            SubSystem = container.AddGraph<SubSystemGraph, SubSystemNode>("SubSystemGraph");
+            SubSystem.Color(NodeColor.Blue);
+            SceneType = container.AddNode<SceneTypeNode,SceneTypeNodeViewModel,SceneTypeNodeDrawer>("SceneType");
+            SceneType.Inheritable();
+            SceneType.Color(NodeColor.Orange);
+            MVVM = container.AddGraph<MVVMGraph, MVVMNode>("MVVMGraph");
+            MVVM.Color(NodeColor.DarkGray);
+            MVVM.HasSubNode<SubSystemNode>();
+            MVVM.HasSubNode<SceneTypeNode>();
         }
     }
 }

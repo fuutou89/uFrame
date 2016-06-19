@@ -1,8 +1,0 @@
-{
-	"Identifier":"23e4be87-3f2b-471f-9ba6-acf80f411faf"	, 
-	"Time":"6/14/2016 7:42:44 PM"	, 
-	"Group":194244	, 
-	"DataRecordId":"ea6b6829-8800-4032-a492-00a04f543cca"	, 
-	"Type":0	, 
-	"RecordType":"PluginDesigner+ArchitectWorkspace, Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"	, 
-	"Data":"{\r\n\t\"Identifier\":\"ea6b6829-8800-4032-a492-00a04f543cca\"\t, \r\n\t\"Name\":\"MVVMPlugin\"\t, \r\n\t\"Expanded\":false}\r\n"}

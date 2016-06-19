@@ -1,8 +1,0 @@
-{
-	"Identifier":"1362f238-b131-40d8-9da7-5f3dd2c24d53"	, 
-	"Time":"6/14/2016 7:43:12 PM"	, 
-	"Group":194312	, 
-	"DataRecordId":"a4ffbdc1-bce2-469f-9798-1c6fe8017c04"	, 
-	"Type":2	, 
-	"RecordType":"ShellPluginNode, Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"	, 
-	"Data":"{\r\n\t\"Name\":\"NewPluginGraphData\"\t, \r\n\t\"Order\":0\t, \r\n\t\"GraphId\":\"b15f6874-81a3-4294-b0e3-2f998b1476cb\"\t, \r\n\t\"Identifier\":\"a4ffbdc1-bce2-469f-9798-1c6fe8017c04\"\t, \r\n\t\"Expanded\":false}\r\n"}
