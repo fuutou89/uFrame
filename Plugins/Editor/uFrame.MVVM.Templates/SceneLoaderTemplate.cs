@@ -72,8 +72,24 @@ namespace Invert.uFrame.MVVM.Templates
     [RequiresNamespace("UnityEngine")]
     public partial class SceneLoaderTemplate
     {
+        [GenerateMethod(CallBase = false), Inside(TemplateLocation.Both)]
         protected virtual void LoadScene(object scene, object progressDelegate)
         {
+            Ctx.CurrentMethod.Parameters[0].Type = new CodeTypeReference(Ctx.Data.Name);
+            Ctx.CurrentMethod.Parameters[1].Type = new CodeTypeReference("Action<float, string>");
+            Ctx.CurrentMethod.Attributes |= MemberAttributes.Override;
+            Ctx.CurrentMethod.ReturnType = "IEnumerator".ToCodeReference();
+            Ctx._("yield break");
+        }
+
+        [GenerateMethod(CallBase = false), Inside(TemplateLocation.Both)]
+        protected virtual void UnloadScene(object scene, object progressDelegate)
+        {
+            Ctx.CurrentMethod.Parameters[0].Type = new CodeTypeReference(Ctx.Data.Name);
+            Ctx.CurrentMethod.Parameters[1].Type = new CodeTypeReference("Action<float, string>");
+            Ctx.CurrentMethod.Attributes |= MemberAttributes.Override;
+            Ctx.CurrentMethod.ReturnType = "IEnumerator".ToCodeReference();
+            Ctx._("yield break");
         }
     }
 }
