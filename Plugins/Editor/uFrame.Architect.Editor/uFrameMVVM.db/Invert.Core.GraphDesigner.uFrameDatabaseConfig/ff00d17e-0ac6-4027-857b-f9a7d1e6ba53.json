@@ -1,7 +1,7 @@
 {
 	"Identifier":"ff00d17e-0ac6-4027-857b-f9a7d1e6ba53"	, 
 	"CodeOutputPath":"Assets/uFrame/Plugins/Editor/uFrame.MVVM.Editor/"	, 
-	"Namespace":"Invert.uFrame.MVVM"	, 
+	"Namespace":"uFrame.MVVM"	, 
 	"MajorVersion":1	, 
 	"MinorVersion":0	, 
 	"BuildVersion":0	, 

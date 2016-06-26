@@ -1,6 +1,6 @@
 ﻿using Invert.Core.GraphDesigner;
 
-namespace Invert.uFrame.MVVM
+namespace uFrame.MVVM
 {
     public class MvvmWorkspace : Workspace
     {

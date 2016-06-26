@@ -1,4 +1,4 @@
-namespace Invert.uFrame.MVVM {
+namespace uFrame.MVVM {
     using System;
     using System.Collections;
     using System.Collections.Generic;

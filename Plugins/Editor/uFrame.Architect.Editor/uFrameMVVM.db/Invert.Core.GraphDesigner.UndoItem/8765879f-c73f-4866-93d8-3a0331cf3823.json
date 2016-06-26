@@ -1,0 +1,8 @@
+{
+	"Identifier":"8765879f-c73f-4866-93d8-3a0331cf3823"	, 
+	"Time":"6/25/2016 5:48:59 PM"	, 
+	"Group":174859	, 
+	"DataRecordId":"b0729c23-eee8-4d90-a86f-4292a5b6250a"	, 
+	"Type":2	, 
+	"RecordType":"ShellNodeConfig, Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"	, 
+	"Data":"{\r\n\t\"Color\":15\t, \r\n\t\"NodeStyle\":0\t, \r\n\t\"Inheritable\":false\t, \r\n\t\"IsClass\":false\t, \r\n\t\"Row\":0\t, \r\n\t\"Column\":0\t, \r\n\t\"Visibility\":0\t, \r\n\t\"Name\":\"Element\"\t, \r\n\t\"Order\":0\t, \r\n\t\"GraphId\":\"b15f6874-81a3-4294-b0e3-2f998b1476cb\"\t, \r\n\t\"Identifier\":\"b0729c23-eee8-4d90-a86f-4292a5b6250a\"\t, \r\n\t\"Expanded\":false}\r\n"}

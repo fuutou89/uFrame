@@ -134,7 +134,6 @@ namespace Invert.Core.GraphDesigner
 
         public virtual void Apply(ConnectionViewModel connectionViewModel)
         {
-        
             var output = connectionViewModel.ConnectorA.DataObject as IConnectable;
             var input = connectionViewModel.ConnectorB.DataObject as IConnectable;
             var diagramData = InvertGraphEditor.CurrentDiagramViewModel.GraphData;

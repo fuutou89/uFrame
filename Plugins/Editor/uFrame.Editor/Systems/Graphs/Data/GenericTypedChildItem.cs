@@ -30,10 +30,12 @@ public class GenericTypedChildItem : GenericNodeChildItem, IDataRecordRemoved, I
     [JsonProperty]
     public string RelatedType
     {
-        get { return _type; }
+        get
+        {
+            return _type;
+        }
         set
         {
-
             this.Changed("RelatedType", ref _type, value);
         }
     }
@@ -98,7 +100,7 @@ public class GenericTypedChildItem : GenericNodeChildItem, IDataRecordRemoved, I
     }
 
 
-    public void RemoveType()
+    public virtual void RemoveType()
     {
         this.RelatedType = typeof(string).FullName;
     }

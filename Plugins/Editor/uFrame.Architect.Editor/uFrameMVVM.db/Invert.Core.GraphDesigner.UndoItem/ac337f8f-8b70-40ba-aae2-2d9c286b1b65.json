@@ -1,8 +1,0 @@
-{
-	"Identifier":"ac337f8f-8b70-40ba-aae2-2d9c286b1b65"	, 
-	"Time":"6/18/2016 12:20:36 PM"	, 
-	"Group":122036	, 
-	"DataRecordId":"a7e031cd-fd37-4d9e-a22b-dd1d45c7178c"	, 
-	"Type":1	, 
-	"RecordType":"Invert.uFrame.MVVM.MvvmWorkspace, Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"	, 
-	"Data":"{\r\n\t\"Identifier\":\"a7e031cd-fd37-4d9e-a22b-dd1d45c7178c\"\t, \r\n\t\"Name\":\"DemoMVVMWorkspace\"\t, \r\n\t\"CurrentGraphId\":\"09669b98-13f9-45bf-ba2e-87e0904fbfb3\"\t, \r\n\t\"Expanded\":false}\r\n"}

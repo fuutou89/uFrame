@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using Invert.Core.GraphDesigner;
 
-namespace Invert.uFrame.MVVM.Templates
+namespace uFrame.MVVM.Templates
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class AutoNamespaces : TemplateAttribute 

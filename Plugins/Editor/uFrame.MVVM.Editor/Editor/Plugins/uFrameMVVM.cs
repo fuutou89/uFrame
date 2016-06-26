@@ -1,4 +1,4 @@
-namespace Invert.uFrame.MVVM
+namespace uFrame.MVVM
 {
     using Invert.Core;
     using Invert.Core.GraphDesigner;
@@ -23,6 +23,9 @@ namespace Invert.uFrame.MVVM
             container.AddWorkspaceConfig<MvvmWorkspace>("MVVM")
                 .WithGraph<MVVMGraph>("MVVM", "Create MVVM")
                 .WithGraph<SubSystemGraph>("SubSystem", "Create SubSystem");
+            MVVM.HasSubNode<TypeReferenceNode>();
+            SubSystem.HasSubNode<TypeReferenceNode>();
+            SubSystem.HasSubNode<EnumNode>();
         }
 
     }

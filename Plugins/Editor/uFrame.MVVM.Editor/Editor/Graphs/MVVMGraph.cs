@@ -2,7 +2,7 @@ using Invert.Core;
 using Invert.Data;
 using Invert.Json;
 
-namespace Invert.uFrame.MVVM
+namespace uFrame.MVVM
 {
     using Invert.Core.GraphDesigner;
     using System;

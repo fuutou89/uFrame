@@ -14,7 +14,7 @@ using uFrame.Kernel;
 using uFrame.MVVM;
 using UnityEditor;
 
-namespace Invert.uFrame.MVVM.Templates
+namespace uFrame.MVVM.Templates
 {
     [TemplateClass(TemplateLocation.DesignerFile, "{0}Loader"), AsPartial]
     [RequiresNamespace("uFrame.Kernel")]
@@ -41,15 +41,10 @@ namespace Invert.uFrame.MVVM.Templates
             }
         }
 
-        public string OutputPath
-        {
-            get { return Path2.Combine("Systems", Ctx.Data.Name + ".cs"); }
-        }
+        // Replace by ITemplateCustomFilename's Filename
+        public string OutputPath { get { return ""; } }
 
-        public bool CanGenerate
-        {
-            get { return true; }
-        }
+        public bool CanGenerate { get { return true; } }
 
         public void TemplateSetup()
         {

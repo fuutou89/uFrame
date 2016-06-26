@@ -14,7 +14,7 @@ using uFrame.Kernel;
 using uFrame.MVVM;
 using UnityEditor;
 
-namespace Invert.uFrame.MVVM.Templates
+namespace uFrame.MVVM.Templates
 {
     [TemplateClass(TemplateLocation.Both, "{0}")]
     [AutoNamespaces]
@@ -39,21 +39,10 @@ namespace Invert.uFrame.MVVM.Templates
             }
         }
 
-        public string OutputPath
-        {
-            get
-            {
-                return Path2.Combine(Ctx.Data.Title + ".cs");
-            }
-        }
+        // Replace by ITemplateCustomFilename's Filename
+        public string OutputPath { get { return ""; } }
 
-        public bool CanGenerate
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public bool CanGenerate { get { return true; } }
 
         public void TemplateSetup()
         {
@@ -78,6 +67,19 @@ namespace Invert.uFrame.MVVM.Templates
                 Ctx._("return \"{0}KernelScene\"", Ctx.Data.Graph.Namespace);
                 return null;
             }
+        }
+
+        [GenerateProperty]
+        public virtual object Settings
+        {
+            get
+            {
+                Ctx.SetType(string.Format("{0}Settings", Ctx.Data.Name).ToCodeReference());
+                Ctx._(string.Format("return _SettingsObject as {0}Settings", Ctx.Data.Name));
+                return null;
+            }
+            set
+            { Ctx._(string.Format("_SettingsObject = value")); }
         }
     }
 }

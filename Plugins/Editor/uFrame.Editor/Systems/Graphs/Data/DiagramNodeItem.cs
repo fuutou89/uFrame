@@ -197,6 +197,36 @@ public abstract class DiagramNodeItem : IDiagramNodeItem, IDataRecordRemoved
         }
     }
 
+    public string GetName()
+    {
+        return _name;
+    }
+
+    public void SetName(string nameValue)
+    {
+        //var oldName = _name;
+        //if (string.IsNullOrEmpty(value))
+        //{
+        //    _name = "NewName";
+        //    _name = value;
+        //}
+        if (!string.IsNullOrEmpty(nameValue))
+            _name = nameValue;
+        else
+        {
+            _name = "RenameMe";
+        }
+
+        if (AutoFixName)
+            _name = Regex.Replace(_name, @"[^a-zA-Z0-9_\.]+", "");
+        //else
+        //{
+        //    _name = value;
+        //}
+
+        this.Changed("Name", ref _name, nameValue);
+    }
+
     public virtual bool AutoFixName
     {
         get { return true; }

@@ -1,4 +1,4 @@
-namespace Invert.uFrame.MVVM {
+namespace uFrame.MVVM {
     using Invert.Core.GraphDesigner;
     using System;
     using System.Collections;

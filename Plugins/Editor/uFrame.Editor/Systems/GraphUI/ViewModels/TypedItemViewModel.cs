@@ -5,22 +5,22 @@ namespace Invert.Core.GraphDesigner
     public abstract class TypedItemViewModel : ItemViewModel<ITypedItem>
     {
         public static Dictionary<string, string> TypeNameAliases = new Dictionary<string, string>()
-    {
-        {"Int32","int"},
-        {"Boolean","bool"},
-        {"Char","char"},
-        {"Decimal","decimal"},
-        {"Double","double"},
-        {"Single","float"},
-        {"String","string"},
-        {"System.Int32","int"},
-        {"System.Boolean","bool"},
-        {"System.Char","char"},
-        {"System.Decimal","decimal"},
-        {"System.Double","double"},
-        {"System.Single","float"},
-        {"System.String","string"},
-    };
+        {
+            {"Int32","int"},
+            {"Boolean","bool"},
+            {"Char","char"},
+            {"Decimal","decimal"},
+            {"Double","double"},
+            {"Single","float"},
+            {"String","string"},
+            {"System.Int32","int"},
+            {"System.Boolean","bool"},
+            {"System.Char","char"},
+            {"System.Decimal","decimal"},
+            {"System.Double","double"},
+            {"System.Single","float"},
+            {"System.String","string"},
+        };
         public static string TypeAlias(string typeName)
         {
             if (typeName == null)
@@ -57,13 +57,12 @@ namespace Invert.Core.GraphDesigner
                 if (MemberInfo != null)
                 {
                     var typeName = TypeAlias(MemberInfo.MemberType.TypeName);
-                    if (string.IsNullOrEmpty(typeName))
+                    if (string.IsNullOrEmpty(typeName) || typeName == "Void")
                     {
                         return "[void]";
                     }
                     return typeName;
                 }
-               
                 return Data.RelatedTypeName;//ElementDataBase.TypeAlias(Data.RelatedType);
             }
             set
@@ -83,7 +82,8 @@ namespace Invert.Core.GraphDesigner
             InvertApplication.Execute(new SelectTypeCommand()
             {
                 PrimitiveOnly = false,
-                AllowNone = false,
+                //AllowNone = false,
+                AllowNone = true,
                 IncludePrimitives = true,
                 Item = this.DataObject as ITypedItem,
             });
