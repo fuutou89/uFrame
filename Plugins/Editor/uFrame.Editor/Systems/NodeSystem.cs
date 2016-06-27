@@ -373,6 +373,9 @@ namespace Invert.Core.GraphDesigner
 
             command.Item.Rename(command.Name);
             command.Item.EndEditing();
+
+            DesignerWindow dw = InvertApplication.Container.Resolve<DesignerWindow>();
+            dw.RefreshContent();
         }
 
         public void Execute(MoveItemUpCommand command)

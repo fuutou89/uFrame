@@ -17,7 +17,7 @@ using UnityEditor;
 
 namespace uFrame.MVVM.Templates
 {
-    [TemplateClass(TemplateLocation.DesignerFile, ClassNameFormat = "{0}Command")]
+    [TemplateClass(TemplateLocation.DesignerFile, ClassNameFormat = "{0}Command"), AsPartial]
     public partial class ViewModelCommandClassTemplate : ViewModelCommand, IClassTemplate<CommandsChildItem>, ITemplateCustomFilename
     {
         public TemplateContext<CommandsChildItem> Ctx { get; set; }
@@ -34,6 +34,7 @@ namespace uFrame.MVVM.Templates
             }
         }
 
+        // Replace by ITemplateCustomFilename's Filename
         public string OutputPath { get { return ""; } }
 
         public bool CanGenerate { get { return true; } }
@@ -52,7 +53,7 @@ namespace uFrame.MVVM.Templates
                     Ctx.TryAddNamespace(type.Namespace);
             }
             Ctx.CurrentDeclaration.Name = Ctx.Data.Name + "Command";
-            Ctx.AddCondition("Argument", _ => !string.IsNullOrEmpty(_.RelatedType));
+            Ctx.AddCondition("Argument", _ => !string.IsNullOrEmpty(_.RelatedType) && _.RelatedType != "System.Void" );
         }
     }
 

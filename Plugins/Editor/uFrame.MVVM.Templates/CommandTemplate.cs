@@ -16,10 +16,10 @@ using UnityEditor;
 
 namespace uFrame.MVVM.Templates
 {
-    [TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}Command"), AsPartial]
+    [TemplateClass(TemplateLocation.DesignerFile, ClassNameFormat = "{0}Command"), AsPartial]
     [AutoNamespaces]
     [NamespacesFromItems]
-    public partial class CommandTemplate : IClassTemplate<CommandNode>, ITemplateCustomFilename 
+    public partial class CommandTemplate : ViewModelCommand, IClassTemplate<CommandNode>, ITemplateCustomFilename 
     {
         public TemplateContext<CommandNode> Ctx { get; set; }
 
@@ -31,26 +31,20 @@ namespace uFrame.MVVM.Templates
                 {
                     throw new Exception(Ctx.Data.Name + " Graph name is empty");
                 }
-                if (Ctx.IsDesignerFile)
-                {
-                    return Path2.Combine("Commands.designer", Ctx.Data.Name + "designer.cs");
-                }
-                return Path2.Combine("Commands", Ctx.Data.Name + ".cs");
+                return Path2.Combine("Commands.designer", Ctx.Data.Name + "Command.designer.cs");
             }
         }
 
+        // Replace by ITemplateCustomFilename's Filename
         public string OutputPath { get { return ""; } }
 
         public bool CanGenerate { get { return true; } }
-       
+
         public void TemplateSetup()
         {
-            if(Ctx.IsDesignerFile)
-            {
-                Ctx.CurrentDeclaration.BaseTypes.Clear();
-                Ctx.CurrentDeclaration.BaseTypes.Add(new CodeTypeReference("ViewModelCommand"));
-            }
-            
+            //Ctx.CurrentDeclaration.BaseTypes.Clear();
+            //Ctx.CurrentDeclaration.BaseTypes.Add(new CodeTypeReference("ViewModelCommand"));
+
             foreach (var property in Ctx.Data.ChildItemsWithInherited.OfType<ITypedItem>())
             {
                 var type = InvertApplication.FindTypeByNameExternal(property.RelatedTypeName);
