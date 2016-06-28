@@ -105,7 +105,6 @@ namespace Invert.Core.GraphDesigner
    
         void IDrawer.OnMouseDown(MouseEvent mouseEvent)
         {
-            
             OnMouseDown(mouseEvent);
         }
 

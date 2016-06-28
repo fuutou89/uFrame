@@ -1,8 +1,0 @@
-{
-	"Identifier":"6cab457d-b536-4f79-9a21-bab0cfae1bcc"	, 
-	"Time":"6/25/2016 3:16:51 PM"	, 
-	"Group":151651	, 
-	"DataRecordId":"b0f54393-d363-46b9-b08d-693766d9b3f9"	, 
-	"Type":0	, 
-	"RecordType":"Invert.Core.GraphDesigner.WorkspaceGraph, Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"	, 
-	"Data":"{\r\n\t\"GraphId\":\"5f0e4e63-96ee-4a23-b1e3-4cfce292bfaf\"\t, \r\n\t\"WorkspaceId\":\"b3e0679e-ccac-4140-ab60-1b62e3520832\"\t, \r\n\t\"Identifier\":\"b0f54393-d363-46b9-b08d-693766d9b3f9\"}\r\n"}

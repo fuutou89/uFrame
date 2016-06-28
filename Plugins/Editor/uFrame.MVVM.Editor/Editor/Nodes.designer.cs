@@ -111,6 +111,84 @@ namespace uFrame.MVVM {
     public partial interface ISubSystemConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
     }
     
+    public class ViewNodeBase : Invert.Core.GraphDesigner.GenericInheritableNode, Invert.Core.GraphDesigner.IClassTypeNode {
+        
+        private string _ElementInputSlotId;
+        
+        private string _ScenePropertiesInputSlotId;
+        
+        private Element _Element;
+        
+        private SceneProperties _SceneProperties;
+        
+        public virtual string ClassName {
+            get {
+                return this.Name;
+            }
+        }
+        
+        public override bool AllowMultipleInputs {
+            get {
+                return true;
+            }
+        }
+        
+        [Invert.Json.JsonProperty()]
+        public virtual string ElementInputSlotId {
+            get {
+                if (_ElementInputSlotId == null) {
+                    _ElementInputSlotId = Guid.NewGuid().ToString();
+                }
+                return _ElementInputSlotId;
+            }
+            set {
+                _ElementInputSlotId = value;
+            }
+        }
+        
+        [Invert.Json.JsonProperty()]
+        public virtual string ScenePropertiesInputSlotId {
+            get {
+                if (_ScenePropertiesInputSlotId == null) {
+                    _ScenePropertiesInputSlotId = Guid.NewGuid().ToString();
+                }
+                return _ScenePropertiesInputSlotId;
+            }
+            set {
+                _ScenePropertiesInputSlotId = value;
+            }
+        }
+        
+        [Invert.Core.GraphDesigner.InputSlot("Element", false, SectionVisibility.Always, OrderIndex=0, IsNewRow=true)]
+        public virtual Element ElementInputSlot {
+            get {
+                if (Repository == null) {
+                    return null;
+                }
+                if (_Element != null) {
+                    return _Element;
+                }
+                return _Element ?? (_Element = new Element() { Repository = Repository, Node = this, Identifier = ElementInputSlotId });
+            }
+        }
+        
+        [Invert.Core.GraphDesigner.InputSlot("Scene Properties", true, SectionVisibility.Always, OrderIndex=1, IsNewRow=true)]
+        public virtual SceneProperties ScenePropertiesInputSlot {
+            get {
+                if (Repository == null) {
+                    return null;
+                }
+                if (_SceneProperties != null) {
+                    return _SceneProperties;
+                }
+                return _SceneProperties ?? (_SceneProperties = new SceneProperties() { Repository = Repository, Node = this, Identifier = ScenePropertiesInputSlotId });
+            }
+        }
+    }
+    
+    public partial interface IViewConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    }
+    
     public class SceneTypeNodeBase : Invert.Core.GraphDesigner.GenericInheritableNode, Invert.Core.GraphDesigner.IClassTypeNode {
         
         public virtual string ClassName {
@@ -129,7 +207,7 @@ namespace uFrame.MVVM {
     public partial interface ISceneTypeConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
     }
     
-    public class ElementNodeBase : Invert.Core.GraphDesigner.GenericInheritableNode, Invert.Core.GraphDesigner.IClassTypeNode {
+    public class ElementNodeBase : Invert.Core.GraphDesigner.GenericInheritableNode, Invert.Core.GraphDesigner.IClassTypeNode, IElementConnectable {
         
         public virtual string ClassName {
             get {

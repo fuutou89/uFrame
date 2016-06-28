@@ -54,6 +54,19 @@ namespace uFrame.MVVM {
         }
     }
     
+    public class ViewNodeViewModelBase : Invert.Core.GraphDesigner.GenericNodeViewModel<Invert.Core.GraphDesigner.GenericNode> {
+        
+        public ViewNodeViewModelBase(ViewNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
+                base(graphItemObject, diagramViewModel) {
+        }
+        
+        public override Invert.Core.GraphDesigner.NodeStyle NodeStyle {
+            get {
+                return Invert.Core.GraphDesigner.NodeStyle.Normal;
+            }
+        }
+    }
+    
     public class SceneTypeNodeViewModelBase : Invert.Core.GraphDesigner.GenericNodeViewModel<Invert.Core.GraphDesigner.GenericNode> {
         
         public SceneTypeNodeViewModelBase(SceneTypeNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 

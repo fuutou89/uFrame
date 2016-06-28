@@ -102,10 +102,10 @@ namespace Invert.Core.GraphDesigner
 
         public override bool CanOutputTo(IConnectable input)
         {
-            if (input == this) return false;
-            if (this.GetType() != input.GetType()) return false;
-            if (BaseNodes.Any(p => p == input)) return false;
-
+            //Warning!!: Uncomment code below will make connecthandler buggy!!! 
+            //if (input == this) return false;
+            //if (this.GetType() != input.GetType()) return false;
+            //if (BaseNodes.Any(p => p == input)) return false;
             return base.CanOutputTo(input);
         }
 

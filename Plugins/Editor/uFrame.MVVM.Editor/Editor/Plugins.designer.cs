@@ -25,6 +25,8 @@ namespace uFrame.MVVM {
         
         private Invert.Core.GraphDesigner.NodeConfig<SubSystemNode> _SubSystem;
         
+        private Invert.Core.GraphDesigner.NodeConfig<ViewNode> _View;
+        
         private Invert.Core.GraphDesigner.NodeConfig<SceneTypeNode> _SceneType;
         
         private Invert.Core.GraphDesigner.NodeConfig<ElementNode> _Element;
@@ -57,6 +59,15 @@ namespace uFrame.MVVM {
             }
             set {
                 _SubSystem = value;
+            }
+        }
+        
+        public Invert.Core.GraphDesigner.NodeConfig<ViewNode> View {
+            get {
+                return _View;
+            }
+            set {
+                _View = value;
             }
         }
         
@@ -112,8 +123,8 @@ namespace uFrame.MVVM {
             container.AddTypeItem<CommandsChildItem>();
             container.AddItem<HandlersReference>();
             container.AddTypeItem<PropertiesChildItem>();
-            container.AddTypeItem<CollectionsChildItem>();
             container.AddItem<InstancesReference>();
+            container.AddTypeItem<CollectionsChildItem>();
             Service = container.AddNode<ServiceNode,ServiceNodeViewModel,ServiceNodeDrawer>("Service");
             Service.Inheritable();
             Service.Color(NodeColor.LightGray);
@@ -127,12 +138,18 @@ namespace uFrame.MVVM {
             SubSystem.HasSubNode<SimpleClassNode>();
             SubSystem.HasSubNode<ElementNode>();
             SubSystem.HasSubNode<CommandNode>();
+            View = container.AddNode<ViewNode,ViewNodeViewModel,ViewNodeDrawer>("View");
+            View.Inheritable();
+            View.Color(NodeColor.Royalblue2);
             SceneType = container.AddNode<SceneTypeNode,SceneTypeNodeViewModel,SceneTypeNodeDrawer>("SceneType");
             SceneType.Inheritable();
             SceneType.Color(NodeColor.Orange);
             Element = container.AddNode<ElementNode,ElementNodeViewModel,ElementNodeDrawer>("Element");
             Element.Inheritable();
             Element.Color(NodeColor.Yellow);
+            Element.HasSubNode<SimpleClassNode>();
+            Element.HasSubNode<ViewNode>();
+            Element.HasSubNode<CommandNode>();
             Command = container.AddNode<CommandNode,CommandNodeViewModel,CommandNodeDrawer>("Command");
             Command.Inheritable();
             Command.Color(NodeColor.Red);
@@ -142,6 +159,8 @@ namespace uFrame.MVVM {
             MVVM.HasSubNode<SubSystemNode>();
             MVVM.HasSubNode<SceneTypeNode>();
             MVVM.HasSubNode<ServiceNode>();
+            container.Connectable<ElementNode,Element>();
+            container.Connectable<HandlersReference,SimpleClassNode>();
         }
     }
 }

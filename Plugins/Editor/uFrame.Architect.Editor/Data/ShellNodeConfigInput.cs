@@ -3,7 +3,7 @@ using Invert.Core.GraphDesigner;
 using Invert.Data;
 using Invert.Json;
 
-public class ShellNodeConfigInput : ShellNodeConfigItem, IShellSlotType
+public class ShellNodeConfigInput : ShellNodeConfigItem, IShellSlotType, IConnectable
 {
     private bool _allowMultiple;
     private bool _allowSelection;

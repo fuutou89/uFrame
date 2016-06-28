@@ -11,6 +11,13 @@ namespace Invert.Core.GraphDesigner
         {
             if (CanConnect(output.GetType(), input.GetType()))
             {
+                if (output.GetType().Name == "ShellNodeConfig" && input.GetType().Name == "ShellNodeConfigInput")
+                {
+                    InvertApplication.Log("!!!!Bingo!!!!");
+                    InvertApplication.Log("CanOutputTo : " + output.CanOutputTo(input));
+                    InvertApplication.Log("CanInputFrom : " + input.CanInputFrom(output));
+                }
+                    
                 if (output.CanOutputTo(input) && input.CanInputFrom(output))
                 {
                     return true;

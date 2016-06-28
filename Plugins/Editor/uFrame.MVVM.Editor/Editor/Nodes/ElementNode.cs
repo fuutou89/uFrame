@@ -8,7 +8,7 @@ namespace uFrame.MVVM
     using System.Linq;
 
 
-    public class ElementNode : ElementNodeBase, IInstancesConnectable
+    public class ElementNode : ElementNodeBase, IInstancesConnectable, IViewConnectable, IElementConnectable
     {
         public IEnumerable<ITypedItem> AllProperties
         {

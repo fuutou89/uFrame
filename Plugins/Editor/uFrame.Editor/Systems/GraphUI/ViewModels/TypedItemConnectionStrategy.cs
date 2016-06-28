@@ -42,7 +42,7 @@ namespace Invert.Core.GraphDesigner
                 if (a.Direction == ConnectorDirection.Output && b.Direction == ConnectorDirection.Input)
                     return CreateConnection(diagramViewModel, a, b, Apply);
             }
-            return null;
+            //return null;
             return base.Connect(diagramViewModel, a, b);
         }
 

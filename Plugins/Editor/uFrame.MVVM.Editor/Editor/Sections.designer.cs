@@ -16,7 +16,7 @@ namespace uFrame.MVVM {
     using System.Linq;
     
     
-    public class HandlersReferenceBase : Invert.Core.GraphDesigner.GenericReferenceItem<IHandlersConnectable> {
+    public class HandlersReferenceBase : Invert.Core.GraphDesigner.GenericReferenceItem<IHandlersConnectable>, ISimpleClassConnectable {
         
         public override bool AllowMultipleInputs {
             get {

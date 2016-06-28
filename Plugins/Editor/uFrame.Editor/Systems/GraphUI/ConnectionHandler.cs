@@ -23,7 +23,7 @@ namespace Invert.Core.GraphDesigner
         {
             StartConnector = startConnector;
             PossibleConnections = new List<ConnectorViewModel>();
-            //InvertApplication.Log("YUP YUP YUP");
+            InvertApplication.Log("YUP YUP YUP");
             var items = diagramViewModel.GraphItems.OfType<ConnectorViewModel>().ToArray();
             foreach (var connector in items)
             {
@@ -34,6 +34,9 @@ namespace Invert.Core.GraphDesigner
                         PossibleConnections.Add(connector);
                     }
                 }
+
+                //PossibleConnections.Add(connector);
+
             }
             foreach (var a in PossibleConnections)
             {
@@ -130,15 +133,9 @@ namespace Invert.Core.GraphDesigner
 
                     CurrentConnection = null;
                 }
-
-
-
-
             }
             else
             {
-
-
                 foreach (var strategy in InvertGraphEditor.ConnectionStrategies)
                 {
                     //try and connect them
@@ -159,10 +156,6 @@ namespace Invert.Core.GraphDesigner
 
                 }
             }
-
-
-
-
         }
 
         public override void OnMouseUp(MouseEvent e)
@@ -170,7 +163,7 @@ namespace Invert.Core.GraphDesigner
             base.OnMouseUp(e);
             if (CurrentConnection != null)
             {
-                InvertApplication.Execute(new LambdaCommand("Create Connection",() =>
+                InvertApplication.Execute(new LambdaCommand("Create Connection", () =>
                 {
                     CurrentConnection.Apply(CurrentConnection);
                 }));

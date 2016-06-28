@@ -37,6 +37,13 @@ namespace uFrame.MVVM {
         }
     }
     
+    public class ViewNodeDrawerBase : GenericNodeDrawer<ViewNode,ViewNodeViewModel> {
+        
+        public ViewNodeDrawerBase(ViewNodeViewModel viewModel) : 
+                base(viewModel) {
+        }
+    }
+    
     public class SceneTypeNodeDrawerBase : GenericNodeDrawer<SceneTypeNode,SceneTypeNodeViewModel> {
         
         public SceneTypeNodeDrawerBase(SceneTypeNodeViewModel viewModel) : 

@@ -26,8 +26,6 @@ namespace Invert.Core.GraphDesigner
 
         public override ConnectionViewModel Connect(DiagramViewModel diagramViewModel, ConnectorViewModel a, ConnectorViewModel b)
         {
-             
-            
             if (ConnectionTypes.Any(p => p.CanConnect(a.DataObject as IConnectable, b.DataObject as IConnectable)))
             {
                 return base.Connect(diagramViewModel, a, b);

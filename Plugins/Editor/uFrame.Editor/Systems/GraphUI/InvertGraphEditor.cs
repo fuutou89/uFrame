@@ -154,8 +154,11 @@ namespace Invert.Core.GraphDesigner
             where TSource : class, IConnectable
             where TTarget : class, IConnectable
         {
-            container.RegisterConnectable<TSource, TTarget>();  //if (oneToMany)
-            //container.RegisterInstance<IConnectionStrategy>(new CustomInputOutputStrategy<TSource, TTarget>(color), typeof(TSource).Name + "_" + typeof(TTarget).Name + "Connection");
+            container.RegisterConnectable<TSource, TTarget>();
+            //if (oneToMany)
+            //{
+            //    container.RegisterInstance<IConnectionStrategy>(new CustomInputOutputStrategy<TSource, TTarget>(color), typeof(TSource).Name + "_" + typeof(TTarget).Name + "Connection");
+            //}
             //else
             //{
             //    container.RegisterInstance<IConnectionStrategy>(new OneToOneConnectionStrategy<TSource, TTarget>(), typeof(TSource).Name + "_" + typeof(TTarget).Name + "Connection");

@@ -144,7 +144,7 @@ namespace Invert.Core.GraphDesigner
         }
 
         public override void OnMouseDown(MouseEvent mouseEvent)
-        {
+        { 
             base.OnMouseDown(mouseEvent);
             if (ViewModel.Disabled) return;
 
