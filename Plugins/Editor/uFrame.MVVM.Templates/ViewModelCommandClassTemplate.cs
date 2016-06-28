@@ -37,7 +37,14 @@ namespace uFrame.MVVM.Templates
         // Replace by ITemplateCustomFilename's Filename
         public string OutputPath { get { return ""; } }
 
-        public bool CanGenerate { get { return true; } }
+        public bool CanGenerate
+        {
+            get
+            {
+                if (Ctx.Data.OutputCommand != null) return false;
+                return true;
+            }
+        }
 
         public void TemplateSetup()
         {
@@ -53,7 +60,7 @@ namespace uFrame.MVVM.Templates
                     Ctx.TryAddNamespace(type.Namespace);
             }
             Ctx.CurrentDeclaration.Name = Ctx.Data.Name + "Command";
-            Ctx.AddCondition("Argument", _ => !string.IsNullOrEmpty(_.RelatedType) && _.RelatedType != "System.Void" );
+            Ctx.AddCondition("Argument", _ => !string.IsNullOrEmpty(_.RelatedType));
         }
     }
 

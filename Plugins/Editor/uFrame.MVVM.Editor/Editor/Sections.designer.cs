@@ -33,4 +33,22 @@ namespace uFrame.MVVM {
     
     public partial interface IHandlersConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
     }
+    
+    public class InstancesReferenceBase : Invert.Core.GraphDesigner.GenericReferenceItem<IInstancesConnectable> {
+        
+        public override bool AllowMultipleInputs {
+            get {
+                return true;
+            }
+        }
+        
+        public override bool AllowMultipleOutputs {
+            get {
+                return true;
+            }
+        }
+    }
+    
+    public partial interface IInstancesConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    }
 }

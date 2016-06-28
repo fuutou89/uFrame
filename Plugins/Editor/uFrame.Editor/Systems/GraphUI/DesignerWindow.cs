@@ -318,7 +318,6 @@ namespace Invert.Core.GraphDesigner
 
         public void RefreshContent()
         {
-
             if (Workspace == null) return;
             if (Workspace.CurrentGraph == null) return;
 

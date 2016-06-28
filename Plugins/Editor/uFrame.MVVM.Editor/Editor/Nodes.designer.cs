@@ -93,6 +93,19 @@ namespace uFrame.MVVM {
                 return true;
             }
         }
+        
+        public virtual System.Collections.Generic.IEnumerable<Invert.Core.IItem> PossibleInstances {
+            get {
+                return this.Repository.AllOf<IInstancesConnectable>().Cast<IItem>();
+            }
+        }
+        
+        [Invert.Core.GraphDesigner.ReferenceSection("Instances", SectionVisibility.Always, false, false, typeof(IInstancesConnectable), false, OrderIndex=0, HasPredefinedOptions=false, IsNewRow=true)]
+        public virtual System.Collections.Generic.IEnumerable<InstancesReference> Instances {
+            get {
+                return PersistedItems.OfType<InstancesReference>();
+            }
+        }
     }
     
     public partial interface ISubSystemConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {

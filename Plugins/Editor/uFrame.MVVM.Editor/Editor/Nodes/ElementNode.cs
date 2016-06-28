@@ -8,7 +8,7 @@ namespace uFrame.MVVM
     using System.Linq;
 
 
-    public class ElementNode : ElementNodeBase
+    public class ElementNode : ElementNodeBase, IInstancesConnectable
     {
         public IEnumerable<ITypedItem> AllProperties
         {
@@ -21,6 +21,17 @@ namespace uFrame.MVVM
                 foreach (PropertiesChildItem propertiesChildItem in this.LocalProperties)
                 {
                     yield return propertiesChildItem;
+                }
+            }
+        }
+
+        public IEnumerable<ITypedItem> AllCommandHandlers
+        {
+            get
+            {
+                foreach (CommandsChildItem commandsChildItem in this.LocalCommands)
+                {
+                    yield return commandsChildItem;
                 }
             }
         }

@@ -134,7 +134,6 @@ namespace uFrame.MVVM.Templates
 
         #region Collections
 
-        //[TemplateProperty(TemplateLocation.DesignerFile, AutoFillType.NameAndTypeWithBackingField)]
         [ForEach("LocalCollections"), GenerateProperty, WithField]
         public virtual ModelCollection<_ITEMTYPE_> _Name4_
         {
@@ -145,7 +144,6 @@ namespace uFrame.MVVM.Templates
 
         #region Commands
 
-        // [TemplateProperty("{0}", AutoFillType.NameOnlyWithBackingField)]
         [ForEach("LocalCommands"), GenerateProperty, WithField]
         public virtual object _Name3_
         {

@@ -113,6 +113,7 @@ namespace uFrame.MVVM {
             container.AddItem<HandlersReference>();
             container.AddTypeItem<PropertiesChildItem>();
             container.AddTypeItem<CollectionsChildItem>();
+            container.AddItem<InstancesReference>();
             Service = container.AddNode<ServiceNode,ServiceNodeViewModel,ServiceNodeDrawer>("Service");
             Service.Inheritable();
             Service.Color(NodeColor.LightGray);

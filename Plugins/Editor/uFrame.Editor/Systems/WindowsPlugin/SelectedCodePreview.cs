@@ -63,7 +63,6 @@ public class SelectedCodePreview : EditorWindow
 
         if (SelectedNode != InvertGraphEditor.CurrentDiagramViewModel.SelectedNode || SelectedNode == null)
         {
-
             SelectedItemChanged();
             Repaint();
         }
@@ -77,7 +76,6 @@ public class SelectedCodePreview : EditorWindow
 
     private void SelectedItemChanged()
     {
-
         GeneratorDrawers.Clear();
         fileGenerators = null;
 

@@ -9,6 +9,19 @@ namespace uFrame.MVVM
 
     public class CommandsChildItem : CommandsChildItemBase, IMemberInfo
     {
+        [InspectorProperty]
+        public bool Publish
+        {
+            get
+            {
+                return base["Publish"];
+            }
+            set
+            {
+                base["Publish"] = value;
+            }
+        }
+
         public CommandNode OutputCommand
         {
             get
@@ -76,6 +89,21 @@ namespace uFrame.MVVM
             {
                 base.BeginEditing();
             }
+        }
+
+        public override bool CanOutputTo(IConnectable input)
+        {
+            bool result;
+            if(this.OutputTo<IClassTypeNode>() != null)
+            {
+                result = false;
+            }
+            else
+            {
+                result = (!(input is HandlersReference) && base.CanOutputTo(input));
+            }
+            return result;
+            //return base.CanOutputTo(input);
         }
     }
 

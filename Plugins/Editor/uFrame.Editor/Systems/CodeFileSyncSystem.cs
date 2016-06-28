@@ -85,7 +85,6 @@ namespace Invert.Core.GraphDesigner
                 if (!gensNow.ContainsKey(item.Key))
                 {
                     // Its been removed or renamed
-                    
                     if (File.Exists(item.Value.FullPath))
                         deleteList.Add(item.Value.FullPath);
                 }
