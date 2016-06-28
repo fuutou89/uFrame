@@ -125,6 +125,7 @@ namespace uFrame.MVVM {
             container.AddTypeItem<PropertiesChildItem>();
             container.AddItem<InstancesReference>();
             container.AddTypeItem<CollectionsChildItem>();
+            container.AddItem<BindingsReference>();
             Service = container.AddNode<ServiceNode,ServiceNodeViewModel,ServiceNodeDrawer>("Service");
             Service.Inheritable();
             Service.Color(NodeColor.LightGray);
@@ -161,6 +162,7 @@ namespace uFrame.MVVM {
             MVVM.HasSubNode<ServiceNode>();
             container.Connectable<ElementNode,Element>();
             container.Connectable<HandlersReference,SimpleClassNode>();
+            container.Connectable<PropertiesChildItem,SceneProperties>();
         }
     }
 }

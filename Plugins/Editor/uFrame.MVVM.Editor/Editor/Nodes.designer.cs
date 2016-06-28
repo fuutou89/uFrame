@@ -133,6 +133,19 @@ namespace uFrame.MVVM {
             }
         }
         
+        public virtual System.Collections.Generic.IEnumerable<Invert.Core.IItem> PossibleBindings {
+            get {
+                return this.Repository.AllOf<IBindingsConnectable>().Cast<IItem>();
+            }
+        }
+        
+        [Invert.Core.GraphDesigner.ReferenceSection("Bindings", SectionVisibility.Always, false, false, typeof(IBindingsConnectable), false, OrderIndex=3, HasPredefinedOptions=false, IsNewRow=true)]
+        public virtual System.Collections.Generic.IEnumerable<BindingsReference> Bindings {
+            get {
+                return PersistedItems.OfType<BindingsReference>();
+            }
+        }
+        
         [Invert.Json.JsonProperty()]
         public virtual string ElementInputSlotId {
             get {
