@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Invert.Core.GraphDesigner.Unity.WindowsPlugin;
+﻿using Invert.Core.GraphDesigner.Unity.WindowsPlugin;
 using Invert.Data;
 
 namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem.ViewModels

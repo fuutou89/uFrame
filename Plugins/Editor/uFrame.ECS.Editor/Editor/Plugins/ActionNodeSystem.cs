@@ -5,7 +5,6 @@ using Invert.Core;
 using Invert.Core.GraphDesigner;
 using Invert.Data;
 using Invert.IOC;
-using UnityEditor;
 using UnityEngine;
 
 namespace Invert.uFrame.ECS

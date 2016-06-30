@@ -1,9 +1,12 @@
-using System.Reflection;
-
-public class TemplateEventReference : TemplateReference
+namespace uFrame.Architect.Editor.Data
 {
-    public EventInfo EventInfo
+    using System.Reflection;
+
+    public class TemplateEventReference : TemplateReference
     {
-        get { return MemberInfo as EventInfo; }
+        public EventInfo EventInfo
+        {
+            get { return MemberInfo as EventInfo; }
+        }
     }
 }

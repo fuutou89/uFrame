@@ -1,108 +1,111 @@
-using Invert.Core.GraphDesigner;
-using Invert.Data;
-using Invert.Json;
-
-public class ShellNodeConfigSection : ShellNodeConfigItem
+namespace uFrame.Architect.Editor.Data
 {
-    private bool _allowAdding;
-    private ShellNodeConfigSectionType _sectionType;
-    private bool _isTyped;
-    private bool _isEditable;
-    private bool _allowDuplicates;
-    private bool _isAutomatic;
-    private bool _hasPredefinedOptions;
+    using Invert.Core.GraphDesigner;
+    using Invert.Data;
+    using Invert.Json;
 
-    [JsonProperty, InspectorProperty]
-    public ShellNodeConfigSectionType SectionType
+    public class ShellNodeConfigSection : ShellNodeConfigItem
     {
-        get { return _sectionType; }
-        set
-        {
-       
-            this.Changed("SectionType",ref _sectionType, value);
-        }
-    }
+        private bool _allowAdding;
+        private ShellNodeConfigSectionType _sectionType;
+        private bool _isTyped;
+        private bool _isEditable;
+        private bool _allowDuplicates;
+        private bool _isAutomatic;
+        private bool _hasPredefinedOptions;
 
-    [InspectorProperty, JsonProperty]
-    public bool IsTyped
-    {
-        get { return _isTyped; }
-        set
+        [JsonProperty, InspectorProperty]
+        public ShellNodeConfigSectionType SectionType
         {
-        
-            this.Changed("IsTyped", ref _isTyped, value);
-        }
-    }
-
-    [InspectorProperty, JsonProperty]
-    public virtual bool AllowAdding
-    {
-        get
-        {
-            if (SectionType == ShellNodeConfigSectionType.ChildItems)
+            get { return _sectionType; }
+            set
             {
-                return true;
-            }
-            return _allowAdding;
-        }
-        set
-        {
- 
-            this.Changed("AllowAdding", ref _allowAdding, value);
-        }
-    }
 
-    public override string ClassName
-    {
-        get
+                this.Changed("SectionType", ref _sectionType, value);
+            }
+        }
+
+        [InspectorProperty, JsonProperty]
+        public bool IsTyped
         {
-            if (SectionType == ShellNodeConfigSectionType.ChildItems)
+            get { return _isTyped; }
+            set
             {
-                return TypeName + "ChildItem";
+
+                this.Changed("IsTyped", ref _isTyped, value);
             }
-            return TypeName + "Reference";
         }
-    }
 
-
-    [InspectorProperty, JsonProperty]
-    public bool IsEditable
-    {
-        get { return _isEditable; }
-        set
+        [InspectorProperty, JsonProperty]
+        public virtual bool AllowAdding
         {
-            this.Changed("IsEditable", ref _isEditable, value);
+            get
+            {
+                if (SectionType == ShellNodeConfigSectionType.ChildItems)
+                {
+                    return true;
+                }
+                return _allowAdding;
+            }
+            set
+            {
+
+                this.Changed("AllowAdding", ref _allowAdding, value);
+            }
         }
-    }
 
-    [InspectorProperty, JsonProperty]
-    public bool AllowDuplicates
-    {
-        get { return _allowDuplicates; }
-        set
+        public override string ClassName
         {
-
-            this.Changed("AllowDuplicates",ref _allowDuplicates, value);
+            get
+            {
+                if (SectionType == ShellNodeConfigSectionType.ChildItems)
+                {
+                    return TypeName + "ChildItem";
+                }
+                return TypeName + "Reference";
+            }
         }
-    }
 
-    [InspectorProperty, JsonProperty]
-    public bool IsAutomatic
-    {
-        get { return _isAutomatic; }
-        set
+
+        [InspectorProperty, JsonProperty]
+        public bool IsEditable
         {
-            this.Changed("IsAutomatic", ref _isAutomatic, value);
+            get { return _isEditable; }
+            set
+            {
+                this.Changed("IsEditable", ref _isEditable, value);
+            }
         }
-    }
 
-    [InspectorProperty, JsonProperty]
-    public bool HasPredefinedOptions
-    {
-        get { return _hasPredefinedOptions; }
-        set
+        [InspectorProperty, JsonProperty]
+        public bool AllowDuplicates
         {
-            this.Changed("HasPredefinedOptions", ref _hasPredefinedOptions, value);
+            get { return _allowDuplicates; }
+            set
+            {
+
+                this.Changed("AllowDuplicates", ref _allowDuplicates, value);
+            }
+        }
+
+        [InspectorProperty, JsonProperty]
+        public bool IsAutomatic
+        {
+            get { return _isAutomatic; }
+            set
+            {
+                this.Changed("IsAutomatic", ref _isAutomatic, value);
+            }
+        }
+
+        [InspectorProperty, JsonProperty]
+        public bool HasPredefinedOptions
+        {
+            get { return _hasPredefinedOptions; }
+            set
+            {
+                this.Changed("HasPredefinedOptions", ref _hasPredefinedOptions, value);
+            }
         }
     }
 }

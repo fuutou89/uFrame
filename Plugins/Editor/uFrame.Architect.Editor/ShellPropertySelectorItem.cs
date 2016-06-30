@@ -1,18 +1,22 @@
-using Invert.Core.GraphDesigner;
-
-public class ShellPropertySelectorItem : GenericTypedChildItem, IShellNodeItem
+namespace uFrame.Architect.Editor
 {
-    public IShellNode SelectorFor
-    {
-        get { return this.RelatedNode() as IShellNode; }
-    }
+    using Data;
+    using Invert.Core.GraphDesigner;
 
-    public string ReferenceClassName
+    public class ShellPropertySelectorItem : GenericTypedChildItem, IShellNodeItem
     {
-        get
+        public IShellNode SelectorFor
         {
-            if (SelectorFor == null) return null;
-            return SelectorFor.ClassName;
+            get { return this.RelatedNode() as IShellNode; }
+        }
+
+        public string ReferenceClassName
+        {
+            get
+            {
+                if (SelectorFor == null) return null;
+                return SelectorFor.ClassName;
+            }
         }
     }
 }

@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using UnityEditor;
 
 namespace Invert.Core.GraphDesigner.Unity
 {

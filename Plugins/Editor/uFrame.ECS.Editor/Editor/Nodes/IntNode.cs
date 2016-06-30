@@ -1,15 +1,11 @@
 using System.CodeDom;
 using Invert.Json;
 
-namespace Invert.uFrame.ECS {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Invert.Core;
+namespace Invert.uFrame.ECS
+{
     using Invert.Core.GraphDesigner;
     using Invert.Data;
-    
+
     public class IntNode : IntNodeBase {
         private int _value;
 

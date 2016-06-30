@@ -1,6 +1,3 @@
-using System;
-using System.CodeDom;
-
 namespace Invert.Core.GraphDesigner
 {
     //public class EnumCodeGenerator : CodeGenerator

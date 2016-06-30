@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace Invert.Core.GraphDesigner.Unity.WindowsPlugin
 {
- 
+
     public class WindowsSystem : DiagramPlugin, IOpenWindow
     {
 

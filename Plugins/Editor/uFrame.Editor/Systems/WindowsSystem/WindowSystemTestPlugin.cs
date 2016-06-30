@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Invert.Core.GraphDesigner.Unity.WindowsPlugin;
-using Invert.IOC;
-using UnityEditor;
+﻿using Invert.IOC;
 
 namespace Invert.Core.GraphDesigner.Unity.WindowsSystem
 {
-    
+
     public class WindowSystemTestPlugin : DiagramPlugin, IContextMenuQuery
     {
         public override void Initialize(UFrameContainer container)

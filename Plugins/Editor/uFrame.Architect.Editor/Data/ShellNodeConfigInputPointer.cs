@@ -1,45 +1,48 @@
-using Invert.Core.GraphDesigner;
-using Invert.Data;
-using Invert.Json;
-
-public class ShellNodeConfigInputPointer : GenericReferenceItem<ShellNodeConfigInput>
+namespace uFrame.Architect.Editor.Data
 {
-    private SectionVisibility _visibility;
-    private int _column;
-    private int _row;
+    using Invert.Core.GraphDesigner;
+    using Invert.Data;
+    using Invert.Json;
 
-    [InspectorProperty, JsonProperty]
-    public int Row
+    public class ShellNodeConfigInputPointer : GenericReferenceItem<ShellNodeConfigInput>
     {
-        get { return _row; }
-        set
-        {
-            this.Changed("Row",ref _row,value);
-        }
-    }
-    
-    [InspectorProperty, JsonProperty]
-    public int Column
-    {
-        get { return _column; }
-        set
-        {
+        private SectionVisibility _visibility;
+        private int _column;
+        private int _row;
 
-            this.Changed("Column",ref _column, value);
-        }
-    }
-
-    [InspectorProperty, JsonProperty]
-    public SectionVisibility Visibility
-    {
-        get { return _visibility; }
-        set
+        [InspectorProperty, JsonProperty]
+        public int Row
         {
-            this.Changed("Visibility",ref _visibility,value);
+            get { return _row; }
+            set
+            {
+                this.Changed("Row", ref _row, value);
+            }
         }
-    }
-    public string ClassName
-    {
-        get { return this.SourceItem.TypeName; }
+
+        [InspectorProperty, JsonProperty]
+        public int Column
+        {
+            get { return _column; }
+            set
+            {
+
+                this.Changed("Column", ref _column, value);
+            }
+        }
+
+        [InspectorProperty, JsonProperty]
+        public SectionVisibility Visibility
+        {
+            get { return _visibility; }
+            set
+            {
+                this.Changed("Visibility", ref _visibility, value);
+            }
+        }
+        public string ClassName
+        {
+            get { return this.SourceItem.TypeName; }
+        }
     }
 }

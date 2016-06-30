@@ -1,65 +1,68 @@
-using System.Collections.Generic;
-using System.Linq;
-using Invert.Core.GraphDesigner;
-using Invert.Json;
-
-public class ShellSectionNode : ShellNodeTypeSection, IShellConnectable
+namespace uFrame.Architect.Editor.Data
 {
-    [InputSlot("Reference Type")]
-    public ShellSectionReferenceSlot ReferenceSlot { get; set; }
+    using System.Collections.Generic;
+    using System.Linq;
+    using Invert.Core.GraphDesigner;
+    using Invert.Json;
 
-    public IShellNode ReferenceType
+    public class ShellSectionNode : ShellNodeTypeSection, IShellConnectable
     {
-        get
+        [InputSlot("Reference Type")]
+        public ShellSectionReferenceSlot ReferenceSlot { get; set; }
+
+        public IShellNode ReferenceType
         {
-            if (ReferenceSlot == null) return null;
-            return ReferenceSlot.Item;
+            get
+            {
+                if (ReferenceSlot == null) return null;
+                return ReferenceSlot.Item;
+            }
         }
-    }
-    private bool _allowMultipleInputs = true;
-    private bool _allowMultipleOutputs = true;
+        private bool _allowMultipleInputs = true;
+        private bool _allowMultipleOutputs = true;
 
-    [JsonProperty, InspectorProperty]
-    public bool MultipleInputs
-    {
-        get { return _allowMultipleInputs; }
-        set { _allowMultipleInputs = value; }
-    }
-
-    [JsonProperty, InspectorProperty]
-    public bool MultipleOutputs
-    {
-        get { return _allowMultipleOutputs; }
-        set { _allowMultipleOutputs = value; }
-    }
-    public override string ReferenceClassName
-    {
-        get
+        [JsonProperty, InspectorProperty]
+        public bool MultipleInputs
         {
-            if (ReferenceType == null) return null;
-            return ReferenceType.ClassName;
+            get { return _allowMultipleInputs; }
+            set { _allowMultipleInputs = value; }
         }
-    }
 
-    string IClassTypeNode.ClassName
-    {
-        get { return ReferenceClassName; }
-    }
+        [JsonProperty, InspectorProperty]
+        public bool MultipleOutputs
+        {
+            get { return _allowMultipleOutputs; }
+            set { _allowMultipleOutputs = value; }
+        }
+        public override string ReferenceClassName
+        {
+            get
+            {
+                if (ReferenceType == null) return null;
+                return ReferenceType.ClassName;
+            }
+        }
 
-    public override string ClassName
-    {
-        get { return ReferenceClassName; }
-    }
+        string IClassTypeNode.ClassName
+        {
+            get { return ReferenceClassName; }
+        }
 
-    [ReferenceSection("Connectable To", SectionVisibility.Always, false)]
-    public IEnumerable<ShellConnectableReferenceType> ConnectableTo
-    {
-        get { return PersistedItems.OfType<ShellConnectableReferenceType>(); }
-    }
+        public override string ClassName
+        {
+            get { return ReferenceClassName; }
+        }
 
-    public IEnumerable<IShellNode> PossibleConnectableTo
-    {
-        get { return this.Repository.AllOf<IShellNode>(); }
-    }
+        [ReferenceSection("Connectable To", SectionVisibility.Always, false)]
+        public IEnumerable<ShellConnectableReferenceType> ConnectableTo
+        {
+            get { return PersistedItems.OfType<ShellConnectableReferenceType>(); }
+        }
 
+        public IEnumerable<IShellNode> PossibleConnectableTo
+        {
+            get { return this.Repository.AllOf<IShellNode>(); }
+        }
+
+    }
 }

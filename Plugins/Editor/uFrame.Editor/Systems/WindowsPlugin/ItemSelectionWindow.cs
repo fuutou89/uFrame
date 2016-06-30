@@ -4,7 +4,6 @@ using System.Linq;
 using Invert.Common;
 using Invert.Common.UI;
 using Invert.Core;
-using Invert.uFrame.Editor;
 using UnityEngine;
 
 public class ItemSelectionWindow : SearchableScrollWindow

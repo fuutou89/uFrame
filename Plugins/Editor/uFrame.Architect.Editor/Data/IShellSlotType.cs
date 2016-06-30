@@ -1,7 +1,10 @@
-public interface IShellSlotType : IShellNodeConfigItem
+namespace uFrame.Architect.Editor.Data
 {
-    bool IsOutput { get; set; }
-    bool AllowMultiple { get; set; }
-   
-    bool AllowSelection { get; set; }
+    public interface IShellSlotType : IShellNodeConfigItem
+    {
+        bool IsOutput { get; set; }
+        bool AllowMultiple { get; set; }
+
+        bool AllowSelection { get; set; }
+    }
 }

@@ -1,51 +1,54 @@
-using System.Text.RegularExpressions;
-using Invert.Core.GraphDesigner;
-using Invert.Data;
-using Invert.Json;
-
-public class ShellNodeConfigInput : ShellNodeConfigItem, IShellSlotType, IConnectable
+namespace uFrame.Architect.Editor.Data
 {
-    private bool _allowMultiple;
-    private bool _allowSelection;
+    using System.Text.RegularExpressions;
+    using Invert.Core.GraphDesigner;
+    using Invert.Data;
+    using Invert.Json;
 
-    public bool IsOutput
+    public class ShellNodeConfigInput : ShellNodeConfigItem, IShellSlotType, IConnectable
     {
-        get { return false; }
-        set
+        private bool _allowMultiple;
+        private bool _allowSelection;
+
+        public bool IsOutput
         {
+            get { return false; }
+            set
+            {
 
+            }
         }
-    }
-    
-    [JsonProperty, InspectorProperty]
-    public bool AllowMultiple
-    {
-        get { return _allowMultiple; }
-        set
+
+        [JsonProperty, InspectorProperty]
+        public bool AllowMultiple
         {
-            this.Changed("AllowMultiple",ref _allowMultiple, value);
+            get { return _allowMultiple; }
+            set
+            {
+                this.Changed("AllowMultiple", ref _allowMultiple, value);
+            }
         }
-    }
 
-    public override string TypeName
-    {
-        get
+        public override string TypeName
         {
-            return Regex.Replace(Name, @"[^a-zA-Z0-9_\.]+", "");
+            get
+            {
+                return Regex.Replace(Name, @"[^a-zA-Z0-9_\.]+", "");
 
+            }
+            set { }
         }
-        set { }
-    }
 
-    public override string ClassName
-    {
-        get { return TypeName; }
-    }
+        public override string ClassName
+        {
+            get { return TypeName; }
+        }
 
-    [InspectorProperty, JsonProperty]
-    public bool AllowSelection
-    {
-        get { return _allowSelection; }
-        set { this.Changed("AllowSelection",ref _allowSelection, value); }
+        [InspectorProperty, JsonProperty]
+        public bool AllowSelection
+        {
+            get { return _allowSelection; }
+            set { this.Changed("AllowSelection", ref _allowSelection, value); }
+        }
     }
 }

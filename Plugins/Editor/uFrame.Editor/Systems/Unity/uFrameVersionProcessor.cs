@@ -1,7 +1,5 @@
 using Invert.Core.GraphDesigner;
-using Invert.uFrame.Editor;
 using UnityEditor;
-using UnityEngine;
 
 public class uFrameVersionProcessor : AssetPostprocessor
 {

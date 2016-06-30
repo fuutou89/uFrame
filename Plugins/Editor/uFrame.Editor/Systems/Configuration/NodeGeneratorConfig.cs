@@ -2,11 +2,10 @@ using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace Invert.Core.GraphDesigner
 {
-   
+
     public class NodeGeneratorConfig<TNode> : NodeGeneratorConfigBase
         where TNode : GenericNode
     {

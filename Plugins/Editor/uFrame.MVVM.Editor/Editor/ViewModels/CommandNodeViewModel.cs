@@ -1,10 +1,7 @@
-namespace uFrame.MVVM {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-    
-    
+namespace uFrame.MVVM
+{
+
+
     public class CommandNodeViewModel : CommandNodeViewModelBase {
         
         public CommandNodeViewModel(CommandNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 

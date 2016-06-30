@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Invert.Data;
-using Invert.Json;
 
 namespace Invert.Core.GraphDesigner
 {
-  
+
     public class GraphFilter : IGraphFilter
     {
         private Type[] _allowedTypes;

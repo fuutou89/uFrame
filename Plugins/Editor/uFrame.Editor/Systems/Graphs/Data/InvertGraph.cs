@@ -1,12 +1,9 @@
-﻿using Invert.Core;
-using Invert.Core.GraphDesigner;
-using Invert.Data;
+﻿using Invert.Data;
 using Invert.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using UnityEngine;
 namespace Invert.Core.GraphDesigner
 {
     public class InvertGraph : IGraphData, IItem, IJsonTypeResolver, IDataRecordRemoved, ITreeItem

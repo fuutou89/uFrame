@@ -1,5 +1,3 @@
-using System.CodeDom;
-
 namespace Invert.Core.GraphDesigner
 {
     public interface ITypedItem : IDiagramNodeItem

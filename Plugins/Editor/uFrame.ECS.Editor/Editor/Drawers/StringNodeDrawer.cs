@@ -1,11 +1,8 @@
-namespace Invert.uFrame.ECS {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
+namespace Invert.uFrame.ECS
+{
     using Invert.Core.GraphDesigner;
-    
-    
+
+
     public class StringNodeDrawer : GenericNodeDrawer<StringNode,StringNodeViewModel> {
         public override float Width
         {

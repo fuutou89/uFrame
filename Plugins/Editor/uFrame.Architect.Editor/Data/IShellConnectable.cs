@@ -1,12 +1,15 @@
-using System.Collections.Generic;
-using Invert.Core.GraphDesigner;
-
-public interface IShellConnectable : IDiagramNode, IShellNode
+namespace uFrame.Architect.Editor.Data
 {
-    [ReferenceSection("Connectable To", SectionVisibility.Always, false)]
-    IEnumerable<ShellConnectableReferenceType> ConnectableTo { get; }
+    using System.Collections.Generic;
+    using Invert.Core.GraphDesigner;
 
-    bool MultipleInputs { get; set; }
+    public interface IShellConnectable : IDiagramNode, IShellNode
+    {
+        [ReferenceSection("Connectable To", SectionVisibility.Always, false)]
+        IEnumerable<ShellConnectableReferenceType> ConnectableTo { get; }
 
-    bool MultipleOutputs { get; set; }
+        bool MultipleInputs { get; set; }
+
+        bool MultipleOutputs { get; set; }
+    }
 }

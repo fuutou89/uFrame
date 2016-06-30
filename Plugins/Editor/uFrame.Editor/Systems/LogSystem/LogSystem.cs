@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using Invert.Core.GraphDesigner.Unity.WindowsPlugin;
 using Invert.Data;
 using Invert.IOC;
-using UnityEditor;
 using MessageType = Invert.Core.GraphDesigner.Unity.WindowsPlugin.MessageType;
 
 namespace Invert.Core.GraphDesigner.Unity.LogSystem

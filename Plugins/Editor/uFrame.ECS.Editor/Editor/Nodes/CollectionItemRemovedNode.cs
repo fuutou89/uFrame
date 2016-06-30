@@ -1,14 +1,10 @@
 using System.CodeDom;
 
-namespace Invert.uFrame.ECS {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Invert.Core;
+namespace Invert.uFrame.ECS
+{
     using Invert.Core.GraphDesigner;
-    
-    
+
+
     public class CollectionItemRemovedNode : CollectionItemRemovedNodeBase {
         public override string DisplayName
         {

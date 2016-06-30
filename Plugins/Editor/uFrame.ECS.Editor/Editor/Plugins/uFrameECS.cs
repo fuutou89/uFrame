@@ -1,10 +1,8 @@
 ﻿using System.IO;
 using System.Reflection;
-using Invert.Core.GraphDesigner.Unity;
 using Invert.Data;
 using Invert.IOC;
 using Invert.uFrame.Editor;
-using Invert.Windows;
 using uFrame.Attributes;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +10,6 @@ using UnityEngine.UI;
 namespace Invert.uFrame.ECS
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using Invert.Core;

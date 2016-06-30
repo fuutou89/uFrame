@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 
 namespace Invert.Core.GraphDesigner

@@ -1,23 +1,26 @@
-using Invert.Core.GraphDesigner;
-using Invert.Json;
-
-public class ShellNodeSectionsSlot : GenericReferenceItem<ShellNodeTypeSection>, IShellNodeItem
+namespace uFrame.Architect.Editor.Data
 {
-    [JsonProperty, InspectorProperty]
-    public int Order { get; set; }
+    using Invert.Core.GraphDesigner;
+    using Invert.Json;
 
-
-    public string ReferenceClassName
+    public class ShellNodeSectionsSlot : GenericReferenceItem<ShellNodeTypeSection>, IShellNodeItem
     {
-        get { return SourceItem.ReferenceClassName; }
-    }
+        [JsonProperty, InspectorProperty]
+        public int Order { get; set; }
 
-    public override void NodeRemoved(IDiagramNode nodeData)
-    {
-        base.NodeRemoved(nodeData);
-        if (SourceItem == nodeData)
+
+        public string ReferenceClassName
         {
-            Repository.Remove(this);
+            get { return SourceItem.ReferenceClassName; }
+        }
+
+        public override void NodeRemoved(IDiagramNode nodeData)
+        {
+            base.NodeRemoved(nodeData);
+            if (SourceItem == nodeData)
+            {
+                Repository.Remove(this);
+            }
         }
     }
 }

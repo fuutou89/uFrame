@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using Invert.Data;
 using Invert.Json;
 
 namespace Invert.Data

@@ -1,13 +1,16 @@
-using Invert.Core.GraphDesigner;
-using Invert.Json;
-
-public class ShellNodeOutputsSlot : GenericReferenceItem<ShellSlotTypeNode>, IShellNodeItem
+namespace uFrame.Architect.Editor.Data
 {
-    [JsonProperty, InspectorProperty]
-    public int Order { get; set; }
+    using Invert.Core.GraphDesigner;
+    using Invert.Json;
 
-    public string ReferenceClassName
+    public class ShellNodeOutputsSlot : GenericReferenceItem<ShellSlotTypeNode>, IShellNodeItem
     {
-        get { return SourceItem.ReferenceClassName; }
+        [JsonProperty, InspectorProperty]
+        public int Order { get; set; }
+
+        public string ReferenceClassName
+        {
+            get { return SourceItem.ReferenceClassName; }
+        }
     }
 }

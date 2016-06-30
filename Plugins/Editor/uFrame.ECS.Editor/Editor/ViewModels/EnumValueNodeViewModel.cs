@@ -1,12 +1,8 @@
-using Invert.Core.GraphDesigner;
-
-namespace Invert.uFrame.ECS {
-    using System;
-    using System.Collections;
+namespace Invert.uFrame.ECS
+{
     using System.Collections.Generic;
-    using System.Linq;
-    
-    
+
+
     public class EnumValueNodeViewModel : EnumValueNodeViewModelBase {
         
         public EnumValueNodeViewModel(EnumValueNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 

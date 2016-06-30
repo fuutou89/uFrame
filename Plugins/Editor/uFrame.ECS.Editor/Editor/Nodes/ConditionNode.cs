@@ -1,14 +1,11 @@
 using Invert.Json;
 
-namespace Invert.uFrame.ECS {
-    using System;
-    using System.Collections;
+namespace Invert.uFrame.ECS
+{
     using System.Collections.Generic;
-    using System.Linq;
-    using Invert.Core;
     using Invert.Core.GraphDesigner;
     using Data;
-    
+
     public class ConditionNode : ConditionNodeBase {
         private PropertyIn _ainput;
         private PropertyIn _binput;

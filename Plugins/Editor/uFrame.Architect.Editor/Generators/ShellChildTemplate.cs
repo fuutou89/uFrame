@@ -1,34 +1,38 @@
-using Invert.Core.GraphDesigner;
-
-[TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}ChildItem")]
-public class ShellChildTemplate : GenericNodeChildItem,
-    IClassTemplate<ShellChildItemTypeNode>
+namespace uFrame.Architect.Editor.Generators
 {
-    public string OutputPath
-    {
-        get { return Path2.Combine("Editor", "Sections"); }
-    }
+    using Data;
+    using Invert.Core.GraphDesigner;
 
-    public bool CanGenerate
+    [TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}ChildItem")]
+    public class ShellChildTemplate : GenericNodeChildItem,
+        IClassTemplate<ShellChildItemTypeNode>
     {
-        get { return true; }
-    }
-
-    public void TemplateSetup()
-    {
-        Ctx.TryAddNamespace("Invert.Core.GraphDesigner");
-        if (Ctx.IsDesignerFile)
+        public string OutputPath
         {
-            if (Ctx.Data["Typed"] && Ctx.Data.BaseNode == null)
-                Ctx.SetBaseType(typeof(GenericTypedChildItem));
-
-            foreach (var item in Ctx.Data.IncludedInSections)
-            {
-                Ctx.AddInterface(item.ReferenceClassName);
-            }
+            get { return Path2.Combine("Editor", "Sections"); }
         }
-        
-    }
 
-    public TemplateContext<ShellChildItemTypeNode> Ctx { get; set; }
+        public bool CanGenerate
+        {
+            get { return true; }
+        }
+
+        public void TemplateSetup()
+        {
+            Ctx.TryAddNamespace("Invert.Core.GraphDesigner");
+            if (Ctx.IsDesignerFile)
+            {
+                if (Ctx.Data["Typed"] && Ctx.Data.BaseNode == null)
+                    Ctx.SetBaseType(typeof(GenericTypedChildItem));
+
+                foreach (var item in Ctx.Data.IncludedInSections)
+                {
+                    Ctx.AddInterface(item.ReferenceClassName);
+                }
+            }
+
+        }
+
+        public TemplateContext<ShellChildItemTypeNode> Ctx { get; set; }
+    }
 }

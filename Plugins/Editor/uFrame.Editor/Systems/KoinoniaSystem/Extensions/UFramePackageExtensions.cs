@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Data;
 
 namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Extensions

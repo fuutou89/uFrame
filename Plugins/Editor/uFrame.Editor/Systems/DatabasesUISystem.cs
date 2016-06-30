@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using Invert.Common;
 using Invert.Core.GraphDesigner.Systems.GraphUI.api;
 using Invert.Core.GraphDesigner.Unity;
-using Invert.Core.GraphDesigner.Unity.InspectorWindow;
-using Invert.Core.GraphDesigner.Unity.Wizards;
 using UnityEditor;
 using UnityEngine;
 

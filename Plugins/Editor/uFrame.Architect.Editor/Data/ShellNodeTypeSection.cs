@@ -1,23 +1,25 @@
-using System.CodeDom;
-using Invert.Core.GraphDesigner;
-using Invert.Json;
-
-public class ShellNodeTypeSection : ShellNode, IShellNode
+namespace uFrame.Architect.Editor.Data
 {
-    [JsonProperty]
-    public bool AllowAdding { get; set; }
+    using Invert.Core.GraphDesigner;
+    using Invert.Json;
 
-
-
-    public override string ClassName
+    public class ShellNodeTypeSection : ShellNode, IShellNode
     {
-        get { return this.Name + "Reference"; }
-    }
-    [JsonProperty, InspectorProperty]
-    public SectionVisibility Visibility { get; set; }
+        [JsonProperty]
+        public bool AllowAdding { get; set; }
 
-    public virtual string ReferenceClassName
-    {
-        get { return "I" + this.Name; }
+
+
+        public override string ClassName
+        {
+            get { return this.Name + "Reference"; }
+        }
+        [JsonProperty, InspectorProperty]
+        public SectionVisibility Visibility { get; set; }
+
+        public virtual string ReferenceClassName
+        {
+            get { return "I" + this.Name; }
+        }
     }
 }

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Invert.Common;
 using Invert.Common.UI;
 using Invert.Core;
 using Invert.Core.GraphDesigner;
-using Invert.Core.GraphDesigner.Unity;
 using Invert.Data;
-using Invert.IOC;
 using UnityEngine;
 
 namespace Assets.Plugins.Editor.uFrame.Editor.Systems.NavigationSystem

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Invert.Common;
 using Invert.Core;
 using Invert.Core.GraphDesigner;
-using Invert.Core.GraphDesigner.Systems;
 using Invert.Core.GraphDesigner.Systems.GraphUI;
 using Invert.Core.GraphDesigner.Systems.GraphUI.api;
 using Invert.Data;

@@ -1,10 +1,7 @@
-namespace Invert.uFrame.ECS {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-    
-    
+namespace Invert.uFrame.ECS
+{
+
+
     public class StringLiteralNodeViewModel : StringLiteralNodeViewModelBase {
         
         public StringLiteralNodeViewModel(StringLiteralNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 

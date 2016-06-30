@@ -1,9 +1,9 @@
 using System;
 using Invert.Core;
 using Invert.Core.GraphDesigner;
-using Invert.IOC;
 
-namespace Invert.Windows {
+namespace Invert.Windows
+{
 
     public abstract class Area<TData> : Area
     {

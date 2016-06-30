@@ -1,3 +1,6 @@
-using System.Collections.Generic;
-using Invert.Core.GraphDesigner;
+namespace uFrame.Architect.Editor.Data
+{
+
+    //TODO
+}
 

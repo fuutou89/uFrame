@@ -1,10 +1,13 @@
-using System.Reflection;
-
-public class TemplateFieldReference : TemplateReference
+namespace uFrame.Architect.Editor.Data
 {
-    public FieldInfo FieldInfo
-    {
-        get { return MemberInfo as FieldInfo; }
-    }
+    using System.Reflection;
 
+    public class TemplateFieldReference : TemplateReference
+    {
+        public FieldInfo FieldInfo
+        {
+            get { return MemberInfo as FieldInfo; }
+        }
+
+    }
 }

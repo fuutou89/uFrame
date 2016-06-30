@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Invert.Data;
 using Invert.IOC;
-using JetBrains.Annotations;
 
 namespace Invert.Core.GraphDesigner
 {

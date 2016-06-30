@@ -1,22 +1,25 @@
-using Invert.Core.GraphDesigner;
-
-public class  ShellSectionReferenceSlot : SingleInputSlot<ShellChildItemTypeNode>
+namespace uFrame.Architect.Editor.Data
 {
-    public override bool Validate(IDiagramNodeItem a, IDiagramNodeItem b)
-    {
-        return true;
-        return base.Validate(a, b);
-    }
+    using Invert.Core.GraphDesigner;
 
-    public override bool ValidateInput(IDiagramNodeItem arg1, IDiagramNodeItem arg2)
+    public class ShellSectionReferenceSlot : SingleInputSlot<ShellChildItemTypeNode>
     {
-        return true;
-        return base.ValidateInput(arg1, arg2);
-    }
+        public override bool Validate(IDiagramNodeItem a, IDiagramNodeItem b)
+        {
+            return true;
+            return base.Validate(a, b);
+        }
 
-    public override bool ValidateOutput(IDiagramNodeItem arg1, IDiagramNodeItem arg2)
-    {
-        return true;
-        return base.ValidateOutput(arg1, arg2);
+        public override bool ValidateInput(IDiagramNodeItem arg1, IDiagramNodeItem arg2)
+        {
+            return true;
+            return base.ValidateInput(arg1, arg2);
+        }
+
+        public override bool ValidateOutput(IDiagramNodeItem arg1, IDiagramNodeItem arg2)
+        {
+            return true;
+            return base.ValidateOutput(arg1, arg2);
+        }
     }
 }

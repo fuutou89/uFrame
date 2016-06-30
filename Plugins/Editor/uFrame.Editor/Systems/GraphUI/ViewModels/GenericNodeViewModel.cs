@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Core.GraphDesigner;
-using UnityEngine;
 
 namespace Invert.Core.GraphDesigner
-{ 
+{
     public class GenericNodeViewModel<TData> : DiagramNodeViewModel<TData> where TData : GenericNode
     {
         protected NodeConfigBase _nodeConfig;

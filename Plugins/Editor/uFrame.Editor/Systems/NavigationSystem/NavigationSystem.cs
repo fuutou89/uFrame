@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using Invert.Core.GraphDesigner.Unity;
 using Invert.Data;
 using Invert.IOC;
@@ -11,7 +7,8 @@ using UnityEditor;
 
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner {
+namespace Invert.Core.GraphDesigner
+{
     public class NavigationSystem : DiagramPlugin
         , IExecuteCommand<NavigateToNodeCommand>
         , IExecuteCommand<FilterBySelectionCommand>

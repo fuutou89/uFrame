@@ -1,12 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text.RegularExpressions;
 using Invert.Json;
-using UnityEngine;
 
 namespace Invert.Core.GraphDesigner
 {
@@ -20,7 +17,7 @@ namespace Invert.Core.GraphDesigner
 
     //    public override bool Validate(IDiagramNodeItem a, IDiagramNodeItem b)
     //    {
-           
+
     //        var result = a is TFor && b is BaseClassReference && b.Node != a.Node && b.Node.GetType() == a.GetType();
     //        return result;
     //    }

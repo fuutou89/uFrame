@@ -1,53 +1,57 @@
-using Invert.Core.GraphDesigner;
-
-[TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}NodeViewModel", AutoInherit = false)]
-public class ShellNodeTypeViewModelTemplate : GenericNodeViewModel<GenericNode>, IClassTemplate<ShellNodeTypeNode>
+namespace uFrame.Architect.Editor.Generators
 {
-    public string OutputPath
-    {
-        get { return Path2.Combine("Editor", "ViewModels"); }
-    }
+    using Data;
+    using Invert.Core.GraphDesigner;
 
-    public bool CanGenerate
+    [TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}NodeViewModel", AutoInherit = false)]
+    public class ShellNodeTypeViewModelTemplate : GenericNodeViewModel<GenericNode>, IClassTemplate<ShellNodeTypeNode>
     {
-        get { return true; }
-    }
-
-    public void TemplateSetup()
-    {
-        if (Ctx.IsDesignerFile)
+        public string OutputPath
         {
-            if (Ctx.Data.BaseNode != null)
+            get { return Path2.Combine("Editor", "ViewModels"); }
+        }
+
+        public bool CanGenerate
+        {
+            get { return true; }
+        }
+
+        public void TemplateSetup()
+        {
+            if (Ctx.IsDesignerFile)
             {
-                Ctx.SetBaseType(Ctx.Data.BaseNode.Name + "NodeViewModel");
-            }
-            else
-            {
-                Ctx.SetBaseTypeArgument(Ctx.Data.ClassName);
+                if (Ctx.Data.BaseNode != null)
+                {
+                    Ctx.SetBaseType(Ctx.Data.BaseNode.Name + "NodeViewModel");
+                }
+                else
+                {
+                    Ctx.SetBaseTypeArgument(Ctx.Data.ClassName);
+                }
+
             }
 
         }
 
+        public TemplateContext<ShellNodeTypeNode> Ctx { get; set; }
+
+        // For templating
+        public ShellNodeTypeViewModelTemplate()
+            : base()
+        {
+        }
+
+        public ShellNodeTypeViewModelTemplate(GenericNode graphItemObject, DiagramViewModel diagramViewModel)
+            : base(graphItemObject, diagramViewModel)
+        {
+        }
+
+        [GenerateConstructor(TemplateLocation.Both, "graphItemObject", "diagramViewModel")]
+        public void ViewModelConstructor(GenericNode graphItemObject, DiagramViewModel diagramViewModel)
+        {
+            Ctx.CurrentConstructor.Parameters[0].Type = Ctx.Data.ClassName.ToCodeReference();
+
+        }
+
     }
-
-    public TemplateContext<ShellNodeTypeNode> Ctx { get; set; }
-
-    // For templating
-    public ShellNodeTypeViewModelTemplate()
-        : base()
-    {
-    }
-
-    public ShellNodeTypeViewModelTemplate(GenericNode graphItemObject, DiagramViewModel diagramViewModel)
-        : base(graphItemObject, diagramViewModel)
-    {
-    }
-
-    [GenerateConstructor(TemplateLocation.Both, "graphItemObject", "diagramViewModel")]
-    public void ViewModelConstructor(GenericNode graphItemObject, DiagramViewModel diagramViewModel)
-    {
-        Ctx.CurrentConstructor.Parameters[0].Type = Ctx.Data.ClassName.ToCodeReference();
-
-    }
-
 }

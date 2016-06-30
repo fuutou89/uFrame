@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Invert.Common;
+﻿using System.Collections.Generic;
 using Invert.Core.GraphDesigner.Systems.GraphUI;
 using UnityEditor;
 using UnityEngine;

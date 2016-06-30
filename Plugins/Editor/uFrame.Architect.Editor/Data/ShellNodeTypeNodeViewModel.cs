@@ -1,13 +1,16 @@
-using Invert.Core.GraphDesigner;
-
-public class ShellNodeTypeNodeViewModel : GenericNodeViewModel<ShellNodeTypeNode>
+namespace uFrame.Architect.Editor.Data
 {
-    public ShellNodeTypeNodeViewModel(ShellNodeTypeNode graphItemObject, DiagramViewModel diagramViewModel) : base(graphItemObject, diagramViewModel)
-    {
-    }
+    using Invert.Core.GraphDesigner;
 
-    public override NodeColor Color
+    public class ShellNodeTypeNodeViewModel : GenericNodeViewModel<ShellNodeTypeNode>
     {
-        get { return GraphItem.Color; }
+        public ShellNodeTypeNodeViewModel(ShellNodeTypeNode graphItemObject, DiagramViewModel diagramViewModel) : base(graphItemObject, diagramViewModel)
+        {
+        }
+
+        public override NodeColor Color
+        {
+            get { return GraphItem.Color; }
+        }
     }
 }

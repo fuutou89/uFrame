@@ -1,54 +1,57 @@
-using Invert.Core.GraphDesigner;
-
-[TemplateClass( TemplateLocation.Both, ClassNameFormat = "{0}ChildItem")]
-public class ShellChildItemTemplate : GenericNodeChildItem,
-    IClassTemplate<ShellNodeChildTypeNode>
+namespace uFrame.Architect.Editor.Generators
 {
-    public string OutputPath
-    {
-        get { return Path2.Combine("Editor", "ChildItems"); }
-    }
+    using Data;
+    using Invert.Core.GraphDesigner;
 
-    public bool CanGenerate
+    [TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}ChildItem")]
+    public class ShellChildItemTemplate : GenericNodeChildItem,
+        IClassTemplate<ShellNodeChildTypeNode>
     {
-        get { return true; }
-    }
-
-    public void TemplateSetup()
-    {
-        Ctx.TryAddNamespace("Invert.Core.GraphDesigner");
-        if (Ctx.IsDesignerFile)
+        public string OutputPath
         {
-            if (Ctx.Data["Typed"])
-                Ctx.SetBaseType(typeof(GenericTypedChildItem));
+            get { return Path2.Combine("Editor", "ChildItems"); }
+        }
 
-            foreach (var item in Ctx.Data.IncludedInSections)
+        public bool CanGenerate
+        {
+            get { return true; }
+        }
+
+        public void TemplateSetup()
+        {
+            Ctx.TryAddNamespace("Invert.Core.GraphDesigner");
+            if (Ctx.IsDesignerFile)
             {
-                Ctx.AddInterface(item.ReferenceClassName);
+                if (Ctx.Data["Typed"])
+                    Ctx.SetBaseType(typeof(GenericTypedChildItem));
+
+                foreach (var item in Ctx.Data.IncludedInSections)
+                {
+                    Ctx.AddInterface(item.ReferenceClassName);
+                }
+            }
+
+        }
+
+        public TemplateContext<ShellNodeChildTypeNode> Ctx { get; set; }
+
+        [GenerateProperty(TemplateLocation.DesignerFile)]
+        public override bool AllowMultipleInputs
+        {
+            get
+            {
+                Ctx._("return {0}", Ctx.Data.AllowMultipleInputs ? "true" : "false");
+                return base.AllowMultipleInputs;
             }
         }
-
-    }
-
-    public TemplateContext<ShellNodeChildTypeNode> Ctx { get; set; }
-
-    [GenerateProperty(TemplateLocation.DesignerFile)]
-    public override bool AllowMultipleInputs
-    {
-        get
+        [GenerateProperty(TemplateLocation.DesignerFile)]
+        public override bool AllowMultipleOutputs
         {
-            Ctx._("return {0}", Ctx.Data.AllowMultipleInputs ? "true" : "false");
-            return base.AllowMultipleInputs;
-        }
-    }
-    [GenerateProperty(TemplateLocation.DesignerFile)]
-    public override bool AllowMultipleOutputs
-    {
-        get
-        {
-            Ctx._("return {0}", Ctx.Data.AllowMultipleOutputs ? "true" : "false");
-            return base.AllowMultipleOutputs;
+            get
+            {
+                Ctx._("return {0}", Ctx.Data.AllowMultipleOutputs ? "true" : "false");
+                return base.AllowMultipleOutputs;
+            }
         }
     }
 }
-

@@ -3,9 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Invert.Core.GraphDesigner;
 using Invert.Data;
-using Invert.Windows;
 using UnityEngine;
 
 namespace Invert.Core.GraphDesigner

@@ -1,66 +1,68 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Invert.Core.GraphDesigner;
-using Invert.Json;
-
-public class ShellSlotTypeNode : ShellNode, IReferenceNode
+namespace uFrame.Architect.Editor.Data
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Invert.Core.GraphDesigner;
+    using Invert.Json;
 
-    public override string ClassName
+    public class ShellSlotTypeNode : ShellNode, IReferenceNode
     {
-        get
+
+        public override string ClassName
         {
-            return this.Name;
+            get
+            {
+                return this.Name;
+            }
         }
-    }
-    [JsonProperty, InspectorProperty]
-    public SectionVisibility Visibility { get; set; }
+        [JsonProperty, InspectorProperty]
+        public SectionVisibility Visibility { get; set; }
 
-    [ReferenceSection("Acceptable Types",SectionVisibility.Always, false)]
-    public IEnumerable<ShellAcceptableReferenceType> AcceptableTypes
-    {
-        get { return PersistedItems.OfType<ShellAcceptableReferenceType>(); }
-    }
-
-    public IEnumerable<IShellNode> PossibleAcceptableTypes
-    {
-        get { return Repository.AllOf<IShellNode>(); }
-    }
-
-    public IShellNode ReferenceType
-    {
-        get { return AcceptableTypes.Select(p => p.SourceItem).FirstOrDefault(); }
-    }
-
-    public IEnumerable<IReferenceNode> IncludedInSections
-    {
-        get
+        [ReferenceSection("Acceptable Types", SectionVisibility.Always, false)]
+        public IEnumerable<ShellAcceptableReferenceType> AcceptableTypes
         {
-            return Repository.AllOf<IReferenceNode>().Where(p => p.AcceptableTypes.Any(x => x.SourceItem == this));
+            get { return PersistedItems.OfType<ShellAcceptableReferenceType>(); }
         }
-    }
 
-
-    public string ReferenceClassName
-    {
-        get
+        public IEnumerable<IShellNode> PossibleAcceptableTypes
         {
-            return "I" + Name;
+            get { return Repository.AllOf<IShellNode>(); }
         }
-    }
 
-    [InspectorProperty]
-    public bool AllowMultiple
-    {
-        get { return this["Multiple"]; }
-        set { this["Multiple"] = value; }
-    }
+        public IShellNode ReferenceType
+        {
+            get { return AcceptableTypes.Select(p => p.SourceItem).FirstOrDefault(); }
+        }
 
-    [InspectorProperty]
-    public bool IsOutput
-    {
-        get { return this["Output"]; }
-        set { this["Output"] = value; }
+        public IEnumerable<IReferenceNode> IncludedInSections
+        {
+            get
+            {
+                return Repository.AllOf<IReferenceNode>().Where(p => p.AcceptableTypes.Any(x => x.SourceItem == this));
+            }
+        }
+
+
+        public string ReferenceClassName
+        {
+            get
+            {
+                return "I" + Name;
+            }
+        }
+
+        [InspectorProperty]
+        public bool AllowMultiple
+        {
+            get { return this["Multiple"]; }
+            set { this["Multiple"] = value; }
+        }
+
+        [InspectorProperty]
+        public bool IsOutput
+        {
+            get { return this["Output"]; }
+            set { this["Output"] = value; }
+        }
     }
 }

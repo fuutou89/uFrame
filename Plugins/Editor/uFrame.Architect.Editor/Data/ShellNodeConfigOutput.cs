@@ -1,48 +1,51 @@
-using System.Text.RegularExpressions;
-using Invert.Core.GraphDesigner;
-using Invert.Data;
-using Invert.Json;
-
-public class ShellNodeConfigOutput : ShellNodeConfigItem, IShellSlotType
+namespace uFrame.Architect.Editor.Data
 {
-    private bool _allowMultiple;
-    private bool _allowSelection;
+    using System.Text.RegularExpressions;
+    using Invert.Core.GraphDesigner;
+    using Invert.Data;
+    using Invert.Json;
 
-    public bool IsOutput
+    public class ShellNodeConfigOutput : ShellNodeConfigItem, IShellSlotType
     {
-        get { return true; }
-        set
+        private bool _allowMultiple;
+        private bool _allowSelection;
+
+        public bool IsOutput
         {
+            get { return true; }
+            set
+            {
 
+            }
         }
-    }
-    public override string TypeName
-    {
-        get
+        public override string TypeName
         {
-            return Regex.Replace(Name, @"[^a-zA-Z0-9_\.]+", "");
+            get
+            {
+                return Regex.Replace(Name, @"[^a-zA-Z0-9_\.]+", "");
 
+            }
+            set { }
         }
-        set { }
-    }
-    [JsonProperty, InspectorProperty]
-    public bool AllowMultiple
-    {
-        get { return _allowMultiple; }
-        set
+        [JsonProperty, InspectorProperty]
+        public bool AllowMultiple
         {
-            this.Changed("AllowMultiple",ref _allowMultiple,  value);
+            get { return _allowMultiple; }
+            set
+            {
+                this.Changed("AllowMultiple", ref _allowMultiple, value);
+            }
         }
-    }
 
-    public bool AllowSelection
-    {
-        get { return _allowSelection; }
-        set { this.Changed("AllowSelection", ref _allowSelection, value); }
-    }
+        public bool AllowSelection
+        {
+            get { return _allowSelection; }
+            set { this.Changed("AllowSelection", ref _allowSelection, value); }
+        }
 
-    public override string ClassName
-    {
-        get { return TypeName; }
+        public override string ClassName
+        {
+            get { return TypeName; }
+        }
     }
 }

@@ -1,12 +1,11 @@
 using Invert.Core.GraphDesigner;
 
-namespace Invert.uFrame.ECS {
-    using System;
-    using System.Collections;
+namespace Invert.uFrame.ECS
+{
     using System.Collections.Generic;
     using System.Linq;
-    
-    
+
+
     public class PropertyNodeViewModel : PropertyNodeViewModelBase {
         private string _name;
 

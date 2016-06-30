@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Invert.Common;
 using Invert.Core.GraphDesigner.Systems.GraphUI;
 using Invert.Core.GraphDesigner.Systems.GraphUI.api;

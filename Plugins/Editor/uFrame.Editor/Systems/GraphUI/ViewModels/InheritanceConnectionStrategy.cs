@@ -1,6 +1,3 @@
-using System.Linq;
-using UnityEngine;
-
 namespace Invert.uFrame.Editor.ViewModels
 {
     //public class InheritanceConnectionStrategy<TSource> :

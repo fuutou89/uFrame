@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Invert.Common;
+﻿using Invert.Common;
 using UnityEngine;
 
 namespace Invert.Core.GraphDesigner.Unity.Schemas

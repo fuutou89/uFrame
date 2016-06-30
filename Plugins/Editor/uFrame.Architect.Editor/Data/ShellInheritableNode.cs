@@ -1,45 +1,48 @@
-using System.Linq;
-using Invert.Core.GraphDesigner;
-using Invert.Data;
-using Invert.Json;
-
-public class ShellInheritableNode : GenericInheritableNode, IShellNode
+namespace uFrame.Architect.Editor.Data
 {
-    private string _baseIdentifier;
+    using Invert.Core.GraphDesigner;
+    using Invert.Data;
+    using Invert.Json;
 
-    [JsonProperty]
-    public string BaseIdentifier
+    public class ShellInheritableNode : GenericInheritableNode, IShellNode
     {
-        get { return _baseIdentifier; }
-        set {
-            this.Changed("BaseIdentifier",ref _baseIdentifier, value);
-        }
-    }
+        private string _baseIdentifier;
 
-    [InspectorProperty(InspectorType.GraphItems)]
-    public override GenericInheritableNode BaseNode
-    {
-        get
+        [JsonProperty]
+        public string BaseIdentifier
         {
-            if (string.IsNullOrEmpty(BaseIdentifier) || Repository == null)
-                return null;
-            return Repository.GetById<GenericInheritableNode>(BaseIdentifier);
-        }
-        set
-        {
-            if (value != null)
-            BaseIdentifier = value.Identifier;
-            else
+            get { return _baseIdentifier; }
+            set
             {
-                BaseIdentifier = null;
+                this.Changed("BaseIdentifier", ref _baseIdentifier, value);
             }
         }
-    }
 
-    public virtual string ClassName
-    {
-        get { return string.Format("{0}", Name); }
-    }
-    
+        [InspectorProperty(InspectorType.GraphItems)]
+        public override GenericInheritableNode BaseNode
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(BaseIdentifier) || Repository == null)
+                    return null;
+                return Repository.GetById<GenericInheritableNode>(BaseIdentifier);
+            }
+            set
+            {
+                if (value != null)
+                    BaseIdentifier = value.Identifier;
+                else
+                {
+                    BaseIdentifier = null;
+                }
+            }
+        }
 
+        public virtual string ClassName
+        {
+            get { return string.Format("{0}", Name); }
+        }
+
+
+    }
 }

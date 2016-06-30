@@ -1,51 +1,54 @@
-using System.Linq;
-using System.Reflection;
-using Invert.Core.GraphDesigner;
-
-public class TemplateReference : GenericNodeChildItem
+namespace uFrame.Architect.Editor.Data
 {
-    public ShellGeneratorTypeNode GeneratorNode
-    {
-        get { return this.Node as ShellGeneratorTypeNode; }
-    }
+    using System.Linq;
+    using System.Reflection;
+    using Invert.Core.GraphDesigner;
 
-    public MemberInfo MemberInfo
+    public class TemplateReference : GenericNodeChildItem
     {
-        get { return GeneratorNode.TemplateMembers.FirstOrDefault(p => p.Name == this.Name); }
-    }
-
-    public IShellNodeItem SelectorItem
-    {
-        get
+        public ShellGeneratorTypeNode GeneratorNode
         {
-            return this.InputFrom<IShellNodeItem>();
+            get { return this.Node as ShellGeneratorTypeNode; }
         }
-    }
 
-    //public IShellReferenceType SelectorItemSection
-    //{
-    //    get
-    //    {
-    //        if (SelectorItem == null)
-    //        {
-    //            Debug.Log("SelectorItem is null ");
-    //            return null;
-    //        }
-    //        return SelectorItem.SourceItemObject as IShellReferenceType;
-    //    }
-    //}
-
-    public string SelectorItemSectionSourceType
-    {
-        get
+        public MemberInfo MemberInfo
         {
-            if (SelectorItem == null)
+            get { return GeneratorNode.TemplateMembers.FirstOrDefault(p => p.Name == this.Name); }
+        }
+
+        public IShellNodeItem SelectorItem
+        {
+            get
             {
-                return null;
+                return this.InputFrom<IShellNodeItem>();
             }
-            return SelectorItem.ReferenceClassName;
         }
+
+        //public IShellReferenceType SelectorItemSection
+        //{
+        //    get
+        //    {
+        //        if (SelectorItem == null)
+        //        {
+        //            Debug.Log("SelectorItem is null ");
+        //            return null;
+        //        }
+        //        return SelectorItem.SourceItemObject as IShellReferenceType;
+        //    }
+        //}
+
+        public string SelectorItemSectionSourceType
+        {
+            get
+            {
+                if (SelectorItem == null)
+                {
+                    return null;
+                }
+                return SelectorItem.ReferenceClassName;
+            }
+        }
+
+
     }
-
-
 }

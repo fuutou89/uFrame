@@ -1,14 +1,8 @@
-using System.CodeDom;
-
-namespace Invert.uFrame.ECS {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
+namespace Invert.uFrame.ECS
+{
     using Invert.Core;
-    using Invert.Core.GraphDesigner;
-    
-    
+
+
     public class BoolExpressionNode : BoolExpressionNodeBase, IGroupConnectable {
         public override bool AllowInputs
         {

@@ -2,12 +2,10 @@ using System.CodeDom;
 using Invert.Json;
 using uFrame.Attributes;
 
-namespace Invert.uFrame.ECS {
-    using System;
-    using System.Collections;
+namespace Invert.uFrame.ECS
+{
     using System.Collections.Generic;
     using System.Linq;
-    using Invert.Core;
     using Invert.Core.GraphDesigner;
     using Invert.Data;
 

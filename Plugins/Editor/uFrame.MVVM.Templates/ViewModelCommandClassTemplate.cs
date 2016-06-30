@@ -1,19 +1,6 @@
 ﻿using System;
-using System.CodeDom;
-using UnityEngine;
-using System.ComponentModel;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using Invert.Core;
 using Invert.Core.GraphDesigner;
-using Invert.IOC;
-using uFrame.Actions;
-using uFrame.Attributes;
-using uFrame.Kernel;
-using uFrame.MVVM;
-using UnityEditor;
 
 namespace uFrame.MVVM.Templates
 {

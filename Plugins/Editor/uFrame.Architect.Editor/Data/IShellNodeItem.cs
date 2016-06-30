@@ -1,6 +1,9 @@
-using Invert.Core.GraphDesigner;
-
-public interface IShellNodeItem : IConnectable, IDiagramNodeItem
+namespace uFrame.Architect.Editor.Data
 {
-    string ReferenceClassName { get; }
+    using Invert.Core.GraphDesigner;
+
+    public interface IShellNodeItem : IConnectable, IDiagramNodeItem
+    {
+        string ReferenceClassName { get; }
+    }
 }

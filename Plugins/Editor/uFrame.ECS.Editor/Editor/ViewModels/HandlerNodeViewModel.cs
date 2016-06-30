@@ -2,13 +2,11 @@ using Invert.Core;
 using Invert.Core.GraphDesigner;
 using Invert.Data;
 
-namespace Invert.uFrame.ECS {
-    using System;
-    using System.Collections;
+namespace Invert.uFrame.ECS
+{
     using System.Collections.Generic;
-    using System.Linq;
-    
-    
+
+
     public class HandlerNodeViewModel : HandlerNodeViewModelBase {
         public override bool IsEditable
         {

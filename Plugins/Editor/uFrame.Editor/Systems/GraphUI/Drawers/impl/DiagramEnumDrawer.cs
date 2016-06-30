@@ -1,6 +1,3 @@
-using Invert.Common;
-using UnityEngine;
-
 namespace Invert.Core.GraphDesigner
 {
     //public class DiagramEnumDrawer : DiagramNodeDrawer<EnumNodeViewModel>

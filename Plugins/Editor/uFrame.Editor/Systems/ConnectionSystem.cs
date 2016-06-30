@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Invert.Data;
+﻿using System.Linq;
 using Invert.IOC;
 
 namespace Invert.Core.GraphDesigner
 {
-    
+
     public class ConnectionSystem : DiagramPlugin
         ,IContextMenuQuery
     {

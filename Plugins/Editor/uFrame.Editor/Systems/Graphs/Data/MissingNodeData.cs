@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Invert.Core.GraphDesigner;
-using Invert.Json;
 
 public class MissingNodeData : GraphNode
 {

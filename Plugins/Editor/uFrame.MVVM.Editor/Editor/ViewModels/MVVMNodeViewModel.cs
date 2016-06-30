@@ -1,10 +1,7 @@
-namespace uFrame.MVVM {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-    
-    
+namespace uFrame.MVVM
+{
+
+
     public class MVVMNodeViewModel : MVVMNodeViewModelBase {
         
         public MVVMNodeViewModel(MVVMNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 

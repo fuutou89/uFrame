@@ -8,7 +8,6 @@ namespace Invert.uFrame.ECS
 {
     using Invert.Core;
     using Invert.Core.GraphDesigner;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
 

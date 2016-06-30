@@ -1,6 +1,9 @@
-public enum ShellNodeConfigSectionType
+namespace uFrame.Architect.Editor.Data
 {
-    ChildItems,
-    ReferenceItems,
-    ProxyItems
+    public enum ShellNodeConfigSectionType
+    {
+        ChildItems,
+        ReferenceItems,
+        ProxyItems
+    }
 }

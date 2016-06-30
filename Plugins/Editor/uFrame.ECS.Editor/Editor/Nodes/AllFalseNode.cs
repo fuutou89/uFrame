@@ -1,12 +1,8 @@
-namespace Invert.uFrame.ECS {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
+namespace Invert.uFrame.ECS
+{
     using System.Linq;
-    using Invert.Core;
-    using Invert.Core.GraphDesigner;
-    
-    
+
+
     public class AllFalseNode : AllFalseNodeBase {
         public override string ToString()
         {

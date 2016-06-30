@@ -1,11 +1,7 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using Invert.Common;
 using Invert.Common.UI;
 using Invert.Core;
 using Invert.Core.GraphDesigner;

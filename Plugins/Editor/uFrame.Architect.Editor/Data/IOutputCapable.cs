@@ -1,4 +1,7 @@
-public interface IOutputCapable
+namespace uFrame.Architect.Editor.Data
 {
-    
+    public interface IOutputCapable
+    {
+
+    }
 }

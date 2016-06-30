@@ -1,9 +1,3 @@
-using System;
-using System.CodeDom;
-using System.Linq;
-using Invert.Core.GraphDesigner;
-using uFrame.ECS;
-
 namespace Invert.uFrame.ECS.Templates
 {
     //public partial class ComponentGroupManagerTemplate

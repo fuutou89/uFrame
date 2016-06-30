@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using Invert.Core.GraphDesigner;
-using Invert.Core.GraphDesigner.Systems;
 using Invert.IOC;
 
 namespace Invert.Core.GraphDesigner

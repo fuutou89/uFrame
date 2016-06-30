@@ -7,17 +7,14 @@ using System.Threading;
 using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Classes;
 using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Commands;
 using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Data;
-using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Drawers;
 using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Events;
 using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Extensions;
 using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Services;
 using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.ViewModels;
-using Invert.Core.GraphDesigner.Unity.WindowsPlugin;
 using Invert.Data;
 using Invert.IOC;
 using UnityEditor;
 using UnityEngine;
-using MessageType = Invert.Core.GraphDesigner.Unity.WindowsPlugin.MessageType;
 
 namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem
 {

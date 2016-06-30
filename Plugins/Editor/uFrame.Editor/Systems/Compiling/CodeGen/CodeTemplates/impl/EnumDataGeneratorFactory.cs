@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace Invert.Core.GraphDesigner
 {
     //public class EnumDataGeneratorFactory : DesignerGeneratorFactory<EnumData>

@@ -1,15 +1,11 @@
 using Invert.Json;
 using UnityEngine;
 
-namespace Invert.uFrame.ECS {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Invert.Core;
+namespace Invert.uFrame.ECS
+{
     using Invert.Core.GraphDesigner;
-using Invert.Data;    
-    
+    using Invert.Data;
+
     public class Vector2Node : Vector2NodeBase {
         private float _x;
         private float _y;

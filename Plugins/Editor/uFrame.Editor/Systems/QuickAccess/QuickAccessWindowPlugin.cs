@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Invert.Core;
 using Invert.Core.GraphDesigner;
-using Invert.Data;
 using Invert.IOC;
 using Invert.Windows;
-using UnityEditor;
 using UnityEngine;
 
 public class QuickAccessWindowPlugin : DiagramPlugin, IQuickAccessEvents

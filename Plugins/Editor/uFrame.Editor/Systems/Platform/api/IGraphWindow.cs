@@ -1,5 +1,3 @@
-using Invert.Core.GraphDesigner;
-
 namespace Invert.Core.GraphDesigner
 {
     public interface IGraphWindow

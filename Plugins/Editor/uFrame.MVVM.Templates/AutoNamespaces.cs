@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-using System;
-using System.Collections;
+﻿using System;
 using Invert.Core.GraphDesigner;
 
 namespace uFrame.MVVM.Templates

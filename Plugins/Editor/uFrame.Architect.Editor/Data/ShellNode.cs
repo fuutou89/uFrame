@@ -1,18 +1,21 @@
-using Invert.Core.GraphDesigner;
-
-public class ShellNode : GenericNode, IShellNode 
+namespace uFrame.Architect.Editor.Data
 {
-  
-    [ InspectorProperty]
-    public bool IsCustom
+    using Invert.Core.GraphDesigner;
+
+    public class ShellNode : GenericNode, IShellNode
     {
-        get { return this["Custom"]; }
-        set { this["Custom"] = value; }
-    }
+
+        [InspectorProperty]
+        public bool IsCustom
+        {
+            get { return this["Custom"]; }
+            set { this["Custom"] = value; }
+        }
 
 
-    public virtual string ClassName
-    {
-        get { return string.Format("{0}", Name); }
+        public virtual string ClassName
+        {
+            get { return string.Format("{0}", Name); }
+        }
     }
 }

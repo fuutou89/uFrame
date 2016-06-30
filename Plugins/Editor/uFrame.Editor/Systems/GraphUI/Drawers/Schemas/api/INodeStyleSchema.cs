@@ -1,7 +1,7 @@
-﻿using Invert.Core.GraphDesigner;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Invert.Core.GraphDesigner {
+namespace Invert.Core.GraphDesigner
+{
 
     public interface INodeStyleSchema
     {

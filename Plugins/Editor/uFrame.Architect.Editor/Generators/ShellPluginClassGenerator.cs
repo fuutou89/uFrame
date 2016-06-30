@@ -1,12 +1,15 @@
-using Invert.Core.GraphDesigner;
-using Invert.uFrame.Editor;
-
-public class ShellPluginClassGenerator : GenericNodeGenerator<ShellPluginNode>
+namespace uFrame.Architect.Editor.Generators
 {
-    public override void Initialize(CodeFileGenerator codeFileGenerator)
-    {
-        base.Initialize(codeFileGenerator);
-        TryAddNamespace("System.IO");
+    using Data;
+    using Invert.Core.GraphDesigner;
 
+    public class ShellPluginClassGenerator : GenericNodeGenerator<ShellPluginNode>
+    {
+        public override void Initialize(CodeFileGenerator codeFileGenerator)
+        {
+            base.Initialize(codeFileGenerator);
+            TryAddNamespace("System.IO");
+
+        }
     }
 }

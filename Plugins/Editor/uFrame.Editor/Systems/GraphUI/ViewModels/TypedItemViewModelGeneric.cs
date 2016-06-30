@@ -1,7 +1,5 @@
-using Invert.Core.GraphDesigner;
-
 namespace Invert.Core.GraphDesigner
-{ 
+{
     public abstract class TypedItemViewModel<TElementItem> : TypedItemViewModel
     {
         public TElementItem ElementItem

@@ -1,9 +1,12 @@
-using System.Reflection;
-
-public class TemplateMethodReference : TemplateReference
+namespace uFrame.Architect.Editor.Data
 {
-    public MethodInfo MethodInfo
+    using System.Reflection;
+
+    public class TemplateMethodReference : TemplateReference
     {
-        get { return MemberInfo as MethodInfo; }
+        public MethodInfo MethodInfo
+        {
+            get { return MemberInfo as MethodInfo; }
+        }
     }
 }

@@ -1,12 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Invert.Core.GraphDesigner;
-using Invert.uFrame.Editor;
 using UnityEditor;
-using UnityEngine;
-using Object = UnityEngine.Object;
 
 [InitializeOnLoad]
 public class uFrameMenu : AssetPostprocessor

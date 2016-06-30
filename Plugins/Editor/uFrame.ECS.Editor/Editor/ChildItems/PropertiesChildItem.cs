@@ -1,15 +1,11 @@
 using Invert.Json;
-using JetBrains.Annotations;
 using uFrame.Attributes;
-using UnityEngine;
 
-namespace Invert.uFrame.ECS {
+namespace Invert.uFrame.ECS
+{
     using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Linq;
     using Invert.Core.GraphDesigner;
-    using Invert.Data;
 
     public interface IDescriptorItem : IDiagramNodeItem, ITypedItem
     {

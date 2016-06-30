@@ -1,4 +1,3 @@
-using System;
 using Invert.IOC;
 
 namespace Invert.Core.GraphDesigner

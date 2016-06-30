@@ -1,15 +1,11 @@
 ﻿using System.CodeDom;
 using Invert.Data;
 
-namespace Invert.uFrame.ECS {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Invert.Core;
+namespace Invert.uFrame.ECS
+{
     using Invert.Core.GraphDesigner;
-    
-    
+
+
     public class CollectionItemAddedNode : CollectionItemAddedNodeBase {
         private bool _immediate;
         [Invert.Json.JsonProperty, NodeProperty("Invoked immediately on all items upon subscription.")]

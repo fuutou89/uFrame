@@ -1,14 +1,6 @@
-﻿using System;
-using System.CodeDom;
-using System.Collections;
-using System.Linq;
+﻿using System.Linq;
 using Invert.Core.GraphDesigner;
-using Invert.uFrame.ECS;
-using uFrame.Actions;
-using uFrame.Attributes;
 using uFrame.ECS;
-using uFrame.Kernel;
-using UnityEngine;
 
 
 namespace Invert.uFrame.ECS.Templates

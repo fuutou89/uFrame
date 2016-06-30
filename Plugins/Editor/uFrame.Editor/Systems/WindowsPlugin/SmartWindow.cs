@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Principal;
-using Invert.Core;
 using UnityEditor;
 using UnityEngine;
 
 namespace Invert.Windows.Unity
 {
-  
+
 
     public class SmartWindow : EditorWindow, IWindowDrawer
     {

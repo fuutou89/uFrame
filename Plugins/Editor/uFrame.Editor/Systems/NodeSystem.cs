@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using Invert.Data;
 using Invert.IOC;
 using UnityEditor;
-using UnityEngine;
 
 namespace Invert.Core.GraphDesigner
 {

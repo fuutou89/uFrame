@@ -1,31 +1,33 @@
-using System.Collections.Generic;
-using System.Linq;
-using Invert.Core.GraphDesigner;
-
-public class ShellChildItemTypeNode : ShellInheritableNode, IShellNode
+namespace uFrame.Architect.Editor.Data
 {
-    public IShellNode ReferenceType
-    {
-        get { return GetConnectionReference<ReferenceItemType>().InputFrom<IShellNode>(); }
-    }
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public override string ClassName
+    public class ShellChildItemTypeNode : ShellInheritableNode, IShellNode
     {
-        get { return this.Name + "ChildItem"; }
-    }
-    public IEnumerable<IReferenceNode> IncludedInSections
-    {
-        get
+        public IShellNode ReferenceType
         {
-            return Repository.AllOf<IReferenceNode>().Where(p => p.AcceptableTypes.Any(x => x.SourceItem == this));
+            get { return GetConnectionReference<ReferenceItemType>().InputFrom<IShellNode>(); }
         }
+
+        public override string ClassName
+        {
+            get { return this.Name + "ChildItem"; }
+        }
+        public IEnumerable<IReferenceNode> IncludedInSections
+        {
+            get
+            {
+                return Repository.AllOf<IReferenceNode>().Where(p => p.AcceptableTypes.Any(x => x.SourceItem == this));
+            }
+        }
+
+
+
+        public string ReferenceClassName
+        {
+            get { return "I" + Name + "Connectable"; }
+        }
+
     }
-
-
-
-    public string ReferenceClassName
-    {
-        get { return "I" + Name + "Connectable"; }
-    }
-
 }

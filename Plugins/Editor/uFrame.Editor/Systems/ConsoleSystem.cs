@@ -1,13 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Invert.Data;
 using Invert.IOC;
-using UnityEditor;
 using UnityEngine;
 
 namespace Invert.Core.GraphDesigner.Unity.WindowsPlugin
 {
-    
+
     public class ConsoleSystem : DiagramPlugin, IDataRecordInserted
     {
 

@@ -1,31 +1,34 @@
-using System.Collections.Generic;
-using System.Linq;
-using Invert.Core.GraphDesigner;
-
-public class ShellGraphTypeNode : ShellNode
+namespace uFrame.Architect.Editor.Data
 {
-    public override void Validate(List<ErrorInfo> errors)
+    using Invert.Core.GraphDesigner;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    public class ShellGraphTypeNode : ShellNode
     {
-        base.Validate(errors);
-        if (!RootNodeSlot.Outputs.Any())
+        public override void Validate(List<ErrorInfo> errors)
         {
-            errors.AddError("Root node must be specified.", this);
+            base.Validate(errors);
+            if (!RootNodeSlot.Outputs.Any())
+            {
+                errors.AddError("Root node must be specified.", this);
+            }
         }
-    }
 
-    [OutputSlot("Root Node")]
-    public SingleOutputSlot<ShellNodeTypeNode> RootNodeSlot { get; set; }
+        [OutputSlot("Root Node")]
+        public SingleOutputSlot<ShellNodeTypeNode> RootNodeSlot { get; set; }
 
-    public ShellNodeTypeNode RootNode
-    {
-        get
+        public ShellNodeTypeNode RootNode
         {
-            return RootNodeSlot.Item;
+            get
+            {
+                return RootNodeSlot.Item;
+            }
         }
-    }
 
-    public override string ClassName
-    {
-        get { return string.Format("{0}Graph", Name); }
+        public override string ClassName
+        {
+            get { return string.Format("{0}Graph", Name); }
+        }
     }
 }

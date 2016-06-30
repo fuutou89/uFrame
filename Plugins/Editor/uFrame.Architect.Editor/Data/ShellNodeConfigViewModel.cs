@@ -1,213 +1,216 @@
-using System.Linq;
-using Invert.Core;
-using Invert.Core.GraphDesigner;
-
-public class ShellNodeConfigViewModel : GenericNodeViewModel<ShellNodeConfig>
+namespace uFrame.Architect.Editor.Data
 {
-    public ShellNodeConfigViewModel(ShellNodeConfig graphItemObject, DiagramViewModel diagramViewModel)
-        : base(graphItemObject, diagramViewModel)
-    {
-    }
+    using System.Linq;
+    using Invert.Core;
+    using Invert.Core.GraphDesigner;
 
-    public override INodeStyleSchema StyleSchema
+    public class ShellNodeConfigViewModel : GenericNodeViewModel<ShellNodeConfig>
     {
-        get
+        public ShellNodeConfigViewModel(ShellNodeConfig graphItemObject, DiagramViewModel diagramViewModel)
+            : base(graphItemObject, diagramViewModel)
         {
-
-            switch (GraphItem.NodeStyle)
-            {
-                case NodeStyle.Normal:
-                    return NormalStyleSchema;
-                case NodeStyle.Minimalistic:
-                    return MinimalisticStyleSchema;
-                case NodeStyle.Bold:
-                    return BoldStyleSchema;
-            }
-            return base.StyleSchema;
         }
-    }
 
-    public override NodeColor Color
-    {
-        get { return GraphItem.Color; }
-    }
-
-    public override bool IsCollapsed
-    {
-        get { return false; }
-        set { base.IsCollapsed = value; }
-    }
-
-    public override bool AllowCollapsing
-    {
-        get { return false; }
-    }
-    
-    protected override void CreateContent()
-    {
-        //base.CreateContent();
-        
-        foreach (var column in GraphItem.ChildItemsWithInherited.OfType<IShellNodeConfigItem>().GroupBy(p => p.Column))
+        public override INodeStyleSchema StyleSchema
         {
-            foreach (var item in column.OrderBy(p => p.Row))
+            get
             {
-                if (!IsVisible(item.Visibility)) continue;
-                var section = item as ShellNodeConfigSection;
-                if (section != null)
+
+                switch (GraphItem.NodeStyle)
                 {
-                    CreateHeader(section, section);
-                    continue;
+                    case NodeStyle.Normal:
+                        return NormalStyleSchema;
+                    case NodeStyle.Minimalistic:
+                        return MinimalisticStyleSchema;
+                    case NodeStyle.Bold:
+                        return BoldStyleSchema;
                 }
-                var sectionPointer = item as ShellNodeConfigSectionPointer;
-                if (sectionPointer != null)
-                {
-                    CreateHeader(sectionPointer.SourceItem, sectionPointer);
-                    continue;
-                }
-                
-                var input = item as ShellNodeConfigInput;
-                if (input != null)
-                {
-                    CreateInput(input, input);
-                    continue;
-                }
-                var inputPointer = item as ShellNodeConfigInputPointer;
-                if (inputPointer != null)
-                {
-                    CreateInput(inputPointer.SourceItem, inputPointer);
-                    continue;
-                }
-                var output = item as ShellNodeConfigOutput;
-                if (output != null)
-                {
-                    CreateOutput(output, output);
-                    continue;
-                }
-                var outputPointer = item as ShellNodeConfigOutputPointer;
-                if (outputPointer != null)
-                {
-                    CreateOutput(outputPointer.SourceItem, outputPointer);
-                    continue;
-                }
+                return base.StyleSchema;
             }
         }
-    }
 
-    private void CreateSelector(ShellNodeConfigSelector input)
-    {
-        
-    }
-
-    private void CreateOutput(ShellNodeConfigOutput output, object dataObject)
-    {
-        var vm = new InputOutputViewModel()
+        public override NodeColor Color
         {
-            IsInput = false,
-            IsOutput = true,
-            DiagramViewModel = this.DiagramViewModel,
-            Name = output.Name,
-            DataObject = dataObject,
-            Column = output.Column,
-            ColumnSpan = output.ColumnSpan,
-            IsNewLine =  output.IsNewRow
-        };
-        ContentItems.Add(vm);
-    }
+            get { return GraphItem.Color; }
+        }
 
-    private void CreateInput(ShellNodeConfigInput input, object dataObject)
-    {
-        var vm = new InputOutputViewModel()
+        public override bool IsCollapsed
         {
-            IsInput = true,
-            IsOutput = false,
-            DiagramViewModel = this.DiagramViewModel,
-            Name = input.Name,
-            DataObject = dataObject,
-            Column = input.Column,
-            ColumnSpan = input.ColumnSpan,
-            IsNewLine = input.IsNewRow,
-            AllowSelection = input.AllowSelection
-        };
-        ContentItems.Add(vm);
-    }
+            get { return false; }
+            set { base.IsCollapsed = value; }
+        }
 
-    private void CreateHeader(ShellNodeConfigSection item, object dataObject)
-    {
-        var sectionViewModel = new GenericItemHeaderViewModel()
+        public override bool AllowCollapsing
         {
-            Name = item.Name,
-            AddCommand = item.AllowAdding ? new LambdaCommand("",()=>{}) : null,
-            DataObject = dataObject,
-            NodeViewModel = this,
-            AllowConnections = true,
-            Column = item.Column,
-            ColumnSpan = item.ColumnSpan,
-            IsNewLine = item.IsNewRow
-        };
-        ContentItems.Add(sectionViewModel);
-    }
+            get { return false; }
+        }
 
-    public void AddSectionItem()
-    {
-        DiagramViewModel.CurrentRepository.Add(new ShellNodeConfigSection()
+        protected override void CreateContent()
         {
-            Node = GraphItem,
-            Name = "New Section",
-            IsNewRow = true,
-        });
-    }
+            //base.CreateContent();
 
-    public void AddInputItem()
-    {
-        DiagramViewModel.CurrentRepository.Add(new ShellNodeConfigInput()
+            foreach (var column in GraphItem.ChildItemsWithInherited.OfType<IShellNodeConfigItem>().GroupBy(p => p.Column))
+            {
+                foreach (var item in column.OrderBy(p => p.Row))
+                {
+                    if (!IsVisible(item.Visibility)) continue;
+                    var section = item as ShellNodeConfigSection;
+                    if (section != null)
+                    {
+                        CreateHeader(section, section);
+                        continue;
+                    }
+                    var sectionPointer = item as ShellNodeConfigSectionPointer;
+                    if (sectionPointer != null)
+                    {
+                        CreateHeader(sectionPointer.SourceItem, sectionPointer);
+                        continue;
+                    }
+
+                    var input = item as ShellNodeConfigInput;
+                    if (input != null)
+                    {
+                        CreateInput(input, input);
+                        continue;
+                    }
+                    var inputPointer = item as ShellNodeConfigInputPointer;
+                    if (inputPointer != null)
+                    {
+                        CreateInput(inputPointer.SourceItem, inputPointer);
+                        continue;
+                    }
+                    var output = item as ShellNodeConfigOutput;
+                    if (output != null)
+                    {
+                        CreateOutput(output, output);
+                        continue;
+                    }
+                    var outputPointer = item as ShellNodeConfigOutputPointer;
+                    if (outputPointer != null)
+                    {
+                        CreateOutput(outputPointer.SourceItem, outputPointer);
+                        continue;
+                    }
+                }
+            }
+        }
+
+        private void CreateSelector(ShellNodeConfigSelector input)
         {
-            Node = GraphItem,
-            Name = "New Input",
-            IsNewRow = true,
-           
-        });
 
-    }
+        }
 
-    public void AddOutputItem()
-    {
-        DiagramViewModel.CurrentRepository.Add(new ShellNodeConfigOutput()
+        private void CreateOutput(ShellNodeConfigOutput output, object dataObject)
         {
-            Node = GraphItem,
-            Name = "New Output",
-            IsNewRow = true,
+            var vm = new InputOutputViewModel()
+            {
+                IsInput = false,
+                IsOutput = true,
+                DiagramViewModel = this.DiagramViewModel,
+                Name = output.Name,
+                DataObject = dataObject,
+                Column = output.Column,
+                ColumnSpan = output.ColumnSpan,
+                IsNewLine = output.IsNewRow
+            };
+            ContentItems.Add(vm);
+        }
 
-        });
-    }
-
-    public void RemoveSelected()
-    {
-        DiagramViewModel.CurrentRepository.Remove(ContentItems.First(p => p.IsSelected).DataObject as IDiagramNodeItem);
-    }
-
-    public void AddSectionPointer(ShellNodeConfigSection item)
-    {
-        DiagramViewModel.CurrentRepository.Add(new ShellNodeConfigSectionPointer()
+        private void CreateInput(ShellNodeConfigInput input, object dataObject)
         {
-            Node = GraphItem,
-            SourceIdentifier = item.Identifier
+            var vm = new InputOutputViewModel()
+            {
+                IsInput = true,
+                IsOutput = false,
+                DiagramViewModel = this.DiagramViewModel,
+                Name = input.Name,
+                DataObject = dataObject,
+                Column = input.Column,
+                ColumnSpan = input.ColumnSpan,
+                IsNewLine = input.IsNewRow,
+                AllowSelection = input.AllowSelection
+            };
+            ContentItems.Add(vm);
+        }
 
-        });
-    }
-    public void AddInputPointer(ShellNodeConfigInput item)
-    {
-        DiagramViewModel.CurrentRepository.Add(new ShellNodeConfigInputPointer()
+        private void CreateHeader(ShellNodeConfigSection item, object dataObject)
         {
-            Node = GraphItem,
-            SourceIdentifier = item.Identifier
-        });
-    }
-    public void AddOutputPointer(ShellNodeConfigOutput item)
-    {
-        DiagramViewModel.CurrentRepository.Add(new ShellNodeConfigOutputPointer()
+            var sectionViewModel = new GenericItemHeaderViewModel()
+            {
+                Name = item.Name,
+                AddCommand = item.AllowAdding ? new LambdaCommand("", () => { }) : null,
+                DataObject = dataObject,
+                NodeViewModel = this,
+                AllowConnections = true,
+                Column = item.Column,
+                ColumnSpan = item.ColumnSpan,
+                IsNewLine = item.IsNewRow
+            };
+            ContentItems.Add(sectionViewModel);
+        }
+
+        public void AddSectionItem()
         {
-            Node = GraphItem,
-            SourceIdentifier = item.Identifier
-        });
+            DiagramViewModel.CurrentRepository.Add(new ShellNodeConfigSection()
+            {
+                Node = GraphItem,
+                Name = "New Section",
+                IsNewRow = true,
+            });
+        }
+
+        public void AddInputItem()
+        {
+            DiagramViewModel.CurrentRepository.Add(new ShellNodeConfigInput()
+            {
+                Node = GraphItem,
+                Name = "New Input",
+                IsNewRow = true,
+
+            });
+
+        }
+
+        public void AddOutputItem()
+        {
+            DiagramViewModel.CurrentRepository.Add(new ShellNodeConfigOutput()
+            {
+                Node = GraphItem,
+                Name = "New Output",
+                IsNewRow = true,
+
+            });
+        }
+
+        public void RemoveSelected()
+        {
+            DiagramViewModel.CurrentRepository.Remove(ContentItems.First(p => p.IsSelected).DataObject as IDiagramNodeItem);
+        }
+
+        public void AddSectionPointer(ShellNodeConfigSection item)
+        {
+            DiagramViewModel.CurrentRepository.Add(new ShellNodeConfigSectionPointer()
+            {
+                Node = GraphItem,
+                SourceIdentifier = item.Identifier
+
+            });
+        }
+        public void AddInputPointer(ShellNodeConfigInput item)
+        {
+            DiagramViewModel.CurrentRepository.Add(new ShellNodeConfigInputPointer()
+            {
+                Node = GraphItem,
+                SourceIdentifier = item.Identifier
+            });
+        }
+        public void AddOutputPointer(ShellNodeConfigOutput item)
+        {
+            DiagramViewModel.CurrentRepository.Add(new ShellNodeConfigOutputPointer()
+            {
+                Node = GraphItem,
+                SourceIdentifier = item.Identifier
+            });
+        }
     }
 }

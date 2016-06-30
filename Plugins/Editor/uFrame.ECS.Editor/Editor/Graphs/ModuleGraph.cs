@@ -2,14 +2,11 @@ using Invert.Core;
 using Invert.Data;
 using Invert.Json;
 
-namespace Invert.uFrame.ECS {
-    using System;
-    using System.Collections;
+namespace Invert.uFrame.ECS
+{
     using System.Collections.Generic;
-    using System.Linq;
-    using Invert.Core.GraphDesigner;
-    
-    
+
+
     public class ModuleGraph : ModuleGraphBase, IVariableNameProvider {
         private int _variableCount;
 

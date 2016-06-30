@@ -1,13 +1,8 @@
-﻿using Invert.Common;
-using Invert.uFrame;
-using Invert.uFrame.Editor;
-using Invert.uFrame.Editor.ViewModels;
-using System;
+﻿using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using Invert.Data;
 using Invert.IOC;
 using UnityEngine;

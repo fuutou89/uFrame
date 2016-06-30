@@ -1,31 +1,34 @@
-using Invert.Core.GraphDesigner;
-using Invert.Json;
-
-public class ShellTemplateConfigNode : GenericNode
+namespace uFrame.Architect.Editor.Data
 {
-    
-    private bool _autoInherit = true;
+    using Invert.Core.GraphDesigner;
+    using Invert.Json;
 
-    public IShellNodeConfigItem NodeConfig
+    public class ShellTemplateConfigNode : GenericNode
     {
-        get { return this.InputFrom<IShellNodeConfigItem>(); }
-    }
 
-    [JsonProperty, NodeProperty]
-    public string OutputPath { get; set; }
-    [JsonProperty, NodeProperty]
-    public string ClassNameFormat { get; set; }
+        private bool _autoInherit = true;
 
-    [JsonProperty,InspectorProperty(InspectorType.TypeSelection)]
-    public string TemplateBaseClass { get; set; }
+        public IShellNodeConfigItem NodeConfig
+        {
+            get { return this.InputFrom<IShellNodeConfigItem>(); }
+        }
 
-    [JsonProperty, NodeProperty]
-    public TemplateLocation Files { get; set; }
+        [JsonProperty, NodeProperty]
+        public string OutputPath { get; set; }
+        [JsonProperty, NodeProperty]
+        public string ClassNameFormat { get; set; }
 
-    [JsonProperty,NodeProperty]
-    public bool AutoInherit
-    {
-        get { return _autoInherit; }
-        set { _autoInherit = value; }
+        [JsonProperty, InspectorProperty(InspectorType.TypeSelection)]
+        public string TemplateBaseClass { get; set; }
+
+        [JsonProperty, NodeProperty]
+        public TemplateLocation Files { get; set; }
+
+        [JsonProperty, NodeProperty]
+        public bool AutoInherit
+        {
+            get { return _autoInherit; }
+            set { _autoInherit = value; }
+        }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Invert.Common;
-using UnityEditor;
 using UnityEngine;
 
 namespace Invert.Windows

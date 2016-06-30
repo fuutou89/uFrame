@@ -1,14 +1,14 @@
 ﻿using System.CodeDom;
 
-namespace Invert.uFrame.ECS {
+namespace Invert.uFrame.ECS
+{
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using Invert.Core;
     using Invert.Core.GraphDesigner;
     using Invert.Data;
-    
+
     public class PropertyChangedNode : PropertyChangedNodeBase, ISequenceNode, ISetupCodeWriter {
         private PropertyIn _PropertyIn;
         private string _PropertyInId;

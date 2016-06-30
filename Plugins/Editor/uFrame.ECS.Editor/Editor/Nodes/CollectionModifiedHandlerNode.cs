@@ -1,15 +1,13 @@
 ﻿using System.CodeDom;
-using Invert.Data;
 
-namespace Invert.uFrame.ECS {
-    using System;
+namespace Invert.uFrame.ECS
+{
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using Invert.Core;
     using Invert.Core.GraphDesigner;
-    
-    
+
+
     public class CollectionModifiedHandlerNode : CollectionModifiedHandlerNodeBase {
 	    private CollectionIn _PropertyIn;
         private string _PropertyInId;

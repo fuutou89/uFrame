@@ -1,9 +1,12 @@
-using System.Reflection;
-
-public class TemplatePropertyReference : TemplateReference
+namespace uFrame.Architect.Editor.Data
 {
-    public PropertyInfo PropertyInfo
+    using System.Reflection;
+
+    public class TemplatePropertyReference : TemplateReference
     {
-        get { return MemberInfo as PropertyInfo; }
+        public PropertyInfo PropertyInfo
+        {
+            get { return MemberInfo as PropertyInfo; }
+        }
     }
 }

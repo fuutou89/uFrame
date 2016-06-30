@@ -1,13 +1,9 @@
 using Invert.Json;
 
-namespace Invert.uFrame.ECS {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Invert.Core.GraphDesigner;
+namespace Invert.uFrame.ECS
+{
     using Invert.Data;
-    
+
     public class LibraryGraph : LibraryGraphBase, IVariableNameProvider {
 
         private int _variableCount;

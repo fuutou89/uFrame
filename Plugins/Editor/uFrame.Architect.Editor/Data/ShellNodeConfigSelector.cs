@@ -1,4 +1,7 @@
-public class ShellNodeConfigSelector : ShellNodeConfigItem
+namespace uFrame.Architect.Editor.Data
 {
-    
+    public class ShellNodeConfigSelector : ShellNodeConfigItem
+    {
+
+    }
 }

@@ -1,8 +1,7 @@
 ﻿using System;
-using Invert.Core.GraphDesigner;
 using UnityEngine;
 namespace Invert.Core.GraphDesigner
-{ 
+{
     public interface IKeyBinding
     {
         bool RequireShift { get; set; }

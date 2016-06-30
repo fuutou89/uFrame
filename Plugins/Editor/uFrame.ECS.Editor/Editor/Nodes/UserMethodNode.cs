@@ -1,14 +1,10 @@
 using System.CodeDom;
 
-namespace Invert.uFrame.ECS {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Invert.Core;
+namespace Invert.uFrame.ECS
+{
     using Invert.Core.GraphDesigner;
-    
-    
+
+
     public class UserMethodNode : UserMethodNodeBase {
 
         public override void WriteCode(ISequenceVisitor visitor, TemplateContext ctx)
