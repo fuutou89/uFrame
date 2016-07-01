@@ -1,9 +1,10 @@
-﻿namespace uFrame.Architect.Editor
+﻿using Invert.Core;
+using Invert.Core.GraphDesigner;
+
+namespace uFrame.Architect.Editor
 {
     using Data;
     using Generators;
-    using Invert.Core;
-    using Invert.Core.GraphDesigner;
 
     using Invert.IOC;
     [UnityEditor.InitializeOnLoad]

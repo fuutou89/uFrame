@@ -1,7 +1,7 @@
+using System.Reflection;
+
 namespace uFrame.Architect.Editor.Data
 {
-    using System.Reflection;
-
     public class TemplateEventReference : TemplateReference
     {
         public EventInfo EventInfo

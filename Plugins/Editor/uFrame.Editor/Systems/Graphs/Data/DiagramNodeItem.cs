@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using Invert.Data;
 using Invert.Json;
 using UnityEngine;
+using uFrame.Editor.Attributes;
 
 public abstract class DiagramNodeItem : IDiagramNodeItem, IDataRecordRemoved
 {

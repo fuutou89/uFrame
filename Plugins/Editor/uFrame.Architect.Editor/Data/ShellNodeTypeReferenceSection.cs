@@ -1,11 +1,10 @@
+using System.Collections.Generic;
+using System.Linq;
+using Invert.Core.GraphDesigner;
+using Invert.Json;
+
 namespace uFrame.Architect.Editor.Data
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using Invert.Core.GraphDesigner;
-    using Invert.Json;
-
-
     public class ShellNodeTypeReferenceSection : ShellNodeTypeSection, IReferenceNode, IShellConnectable
     {
         [JsonProperty, InspectorProperty]

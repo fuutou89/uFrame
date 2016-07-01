@@ -1,7 +1,7 @@
+using Invert.Core.GraphDesigner;
+
 namespace uFrame.Architect.Editor.Data
 {
-    using Invert.Core.GraphDesigner;
-
     public class ShellNodeTypeNodeViewModel : GenericNodeViewModel<ShellNodeTypeNode>
     {
         public ShellNodeTypeNodeViewModel(ShellNodeTypeNode graphItemObject, DiagramViewModel diagramViewModel) : base(graphItemObject, diagramViewModel)

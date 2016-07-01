@@ -1,9 +1,9 @@
+using Invert.Core.GraphDesigner;
+using Invert.Data;
+using Invert.Json;
+
 namespace uFrame.Architect.Editor.Data
 {
-    using Invert.Core.GraphDesigner;
-    using Invert.Data;
-    using Invert.Json;
-
     public class ShellNodeConfigInputPointer : GenericReferenceItem<ShellNodeConfigInput>
     {
         private SectionVisibility _visibility;

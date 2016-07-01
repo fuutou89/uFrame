@@ -1,5 +1,6 @@
 ﻿using Invert.Data;
 using Invert.Json;
+using uFrame.Editor.Attributes;
 using UnityEngine;
 
 namespace Invert.Core.GraphDesigner

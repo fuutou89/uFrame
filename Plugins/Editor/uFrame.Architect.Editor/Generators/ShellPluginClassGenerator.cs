@@ -1,7 +1,8 @@
+using Invert.Core.GraphDesigner;
+
 namespace uFrame.Architect.Editor.Generators
 {
     using Data;
-    using Invert.Core.GraphDesigner;
 
     public class ShellPluginClassGenerator : GenericNodeGenerator<ShellPluginNode>
     {

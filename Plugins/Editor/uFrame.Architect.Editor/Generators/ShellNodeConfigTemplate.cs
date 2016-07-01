@@ -1,12 +1,13 @@
+using System.CodeDom;
+using System.Collections.Generic;
+using System.Linq;
+using Invert.Core;
+using Invert.Core.GraphDesigner;
+using Invert.Json;
+
 namespace uFrame.Architect.Editor.Generators
 {
     using Data;
-    using System.CodeDom;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Invert.Core;
-    using Invert.Core.GraphDesigner;
-    using Invert.Json;
 
     [TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}Node", AutoInherit = true)]
     public class ShellNodeConfigTemplate : GenericNode, IClassTemplate<ShellNodeConfig>

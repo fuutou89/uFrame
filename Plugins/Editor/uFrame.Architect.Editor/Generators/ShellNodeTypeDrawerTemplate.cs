@@ -1,7 +1,8 @@
+using Invert.Core.GraphDesigner;
+
 namespace uFrame.Architect.Editor.Generators
 {
     using Data;
-    using Invert.Core.GraphDesigner;
 
     [TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}NodeDrawer")]
     public class ShellNodeTypeDrawerTemplate : GenericNodeDrawer<GenericNode, GenericNodeViewModel<GenericNode>>, IClassTemplate<ShellNodeTypeNode>

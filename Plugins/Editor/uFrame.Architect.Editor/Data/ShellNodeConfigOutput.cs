@@ -1,10 +1,10 @@
+using System.Text.RegularExpressions;
+using Invert.Core.GraphDesigner;
+using Invert.Data;
+using Invert.Json;
+
 namespace uFrame.Architect.Editor.Data
 {
-    using System.Text.RegularExpressions;
-    using Invert.Core.GraphDesigner;
-    using Invert.Data;
-    using Invert.Json;
-
     public class ShellNodeConfigOutput : ShellNodeConfigItem, IShellSlotType
     {
         private bool _allowMultiple;

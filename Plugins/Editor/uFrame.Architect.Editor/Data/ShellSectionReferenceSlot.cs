@@ -1,7 +1,7 @@
+using Invert.Core.GraphDesigner;
+
 namespace uFrame.Architect.Editor.Data
 {
-    using Invert.Core.GraphDesigner;
-
     public class ShellSectionReferenceSlot : SingleInputSlot<ShellChildItemTypeNode>
     {
         public override bool Validate(IDiagramNodeItem a, IDiagramNodeItem b)

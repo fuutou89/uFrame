@@ -1,9 +1,9 @@
-﻿namespace uFrame.Architect.Editor
-{
-    using System;
+﻿using System;
 using System.Reflection;
 using Invert.Core.GraphDesigner;
 
+namespace uFrame.Architect.Editor
+{
     [TemplateClass(TemplateLocation.Both, "{0}Page")]
     public class DocumentationPageTemplate : DocumentationPage, IClassTemplate<IDocumentable>
     {

@@ -1,9 +1,9 @@
+using Invert.Core.GraphDesigner;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace uFrame.Architect.Editor.Data
 {
-    using Invert.Core.GraphDesigner;
-    using System.Collections.Generic;
-    using System.Linq;
-
     public class ShellGraphTypeNode : ShellNode
     {
         public override void Validate(List<ErrorInfo> errors)

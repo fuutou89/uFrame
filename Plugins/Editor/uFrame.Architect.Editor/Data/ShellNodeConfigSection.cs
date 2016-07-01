@@ -1,9 +1,9 @@
+using Invert.Core.GraphDesigner;
+using Invert.Data;
+using Invert.Json;
+
 namespace uFrame.Architect.Editor.Data
 {
-    using Invert.Core.GraphDesigner;
-    using Invert.Data;
-    using Invert.Json;
-
     public class ShellNodeConfigSection : ShellNodeConfigItem
     {
         private bool _allowAdding;

@@ -1,8 +1,8 @@
+using Invert.Core.GraphDesigner;
+using Invert.Json;
+
 namespace uFrame.Architect.Editor.Data
 {
-    using Invert.Core.GraphDesigner;
-    using Invert.Json;
-
     public class ShellNodeSectionsSlot : GenericReferenceItem<ShellNodeTypeSection>, IShellNodeItem
     {
         [JsonProperty, InspectorProperty]

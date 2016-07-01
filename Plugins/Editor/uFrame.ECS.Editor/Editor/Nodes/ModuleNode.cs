@@ -1,8 +1,8 @@
+using Invert.Core.GraphDesigner;
+using uFrame.Editor.Attributes;
+
 namespace Invert.uFrame.ECS
 {
-    using Invert.Core.GraphDesigner;
-
-
     public class ModuleNode : ModuleNodeBase, IAlwaysGenerate {
         public override bool AllowOutputs
         {

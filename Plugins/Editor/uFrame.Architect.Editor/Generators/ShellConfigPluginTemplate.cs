@@ -1,10 +1,11 @@
+using System.CodeDom;
+using System.Linq;
+using Invert.Core.GraphDesigner;
+using Invert.IOC;
+
 namespace uFrame.Architect.Editor.Generators
 {
     using Data;
-    using System.CodeDom;
-    using System.Linq;
-    using Invert.Core.GraphDesigner;
-    using Invert.IOC;
 
     [TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}")]
     public class ShellConfigPluginTemplate : DiagramPlugin, IClassTemplate<ShellPluginNode>

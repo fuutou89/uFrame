@@ -1,8 +1,8 @@
+using System.Collections.Generic;
+using System.Linq;
+
 namespace uFrame.Architect.Editor.Data
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     public class ShellChildItemTypeNode : ShellInheritableNode, IShellNode
     {
         public IShellNode ReferenceType

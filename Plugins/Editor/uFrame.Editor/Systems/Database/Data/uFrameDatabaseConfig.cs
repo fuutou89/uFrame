@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Invert.Data;
 using Invert.Json;
+using uFrame.Editor.Attributes;
 
 namespace Invert.Core.GraphDesigner
 {

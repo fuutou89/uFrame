@@ -1,8 +1,0 @@
-{
-	"Identifier":"409a28d8-9635-4a11-8660-5e4fec23348e"	, 
-	"Time":"6/28/2016 9:48:13 PM"	, 
-	"Group":214813	, 
-	"DataRecordId":"4d2dafd6-9ce7-47fa-b091-72d8ae4993e1"	, 
-	"Type":2	, 
-	"RecordType":"ShellNodeConfigSection, Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"	, 
-	"Data":"{\r\n\t\"SectionType\":0\t, \r\n\t\"IsTyped\":false\t, \r\n\t\"AllowAdding\":true\t, \r\n\t\"IsEditable\":false\t, \r\n\t\"AllowDuplicates\":false\t, \r\n\t\"IsAutomatic\":false\t, \r\n\t\"HasPredefinedOptions\":false\t, \r\n\t\"Row\":0\t, \r\n\t\"Column\":0\t, \r\n\t\"ColumnSpan\":0\t, \r\n\t\"IsNewRow\":true\t, \r\n\t\"Comments\":\"Bindings\"\t, \r\n\t\"Name\":\"New Section\"\t, \r\n\t\"Visibility\":0\t, \r\n\t\"Identifier\":\"4d2dafd6-9ce7-47fa-b091-72d8ae4993e1\"\t, \r\n\t\"NodeId\":\"7e319b93-d26b-4027-bf3a-f73284ca35d0\"\t, \r\n\t\"Order\":0}\r\n"}

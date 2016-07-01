@@ -1,0 +1,8 @@
+{
+	"Identifier":"e4d24ebe-04cd-4aff-a8c0-f22e9c57f411"	, 
+	"Time":"7/1/2016 5:11:13 PM"	, 
+	"Group":171113	, 
+	"DataRecordId":"451a1dc1-c2e5-4b69-ba72-e46c3141b58b"	, 
+	"Type":1	, 
+	"RecordType":"uFrame.Architect.Editor.Data.ShellTemplateConfigNode, Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"	, 
+	"Data":"{\r\n\t\"Files\":0\t, \r\n\t\"AutoInherit\":true\t, \r\n\t\"Name\":\"fdfsgsedf\"\t, \r\n\t\"Order\":0\t, \r\n\t\"GraphId\":\"b15f6874-81a3-4294-b0e3-2f998b1476cb\"\t, \r\n\t\"Identifier\":\"451a1dc1-c2e5-4b69-ba72-e46c3141b58b\"\t, \r\n\t\"Expanded\":false}\r\n"}

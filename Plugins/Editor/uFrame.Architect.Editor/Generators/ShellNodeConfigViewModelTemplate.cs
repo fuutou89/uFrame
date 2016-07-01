@@ -1,8 +1,9 @@
+using System;
+using Invert.Core.GraphDesigner;
+
 namespace uFrame.Architect.Editor.Generators
 {
     using Data;
-    using System;
-    using Invert.Core.GraphDesigner;
 
     [TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}NodeViewModel", AutoInherit = false)]
     public class ShellNodeConfigViewModelTemplate : GenericNodeViewModel<GenericNode>, IClassTemplate<ShellNodeConfig>

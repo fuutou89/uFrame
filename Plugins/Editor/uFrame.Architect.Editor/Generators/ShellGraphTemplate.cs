@@ -1,7 +1,8 @@
+using Invert.Core.GraphDesigner;
+
 namespace uFrame.Architect.Editor.Generators
 {
     using Data;
-    using Invert.Core.GraphDesigner;
 
     [TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}Graph")]
     public class ShellGraphTemplate : GenericGraphData<GenericNode>, IClassTemplate<ShellGraphTypeNode>

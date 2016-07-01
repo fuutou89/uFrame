@@ -1,12 +1,12 @@
-﻿namespace uFrame.Architect.Editor.Data
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using Invert.Core.GraphDesigner;
+using Invert.Json;
+using uFrame.Editor.Attributes;
+
+namespace uFrame.Architect.Editor.Data
 {
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Linq;
-    using Invert.Core.GraphDesigner;
-    using Invert.Json;
-
-
     public class ShellNodeTypeNode : ShellInheritableNode, IShellNode, IShellConnectable
     {
         private string _classFormat = "{0}";

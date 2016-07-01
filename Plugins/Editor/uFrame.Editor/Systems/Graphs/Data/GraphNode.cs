@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using Invert.Data;
 using Invert.Json;
 using UnityEngine;
+using uFrame.Editor.Attributes;
 namespace Invert.Core.GraphDesigner
 {
 

@@ -1,11 +1,12 @@
+using System.CodeDom;
+using System.Collections.Generic;
+using System.IO;
+using Invert.Core.GraphDesigner;
+using Invert.Data;
+
 namespace uFrame.Architect.Editor.Generators
 {
     using Data;
-    using System.CodeDom;
-    using System.Collections.Generic;
-    using System.IO;
-    using Invert.Core.GraphDesigner;
-    using Invert.Data;
 
     [TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}")]
     [RequiresNamespace("Invert.Data")]

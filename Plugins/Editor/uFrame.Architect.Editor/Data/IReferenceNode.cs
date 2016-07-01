@@ -1,8 +1,8 @@
+using System.Collections.Generic;
+using Invert.Core.GraphDesigner;
+
 namespace uFrame.Architect.Editor.Data
 {
-    using System.Collections.Generic;
-    using Invert.Core.GraphDesigner;
-
     public interface IReferenceNode : IShellNode
     {
         string ReferenceClassName { get; }

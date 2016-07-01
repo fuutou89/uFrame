@@ -1,9 +1,9 @@
+using System.Linq;
+using System.Reflection;
+using Invert.Core.GraphDesigner;
+
 namespace uFrame.Architect.Editor.Data
 {
-    using System.Linq;
-    using System.Reflection;
-    using Invert.Core.GraphDesigner;
-
     public class TemplateReference : GenericNodeChildItem
     {
         public ShellGeneratorTypeNode GeneratorNode

@@ -1,9 +1,9 @@
+using System.Collections.Generic;
+using Invert.Core.GraphDesigner;
+using uFrame.Editor.Attributes;
+
 namespace Invert.uFrame.ECS
 {
-    using System.Collections.Generic;
-    using Invert.Core.GraphDesigner;
-
-
     public class CodeActionNode : CodeActionNodeBase {
         [InspectorProperty]
         public override string MetaType

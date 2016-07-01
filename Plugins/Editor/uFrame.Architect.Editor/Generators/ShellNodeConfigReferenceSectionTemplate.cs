@@ -1,8 +1,9 @@
+using System.CodeDom;
+using Invert.Core.GraphDesigner;
+
 namespace uFrame.Architect.Editor.Generators
 {
     using Data;
-    using System.CodeDom;
-    using Invert.Core.GraphDesigner;
 
     [TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}Reference")]
     public class ShellNodeConfigReferenceSectionTemplate : GenericReferenceItem<IDiagramNodeItem>,

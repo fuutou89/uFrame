@@ -1,11 +1,12 @@
-﻿namespace uFrame.Architect.Editor.Data
-{
-    using System.Collections.Generic;
-    using System.Text.RegularExpressions;
-    using Invert.Core.GraphDesigner;
-    using Invert.Data;
-    using Invert.Json;
+﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using Invert.Core.GraphDesigner;
+using Invert.Data;
+using Invert.Json;
+using uFrame.Editor.Attributes;
 
+namespace uFrame.Architect.Editor.Data
+{
     public class ShellNodeConfigItem : GenericNodeChildItem, IShellNodeConfigItem, IClassTypeNode
     {
         [JsonProperty, InspectorProperty]

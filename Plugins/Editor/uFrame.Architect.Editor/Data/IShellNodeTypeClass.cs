@@ -1,7 +1,7 @@
+using System.Collections.Generic;
+
 namespace uFrame.Architect.Editor.Data
 {
-    using System.Collections.Generic;
-
     public interface IShellNodeTypeClass : IShellNodeConfigItem
     {
         //bool AllowMultipleInputs { get; set; }

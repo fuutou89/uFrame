@@ -1,9 +1,10 @@
+using Invert.Core.GraphDesigner;
+using Invert.Data;
+using Invert.Json;
+using uFrame.Editor.Attributes;
+
 namespace uFrame.Architect.Editor.Data
 {
-    using Invert.Core.GraphDesigner;
-    using Invert.Data;
-    using Invert.Json;
-
     public class ShellInheritableNode : GenericInheritableNode, IShellNode
     {
         private string _baseIdentifier;

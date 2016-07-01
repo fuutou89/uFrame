@@ -1,9 +1,9 @@
+using System.Collections.Generic;
+using Invert.Core.GraphDesigner;
+using Invert.Json;
+
 namespace uFrame.Architect.Editor.Data
 {
-    using System.Collections.Generic;
-    using Invert.Core.GraphDesigner;
-    using Invert.Json;
-
     public interface IShellNodeConfigItem : IDocumentable, IClassTypeNode
     {
         [JsonProperty, InspectorProperty]

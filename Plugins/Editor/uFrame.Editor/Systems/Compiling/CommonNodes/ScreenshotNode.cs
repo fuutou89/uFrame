@@ -1,4 +1,5 @@
 using Invert.Json;
+using uFrame.Editor.Attributes;
 
 namespace Invert.Core.GraphDesigner
 {

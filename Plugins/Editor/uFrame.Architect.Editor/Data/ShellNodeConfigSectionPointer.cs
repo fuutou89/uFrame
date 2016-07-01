@@ -1,10 +1,10 @@
+using System.Collections.Generic;
+using Invert.Core.GraphDesigner;
+using Invert.Data;
+using Invert.Json;
+
 namespace uFrame.Architect.Editor.Data
 {
-    using System.Collections.Generic;
-    using Invert.Core.GraphDesigner;
-    using Invert.Data;
-    using Invert.Json;
-
     public class ShellNodeConfigSectionPointer : GenericReferenceItem<ShellNodeConfigSection>, IShellNodeConfigItem
     {
         private SectionVisibility _visibility;

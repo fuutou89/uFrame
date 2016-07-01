@@ -1,6 +1,8 @@
 ﻿using Invert.Json;
 using UnityEngine;
 using Invert.Data;
+using uFrame.Editor.Attributes;
+
 namespace Invert.Core.GraphDesigner
 {
     public class NoteNode : GenericNode

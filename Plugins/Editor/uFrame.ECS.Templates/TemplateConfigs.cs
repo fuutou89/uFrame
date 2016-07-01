@@ -13,6 +13,7 @@ using uFrame.Attributes;
 using uFrame.ECS;
 using uFrame.Kernel;
 using UnityEditor;
+using uFrame.Editor.Attributes;
 
 namespace Invert.uFrame.ECS.Templates
 {

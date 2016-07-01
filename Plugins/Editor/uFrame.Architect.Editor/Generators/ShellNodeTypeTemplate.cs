@@ -1,10 +1,11 @@
+using System.CodeDom;
+using System.Collections.Generic;
+using System.Linq;
+using Invert.Core.GraphDesigner;
+
 namespace uFrame.Architect.Editor.Generators
 {
     using Data;
-    using System.CodeDom;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Invert.Core.GraphDesigner;
 
     [TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}Node")]
     public class ShellNodeTypeTemplate : GenericNode, IClassTemplate<ShellNodeTypeNode>

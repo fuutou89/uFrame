@@ -1,11 +1,11 @@
+using System;
+using System.Linq;
+using Invert.Core;
+using Invert.Core.GraphDesigner;
+using UnityEngine;
+
 namespace uFrame.Architect.Editor.Data
 {
-    using System;
-    using System.Linq;
-    using Invert.Core;
-    using Invert.Core.GraphDesigner;
-    using UnityEngine;
-
     public class ShellNodeConfigDrawer : DiagramNodeDrawer<ShellNodeConfigViewModel>, IInspectorDrawer
     {
         public ShellNodeConfigDrawer(ShellNodeConfigViewModel viewModel)

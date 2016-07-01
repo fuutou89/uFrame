@@ -1,9 +1,9 @@
+using System.Linq;
+using Invert.Core;
+using Invert.Core.GraphDesigner;
+
 namespace uFrame.Architect.Editor.Data
 {
-    using System.Linq;
-    using Invert.Core;
-    using Invert.Core.GraphDesigner;
-
     public class ShellNodeConfigViewModel : GenericNodeViewModel<ShellNodeConfig>
     {
         public ShellNodeConfigViewModel(ShellNodeConfig graphItemObject, DiagramViewModel diagramViewModel)

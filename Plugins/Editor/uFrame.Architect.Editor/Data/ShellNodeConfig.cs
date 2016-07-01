@@ -1,11 +1,11 @@
-﻿namespace uFrame.Architect.Editor.Data
-{
-    using System.Collections.Generic;
-    using System.Linq;
-    using Invert.Core.GraphDesigner;
-    using Invert.Data;
-    using Invert.Json;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Invert.Core.GraphDesigner;
+using Invert.Data;
+using Invert.Json;
 
+namespace uFrame.Architect.Editor.Data
+{
     public class ShellNodeConfig : ShellInheritableNode, IShellNodeTypeClass, IDocumentable
     {
         public override bool AllowMultipleInputs

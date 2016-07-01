@@ -1,8 +1,9 @@
+using System.Collections.Generic;
+using Invert.Core.GraphDesigner;
+
 namespace uFrame.Architect.Editor
 {
     using Data;
-    using System.Collections.Generic;
-    using Invert.Core.GraphDesigner;
 
     [TemplateClass(TemplateLocation.Both, "{0}DocumentationProvider")]
     public class DocumentationTemplate : DocumentationDefaultProvider, IClassTemplate<ShellPluginNode>
