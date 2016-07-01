@@ -1,0 +1,8 @@
+{
+	"Identifier":"2b4ae68a-c0c5-4504-8a4b-5ac8955eb0eb"	, 
+	"Time":"7/1/2016 3:53:08 PM"	, 
+	"Group":15538	, 
+	"DataRecordId":"bf8763f5-608e-42f7-bd85-78828ecd8004"	, 
+	"Type":0	, 
+	"RecordType":"Invert.Core.GraphDesigner.NoteNode, Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"	, 
+	"Data":"{\r\n\t\"Comments\":\"Open uFrame Inspector Window and select this node.\\nChange the text using node comments.\"\t, \r\n\t\"MarkColor\":0\t, \r\n\t\"ShowMark\":false\t, \r\n\t\"Size\":\t{\r\n\t\t\"x\":225\t\t, \r\n\t\t\"y\":72\t}\r\n\t, \r\n\t\"Order\":0\t, \r\n\t\"GraphId\":\"5f0e4e63-96ee-4a23-b1e3-4cfce292bfaf\"\t, \r\n\t\"Identifier\":\"bf8763f5-608e-42f7-bd85-78828ecd8004\"\t, \r\n\t\"Expanded\":false}\r\n"}

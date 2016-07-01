@@ -9,12 +9,12 @@
 // ------------------------------------------------------------------------------
 
 namespace Invert.uFrame.ECS {
+    using Invert.Core;
+    using Invert.Core.GraphDesigner;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using Invert.Core;
-    using Invert.Core.GraphDesigner;
     
     
     public class CustomActionNodeBase : SequenceContainerNode {
@@ -182,6 +182,24 @@ namespace Invert.uFrame.ECS {
     public partial interface IActionGroupConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
     }
     
+    public class StopTimerNodeBase : Invert.Core.GraphDesigner.GenericNode {
+        
+        public override bool AllowMultipleInputs {
+            get {
+                return true;
+            }
+        }
+        
+        public override bool AllowMultipleOutputs {
+            get {
+                return true;
+            }
+        }
+    }
+    
+    public partial interface IStopTimerConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    }
+    
     public class FunctionNodeBase : SequenceItemNode {
         
         public override bool AllowMultipleInputs {
@@ -236,11 +254,7 @@ namespace Invert.uFrame.ECS {
     public partial interface IModuleConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
     }
     
-    public class StopTimerNodeBase : Invert.Core.GraphDesigner.GenericNode {
-        
-        private string _TimerInputSlotId;
-        
-        private Timer _Timer;
+    public class AnyFalseNodeBase : BoolExpressionNode {
         
         public override bool AllowMultipleInputs {
             get {
@@ -253,83 +267,9 @@ namespace Invert.uFrame.ECS {
                 return true;
             }
         }
-        
-        [Invert.Json.JsonProperty()]
-        public virtual string TimerInputSlotId {
-            get {
-                if (_TimerInputSlotId == null) {
-                    _TimerInputSlotId = Guid.NewGuid().ToString();
-                }
-                return _TimerInputSlotId;
-            }
-            set {
-                _TimerInputSlotId = value;
-            }
-        }
-        
-        [Invert.Core.GraphDesigner.InputSlot("Timer", false, SectionVisibility.Always, OrderIndex=0, IsNewRow=true)]
-        public virtual Timer TimerInputSlot {
-            get {
-                if (Repository == null) {
-                    return null;
-                }
-                if (_Timer != null) {
-                    return _Timer;
-                }
-                return _Timer ?? (_Timer = new Timer() { Repository = Repository, Node = this, Identifier = TimerInputSlotId });
-            }
-        }
     }
     
-    public partial interface IStopTimerConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
-    }
-    
-    public class AllFalseNodeBase : BoolExpressionNode {
-        
-        private string _ExpressionsInputSlotId;
-        
-        private Expressions _Expressions;
-        
-        public override bool AllowMultipleInputs {
-            get {
-                return true;
-            }
-        }
-        
-        public override bool AllowMultipleOutputs {
-            get {
-                return true;
-            }
-        }
-        
-        [Invert.Json.JsonProperty()]
-        public virtual string ExpressionsInputSlotId {
-            get {
-                if (_ExpressionsInputSlotId == null) {
-                    _ExpressionsInputSlotId = Guid.NewGuid().ToString();
-                }
-                return _ExpressionsInputSlotId;
-            }
-            set {
-                _ExpressionsInputSlotId = value;
-            }
-        }
-        
-        [Invert.Core.GraphDesigner.InputSlot("Expressions", true, SectionVisibility.Always, OrderIndex=0, IsNewRow=true)]
-        public virtual Expressions ExpressionsInputSlot {
-            get {
-                if (Repository == null) {
-                    return null;
-                }
-                if (_Expressions != null) {
-                    return _Expressions;
-                }
-                return _Expressions ?? (_Expressions = new Expressions() { Repository = Repository, Node = this, Identifier = ExpressionsInputSlotId });
-            }
-        }
-    }
-    
-    public partial interface IAllFalseConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IAnyFalseConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
     }
     
     public class CodeActionNodeBase : ActionNode {
@@ -422,54 +362,6 @@ namespace Invert.uFrame.ECS {
     public partial interface ILoopCollectionConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
     }
     
-    public class AnyFalseNodeBase : BoolExpressionNode {
-        
-        private string _ExpressionsInputSlotId;
-        
-        private Expressions _Expressions;
-        
-        public override bool AllowMultipleInputs {
-            get {
-                return true;
-            }
-        }
-        
-        public override bool AllowMultipleOutputs {
-            get {
-                return true;
-            }
-        }
-        
-        [Invert.Json.JsonProperty()]
-        public virtual string ExpressionsInputSlotId {
-            get {
-                if (_ExpressionsInputSlotId == null) {
-                    _ExpressionsInputSlotId = Guid.NewGuid().ToString();
-                }
-                return _ExpressionsInputSlotId;
-            }
-            set {
-                _ExpressionsInputSlotId = value;
-            }
-        }
-        
-        [Invert.Core.GraphDesigner.InputSlot("Expressions", true, SectionVisibility.Always, OrderIndex=0, IsNewRow=true)]
-        public virtual Expressions ExpressionsInputSlot {
-            get {
-                if (Repository == null) {
-                    return null;
-                }
-                if (_Expressions != null) {
-                    return _Expressions;
-                }
-                return _Expressions ?? (_Expressions = new Expressions() { Repository = Repository, Node = this, Identifier = ExpressionsInputSlotId });
-            }
-        }
-    }
-    
-    public partial interface IAnyFalseConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
-    }
-    
     public class ComponentCreatedNodeBase : HandlerNode {
         
         public override bool AllowMultipleInputs {
@@ -504,6 +396,24 @@ namespace Invert.uFrame.ECS {
     }
     
     public partial interface ISetVariableConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    }
+    
+    public class AnyTrueNodeBase : BoolExpressionNode {
+        
+        public override bool AllowMultipleInputs {
+            get {
+                return true;
+            }
+        }
+        
+        public override bool AllowMultipleOutputs {
+            get {
+                return true;
+            }
+        }
+    }
+    
+    public partial interface IAnyTrueConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
     }
     
     public class CollectionItemRemovedNodeBase : CollectionModifiedHandlerNode {
@@ -743,6 +653,24 @@ namespace Invert.uFrame.ECS {
     }
     
     public partial interface IComponentConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    }
+    
+    public class AllFalseNodeBase : BoolExpressionNode {
+        
+        public override bool AllowMultipleInputs {
+            get {
+                return true;
+            }
+        }
+        
+        public override bool AllowMultipleOutputs {
+            get {
+                return true;
+            }
+        }
+    }
+    
+    public partial interface IAllFalseConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
     }
     
     public class IntNodeBase : LiteralNode {
@@ -1062,54 +990,6 @@ namespace Invert.uFrame.ECS {
     }
     
     public partial interface IEnumValueConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
-    }
-    
-    public class AnyTrueNodeBase : BoolExpressionNode {
-        
-        private string _ExpressionsInputSlotId;
-        
-        private Expressions _Expressions;
-        
-        public override bool AllowMultipleInputs {
-            get {
-                return true;
-            }
-        }
-        
-        public override bool AllowMultipleOutputs {
-            get {
-                return true;
-            }
-        }
-        
-        [Invert.Json.JsonProperty()]
-        public virtual string ExpressionsInputSlotId {
-            get {
-                if (_ExpressionsInputSlotId == null) {
-                    _ExpressionsInputSlotId = Guid.NewGuid().ToString();
-                }
-                return _ExpressionsInputSlotId;
-            }
-            set {
-                _ExpressionsInputSlotId = value;
-            }
-        }
-        
-        [Invert.Core.GraphDesigner.InputSlot("Expressions", true, SectionVisibility.Always, OrderIndex=0, IsNewRow=true)]
-        public virtual Expressions ExpressionsInputSlot {
-            get {
-                if (Repository == null) {
-                    return null;
-                }
-                if (_Expressions != null) {
-                    return _Expressions;
-                }
-                return _Expressions ?? (_Expressions = new Expressions() { Repository = Repository, Node = this, Identifier = ExpressionsInputSlotId });
-            }
-        }
-    }
-    
-    public partial interface IAnyTrueConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
     }
     
     public class SequenceItemNodeBase : Invert.Core.GraphDesigner.GenericNode, ISequenceItemConnectable {

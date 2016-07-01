@@ -9,12 +9,12 @@
 // ------------------------------------------------------------------------------
 
 namespace Invert.uFrame.ECS {
+    using Invert.Core.GraphDesigner;
+    using Invert.Data;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using Invert.Core.GraphDesigner;
-    using Invert.Data;
     
     
     public class ExpressionsBase : MultiInputSlot<IExpressionsConnectable> {
@@ -87,5 +87,41 @@ namespace Invert.uFrame.ECS {
     }
     
     public partial interface ITimerConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    }
+    
+    public class Base : SingleOutputSlot<IConnectable> {
+        
+        public override string Name {
+            get {
+                return "";
+            }
+            set {
+            }
+        }
+        
+        public override bool AllowMultipleInputs {
+            get {
+                return false;
+            }
+        }
+        
+        public override bool AllowMultipleOutputs {
+            get {
+                return false;
+            }
+        }
+        
+        public override bool AllowSelection {
+            get {
+                return false;
+            }
+        }
+        
+        public override System.Collections.Generic.IEnumerable<Invert.Data.IValueItem> GetAllowed() {
+            return Repository.AllOf<IConnectable>().OfType<IValueItem>();;
+        }
+    }
+    
+    public partial interface IConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
     }
 }

@@ -9,11 +9,11 @@
 // ------------------------------------------------------------------------------
 
 namespace Invert.uFrame.ECS {
+    using Invert.Core.GraphDesigner;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using Invert.Core.GraphDesigner;
     
     
     public class OutputsChildItemBase : GenericTypedChildItem {
@@ -52,7 +52,7 @@ namespace Invert.uFrame.ECS {
     public partial interface IInputsConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
     }
     
-    public class BranchesChildItemBase : Invert.Core.GraphDesigner.GenericNodeChildItem {
+    public class VariablesChildItemBase : GenericTypedChildItem {
         
         public override bool AllowMultipleInputs {
             get {
@@ -67,7 +67,7 @@ namespace Invert.uFrame.ECS {
         }
     }
     
-    public partial interface IBranchesConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IVariablesConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
     }
     
     public class PropertiesChildItemBase : GenericTypedChildItem {
@@ -106,7 +106,7 @@ namespace Invert.uFrame.ECS {
     public partial interface ICollectionsConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
     }
     
-    public class VariablesChildItemBase : GenericTypedChildItem {
+    public class BranchesChildItemBase : Invert.Core.GraphDesigner.GenericNodeChildItem {
         
         public override bool AllowMultipleInputs {
             get {
@@ -121,6 +121,6 @@ namespace Invert.uFrame.ECS {
         }
     }
     
-    public partial interface IVariablesConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IBranchesConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
     }
 }

@@ -9,11 +9,11 @@
 // ------------------------------------------------------------------------------
 
 namespace Invert.uFrame.ECS {
+    using Invert.Core.GraphDesigner;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using Invert.Core.GraphDesigner;
     
     
     public class DataGraphBase : GenericGraphData<DataNode> {

@@ -9,11 +9,11 @@
 // ------------------------------------------------------------------------------
 
 namespace Invert.uFrame.ECS {
+    using Invert.Core.GraphDesigner;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using Invert.Core.GraphDesigner;
     
     
     public class CustomActionNodeDrawerBase : GenericNodeDrawer<CustomActionNode,CustomActionNodeViewModel> {
@@ -72,6 +72,13 @@ namespace Invert.uFrame.ECS {
         }
     }
     
+    public class StopTimerNodeDrawerBase : GenericNodeDrawer<StopTimerNode,StopTimerNodeViewModel> {
+        
+        public StopTimerNodeDrawerBase(StopTimerNodeViewModel viewModel) : 
+                base(viewModel) {
+        }
+    }
+    
     public class FunctionNodeDrawerBase : GenericNodeDrawer<FunctionNode,FunctionNodeViewModel> {
         
         public FunctionNodeDrawerBase(FunctionNodeViewModel viewModel) : 
@@ -93,16 +100,9 @@ namespace Invert.uFrame.ECS {
         }
     }
     
-    public class StopTimerNodeDrawerBase : GenericNodeDrawer<StopTimerNode,StopTimerNodeViewModel> {
+    public class AnyFalseNodeDrawerBase : GenericNodeDrawer<AnyFalseNode,AnyFalseNodeViewModel> {
         
-        public StopTimerNodeDrawerBase(StopTimerNodeViewModel viewModel) : 
-                base(viewModel) {
-        }
-    }
-    
-    public class AllFalseNodeDrawerBase : GenericNodeDrawer<AllFalseNode,AllFalseNodeViewModel> {
-        
-        public AllFalseNodeDrawerBase(AllFalseNodeViewModel viewModel) : 
+        public AnyFalseNodeDrawerBase(AnyFalseNodeViewModel viewModel) : 
                 base(viewModel) {
         }
     }
@@ -142,13 +142,6 @@ namespace Invert.uFrame.ECS {
         }
     }
     
-    public class AnyFalseNodeDrawerBase : GenericNodeDrawer<AnyFalseNode,AnyFalseNodeViewModel> {
-        
-        public AnyFalseNodeDrawerBase(AnyFalseNodeViewModel viewModel) : 
-                base(viewModel) {
-        }
-    }
-    
     public class ComponentCreatedNodeDrawerBase : GenericNodeDrawer<ComponentCreatedNode,ComponentCreatedNodeViewModel> {
         
         public ComponentCreatedNodeDrawerBase(ComponentCreatedNodeViewModel viewModel) : 
@@ -159,6 +152,13 @@ namespace Invert.uFrame.ECS {
     public class SetVariableNodeDrawerBase : GenericNodeDrawer<SetVariableNode,SetVariableNodeViewModel> {
         
         public SetVariableNodeDrawerBase(SetVariableNodeViewModel viewModel) : 
+                base(viewModel) {
+        }
+    }
+    
+    public class AnyTrueNodeDrawerBase : GenericNodeDrawer<AnyTrueNode,AnyTrueNodeViewModel> {
+        
+        public AnyTrueNodeDrawerBase(AnyTrueNodeViewModel viewModel) : 
                 base(viewModel) {
         }
     }
@@ -236,6 +236,13 @@ namespace Invert.uFrame.ECS {
     public class ComponentNodeDrawerBase : GenericNodeDrawer<ComponentNode,ComponentNodeViewModel> {
         
         public ComponentNodeDrawerBase(ComponentNodeViewModel viewModel) : 
+                base(viewModel) {
+        }
+    }
+    
+    public class AllFalseNodeDrawerBase : GenericNodeDrawer<AllFalseNode,AllFalseNodeViewModel> {
+        
+        public AllFalseNodeDrawerBase(AllFalseNodeViewModel viewModel) : 
                 base(viewModel) {
         }
     }
@@ -334,13 +341,6 @@ namespace Invert.uFrame.ECS {
     public class EnumValueNodeDrawerBase : GenericNodeDrawer<EnumValueNode,EnumValueNodeViewModel> {
         
         public EnumValueNodeDrawerBase(EnumValueNodeViewModel viewModel) : 
-                base(viewModel) {
-        }
-    }
-    
-    public class AnyTrueNodeDrawerBase : GenericNodeDrawer<AnyTrueNode,AnyTrueNodeViewModel> {
-        
-        public AnyTrueNodeDrawerBase(AnyTrueNodeViewModel viewModel) : 
                 base(viewModel) {
         }
     }

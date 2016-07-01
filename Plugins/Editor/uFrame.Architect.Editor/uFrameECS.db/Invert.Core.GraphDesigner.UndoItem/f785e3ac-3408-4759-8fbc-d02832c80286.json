@@ -1,0 +1,8 @@
+{
+	"Identifier":"f785e3ac-3408-4759-8fbc-d02832c80286"	, 
+	"Time":"7/1/2016 3:29:30 PM"	, 
+	"Group":152930	, 
+	"DataRecordId":"f59fd5e6-cef1-4b98-b2d7-cac0029d459c"	, 
+	"Type":2	, 
+	"RecordType":"Invert.Core.GraphDesigner.uFrameDatabaseConfig, Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"	, 
+	"Data":"{\r\n\t\"Identifier\":\"f59fd5e6-cef1-4b98-b2d7-cac0029d459c\"\t, \r\n\t\"CodeOutputPath\":\"Assets/uFrame/Plugins/Editor/uFrame.ECS.Editor/\"\t, \r\n\t\"Namespace\":\"uFrame.ECS\"\t, \r\n\t\"MajorVersion\":1\t, \r\n\t\"MinorVersion\":0\t, \r\n\t\"BuildVersion\":0\t, \r\n\t\"BuildNumber\":1}\r\n"}

@@ -119,6 +119,19 @@ namespace Invert.uFrame.ECS {
         }
     }
     
+    public class StopTimerNodeViewModelBase : Invert.Core.GraphDesigner.GenericNodeViewModel<Invert.Core.GraphDesigner.GenericNode> {
+        
+        public StopTimerNodeViewModelBase(StopTimerNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
+                base(graphItemObject, diagramViewModel) {
+        }
+        
+        public override Invert.Core.GraphDesigner.NodeStyle NodeStyle {
+            get {
+                return Invert.Core.GraphDesigner.NodeStyle.Normal;
+            }
+        }
+    }
+    
     public class FunctionNodeViewModelBase : SequenceItemNodeViewModel {
         
         public FunctionNodeViewModelBase(FunctionNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
@@ -158,22 +171,9 @@ namespace Invert.uFrame.ECS {
         }
     }
     
-    public class StopTimerNodeViewModelBase : Invert.Core.GraphDesigner.GenericNodeViewModel<Invert.Core.GraphDesigner.GenericNode> {
+    public class AnyFalseNodeViewModelBase : BoolExpressionNodeViewModel {
         
-        public StopTimerNodeViewModelBase(StopTimerNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
-                base(graphItemObject, diagramViewModel) {
-        }
-        
-        public override Invert.Core.GraphDesigner.NodeStyle NodeStyle {
-            get {
-                return Invert.Core.GraphDesigner.NodeStyle.Normal;
-            }
-        }
-    }
-    
-    public class AllFalseNodeViewModelBase : BoolExpressionNodeViewModel {
-        
-        public AllFalseNodeViewModelBase(AllFalseNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
+        public AnyFalseNodeViewModelBase(AnyFalseNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
                 base(graphItemObject, diagramViewModel) {
         }
         
@@ -249,19 +249,6 @@ namespace Invert.uFrame.ECS {
         }
     }
     
-    public class AnyFalseNodeViewModelBase : BoolExpressionNodeViewModel {
-        
-        public AnyFalseNodeViewModelBase(AnyFalseNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
-                base(graphItemObject, diagramViewModel) {
-        }
-        
-        public override Invert.Core.GraphDesigner.NodeStyle NodeStyle {
-            get {
-                return Invert.Core.GraphDesigner.NodeStyle.Minimalistic;
-            }
-        }
-    }
-    
     public class ComponentCreatedNodeViewModelBase : HandlerNodeViewModel {
         
         public ComponentCreatedNodeViewModelBase(ComponentCreatedNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
@@ -278,6 +265,19 @@ namespace Invert.uFrame.ECS {
     public class SetVariableNodeViewModelBase : SequenceItemNodeViewModel {
         
         public SetVariableNodeViewModelBase(SetVariableNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
+                base(graphItemObject, diagramViewModel) {
+        }
+        
+        public override Invert.Core.GraphDesigner.NodeStyle NodeStyle {
+            get {
+                return Invert.Core.GraphDesigner.NodeStyle.Minimalistic;
+            }
+        }
+    }
+    
+    public class AnyTrueNodeViewModelBase : BoolExpressionNodeViewModel {
+        
+        public AnyTrueNodeViewModelBase(AnyTrueNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
                 base(graphItemObject, diagramViewModel) {
         }
         
@@ -427,6 +427,19 @@ namespace Invert.uFrame.ECS {
         public override Invert.Core.GraphDesigner.NodeStyle NodeStyle {
             get {
                 return Invert.Core.GraphDesigner.NodeStyle.Normal;
+            }
+        }
+    }
+    
+    public class AllFalseNodeViewModelBase : BoolExpressionNodeViewModel {
+        
+        public AllFalseNodeViewModelBase(AllFalseNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
+                base(graphItemObject, diagramViewModel) {
+        }
+        
+        public override Invert.Core.GraphDesigner.NodeStyle NodeStyle {
+            get {
+                return Invert.Core.GraphDesigner.NodeStyle.Minimalistic;
             }
         }
     }
@@ -603,19 +616,6 @@ namespace Invert.uFrame.ECS {
     public class EnumValueNodeViewModelBase : LiteralNodeViewModel {
         
         public EnumValueNodeViewModelBase(EnumValueNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
-                base(graphItemObject, diagramViewModel) {
-        }
-        
-        public override Invert.Core.GraphDesigner.NodeStyle NodeStyle {
-            get {
-                return Invert.Core.GraphDesigner.NodeStyle.Minimalistic;
-            }
-        }
-    }
-    
-    public class AnyTrueNodeViewModelBase : BoolExpressionNodeViewModel {
-        
-        public AnyTrueNodeViewModelBase(AnyTrueNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
                 base(graphItemObject, diagramViewModel) {
         }
         
