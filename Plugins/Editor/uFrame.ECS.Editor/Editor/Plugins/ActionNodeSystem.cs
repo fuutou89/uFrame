@@ -1,8 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
-using uFrame.ECS.Editor.Nodes;
-using uFrame.ECS.Editor.ViewModels;
+using uFrame.ECS.Editor;
 using uFrame.Editor;
 using uFrame.Editor.Core;
 using uFrame.Editor.Database.Data;
@@ -15,7 +14,7 @@ using uFrame.Editor.Platform;
 using uFrame.IOC;
 using UnityEngine;
 
-namespace uFrame.ECS.Editor.Plugins
+namespace uFrame.ECS.Editor
 {
 
     public class ChangeHandlerEventCommand : Command

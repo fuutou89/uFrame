@@ -11,14 +11,12 @@ using uFrame.Kernel;
 using UnityEditor;
 using uFrame.Editor.Attributes;
 using uFrame.ECS.Actions;
-using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.Editor;
 using uFrame.ECS.APIs;
 using uFrame.Editor;
 using uFrame.ECS.Components;
 using uFrame.ECS.UnityUtilities;
-using uFrame.ECS.Editor.ChildItems;
 using uFrame.ECS.Systems;
-using uFrame.ECS.Editor.Plugins;
 using uFrame.Editor.Configurations;
 using uFrame.Editor.Core;
 using uFrame.Editor.Database.Data;
@@ -406,7 +404,7 @@ namespace uFrame.ECS.Templates
         public TemplateContext<uFrameDatabaseConfig> Ctx { get; set; }
         public IEnumerable<SystemNode> Systems
         {
-            get { return Ctx.Data.Database.AllOf<SystemNode>(); }
+            get  { return Ctx.Data.Database.AllOf<SystemNode>(); }
         }
 
         [GenerateMethod, AsOverride]

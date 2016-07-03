@@ -5,7 +5,7 @@ using uFrame.Editor.Graphs.Data.Types;
 using uFrame.Json;
 using UnityEngine;
 
-namespace uFrame.ECS.Editor.Nodes
+namespace uFrame.ECS.Editor
 {
     public class Vector2Node : Vector2NodeBase {
         private float _x;

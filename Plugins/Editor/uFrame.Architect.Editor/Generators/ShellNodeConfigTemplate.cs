@@ -28,8 +28,11 @@ namespace uFrame.Architect.Editor.Generators
 
         public void TemplateSetup()
         {
-            Ctx.TryAddNamespace("Invert.Core");
-            Ctx.TryAddNamespace("Invert.Core.GraphDesigner");
+            //Ctx.TryAddNamespace("Invert.Core");
+            //Ctx.TryAddNamespace("Invert.Core.GraphDesigner");
+            Ctx.TryAddNamespace("uFrame.Editor.Configurations");
+            Ctx.TryAddNamespace("uFrame.Editor.Core");
+            Ctx.TryAddNamespace("uFrame.Editor.Graphs.Data");
             var i = new CodeTypeDeclaration(Ctx.Data.ReferenceClassName)
             {
                 IsInterface = true,

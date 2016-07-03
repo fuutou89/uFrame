@@ -9,7 +9,7 @@ using uFrame.Editor.Graphs.Data;
 namespace uFrame.Architect.Editor.Generators
 {
     [TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}")]
-    [RequiresNamespace("Invert.Data")]
+    //[RequiresNamespace("Invert.Data")]
     public class ShellSlotItemTemplate : GenericSlot, IClassTemplate<IShellSlotType>
     {
         [GenerateProperty]
@@ -68,7 +68,9 @@ namespace uFrame.Architect.Editor.Generators
 
         public void TemplateSetup()
         {
-            Ctx.TryAddNamespace("Invert.Core.GraphDesigner");
+            //Ctx.TryAddNamespace("Invert.Core.GraphDesigner");
+            Ctx.TryAddNamespace("uFrame.Editor.Database.Data");
+            Ctx.TryAddNamespace("uFrame.Editor.Graphs.Data");
             var i = new CodeTypeDeclaration(Ctx.Data.ReferenceClassName)
             {
                 IsInterface = true,

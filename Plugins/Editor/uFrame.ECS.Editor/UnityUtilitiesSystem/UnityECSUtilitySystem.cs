@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using uFrame.ECS.Editor.ViewModels;
 using uFrame.Editor;
 using uFrame.Editor.Core;
 using uFrame.Editor.Input;

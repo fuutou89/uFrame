@@ -23,6 +23,10 @@ namespace uFrame.Architect.Editor.Generators
 
         public void TemplateSetup()
         {
+            Ctx.TryAddNamespace("uFrame.Editor.Graphs.Data");
+            Ctx.TryAddNamespace("uFrame.Editor.GraphUI.ViewModels");
+            Ctx.TryAddNamespace("uFrame.Editor.Platform");
+
             if (Ctx.IsDesignerFile)
             {
                 if (Ctx.Data.BaseNode != null)

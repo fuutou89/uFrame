@@ -1,14 +1,10 @@
-using uFrame.ECS.Editor.Nodes;
-using uFrame.ECS.Editor.Plugins;
 using uFrame.Editor.Graphs.Data;
 using uFrame.Editor.Graphs.Data.Types;
+using System;
+using System.Collections.Generic;
 
-namespace uFrame.ECS.Editor.ChildItems
+namespace uFrame.ECS.Editor
 {
-    using System;
-    using System.Collections.Generic;
-
-
     public class CollectionsChildItem : CollectionsChildItemBase, IMemberInfo, IDescriptorItem
     {
         public override Type Type

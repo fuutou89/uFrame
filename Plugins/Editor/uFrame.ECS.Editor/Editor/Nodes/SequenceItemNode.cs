@@ -3,14 +3,13 @@ using UnityEngine;
 using uFrame.Editor.Attributes;
 using System.Collections.Generic;
 using System.Linq;
-using uFrame.ECS.Editor.ChildItems;
 using uFrame.Editor.Compiling.CodeGen;
 using uFrame.Editor.Database.Data;
 using uFrame.Editor.DebugSystem;
 using uFrame.Editor.Graphs.Data;
 using uFrame.Json;
 
-namespace uFrame.ECS.Editor.Nodes
+namespace uFrame.ECS.Editor
 {
     public partial interface ISequenceItemConnectable : IDiagramNodeItem, IConnectable
     {

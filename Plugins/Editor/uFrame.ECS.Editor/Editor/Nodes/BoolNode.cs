@@ -5,7 +5,7 @@ using uFrame.Editor.Graphs.Data;
 using uFrame.Editor.Graphs.Data.Types;
 using uFrame.Json;
 
-namespace uFrame.ECS.Editor.Nodes
+namespace uFrame.ECS.Editor
 {
     public class BoolNode : BoolNodeBase {
         private bool _value;

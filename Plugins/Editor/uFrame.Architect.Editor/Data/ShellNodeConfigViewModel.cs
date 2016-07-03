@@ -18,7 +18,6 @@ namespace uFrame.Architect.Editor.Data
         {
             get
             {
-
                 switch (GraphItem.NodeStyle)
                 {
                     case NodeStyle.Normal:
@@ -82,6 +81,7 @@ namespace uFrame.Architect.Editor.Data
                         CreateInput(inputPointer.SourceItem, inputPointer);
                         continue;
                     }
+
                     var output = item as ShellNodeConfigOutput;
                     if (output != null)
                     {

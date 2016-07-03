@@ -2,14 +2,11 @@ using uFrame.Attributes;
 using uFrame.ECS;
 using uFrame.Editor.Graphs.Data;
 using uFrame.Editor.Graphs.Data.Types;
+using System;
+using System.Collections.Generic;
 
-namespace uFrame.ECS.Editor.ChildItems
+namespace uFrame.ECS.Editor
 {
-    using Nodes;
-    using Plugins;
-    using System;
-    using System.Collections.Generic;
-
     public class BranchesChildItem : BranchesChildItemBase, IActionFieldInfo, IActionIn
     {
         public string MemberName { get { return this.Name; } }

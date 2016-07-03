@@ -4,7 +4,7 @@ using System.Linq;
 using uFrame.Attributes;
 using uFrame.Editor.Compiling.CodeGen;
 using uFrame.ECS.Actions;
-using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.Editor;
 using uFrame.ECS.Components;
 using uFrame.Editor;
 using uFrame.Editor.Configurations;

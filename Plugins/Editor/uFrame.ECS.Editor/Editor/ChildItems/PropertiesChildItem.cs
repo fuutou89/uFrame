@@ -1,13 +1,11 @@
 using uFrame.Attributes;
 using System;
 using System.Collections.Generic;
-using uFrame.ECS.Editor.Nodes;
-using uFrame.ECS.Editor.Plugins;
 using uFrame.Editor.Attributes;
 using uFrame.Editor.Graphs.Data;
 using uFrame.Json;
 
-namespace uFrame.ECS.Editor.ChildItems
+namespace uFrame.ECS.Editor
 {
 
 

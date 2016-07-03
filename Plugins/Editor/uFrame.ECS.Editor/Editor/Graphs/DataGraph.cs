@@ -1,7 +1,5 @@
-namespace uFrame.ECS.Editor.Graphs
+namespace uFrame.ECS.Editor
 {
-
-
     public class DataGraph : DataGraphBase {
     }
 }

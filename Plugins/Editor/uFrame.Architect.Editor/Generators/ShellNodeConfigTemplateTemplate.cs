@@ -45,8 +45,11 @@ namespace uFrame.Architect.Editor.Generators
 
         public void TemplateSetup()
         {
-            Ctx.TryAddNamespace("Invert.Core.GraphDesigner");
+            //Ctx.TryAddNamespace("Invert.Core.GraphDesigner");
             Ctx.TryAddNamespace("System.CodeDom");
+            Ctx.TryAddNamespace("uFrame.Editor.Compiling.CodeGen");
+            Ctx.TryAddNamespace("uFrame.Editor.Configurations");
+            Ctx.TryAddNamespace("uFrame.Editor.Graphs.Data");
             //Ctx.CurrentDecleration.IsPartial = true;
             //Ctx.CurrentDecleration.Name = Ctx.Data.Name;
             if (Ctx.IsDesignerFile)

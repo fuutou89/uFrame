@@ -1,5 +1,4 @@
-using uFrame.ECS.Editor.Nodes;
-using uFrame.ECS.Editor.ViewModels;
+using uFrame.ECS.Editor;
 using uFrame.Editor.GraphUI.Drawers;
 
 namespace uFrame.ECS.Editor

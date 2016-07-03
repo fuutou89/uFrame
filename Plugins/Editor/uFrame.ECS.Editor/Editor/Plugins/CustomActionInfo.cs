@@ -1,7 +1,7 @@
 using System;
 using uFrame.Attributes;
 
-namespace uFrame.ECS.Editor.Plugins
+namespace uFrame.ECS.Editor
 {
     public class CustomActionInfo
     {

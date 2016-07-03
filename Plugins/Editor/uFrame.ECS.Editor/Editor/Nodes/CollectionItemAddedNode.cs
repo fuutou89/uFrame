@@ -4,7 +4,7 @@ using uFrame.Editor.Compiling.CodeGen;
 using uFrame.Editor.Database.Data;
 using uFrame.Editor.Graphs.Data;
 
-namespace uFrame.ECS.Editor.Nodes
+namespace uFrame.ECS.Editor
 {
     
 

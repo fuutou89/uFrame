@@ -4,7 +4,7 @@ using System.Linq;
 using uFrame.Attributes;
 using uFrame.Editor.Graphs.Data.Types;
 
-namespace uFrame.ECS.Editor.Plugins
+namespace uFrame.ECS.Editor
 {
     public interface IActionFieldInfo : IMemberInfo
     {

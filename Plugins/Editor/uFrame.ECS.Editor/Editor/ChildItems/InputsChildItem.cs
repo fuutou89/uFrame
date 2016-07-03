@@ -1,13 +1,13 @@
 using uFrame.Attributes;
 using System;
 using System.Collections.Generic;
-using uFrame.ECS.Editor.Plugins;
+using uFrame.ECS.Editor;
 using uFrame.Editor.Attributes;
 using uFrame.Editor.Graphs.Data;
 using uFrame.Editor.Graphs.Data.Types;
 using uFrame.Editor.Database.Data;
 
-namespace uFrame.ECS.Editor.ChildItems
+namespace uFrame.ECS.Editor
 {
     public class InputsChildItem : InputsChildItemBase, IActionFieldInfo
     {

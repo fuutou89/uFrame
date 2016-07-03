@@ -11,7 +11,7 @@ using uFrame.Editor.Input;
 using uFrame.Editor.Platform;
 using uFrame.IOC;
 
-namespace uFrame.ECS.Editor.Plugins
+namespace uFrame.ECS.Editor
 {
     public class CutPasteSystem : DiagramPlugin,
         IExecuteCommand<PickupCommand>,

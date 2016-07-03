@@ -1,5 +1,3 @@
-using uFrame.ECS.Editor.ChildItems;
-using uFrame.ECS.Editor.Plugins;
 using uFrame.Editor.Attributes;
 using uFrame.Editor.Database.Data;
 using uFrame.Editor.Graphs.Data;
@@ -8,7 +6,7 @@ using uFrame.Editor.Platform;
 using uFrame.Json;
 using UnityEngine;
 
-namespace uFrame.ECS.Editor.Nodes
+namespace uFrame.ECS.Editor
 {
     using System.Collections.Generic;
     

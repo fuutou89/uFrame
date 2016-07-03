@@ -1,6 +1,6 @@
 using uFrame.Editor.Core;
 
-namespace uFrame.ECS.Editor.Plugins
+namespace uFrame.ECS.Editor
 {
     public class NewModuleWorkspace : Command
     {

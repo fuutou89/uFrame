@@ -1,9 +1,9 @@
-using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.Editor;
 using uFrame.Editor.Configurations;
 using uFrame.Editor.Graphs.Data;
 using uFrame.Editor.GraphUI.ViewModels;
 
-namespace uFrame.ECS.Editor.ViewModels
+namespace uFrame.ECS.Editor
 {
     public class ComponentNodeViewModel : ComponentNodeViewModelBase {
         

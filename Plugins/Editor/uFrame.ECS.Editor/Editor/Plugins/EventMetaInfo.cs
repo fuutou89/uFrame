@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using uFrame.Attributes;
-using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.Editor;
 using uFrame.Editor.Core;
 using uFrame.Editor.Graphs.Data.Types;
 
-namespace uFrame.ECS.Editor.Plugins
+namespace uFrame.ECS.Editor
 {
     public interface IEventMetaInfo : IItem, ITypeInfo
     {

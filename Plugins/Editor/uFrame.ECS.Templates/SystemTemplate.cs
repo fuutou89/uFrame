@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using uFrame.ECS.APIs;
-using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.Editor;
 using uFrame.ECS.Systems;
 using uFrame.Editor.Compiling.CodeGen;
 

@@ -1,4 +1,4 @@
-﻿using uFrame.ECS.Editor.Plugins;
+﻿using uFrame.ECS.Editor;
 using uFrame.Editor.Configurations;
 using uFrame.Editor.Core;
 using uFrame.Editor.Database.Data;
@@ -6,7 +6,7 @@ using uFrame.Editor.Graphs.Data;
 using uFrame.Editor.Graphs.Data.Types;
 using uFrame.Editor.TypesSystem;
 
-namespace uFrame.ECS.Editor.Nodes
+namespace uFrame.ECS.Editor
 {
     using System;
     using System.Collections.Generic;

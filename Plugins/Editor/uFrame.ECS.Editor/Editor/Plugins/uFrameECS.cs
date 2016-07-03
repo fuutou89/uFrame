@@ -30,13 +30,11 @@ using uFrame.IOC;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace uFrame.ECS.Editor.Plugins
+namespace uFrame.ECS.Editor
 {
-    using ChildItems;
-    using Drawers;
+    using Editor;
     using Graphs;
-    using Nodes;
-    using ViewModels;
+
     public interface IQueryActionMetaInfo
     {
         void QueryActions(List<IActionMetaInfo> actions);

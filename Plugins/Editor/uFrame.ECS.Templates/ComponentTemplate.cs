@@ -1,6 +1,6 @@
 using System.CodeDom;
 using uFrame.ECS.Components;
-using uFrame.ECS.Editor.ChildItems;
+using uFrame.ECS.Editor;
 using UnityEngine;
 using UniRx;
 using uFrame.Editor.Compiling.CodeGen;

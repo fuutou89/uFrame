@@ -2,7 +2,7 @@
 using uFrame.Common;
 using uFrame.ECS.APIs;
 using uFrame.ECS.Components;
-using uFrame.ECS.Editor.Plugins;
+using uFrame.ECS.Editor;
 using uFrame.ECS.UnityUtilities;
 using UnityEditor;
 using UniRx;

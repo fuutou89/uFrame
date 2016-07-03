@@ -1,9 +1,9 @@
-using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.Editor;
 using uFrame.Editor.Core;
 using uFrame.Editor.GraphUI.ViewModels;
 using UnityEngine;
 
-namespace uFrame.ECS.Editor.Plugins
+namespace uFrame.ECS.Editor
 {
     public class AddSlotInputNodeCommand : Command
     {

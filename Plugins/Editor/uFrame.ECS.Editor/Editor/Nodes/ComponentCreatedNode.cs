@@ -2,7 +2,7 @@ using System.CodeDom;
 using uFrame.Editor.Compiling.CodeGen;
 using uFrame.Editor.Graphs.Data;
 
-namespace uFrame.ECS.Editor.Nodes
+namespace uFrame.ECS.Editor
 {
     using System.Collections.Generic;
    

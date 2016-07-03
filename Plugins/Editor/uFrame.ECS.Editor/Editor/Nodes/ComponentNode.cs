@@ -3,8 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using uFrame.ECS.Editor.ChildItems;
-using uFrame.ECS.Editor.Plugins;
 using uFrame.Editor.Attributes;
 using uFrame.Editor.Database.Data;
 using uFrame.Editor.Graphs.Data;
@@ -12,7 +10,7 @@ using uFrame.Editor.Graphs.Data.Types;
 using uFrame.Editor.Nodes;
 using uFrame.Json;
 
-namespace uFrame.ECS.Editor.Nodes
+namespace uFrame.ECS.Editor
 {
     public class CollectionTypeInfo : ITypeInfo
     {

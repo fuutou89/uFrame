@@ -1,12 +1,11 @@
-using uFrame.ECS.Editor.Nodes;
-using uFrame.ECS.Editor.ViewModels;
+using uFrame.ECS.Editor;
 using uFrame.Editor.DebugSystem;
 using uFrame.Editor.GraphUI.Drawers;
 using uFrame.Editor.Platform;
 using UnityEditor;
 using UnityEngine;
 
-namespace uFrame.ECS.Editor.Drawers
+namespace uFrame.ECS.Editor
 {
     public class SetVariableNodeDrawer : GenericNodeDrawer<SetVariableNode,SetVariableNodeViewModel> {
         

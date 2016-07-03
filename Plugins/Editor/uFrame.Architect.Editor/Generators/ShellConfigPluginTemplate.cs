@@ -1,5 +1,6 @@
 using System.CodeDom;
 using System.Linq;
+using uFrame.Architect.Editor.Data;
 using uFrame.Editor;
 using uFrame.Editor.Compiling.CodeGen;
 using uFrame.Editor.Configurations;
@@ -9,8 +10,6 @@ using uFrame.IOC;
 
 namespace uFrame.Architect.Editor.Generators
 {
-    using Data;
-
     [TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}")]
     public class ShellConfigPluginTemplate : DiagramPlugin, IClassTemplate<ShellPluginNode>
     {
@@ -30,8 +29,15 @@ namespace uFrame.Architect.Editor.Generators
         {
             Ctx.AddIterator("NodeConfigProperty", _ => _.Graph.NodeItems.OfType<ShellNodeConfig>());
             Ctx.AddIterator("GetSelectionCommand", _ => _.Graph.AllGraphItems.OfType<ShellNodeConfigSection>().Where(x => x.IsTyped && x.SectionType == ShellNodeConfigSectionType.ChildItems));
-            Ctx.TryAddNamespace("Invert.Core");
-            Ctx.TryAddNamespace("Invert.Core.GraphDesigner");
+            //Ctx.TryAddNamespace("Invert.Core");
+            //Ctx.TryAddNamespace("Invert.Core.GraphDesigner");
+            Ctx.TryAddNamespace("uFrame.Editor");
+            Ctx.TryAddNamespace("uFrame.Editor.Configurations");
+            Ctx.TryAddNamespace("uFrame.Editor.Graphs.Data");
+            Ctx.TryAddNamespace("uFrame.Editor.GraphUI");
+            Ctx.TryAddNamespace("uFrame.Editor.GraphUI.Drawers");
+            Ctx.TryAddNamespace("uFrame.Editor.TypesSystem");
+            Ctx.TryAddNamespace("uFrame.IOC");
         }
 
         [GenerateMethod("Get{0}SelectionCommand", TemplateLocation.Both, true)]

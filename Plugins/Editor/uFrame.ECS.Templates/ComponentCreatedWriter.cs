@@ -1,6 +1,6 @@
 using System.CodeDom;
 using uFrame.ECS.APIs;
-using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.Editor;
 using uFrame.Editor.Compiling.CodeGen;
 
 namespace uFrame.ECS.Template

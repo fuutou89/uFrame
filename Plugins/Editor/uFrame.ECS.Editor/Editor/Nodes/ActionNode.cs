@@ -5,9 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using uFrame.Attributes;
-using uFrame.ECS.Editor.ChildItems;
-using uFrame.ECS.Editor.Plugins;
-using uFrame.ECS.Editor.ViewModels;
 using UnityEngine;
 using uFrame.Editor.Compiling.CodeGen;
 using uFrame.Editor.Core;
@@ -18,7 +15,7 @@ using uFrame.Editor.Graphs.Data.Types;
 using uFrame.Editor.GraphUI.ViewModels;
 using uFrame.Json;
 
-namespace uFrame.ECS.Editor.Nodes
+namespace uFrame.ECS.Editor
 {
     public interface IContextVariable : IDiagramNodeItem
     {

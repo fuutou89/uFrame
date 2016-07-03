@@ -2,7 +2,7 @@ using System;
 using System.CodeDom;
 using uFrame.Editor.Compiling.CodeGen;
 
-namespace uFrame.ECS.Editor.Nodes
+namespace uFrame.ECS.Editor
 {
     public abstract class HandlerCodeWriter<TFor> : IHandlerCodeWriterFor<TFor>
     {

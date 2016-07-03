@@ -1,7 +1,7 @@
 using uFrame.Editor.Core;
 using uFrame.Editor.Graphs.Data;
 
-namespace uFrame.ECS.Editor.Nodes
+namespace uFrame.ECS.Editor
 {
   
     public class BoolExpressionNode : BoolExpressionNodeBase, IGroupConnectable {

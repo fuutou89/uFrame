@@ -1,4 +1,4 @@
-﻿using uFrame.ECS.Editor.Plugins;
+﻿using uFrame.ECS.Editor;
 using uFrame.Editor;
 using uFrame.Editor.Core;
 using uFrame.Editor.GraphUI;

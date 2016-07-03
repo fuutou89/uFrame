@@ -1,6 +1,6 @@
 using System.CodeDom;
 using uFrame.Attributes;
-using uFrame.ECS.Editor.Plugins;
+using uFrame.ECS.Editor;
 using uFrame.Editor.Database.Data;
 using uFrame.Editor.DebugSystem;
 using uFrame.Editor.Graphs.Data;
@@ -9,7 +9,7 @@ using uFrame.Json;
 using uFrame.Editor.Attributes;
 using uFrame.Editor.Compiling.CodeGen;
 
-namespace uFrame.ECS.Editor.Nodes
+namespace uFrame.ECS.Editor
 {
     using System.Collections.Generic;
     using System.Linq;

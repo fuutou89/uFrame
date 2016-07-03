@@ -1,11 +1,10 @@
+using uFrame.Architect.Editor.Data;
 using uFrame.Editor.Compiling.CodeGen;
 using uFrame.Editor.Configurations;
 using uFrame.Editor.Graphs.Data;
 
 namespace uFrame.Architect.Editor.Generators
 {
-    using Data;
-
     [TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}Graph")]
     public class ShellGraphTemplate : GenericGraphData<GenericNode>, IClassTemplate<ShellGraphTypeNode>
     {
@@ -21,7 +20,10 @@ namespace uFrame.Architect.Editor.Generators
 
         public void TemplateSetup()
         {
-            Ctx.TryAddNamespace("Invert.Core.GraphDesigner");
+            //Ctx.TryAddNamespace("Invert.Core.GraphDesigner");
+            Ctx.TryAddNamespace("uFrame.Editor.Configurations");
+            Ctx.TryAddNamespace("uFrame.Editor.Core");
+            Ctx.TryAddNamespace("uFrame.Editor.Graphs.Data");
             if (Ctx.IsDesignerFile)
             {
 #if UNITY_EDITOR

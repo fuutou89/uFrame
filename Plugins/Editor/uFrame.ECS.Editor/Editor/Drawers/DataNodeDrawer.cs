@@ -1,8 +1,7 @@
-using uFrame.ECS.Editor.Nodes;
-using uFrame.ECS.Editor.ViewModels;
+using uFrame.ECS.Editor;
 using uFrame.Editor.GraphUI.Drawers;
 
-namespace uFrame.ECS.Editor.Drawers
+namespace uFrame.ECS.Editor
 {
     public class DataNodeDrawer : GenericNodeDrawer<DataNode,DataNodeViewModel> {
         

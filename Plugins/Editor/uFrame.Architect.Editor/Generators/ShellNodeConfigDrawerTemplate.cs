@@ -1,3 +1,4 @@
+using uFrame.Architect.Editor.Data;
 using uFrame.Editor.Compiling.CodeGen;
 using uFrame.Editor.Configurations;
 using uFrame.Editor.Graphs.Data;
@@ -6,8 +7,6 @@ using uFrame.Editor.GraphUI.ViewModels;
 
 namespace uFrame.Architect.Editor.Generators
 {
-    using Data;
-
     [TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}NodeDrawer")]
     public class ShellNodeConfigDrawerTemplate : GenericNodeDrawer<GenericNode, GenericNodeViewModel<GenericNode>>, IClassTemplate<ShellNodeConfig>
     {
@@ -23,8 +22,9 @@ namespace uFrame.Architect.Editor.Generators
 
         public void TemplateSetup()
         {
-            Ctx.TryAddNamespace("Invert.Core.GraphDesigner");
+            //Ctx.TryAddNamespace("Invert.Core.GraphDesigner");
             //Ctx.SetBaseTypeArgument(Ctx.Data.ClassName);
+            Ctx.TryAddNamespace("uFrame.Editor.GraphUI.Drawers");
             Ctx.SetBaseType("GenericNodeDrawer<{0},{1}>", Ctx.Data.ClassName, Ctx.Data.Name + "NodeViewModel");
         }
 

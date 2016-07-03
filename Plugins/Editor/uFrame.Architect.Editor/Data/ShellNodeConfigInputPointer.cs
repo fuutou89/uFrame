@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using uFrame.Editor.Attributes;
 using uFrame.Editor.Configurations;
 using uFrame.Editor.Graphs.Data;
@@ -6,7 +7,7 @@ using uFrame.Json;
 
 namespace uFrame.Architect.Editor.Data
 {
-    public class ShellNodeConfigInputPointer : GenericReferenceItem<ShellNodeConfigInput>
+    public class ShellNodeConfigInputPointer : GenericReferenceItem<ShellNodeConfigInput>, IShellNodeConfigItem
     {
         private SectionVisibility _visibility;
         private int _column;
@@ -42,9 +43,29 @@ namespace uFrame.Architect.Editor.Data
                 this.Changed("Visibility", ref _visibility, value);
             }
         }
+
         public string ClassName
         {
             get { return this.SourceItem.TypeName; }
+        }
+
+        public string ReferenceClassName
+        {
+            get { return this.SourceItem.ReferenceClassName; }
+        }
+
+        public IEnumerable<IShellNodeConfigItem> IncludedInSections
+        {
+            get { return this.OutputsTo<IShellNodeConfigItem>(); }
+        }
+
+        public string TypeName
+        {
+            get { return SourceItem.TypeName; }
+            set
+            {
+
+            }
         }
     }
 }

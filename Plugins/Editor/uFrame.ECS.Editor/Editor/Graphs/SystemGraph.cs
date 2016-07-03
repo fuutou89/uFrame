@@ -1,11 +1,9 @@
-using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.Editor;
 using uFrame.Editor.Database.Data;
 using uFrame.Json;
 
-namespace uFrame.ECS.Editor.Graphs
+namespace uFrame.ECS.Editor
 {
-    
-
     public class SystemGraph : SystemGraphBase, IVariableNameProvider {
 
         private int _variableCount;

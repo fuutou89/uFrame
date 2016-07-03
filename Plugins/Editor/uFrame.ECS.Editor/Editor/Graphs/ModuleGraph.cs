@@ -1,12 +1,11 @@
-using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.Editor;
 using uFrame.Editor.Core;
 using uFrame.Editor.Database.Data;
 using uFrame.Json;
 
-namespace uFrame.ECS.Editor.Graphs
+namespace uFrame.ECS.Editor
 {
     using System.Collections.Generic;
-
 
     public class ModuleGraph : ModuleGraphBase, IVariableNameProvider {
         private int _variableCount;

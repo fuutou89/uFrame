@@ -22,7 +22,10 @@ namespace uFrame.Architect.Editor.Generators
 
         public void TemplateSetup()
         {
-            Ctx.TryAddNamespace("Invert.Core.GraphDesigner");
+            //Ctx.TryAddNamespace("Invert.Core.GraphDesigner");
+            Ctx.TryAddNamespace("uFrame.Editor.Configurations");
+            Ctx.TryAddNamespace("uFrame.Editor.Core");
+            Ctx.TryAddNamespace("uFrame.Editor.Graphs.Data");
             //Ctx.SetBaseTypeArgument(Ctx.Data.ClassName);
             Ctx.SetBaseType("GenericNodeDrawer<{0},{1}>", Ctx.Data.ClassName, Ctx.Data.Name + "NodeViewModel");
         }

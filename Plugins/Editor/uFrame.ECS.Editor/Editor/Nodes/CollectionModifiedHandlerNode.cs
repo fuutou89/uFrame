@@ -3,7 +3,7 @@ using uFrame.Editor.Compiling.CodeGen;
 using uFrame.Editor.Graphs.Data;
 using uFrame.Editor.Graphs.Data.Types;
 
-namespace uFrame.ECS.Editor.Nodes
+namespace uFrame.ECS.Editor
 {
     using System.Collections;
     using System.Collections.Generic;

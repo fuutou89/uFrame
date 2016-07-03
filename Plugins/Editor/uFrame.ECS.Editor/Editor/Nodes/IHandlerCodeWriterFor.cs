@@ -1,4 +1,4 @@
-namespace uFrame.ECS.Editor.Nodes
+namespace uFrame.ECS.Editor
 {
     public interface IHandlerCodeWriterFor<TFor> : IHandlerCodeWriter
     {

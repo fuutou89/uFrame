@@ -3,9 +3,7 @@ using System.Collections;
 using System.Linq;
 using uFrame.Editor.Compiling.CodeGen;
 using uFrame.ECS.Systems;
-using uFrame.ECS.Editor.Nodes;
-using uFrame.Editor;
-using uFrame.ECS.Editor.ChildItems;
+using uFrame.ECS.Editor;
 using uFrame.Editor.DebugSystem;
 
 namespace uFrame.ECS.Templates

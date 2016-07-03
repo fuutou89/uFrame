@@ -1,4 +1,4 @@
-namespace uFrame.ECS.Editor.Sections
+namespace uFrame.ECS.Editor
 {
 
 

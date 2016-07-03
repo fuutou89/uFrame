@@ -1,8 +1,8 @@
-using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.Editor;
 using uFrame.Editor.Core;
 using uFrame.Editor.Graphs.Data;
 
-namespace uFrame.ECS.Editor.Plugins
+namespace uFrame.ECS.Editor
 {
     public class GroupActionNodes : Command
     {

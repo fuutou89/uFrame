@@ -1,9 +1,8 @@
 using uFrame.Editor.GraphUI.Drawers;
 
-namespace uFrame.ECS.Editor.Drawers
+namespace uFrame.ECS.Editor
 {
-    using Nodes;
-    using ViewModels;
+    using Editor;
 
     public class ActionGroupNodeDrawer : GenericNodeDrawer<ActionGroupNode,ActionGroupNodeViewModel> {
         

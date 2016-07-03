@@ -1,6 +1,6 @@
 using uFrame.Editor.Graphs.Data;
 
-namespace uFrame.ECS.Editor.Sections
+namespace uFrame.ECS.Editor
 {
     public class RequireReference : RequireReferenceBase {
     }

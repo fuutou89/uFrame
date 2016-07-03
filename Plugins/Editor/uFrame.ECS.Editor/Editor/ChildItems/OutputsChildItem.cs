@@ -1,11 +1,9 @@
 using uFrame.Attributes;
 using uFrame.ECS;
-using uFrame.ECS.Editor.Nodes;
-using uFrame.ECS.Editor.Plugins;
 using uFrame.Editor.Graphs.Data;
 using uFrame.Editor.Graphs.Data.Types;
 
-namespace uFrame.ECS.Editor.ChildItems
+namespace uFrame.ECS.Editor
 {
     using System.Collections.Generic;
 

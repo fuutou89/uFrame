@@ -4,7 +4,7 @@ using uFrame.Editor.Database.Data;
 using uFrame.Editor.Graphs.Data;
 using uFrame.Json;
 
-namespace uFrame.ECS.Editor.Nodes
+namespace uFrame.ECS.Editor
 {
     using System.Collections.Generic;
 

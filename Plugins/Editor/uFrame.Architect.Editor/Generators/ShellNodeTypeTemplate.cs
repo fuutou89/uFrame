@@ -25,7 +25,10 @@ namespace uFrame.Architect.Editor.Generators
 
         public void TemplateSetup()
         {
-            Ctx.TryAddNamespace("Invert.Core.GraphDesigner");
+            //Ctx.TryAddNamespace("Invert.Core.GraphDesigner");
+            Ctx.TryAddNamespace("uFrame.Editor.Configurations");
+            Ctx.TryAddNamespace("uFrame.Editor.Core");
+            Ctx.TryAddNamespace("uFrame.Editor.Graphs.Data");
             if (Ctx.Data.Inheritable && Ctx.IsDesignerFile)
             {
                 Ctx.CurrentDeclaration.BaseTypes.Clear();

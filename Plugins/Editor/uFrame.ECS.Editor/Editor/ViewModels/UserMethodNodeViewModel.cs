@@ -1,7 +1,7 @@
-using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.Editor;
 using uFrame.Editor.GraphUI.ViewModels;
 
-namespace uFrame.ECS.Editor.ViewModels
+namespace uFrame.ECS.Editor
 {
     public class UserMethodNodeViewModel : UserMethodNodeViewModelBase {
         

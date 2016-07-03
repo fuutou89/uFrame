@@ -1,8 +1,8 @@
-using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.Editor;
 using uFrame.Editor.Graphs.Data;
 using uFrame.Editor.GraphUI.ViewModels;
 
-namespace uFrame.ECS.Editor.ViewModels
+namespace uFrame.ECS.Editor
 {
     using System.Collections.Generic;
     using System.Linq;

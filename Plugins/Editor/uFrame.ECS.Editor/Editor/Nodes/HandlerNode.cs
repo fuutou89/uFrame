@@ -4,7 +4,7 @@ using UnityEngine;
 using uFrame.Editor.Attributes;
 using System.Collections.Generic;
 using System.Linq;
-using uFrame.ECS.Editor.Plugins;
+using uFrame.ECS.Editor;
 using uFrame.Editor.Compiling.CodeGen;
 using uFrame.Editor.Core;
 using uFrame.Editor.Database.Data;
@@ -14,7 +14,7 @@ using uFrame.Editor.Graphs.Data.Types;
 using uFrame.Editor.Nodes;
 using uFrame.Json;
 
-namespace uFrame.ECS.Editor.Nodes
+namespace uFrame.ECS.Editor
 {
     public partial interface IFilterConnectable : IDiagramNodeItem, IConnectable
     {
