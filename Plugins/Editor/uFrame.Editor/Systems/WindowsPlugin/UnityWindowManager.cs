@@ -1,36 +1,40 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Core;
+using uFrame.Editor.Core;
+using uFrame.Editor.Platform;
 using UnityEditor;
 
-public class UnityWindowManager : IWindowManager
+namespace uFrame.Editor.WindowsPlugin
 {
-    public void InitTypeListWindow(GraphTypeInfo[] typesInfoList, Action<GraphTypeInfo> action)
+    public class UnityWindowManager : IWindowManager
     {
-        ElementItemTypesWindow.InitTypeListWindow("Choose Type", typesInfoList, (selected) =>
+        public void InitTypeListWindow(GraphTypeInfo[] typesInfoList, Action<GraphTypeInfo> action)
         {
-            EditorWindow.GetWindow<ElementItemTypesWindow>().Close();
-            InvertApplication.Execute(() =>
+            ElementItemTypesWindow.InitTypeListWindow("Choose Type", typesInfoList, (selected) =>
             {
-                action(selected);
+                EditorWindow.GetWindow<ElementItemTypesWindow>().Close();
+                InvertApplication.Execute(() =>
+                {
+                    action(selected);
+                });
             });
-        });
-    }
-    public void InitItemWindow<TItem>(IEnumerable<TItem> items, Action<TItem> action, bool allowNone = false)
-        where TItem : IItem
-    {
-        ItemSelectionWindow.Init("Select Item",items.Cast<IItem>(), (item) =>
+        }
+        public void InitItemWindow<TItem>(IEnumerable<TItem> items, Action<TItem> action, bool allowNone = false)
+            where TItem : IItem
         {
-            InvertApplication.Execute(() =>
+            ItemSelectionWindow.Init("Select Item",items.Cast<IItem>(), (item) =>
             {
-                action((TItem)item);
-            });
-        }, allowNone);
-    }
+                InvertApplication.Execute(() =>
+                {
+                    action((TItem)item);
+                });
+            }, allowNone);
+        }
 
-    public void ShowHelpWindow(string helpProviderName, Type graphItemType)
-    {
-        uFrameHelp.ShowWindow(graphItemType);
+        public void ShowHelpWindow(string helpProviderName, Type graphItemType)
+        {
+            uFrameHelp.ShowWindow(graphItemType);
+        }
     }
 }

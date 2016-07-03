@@ -1,6 +1,9 @@
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Platform;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.Drawers
 {
     public abstract class GenericNodeDrawer<TData, TViewModel> : DiagramNodeDrawer<TViewModel>
         where TViewModel : DiagramNodeViewModel

@@ -1,6 +1,8 @@
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Graphs.Data;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.ViewModels
 {
     public class CustomInputOutputStrategy<TOutput, TInput> : DefaultConnectionStrategy<TOutput, TInput>
         where TOutput : IConnectable

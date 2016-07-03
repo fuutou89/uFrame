@@ -1,6 +1,7 @@
+using uFrame.Editor.Input;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity
+namespace uFrame.Editor.Unity
 {
     public interface IKeyboardEvent
     {

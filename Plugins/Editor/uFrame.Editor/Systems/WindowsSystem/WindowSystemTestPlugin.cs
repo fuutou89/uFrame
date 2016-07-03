@@ -1,6 +1,9 @@
-﻿using Invert.IOC;
+﻿using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.Input;
+using uFrame.Editor.Platform;
+using uFrame.IOC;
 
-namespace Invert.Core.GraphDesigner.Unity.WindowsSystem
+namespace uFrame.Editor.Windows
 {
 
     public class WindowSystemTestPlugin : DiagramPlugin, IContextMenuQuery

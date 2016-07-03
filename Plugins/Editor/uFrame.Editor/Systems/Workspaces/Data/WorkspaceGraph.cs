@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Invert.Data;
-using Invert.Json;
+using uFrame.Editor.Database.Data;
+using uFrame.Json;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Workspaces.Data
 {
     public class WorkspaceGraph : IDataRecord, IDataRecordRemoved
     {

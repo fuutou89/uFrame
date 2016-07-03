@@ -1,6 +1,6 @@
 using System.CodeDom;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CodeGen
 {
     public abstract class MemberGenerator<TData> : IMemberGenerator
     {

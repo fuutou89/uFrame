@@ -1,3 +1,3 @@
-﻿namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Drawers
+﻿namespace uFrame.Editor.Koinonia.Drawers
 {
 }

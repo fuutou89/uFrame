@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using uFrame.Editor.Windows;
 
-namespace Invert.Windows
+namespace uFrame.Editor.WindowsPlugin
 {
     public class LauncherWindowViewModel
     {

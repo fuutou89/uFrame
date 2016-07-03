@@ -3,26 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-public class SystemFieldMemberInfo : IMemberInfo
+namespace uFrame.Editor.Graphs.Data.Types
 {
-    private FieldInfo FieldInfo;
-
-    public SystemFieldMemberInfo(FieldInfo fieldInfo)
+    public class SystemFieldMemberInfo : IMemberInfo
     {
-        FieldInfo = fieldInfo;
-    }
+        private FieldInfo FieldInfo;
 
-    public string MemberName { get { return FieldInfo.Name; } }
-
-    public ITypeInfo MemberType
-    {
-        get
+        public SystemFieldMemberInfo(FieldInfo fieldInfo)
         {
-            return new SystemTypeInfo(FieldInfo.FieldType);
+            FieldInfo = fieldInfo;
         }
-    }
-    public IEnumerable<Attribute> GetAttributes()
-    {
-       return FieldInfo.GetCustomAttributes(true).OfType<Attribute>();
+
+        public string MemberName { get { return FieldInfo.Name; } }
+
+        public ITypeInfo MemberType
+        {
+            get
+            {
+                return new SystemTypeInfo(FieldInfo.FieldType);
+            }
+        }
+        public IEnumerable<Attribute> GetAttributes()
+        {
+            return FieldInfo.GetCustomAttributes(true).OfType<Attribute>();
+        }
     }
 }

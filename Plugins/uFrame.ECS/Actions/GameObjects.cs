@@ -1,7 +1,7 @@
 using uFrame.Attributes;
 using UnityEngine;
 
-namespace uFrame.Actions
+namespace uFrame.ECS.Actions
 {
     [ActionLibrary, uFrameCategory("GameObject")]
     public static class GameObjects

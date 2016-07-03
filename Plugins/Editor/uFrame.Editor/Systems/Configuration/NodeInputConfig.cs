@@ -1,8 +1,9 @@
 using System;
 using System.Reflection;
+using uFrame.Editor.Graphs.Data;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Configurations
 {
     public class NodeInputConfig : GraphItemConfiguration
     {

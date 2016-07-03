@@ -1,6 +1,9 @@
 using System.Linq;
-using Invert.Core;
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.Drawers.Schemas;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Platform;
 
 namespace uFrame.Architect.Editor.Data
 {

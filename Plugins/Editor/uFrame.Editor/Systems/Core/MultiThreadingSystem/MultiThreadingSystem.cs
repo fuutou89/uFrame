@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
-using Invert.IOC;
+using uFrame.IOC;
 
-namespace Invert.Core
+namespace uFrame.Editor.Core.MultiThreading
 {
     public class MultiThreadingSystem : CorePlugin, IExecuteCommand<BackgroundTaskCommand>
     {

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Invert.Core.GraphDesigner;
 using uFrame.Editor.Attributes;
+using uFrame.Editor.Graphs.Data;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
     public class CodeActionNode : CodeActionNodeBase {
         [InspectorProperty]
@@ -18,6 +18,6 @@ namespace Invert.uFrame.ECS
         }
     }
     
-    public partial interface ICodeActionConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface ICodeActionConnectable : IDiagramNodeItem, IConnectable {
     }
 }

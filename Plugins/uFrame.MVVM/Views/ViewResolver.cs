@@ -1,7 +1,8 @@
 using System;
+using uFrame.MVVM.ViewModels;
 using UnityEngine;
 
-namespace uFrame.MVVM
+namespace uFrame.MVVM.Views
 {
     /// <summary>
     /// The View Managers responsibility is to provide prefabes based off of a view model

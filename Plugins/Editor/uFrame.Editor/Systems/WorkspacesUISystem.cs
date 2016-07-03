@@ -1,10 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Invert.Common;
-using Invert.Core.GraphDesigner.Systems.GraphUI.api;
+using uFrame.Editor.Core;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.GraphUI.Events;
+using uFrame.Editor.Input;
+using uFrame.Editor.Menus;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Unity;
+using uFrame.Editor.Wizards.Data;
+using uFrame.Editor.Wizards.Events;
+using uFrame.Editor.Workspaces.Commands;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Systems.GraphUI
+namespace uFrame.Editor
 {
     public class WorkspacesUISystem : DiagramPlugin,
         IQueryWorkspacesActions,

@@ -1,6 +1,6 @@
 using System;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CodeGen
 {
     [AttributeUsage(AttributeTargets.Property)]
     public class WithObservable : WithField

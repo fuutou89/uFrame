@@ -1,6 +1,10 @@
-﻿using UnityEngine;
+﻿using uFrame.Editor.Compiling.CommonNodes;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.Drawers.Schemas;
+using uFrame.Editor.Platform;
+using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.ViewModels
 {
     public class NoteNodeViewModel : DiagramNodeViewModel<NoteNode>
     {

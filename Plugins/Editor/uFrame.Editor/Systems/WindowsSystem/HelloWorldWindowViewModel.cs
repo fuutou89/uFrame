@@ -1,6 +1,4 @@
-using Invert.Core.GraphDesigner.Unity.WindowsPlugin;
-
-namespace Invert.Core.GraphDesigner.Unity.WindowsSystem
+namespace uFrame.Editor.Windows
 {
     public class HelloWorldWindowViewModel : WindowViewModel
     {

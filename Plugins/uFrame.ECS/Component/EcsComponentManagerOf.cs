@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using uFrame.Attributes;
+using uFrame.ECS.APIs;
 using uFrame.Kernel;
 using UniRx;
 using UnityEngine;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.Components
 {
     public class EcsComponentManagerOf<TComponentType> : EcsComponentManager, IEcsComponentManagerOf<TComponentType> where TComponentType : IEcsComponent
     {

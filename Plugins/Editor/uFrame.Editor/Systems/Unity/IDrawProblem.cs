@@ -1,6 +1,7 @@
+using uFrame.Editor.Core;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity
+namespace uFrame.Editor.Unity
 {
     internal interface IDrawProblem
     {

@@ -1,6 +1,9 @@
 using System;
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.TypesSystem
 {
     public class SelectTypeCommand : Command
     {

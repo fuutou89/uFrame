@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.Linq;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Graphs.Data
 {
     public class SingleInputSlot<TFor> : GenericSlot
     {

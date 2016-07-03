@@ -1,7 +1,8 @@
-using Invert.Data;
-using Invert.Json;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Json;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -74,6 +75,6 @@ namespace Invert.uFrame.ECS
    
     }
     
-    public partial interface ISequenceContainerConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface ISequenceContainerConnectable : IDiagramNodeItem, IConnectable {
     }
 }

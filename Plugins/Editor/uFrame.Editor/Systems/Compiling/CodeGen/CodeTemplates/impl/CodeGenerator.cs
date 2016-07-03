@@ -2,9 +2,10 @@ using System;
 using System.CodeDom;
 using System.IO;
 using System.Linq;
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data;
 
-
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CodeGen
 {
     public abstract class CodeGenerator : OutputGenerator
     {

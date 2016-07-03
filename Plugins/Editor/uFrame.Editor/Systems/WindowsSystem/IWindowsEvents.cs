@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Invert.Windows
+namespace uFrame.Editor.Windows
 {
     public interface IWindowsEvents
     {

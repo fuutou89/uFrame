@@ -1,7 +1,9 @@
 ﻿using System;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Wizards.Data;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Systems.GraphUI
+namespace uFrame.Editor.Wizards.Events
 {
     public interface IDrawActionDialog
     {

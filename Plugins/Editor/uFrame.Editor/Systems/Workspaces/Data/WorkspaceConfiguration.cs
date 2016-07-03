@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Workspaces.Data
 {
     public class WorkspaceConfiguration
     {

@@ -1,6 +1,7 @@
 ﻿using System;
-using Invert.Core.GraphDesigner;
 using uFrame.Kernel;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Configurations;
 
 namespace uFrame.MVVM.Templates
 {

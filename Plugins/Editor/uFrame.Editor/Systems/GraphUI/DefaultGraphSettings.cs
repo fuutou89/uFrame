@@ -1,6 +1,7 @@
+using uFrame.Editor.GraphUI.Events;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI
 {
     public class DefaultGraphSettings : IGraphEditorSettings
     {

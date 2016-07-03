@@ -3,7 +3,7 @@ using System.CodeDom;
 using System.Linq;
 using System.Reflection;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CodeGen
 {
     [AttributeUsage(AttributeTargets.Property)]
     public class WithField : TemplateAttribute

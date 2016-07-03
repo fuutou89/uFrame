@@ -1,7 +1,8 @@
 using System;
 using uFrame.Attributes;
 using UnityEngine.UI;
-namespace uFrame.Actions
+
+namespace uFrame.ECS.Actions
 {
     [ActionLibrary, uFrameCategory("uGUI")]
     public static class uGUILibrary
@@ -14,7 +15,7 @@ namespace uFrame.Actions
     }
 
     [uFrame.Attributes.ActionTitle("Set Text Label")]
-    public partial class SetNumericDisplayText : uFrame.Actions.UFAction
+    public partial class SetNumericDisplayText : UFAction
     {
 
         [In("Label")]

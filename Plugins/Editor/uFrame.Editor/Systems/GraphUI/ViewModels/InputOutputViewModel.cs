@@ -1,8 +1,12 @@
 using System.Linq;
-using Invert.Data;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.Events;
+using uFrame.Editor.Platform;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.ViewModels
 {
     public class InputOutputViewModel : GraphItemViewModel
     {

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Classes;
-using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Data;
-using Invert.Data;
-using Invert.Json;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Koinonia.Classes;
+using uFrame.Editor.Koinonia.Data;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Services
+namespace uFrame.Editor.Koinonia.Service
 {
     public class DescriptorsService : IDesctiptorsService
     {

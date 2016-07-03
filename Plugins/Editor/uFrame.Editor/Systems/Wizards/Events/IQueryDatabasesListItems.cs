@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using uFrame.Editor.Wizards.Data;
 
-namespace Invert.Core.GraphDesigner.Systems.GraphUI.api
+namespace uFrame.Editor.Wizards.Events
 {
     public interface IQueryDatabasesListItems
     {

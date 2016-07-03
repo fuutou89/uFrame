@@ -1,7 +1,7 @@
 using System;
 using uFrame.Attributes;
 
-namespace uFrame.Actions
+namespace uFrame.ECS.Actions
 {
     [ActionLibrary, uFrameCategory("Set")]
     public static class SetLibrary

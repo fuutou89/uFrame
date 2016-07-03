@@ -1,6 +1,6 @@
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Core;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Plugins
 {
     public class NewModuleWorkspace : Command
     {

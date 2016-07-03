@@ -2,8 +2,9 @@ using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
+using uFrame.Editor.Graphs.Data;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Configurations
 {
 
     public class NodeGeneratorConfig<TNode> : NodeGeneratorConfigBase

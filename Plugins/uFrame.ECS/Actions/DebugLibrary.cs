@@ -1,6 +1,6 @@
 using uFrame.Attributes;
 
-namespace uFrame.Actions
+namespace uFrame.ECS.Actions
 {
     [ActionLibrary, uFrameCategory("Log", "Debug")]
     public static class DebugLibrary

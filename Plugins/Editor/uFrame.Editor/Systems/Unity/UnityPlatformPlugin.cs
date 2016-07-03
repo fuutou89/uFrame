@@ -1,8 +1,17 @@
-﻿using Invert.IOC;
+﻿using uFrame.Editor.Core;
+using uFrame.Editor.Database;
+using uFrame.Editor.Database.Events;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.Events;
+using uFrame.Editor.Platform;
+using uFrame.Editor.WindowsPlugin;
+using uFrame.Editor.Workspaces.Data;
+using uFrame.Editor.Workspaces.Events;
+using uFrame.IOC;
 using UnityEditor;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity
+namespace uFrame.Editor.Unity
 {
     [InitializeOnLoad]
     public class UnityPlatformPlugin : DiagramPlugin, IAssetDeleted, IWorkspaceChanged, IChangeDatabase

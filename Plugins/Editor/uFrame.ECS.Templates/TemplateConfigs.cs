@@ -5,17 +5,28 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Invert.Core;
-using Invert.Core.GraphDesigner;
-using Invert.IOC;
-using uFrame.Actions;
 using uFrame.Attributes;
-using uFrame.ECS;
+using uFrame.Editor.Compiling.CodeGen;
 using uFrame.Kernel;
 using UnityEditor;
 using uFrame.Editor.Attributes;
+using uFrame.ECS.Actions;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.APIs;
+using uFrame.Editor;
+using uFrame.ECS.Components;
+using uFrame.ECS.UnityUtilities;
+using uFrame.ECS.Editor.ChildItems;
+using uFrame.ECS.Systems;
+using uFrame.ECS.Editor.Plugins;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.DebugSystem;
+using uFrame.Editor.Graphs.Data;
+using uFrame.IOC;
 
-namespace Invert.uFrame.ECS.Templates
+namespace uFrame.ECS.Templates
 {
     [InitializeOnLoad]
     public class EcsTemplates : DiagramPlugin

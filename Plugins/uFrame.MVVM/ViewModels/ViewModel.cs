@@ -5,10 +5,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using uFrame.Kernel;
+using uFrame.Kernel.Serialization;
 using uFrame.MVVM.Bindings;
-using uFrame.MVVM;
 
-namespace uFrame.MVVM
+namespace uFrame.MVVM.ViewModels
 {
     using UniRx;
 
@@ -17,11 +17,7 @@ namespace uFrame.MVVM
     /// </summary>
     [Serializable]
     public abstract class ViewModel
-#if !DLL
     :  IUFSerializable, INotifyPropertyChanged , IObservable<IObservableProperty>, IDisposable, IBindable
-#else
- : INotifyPropertyChanged
-#endif
 {
         [Obsolete]
         public bool Dirty { get; set; }

@@ -1,7 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.Drawers.Schemas;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Workspaces.Data;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.ViewModels
 {
     public class GraphDesignerNavigationViewModel
     {

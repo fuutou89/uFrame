@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Invert.IOC;
 using uFrame.Kernel;
 using UniRx;
 using UnityEngine;
+using uFrame.ECS.APIs;
+using uFrame.ECS.Components;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.Systems
 {
     /// <summary>
     /// The main component service used to register and manage all components and groups.

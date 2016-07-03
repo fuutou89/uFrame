@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using uFrame.Editor.Graphs.Data;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Schemas.impl
+namespace uFrame.Editor.GraphUI.Drawers.Schemas
 {
     public abstract class NodeStyleSchema : INodeStyleSchema
     {

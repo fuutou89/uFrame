@@ -5,7 +5,7 @@ using System.Text;
 using uFrame.Attributes;
 using uFrame.ECS;
 
-namespace Assets.uFrameECS.Framework.Actions
+namespace uFrame.ECS.Actions
 {
 
     [ActionLibrary,uFrameCategory("Math")]

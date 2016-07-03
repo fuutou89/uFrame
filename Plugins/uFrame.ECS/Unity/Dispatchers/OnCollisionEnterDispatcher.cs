@@ -1,7 +1,8 @@
 using uFrame.Attributes;
+using uFrame.ECS.Components;
 using UnityEngine;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.UnityUtilities
 {
     [UFrameEventDispatcher("On Collision Enter"), uFrameCategory("Unity Messages")]
     public class OnCollisionEnterDispatcher : EcsDispatcher

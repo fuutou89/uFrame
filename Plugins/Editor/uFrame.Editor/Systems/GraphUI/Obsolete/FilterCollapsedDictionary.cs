@@ -1,6 +1,6 @@
-using Invert.Json;
+using uFrame.Json;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI
 {
 
     public class FilterCollapsedDictionary : FilterDictionary<bool>

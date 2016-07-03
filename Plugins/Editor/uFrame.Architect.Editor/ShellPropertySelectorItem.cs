@@ -1,9 +1,8 @@
-using Invert.Core.GraphDesigner;
+using uFrame.Architect.Editor.Data;
+using uFrame.Editor.Graphs.Data;
 
 namespace uFrame.Architect.Editor
 {
-    using Data;
-    
     public class ShellPropertySelectorItem : GenericTypedChildItem, IShellNodeItem
     {
         public IShellNode SelectorFor

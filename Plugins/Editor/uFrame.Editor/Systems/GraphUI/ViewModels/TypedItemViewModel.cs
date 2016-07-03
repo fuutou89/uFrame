@@ -1,6 +1,10 @@
 using System.Collections.Generic;
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
+using uFrame.Editor.TypesSystem;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.ViewModels
 {
     public abstract class TypedItemViewModel : ItemViewModel<ITypedItem>
     {

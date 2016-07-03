@@ -1,4 +1,4 @@
-﻿namespace Invert.Core.GraphDesigner
+﻿namespace uFrame.Editor.Graphs.Data
 {
     public class GenericNodeChildItem : DiagramNodeItem
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Graphs.Data
 {
     [Obsolete]
     public interface IClassTypeNode : IDiagramNodeItem

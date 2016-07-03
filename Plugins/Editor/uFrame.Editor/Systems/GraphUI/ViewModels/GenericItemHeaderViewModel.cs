@@ -1,6 +1,8 @@
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Core;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.ViewModels
 {
     public class GenericItemHeaderViewModel : GraphItemViewModel
     {

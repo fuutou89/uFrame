@@ -1,7 +1,7 @@
 using uFrame.Kernel;
 using UnityEngine;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.UnityUtilities
 {
     public static class EcsSystemLoaderExtensions
     {

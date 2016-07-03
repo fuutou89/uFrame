@@ -1,11 +1,14 @@
 using System;
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Input;
 
-public class QuickAccessContext
+namespace uFrame.Editor.QuickAccess
 {
+    public class QuickAccessContext
+    {
 
-    public MouseEvent MouseData;
-    public Type ContextType;
-    public object Data;
+        public MouseEvent MouseData;
+        public Type ContextType;
+        public object Data;
     
+    }
 }

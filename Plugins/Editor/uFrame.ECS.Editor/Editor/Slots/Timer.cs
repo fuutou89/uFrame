@@ -1,10 +1,10 @@
-namespace Invert.uFrame.ECS
+using uFrame.Editor.Graphs.Data;
+
+namespace uFrame.ECS.Editor.Slots
 {
-
-
     public class Timer : TimerBase {
     }
     
-    public partial interface ITimerConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface ITimerConnectable : IDiagramNodeItem, IConnectable {
     }
 }

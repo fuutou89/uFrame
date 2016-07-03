@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Invert.Data;
-using Invert.Json;
+using uFrame.Editor.Database.Data;
+using uFrame.Json;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Graphs.Data
 {
     public class InputSelectionValue : IDataRecord,IDataRecordRemoved
     {

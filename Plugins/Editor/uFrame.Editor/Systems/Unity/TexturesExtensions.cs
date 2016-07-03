@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Invert.Common
+namespace uFrame.Editor.Unity
 {
     public static class TexturesExtensions
     {

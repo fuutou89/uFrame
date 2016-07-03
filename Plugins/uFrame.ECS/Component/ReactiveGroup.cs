@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using uFrame.ECS.APIs;
 using uFrame.Kernel;
 using UniRx;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.Components
 {
     /// <summary>
     /// Reactive Group is the base class of all group type components in ECS.

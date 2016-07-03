@@ -1,11 +1,15 @@
 using System;
 
-public class UFGroup : Attribute
+namespace uFrame.MVVM.Attributes
 {
-    public UFGroup(string viewModelProperties)
+    public class UFGroup : Attribute
     {
-        Name = viewModelProperties;
+        public UFGroup(string viewModelProperties)
+        {
+            Name = viewModelProperties;
+        }
+
+        public string Name { get; set; }
     }
 
-    public string Name { get; set; }
 }

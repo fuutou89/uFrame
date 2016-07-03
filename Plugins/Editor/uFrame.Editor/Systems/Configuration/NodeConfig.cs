@@ -1,12 +1,14 @@
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
-using Invert.IOC;
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.IOC;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Configurations
 {
-
-
     public class NodeConfig<TNode> : NodeConfigBase where TNode : GenericNode, IConnectable
     {
 
@@ -128,14 +130,11 @@ namespace Invert.Core.GraphDesigner
             return Validators.Where(p => p.Validate != null && p.Validate(node));
         }
 
-
-
-
         public override NodeColor GetColor(IGraphItem obj)
         {
             if (NodeColor == null)
             {
-                return GraphDesigner.NodeColor.Gray;
+                return uFrame.Editor.Graphs.Data.NodeColor.Gray;
             }
             return NodeColor.Literal;
         }

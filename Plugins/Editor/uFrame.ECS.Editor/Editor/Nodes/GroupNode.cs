@@ -1,11 +1,18 @@
-﻿using Invert.Data;
-using Invert.Json;
+﻿using uFrame.ECS.Editor.ChildItems;
+using uFrame.ECS.Editor.Plugins;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
+using uFrame.Editor.Nodes;
+using uFrame.Json;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Invert.Core.GraphDesigner;
+    
 
 
     public class GroupNode : GroupNodeBase,
@@ -244,6 +251,6 @@ namespace Invert.uFrame.ECS
         }
     }
     
-    public partial interface IContextConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IContextConnectable : IDiagramNodeItem, IConnectable {
     }
 }

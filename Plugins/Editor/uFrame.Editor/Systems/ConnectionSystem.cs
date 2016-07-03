@@ -1,7 +1,12 @@
 ﻿using System.Linq;
-using Invert.IOC;
+using uFrame.Editor.Core;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Input;
+using uFrame.Editor.Platform;
+using uFrame.IOC;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor
 {
 
     public class ConnectionSystem : DiagramPlugin

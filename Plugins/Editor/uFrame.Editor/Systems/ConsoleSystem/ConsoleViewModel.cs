@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Data;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.LogSystem;
+using uFrame.Editor.Windows;
 
-namespace Invert.Core.GraphDesigner.Unity.WindowsPlugin
+namespace uFrame.Editor.Console
 {
-    
     public class ConsoleViewModel : WindowViewModel
     {
         private List<LogMessage> _messages;

@@ -1,25 +1,28 @@
 using System.Collections;
 
-public static class UFListExtensions
+namespace uFrame.Editor.Graphs.Data
 {
-    public static void Move(this IList list, int iIndexToMove, bool up = true)
+    public static class UFListExtensions
     {
-        if (up)
+        public static void Move(this IList list, int iIndexToMove, bool up = true)
         {
-            var move = iIndexToMove - 1;
-            if (move < 0 || move >= list.Count) return;
-            var old = list[move];
-            list[move] = list[iIndexToMove];
-            list[iIndexToMove] = old;
-        }
-        else
-        {
+            if (up)
+            {
+                var move = iIndexToMove - 1;
+                if (move < 0 || move >= list.Count) return;
+                var old = list[move];
+                list[move] = list[iIndexToMove];
+                list[iIndexToMove] = old;
+            }
+            else
+            {
 
-            var move = iIndexToMove + 1;
-            if (move < 0 || move >= list.Count) return;
-            var old = list[move];
-            list[move] = list[iIndexToMove];
-            list[iIndexToMove] = old;
+                var move = iIndexToMove + 1;
+                if (move < 0 || move >= list.Count) return;
+                var old = list[move];
+                list[move] = list[iIndexToMove];
+                list[iIndexToMove] = old;
+            }
         }
     }
 }

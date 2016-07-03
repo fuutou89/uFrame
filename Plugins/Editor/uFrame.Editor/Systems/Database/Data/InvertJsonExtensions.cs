@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using uFrame.Json;
 using UnityEngine;
 
-namespace Invert.Json
+namespace uFrame.Editor.Database.Data
 {
     public static class InvertJsonExtensions
     {
-
-        
-
         public static T DeserializeObject<T>(string json)
         {
-            return DeserializeObject<T>(Json.JSON.Parse(json));
+            return DeserializeObject<T>(JSON.Parse(json));
         }
 
         public static T DeserializeObject<T>(JSONNode node)

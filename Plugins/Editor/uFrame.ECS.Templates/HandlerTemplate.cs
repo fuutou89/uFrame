@@ -1,10 +1,14 @@
 using System.CodeDom;
 using System.Collections;
 using System.Linq;
-using Invert.Core.GraphDesigner;
-using uFrame.ECS;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.ECS.Systems;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.Editor;
+using uFrame.ECS.Editor.ChildItems;
+using uFrame.Editor.DebugSystem;
 
-namespace Invert.uFrame.ECS.Templates
+namespace uFrame.ECS.Templates
 {
     public partial class HandlerTemplate
     {

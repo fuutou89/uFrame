@@ -1,6 +1,9 @@
-﻿using Invert.Core.GraphDesigner;
+﻿using uFrame.Editor.Core;
 
-public class ContinueCommand : Command
+namespace uFrame.Editor.DebugSystem
 {
+    public class ContinueCommand : Command
+    {
 
+    }
 }

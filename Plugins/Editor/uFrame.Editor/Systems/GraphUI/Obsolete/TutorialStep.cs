@@ -1,6 +1,7 @@
 using System;
+using uFrame.Editor.Documentation;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI
 {
     public class TutorialStep : ITutorialStep
     {

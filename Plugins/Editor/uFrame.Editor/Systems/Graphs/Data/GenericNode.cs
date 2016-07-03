@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using Invert.Json;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data.Types;
+using uFrame.Json;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Graphs.Data
 {
     //public class InheritanceSlot<TFor> : GenericSlot
     //{

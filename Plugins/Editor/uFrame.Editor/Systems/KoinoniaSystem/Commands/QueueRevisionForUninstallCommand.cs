@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel;
-using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Classes;
+using uFrame.Editor.Core;
+using uFrame.Editor.Koinonia.Classes;
 
-namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Commands
+namespace uFrame.Editor.Koinonia.Commands
 {
     public class QueueRevisionForUninstallCommand : IBackgroundCommand
     {

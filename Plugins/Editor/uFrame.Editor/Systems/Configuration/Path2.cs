@@ -1,7 +1,7 @@
 using System.IO;
 using System.Linq;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Configurations
 {
     public static class Path2
     {

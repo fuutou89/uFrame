@@ -1,4 +1,8 @@
-namespace Invert.Core.GraphDesigner
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Workspaces.Data;
+
+namespace uFrame.Editor.Platform
 {
     public interface IGraphWindow
     {

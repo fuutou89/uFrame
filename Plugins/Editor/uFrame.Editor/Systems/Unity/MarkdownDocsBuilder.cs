@@ -1,7 +1,11 @@
 using System;
 using System.Text;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Documentation;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI;
 
-namespace Invert.Core.GraphDesigner.Unity
+namespace uFrame.Editor.Unity
 {
     public class MarkdownDocsBuilder : IDocumentationBuilder
     {

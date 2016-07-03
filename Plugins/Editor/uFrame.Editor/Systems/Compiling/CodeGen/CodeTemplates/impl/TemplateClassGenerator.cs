@@ -6,9 +6,12 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using Invert.Data;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CodeGen
 {
     public class TemplateClassGenerator<TData, TTemplateType> : CodeGenerator, ITemplateClassGenerator
         where TData : class, IDataRecord

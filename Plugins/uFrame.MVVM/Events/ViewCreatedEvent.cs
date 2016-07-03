@@ -1,4 +1,4 @@
-﻿namespace uFrame.MVVM
+﻿namespace uFrame.MVVM.Events
 {
     public class ViewCreatedEvent : ViewEvent
     {

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading;
-using Invert.Core.GraphDesigner.Unity.WindowsPlugin;
-using Invert.Data;
-using Invert.IOC;
-using MessageType = Invert.Core.GraphDesigner.Unity.WindowsPlugin.MessageType;
+using uFrame.Editor.Core;
+using uFrame.Editor.Core.MultiThreading;
+using uFrame.Editor.Database.Data;
+using uFrame.IOC;
 
-namespace Invert.Core.GraphDesigner.Unity.LogSystem
+namespace uFrame.Editor.LogSystem
 {
     public class LogSystem : DiagramPlugin, ILogEvents, IExecuteCommand<InfiniteLoopCommand>//, ICommandProgressEvent
     {

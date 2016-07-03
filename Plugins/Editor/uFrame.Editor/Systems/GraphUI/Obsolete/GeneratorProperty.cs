@@ -1,6 +1,6 @@
 using System;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI
 {
     public class GeneratorProperty : Attribute
     {

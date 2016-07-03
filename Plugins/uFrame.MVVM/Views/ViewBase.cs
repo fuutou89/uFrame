@@ -4,12 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using uFrame.Kernel;
+using uFrame.Kernel.Serialization;
+using uFrame.MVVM.Attributes;
 using uFrame.MVVM.Bindings;
+using uFrame.MVVM.Events;
+using uFrame.MVVM.ViewModels;
 using UniRx;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace uFrame.MVVM
+namespace uFrame.MVVM.Views
 {
     /// <summary>
     /// The base class for a View that binds to a ViewModel

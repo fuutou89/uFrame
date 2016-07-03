@@ -1,12 +1,13 @@
-using Invert.Core.GraphDesigner;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.Editor.GraphUI.ViewModels;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.ViewModels
 {
 
 
     public class CodeActionNodeViewModel : CodeActionNodeViewModelBase {
         
-        public CodeActionNodeViewModel(CodeActionNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
+        public CodeActionNodeViewModel(CodeActionNode graphItemObject, DiagramViewModel diagramViewModel) : 
                 base(graphItemObject, diagramViewModel) {
         }
 

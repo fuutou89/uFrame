@@ -1,6 +1,6 @@
-﻿using Invert.IOC;
+﻿using uFrame.IOC;
 
-namespace Invert.Core.GraphDesigner.Unity
+namespace uFrame.Editor.Unity
 {
 
     public class ErrorsPlugin : DiagramPlugin

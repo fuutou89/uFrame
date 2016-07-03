@@ -1,6 +1,6 @@
-﻿using Invert.IOC;
+﻿using uFrame.IOC;
 
-namespace Invert.Windows
+namespace uFrame.Editor.Windows
 {
     public static class WindowsContainerExtensions
     {

@@ -1,11 +1,18 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
-using Invert.Common;
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.Events;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Input;
+using uFrame.Editor.NavigationSystem;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Unity;
+using uFrame.Kernel.Collection;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.Drawers
 {
 
     public class DiagramDrawer : Drawer, IInputHandler

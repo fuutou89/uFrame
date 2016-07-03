@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Invert.Common.UI
+namespace uFrame.Editor.Unity
 {
     public class UFStyle
     {

@@ -1,9 +1,10 @@
-﻿using Invert.Data;
-using Invert.Json;
-using uFrame.Editor.Attributes;
+﻿using uFrame.Editor.Attributes;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Database.Data;
+using uFrame.Json;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CommonNodes
 {
     public class ImageNode : GenericNode
     {

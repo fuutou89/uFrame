@@ -1,7 +1,7 @@
 using System;
 using UniRx;
 
-namespace uFrame.MVVM
+namespace uFrame.MVVM.ViewModels
 {
     public interface IObservableProperty
     {

@@ -1,7 +1,7 @@
-using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Data;
+using uFrame.Editor.Koinonia.Data;
 using UnityEditor;
 
-namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem
+namespace uFrame.Editor.Koinonia
 {
     public class PackageControlPanel : EditorWindow
     {

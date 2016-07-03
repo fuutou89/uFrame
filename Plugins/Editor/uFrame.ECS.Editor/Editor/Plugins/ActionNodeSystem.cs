@@ -1,13 +1,21 @@
 using System;
 using System.IO;
 using System.Linq;
-using Invert.Core;
-using Invert.Core.GraphDesigner;
-using Invert.Data;
-using Invert.IOC;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.Editor.ViewModels;
+using uFrame.Editor;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.Events;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Input;
+using uFrame.Editor.Platform;
+using uFrame.IOC;
 using UnityEngine;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Plugins
 {
 
     public class ChangeHandlerEventCommand : Command
@@ -202,7 +210,7 @@ namespace Invert.uFrame.ECS
         protected override void ApplyConnection(IGraphData graph, IConnectable output, IConnectable input)
         {
             //base.ApplyConnection(graph, output, input);
-            ApplyConnection(graph, output as IContextVariable,input as IActionIn);
+            ApplyConnection(graph, output as IContextVariable, input as IActionIn);
         }
 
         protected override void ApplyConnection(IGraphData graph, IContextVariable output, IActionIn input)

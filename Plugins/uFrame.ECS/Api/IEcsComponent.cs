@@ -1,6 +1,6 @@
 using uFrame.Kernel;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.APIs
 {
     public interface IEcsComponent : IDisposableContainer
     {

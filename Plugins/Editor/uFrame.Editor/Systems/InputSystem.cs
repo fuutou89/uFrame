@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using uFrame.Editor.GraphUI.Events;
+using uFrame.Editor.Input;
+using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor
 {
     public class InputSystem : DiagramPlugin, IDesignerWindowEvents
     {

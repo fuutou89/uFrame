@@ -1,4 +1,6 @@
-﻿namespace Invert.Core.GraphDesigner
+﻿using uFrame.Editor.Graphs.Data;
+
+namespace uFrame.Editor.GraphUI
 {
     public interface IBindableTypedItem :  ITypedItem
     {

@@ -1,8 +1,10 @@
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
+using uFrame.Json;
+
 namespace uFrame.MVVM
 {
-    using Invert.Core.GraphDesigner;
-    using Invert.Json;
-
     public class CommandsChildItem : CommandsChildItemBase, IMemberInfo
     {
         [InspectorProperty]
@@ -103,7 +105,7 @@ namespace uFrame.MVVM
         }
     }
 
-    public partial interface ICommandsConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable
+    public partial interface ICommandsConnectable : IDiagramNodeItem, IConnectable
     {
     }
 }

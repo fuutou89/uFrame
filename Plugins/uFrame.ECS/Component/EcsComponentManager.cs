@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using uFrame.Attributes;
+using uFrame.ECS.APIs;
 using UniRx;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.Components
 {
     public abstract class EcsComponentManager : IEcsComponentManager
     {

@@ -1,7 +1,15 @@
+using uFrame.Editor.Core;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.GraphUI.Events;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Input;
+using uFrame.Editor.NavigationSystem;
+using uFrame.Editor.Platform;
 using UnityEditor;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity
+namespace uFrame.Editor.Unity
 {
     public class UnityDesignerWindow : DiagramPlugin
         , IDesignerWindowEvents

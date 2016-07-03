@@ -1,4 +1,6 @@
-namespace Invert.Core.GraphDesigner
+using uFrame.Editor.GraphUI.ViewModels;
+
+namespace uFrame.Editor.GraphUI.Drawers
 {
     public interface INodeDrawer : IDrawer
     {

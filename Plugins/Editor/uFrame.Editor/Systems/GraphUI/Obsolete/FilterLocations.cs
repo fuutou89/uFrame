@@ -1,8 +1,9 @@
 using System.Collections.Generic;
-using Invert.Json;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Json;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI
 {
     public class FilterLocations
     {

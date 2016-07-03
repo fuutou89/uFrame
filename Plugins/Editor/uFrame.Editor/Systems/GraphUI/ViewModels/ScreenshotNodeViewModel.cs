@@ -1,6 +1,7 @@
+using uFrame.Editor.Compiling.CommonNodes;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.ViewModels
 {
     public class ScreenshotNodeViewModel : DiagramNodeViewModel<ScreenshotNode>
     {

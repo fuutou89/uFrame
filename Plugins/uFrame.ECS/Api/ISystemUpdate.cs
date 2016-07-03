@@ -1,8 +1,7 @@
 using uFrame.Attributes;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.APIs
 {
-
     /// <summary>
     /// This interface, when added to a system class, will be invoked every fixed update frame.
     /// </summary>

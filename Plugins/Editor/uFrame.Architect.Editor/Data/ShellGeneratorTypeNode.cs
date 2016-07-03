@@ -1,10 +1,11 @@
-using Invert.Core;
-using Invert.Core.GraphDesigner;
-using Invert.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Json;
 
 namespace uFrame.Architect.Editor.Data
 {

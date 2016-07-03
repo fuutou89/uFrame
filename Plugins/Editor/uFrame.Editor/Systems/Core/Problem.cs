@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics;
 
-namespace Invert.Core
+namespace uFrame.Editor.Core
 {
     public class Problem
     {

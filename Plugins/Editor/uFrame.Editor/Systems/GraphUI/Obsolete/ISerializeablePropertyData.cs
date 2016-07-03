@@ -1,11 +1,14 @@
 using System;
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Graphs.Data;
 
-public interface ISerializeablePropertyData
+namespace uFrame.Editor.GraphUI
 {
-    string Name { get; }
-    Type Type { get; }
-    string RelatedTypeName { get; }
-    string FieldName { get; }
-    IDiagramNode TypeNode();
+    public interface ISerializeablePropertyData
+    {
+        string Name { get; }
+        Type Type { get; }
+        string RelatedTypeName { get; }
+        string FieldName { get; }
+        IDiagramNode TypeNode();
+    }
 }

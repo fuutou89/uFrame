@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Invert.Json;
+using uFrame.Json;
 using UnityEditor;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity
+namespace uFrame.Editor.WindowsPlugin
 {
     //public abstract class ServiceRequest
     //{

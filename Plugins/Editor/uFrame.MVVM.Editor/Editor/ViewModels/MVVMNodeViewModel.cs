@@ -1,10 +1,12 @@
+using uFrame.Editor.GraphUI.ViewModels;
+
 namespace uFrame.MVVM
 {
 
 
     public class MVVMNodeViewModel : MVVMNodeViewModelBase {
         
-        public MVVMNodeViewModel(MVVMNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
+        public MVVMNodeViewModel(MVVMNode graphItemObject, DiagramViewModel diagramViewModel) : 
                 base(graphItemObject, diagramViewModel) {
         }
     }

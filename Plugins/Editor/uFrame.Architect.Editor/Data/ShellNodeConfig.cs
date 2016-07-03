@@ -1,8 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Invert.Core.GraphDesigner;
-using Invert.Data;
-using Invert.Json;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Documentation;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Platform;
+using uFrame.Json;
 
 namespace uFrame.Architect.Editor.Data
 {

@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
-//using ICSharpCode.SharpZipLib.Zip;
-using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Classes;
-using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Commands;
-using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Data;
-using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Events;
-using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Extensions;
-using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Services;
-using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.ViewModels;
-using Invert.Data;
-using Invert.IOC;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Koinonia.Classes;
+using uFrame.Editor.Koinonia.Commands;
+using uFrame.Editor.Koinonia.Data;
+using uFrame.Editor.Koinonia.Events;
+using uFrame.Editor.Koinonia.Service;
+using uFrame.Editor.Koinonia.ViewModels;
+using uFrame.Editor.Koinonia.Extensions;
+using uFrame.Editor.Unity;
+using uFrame.IOC;
 using UnityEditor;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem
+namespace uFrame.Editor.Koinonia
 {
 
     public class KoinoniaSystem : DiagramPlugin, 

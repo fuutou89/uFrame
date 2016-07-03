@@ -1,8 +1,7 @@
 using System;
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Graphs.Data;
 
 namespace uFrame.Editor.Attributes
-//namespace Invert.Core.GraphDesigner
 {
     [AttributeUsage(AttributeTargets.Property)]
     public class InspectorProperty : Attribute

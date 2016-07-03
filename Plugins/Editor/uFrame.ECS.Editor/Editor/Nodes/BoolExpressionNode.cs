@@ -1,8 +1,9 @@
-namespace Invert.uFrame.ECS
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data;
+
+namespace uFrame.ECS.Editor.Nodes
 {
-    using Invert.Core;
-
-
+  
     public class BoolExpressionNode : BoolExpressionNodeBase, IGroupConnectable {
         public override bool AllowInputs
         {
@@ -32,6 +33,6 @@ namespace Invert.uFrame.ECS
         }
     }
     
-    public partial interface IBoolExpressionConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IBoolExpressionConnectable : IDiagramNodeItem, IConnectable {
     }
 }

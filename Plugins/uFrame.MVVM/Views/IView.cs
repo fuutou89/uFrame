@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using uFrame.MVVM;
 using uFrame.MVVM.Bindings;
+using uFrame.MVVM.ViewModels;
 using UnityEngine;
 
-namespace uFrame.MVVM
+namespace uFrame.MVVM.Views
 {
     public interface IView
 #if !UNITY_EDITOR

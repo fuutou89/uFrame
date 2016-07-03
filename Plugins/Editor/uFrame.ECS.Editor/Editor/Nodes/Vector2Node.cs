@@ -1,11 +1,12 @@
-using Invert.Json;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
+using uFrame.Json;
 using UnityEngine;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
-    using Invert.Core.GraphDesigner;
-    using Invert.Data;
-
     public class Vector2Node : Vector2NodeBase {
         private float _x;
         private float _y;
@@ -43,6 +44,6 @@ namespace Invert.uFrame.ECS
 
     }
     
-    public partial interface IVector2Connectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IVector2Connectable : IDiagramNodeItem, IConnectable {
     }
 }

@@ -1,6 +1,7 @@
+using uFrame.Editor.Platform;
 using UnityEditor;
 
-namespace Invert.Core.GraphDesigner.Unity
+namespace uFrame.Editor.Unity
 {
     public class UnityPlatformPreferences : IPlatformPreferences
     {

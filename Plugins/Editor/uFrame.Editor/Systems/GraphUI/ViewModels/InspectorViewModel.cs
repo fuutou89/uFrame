@@ -1,8 +1,10 @@
 using System.Linq;
 using System.Reflection;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Core;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.ViewModels
 {
     public class InspectorViewModel : GraphItemViewModel
     {

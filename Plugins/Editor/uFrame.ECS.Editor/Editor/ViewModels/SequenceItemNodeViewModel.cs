@@ -1,6 +1,10 @@
-﻿using Invert.Core.GraphDesigner;
+﻿using uFrame.ECS.Editor.ChildItems;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.ViewModels;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.ViewModels
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -9,7 +13,7 @@ namespace Invert.uFrame.ECS
     public class SequenceItemNodeViewModel : SequenceItemNodeViewModelBase
     {
 
-        public SequenceItemNodeViewModel(SequenceItemNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) :
+        public SequenceItemNodeViewModel(SequenceItemNode graphItemObject, DiagramViewModel diagramViewModel) :
                 base(graphItemObject, diagramViewModel)
         {
         }

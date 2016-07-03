@@ -1,4 +1,6 @@
-namespace Invert.Core.GraphDesigner
+using uFrame.Editor.Input;
+
+namespace uFrame.Editor.GraphUI.Drawers
 {
     public interface IOnMouseDownEvent
     {

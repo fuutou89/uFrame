@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public interface IDrawInspector
+namespace uFrame.Editor.InspectorWindow
 {
-    void DrawInspector(Rect rect);
+    public interface IDrawInspector
+    {
+        void DrawInspector(Rect rect);
+    }
 }

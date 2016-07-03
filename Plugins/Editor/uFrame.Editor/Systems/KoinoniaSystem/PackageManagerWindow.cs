@@ -1,8 +1,9 @@
-using Invert.IOC;
+using uFrame.Editor.Core;
+using uFrame.IOC;
 using UnityEditor;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem
+namespace uFrame.Editor.Koinonia
 {
     public class PackageManagerWindow : EditorWindow
     {

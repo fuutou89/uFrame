@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Platform
 {
     public interface IImmediateControlsDrawer<TControl> : IPlatformDrawer
     {

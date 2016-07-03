@@ -1,32 +1,34 @@
 using System;
-using Invert.Core;
 
-public class GraphTypeInfo : IItem
+namespace uFrame.Editor.Core
 {
-    public string Group { get; set; }
-    public string Label { get; set; }
-
-    public Type Type
+    public class GraphTypeInfo : IItem
     {
-        get { return Type.GetType(Name); }
-        set { Name = value.Name; }
+        public string Group { get; set; }
+        public string Label { get; set; }
+
+        public Type Type
+        {
+            get { return Type.GetType(Name); }
+            set { Name = value.Name; }
+        }
+
+        public string Name { get; set; }
+
+        public bool IsPrimitive { get; set; }
+
+        public bool IsUnityEngine { get; set; }
+
+        public string Title
+        {
+            get { return Label; }
+        }
+
+        public string SearchTag
+        {
+            get { return Name + Label; }
+        }
+
+        public string Description { get; set; }
     }
-
-    public string Name { get; set; }
-
-    public bool IsPrimitive { get; set; }
-
-    public bool IsUnityEngine { get; set; }
-
-    public string Title
-    {
-        get { return Label; }
-    }
-
-    public string SearchTag
-    {
-        get { return Name + Label; }
-    }
-
-    public string Description { get; set; }
 }

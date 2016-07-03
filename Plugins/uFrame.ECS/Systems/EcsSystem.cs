@@ -1,15 +1,12 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using Invert.IOC;
 using uFrame.Kernel;
 using UniRx;
-using UniRx.Triggers;
-using UnityEngine;
+using uFrame.ECS.APIs;
+using uFrame.ECS.Components;
+using uFrame.IOC;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.Systems
 {
     /// <summary>
     /// This is the base class for all systems.  It derives from SystemServiceMonoBehaviour which is part of the uFrame Kernel

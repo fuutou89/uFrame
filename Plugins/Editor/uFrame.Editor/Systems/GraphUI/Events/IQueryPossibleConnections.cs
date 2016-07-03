@@ -1,6 +1,8 @@
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Platform;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.Events
 {
     public interface IQueryPossibleConnections
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.ViewModels
 {
     public class SectionHeaderViewModel : GraphItemViewModel
     {

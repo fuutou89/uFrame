@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using uFrame.Attributes;
+using uFrame.Editor.Graphs.Data.Types;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Plugins
 {
     public interface IActionFieldInfo : IMemberInfo
     {

@@ -1,4 +1,6 @@
-namespace Invert.uFrame.ECS
+using uFrame.Editor.Graphs.Data;
+
+namespace uFrame.ECS.Editor.Nodes
 {
     using System.Linq;
 
@@ -10,6 +12,6 @@ namespace Invert.uFrame.ECS
         }
     }
     
-    public partial interface IAllFalseConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IAllFalseConnectable : IDiagramNodeItem, IConnectable {
     }
 }

@@ -1,4 +1,4 @@
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Core
 {
     public class Command : ICommand
     {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Invert.Windows
+namespace uFrame.Editor.Windows
 {
     public interface IWindowDrawer
     {

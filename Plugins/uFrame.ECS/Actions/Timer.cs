@@ -3,7 +3,7 @@ using uFrame.Attributes;
 using uFrame.Kernel;
 using UniRx;
 
-namespace uFrame.Actions
+namespace uFrame.ECS.Actions
 {
     [ActionTitle("Timer"),uFrameCategory("Timers"), AsyncAction]
     public class Timer : UFAction

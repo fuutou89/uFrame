@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Documentation
 {
     public interface IDocumentationProvider
     {

@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Core;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.Notifications;
+using uFrame.Editor.Platform;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor
 {
     public class TutorialTipsSystem : DiagramPlugin
         , IShowTutorialTip

@@ -1,6 +1,8 @@
 using System;
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Graphs
 {
     public class RegisteredConnection
     {

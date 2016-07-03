@@ -1,15 +1,18 @@
 using System.CodeDom;
-using Invert.Json;
 using UnityEngine;
+using uFrame.Editor.Attributes;
+using System.Collections.Generic;
+using System.Linq;
+using uFrame.ECS.Editor.ChildItems;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.DebugSystem;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Json;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
-    using Invert.Core.GraphDesigner;
-    using Invert.Data;
-    using System.Collections.Generic;
-    using System.Linq;
-
-    public partial interface ISequenceItemConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable
+    public partial interface ISequenceItemConnectable : IDiagramNodeItem, IConnectable
     {
     }
 

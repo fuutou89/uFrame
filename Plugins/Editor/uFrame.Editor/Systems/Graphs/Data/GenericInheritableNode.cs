@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using uFrame.Editor.Graphs.Data.Types;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Graphs.Data
 {
     public class GenericInheritableNode : GenericNode, IInhertable
     {

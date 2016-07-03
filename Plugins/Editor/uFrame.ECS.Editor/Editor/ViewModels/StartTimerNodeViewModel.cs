@@ -1,10 +1,11 @@
-namespace Invert.uFrame.ECS
+using uFrame.ECS.Editor.Nodes;
+using uFrame.Editor.GraphUI.ViewModels;
+
+namespace uFrame.ECS.Editor.ViewModels
 {
-
-
     public class StartTimerNodeViewModel : StartTimerNodeViewModelBase {
         
-        public StartTimerNodeViewModel(StartTimerNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
+        public StartTimerNodeViewModel(StartTimerNode graphItemObject, DiagramViewModel diagramViewModel) : 
                 base(graphItemObject, diagramViewModel) {
         }
     }

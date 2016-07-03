@@ -1,8 +1,9 @@
-using uFrame.Actions;
 using uFrame.Attributes;
+using uFrame.ECS.Actions;
+using uFrame.ECS.Components;
 using UnityEngine;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.UnityUtilities
 {
     [ActionTitle("Spawn")]
     public class Spawn : UFAction

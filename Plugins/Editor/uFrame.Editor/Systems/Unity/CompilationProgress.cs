@@ -1,8 +1,14 @@
-using Invert.Data;
-using Invert.IOC;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Compiling.Events;
+using uFrame.Editor.Database;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.Events;
+using uFrame.Editor.Platform;
+using uFrame.IOC;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity
+namespace uFrame.Editor.Unity
 {
     public class CompilationProgress : DiagramPlugin, IDesignerWindowEvents, ITaskProgressEvent, ICompileEvents
     {

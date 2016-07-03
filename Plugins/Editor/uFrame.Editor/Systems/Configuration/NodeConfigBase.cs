@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Invert.IOC;
-using Invert.Json;
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data;
+using uFrame.IOC;
+using uFrame.Json;
 
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Configurations
 {
     public abstract class NodeConfigBase : GraphItemConfiguration
     {

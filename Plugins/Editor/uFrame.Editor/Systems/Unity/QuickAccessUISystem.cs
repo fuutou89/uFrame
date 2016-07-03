@@ -1,18 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
-using Invert.Common;
-using Invert.Core.GraphDesigner.Systems.GraphUI;
+using uFrame.Editor.Core;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.GraphUI.Events;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Platform;
 using UnityEditor;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity
+namespace uFrame.Editor.Unity
 {
     public class QuickAccessUISystem : DiagramPlugin,
-        IQueryDesignerWindowOverlayContent, 
-        IOverlayDrawer, 
-        IShowSelectionMenu, 
+        IQueryDesignerWindowOverlayContent,
+        IOverlayDrawer,
+        IShowSelectionMenu,
         IHideSelectionMenu,
-         IGraphSelectionEvents
+        IGraphSelectionEvents
     {
 
         public const int QuickAccessWidth = 300;
@@ -21,17 +25,17 @@ namespace Invert.Core.GraphDesigner.Unity
         private IPlatformDrawer _platrformDrawer;
         private bool _focusNeeded;
 
-        public Vector2? RequestPosition {get; set; }
+        public Vector2? RequestPosition { get; set; }
         public bool EnableContent { get; set; }
         public TreeViewModel TreeModel { get; set; }
         public string SearchCriteria { get; set; }
-        
+
         public IPlatformDrawer PlatformDrawer
         {
             get { return _platrformDrawer ?? (_platrformDrawer = InvertApplication.Container.Resolve<IPlatformDrawer>()); }
             set { _platrformDrawer = value; }
         }
-       
+
 
         public void Draw(Rect bouds)
         {
@@ -40,7 +44,7 @@ namespace Invert.Core.GraphDesigner.Unity
 
             HandleInput(bouds);
 
-            if (!EnableContent ) return;
+            if (!EnableContent) return;
 
             var searcbarRect = bouds.WithHeight(30).PadSides(5);
 
@@ -54,7 +58,7 @@ namespace Invert.Core.GraphDesigner.Unity
 
             GUI.SetNextControlName("SelectionMenu_Search");
             EditorGUI.BeginChangeCheck();
-            var newSearchCrit = GUI.TextField(searcbarRect, SearchCriteria ?? "",ElementDesignerStyles.SearchBarTextStyle);
+            var newSearchCrit = GUI.TextField(searcbarRect, SearchCriteria ?? "", ElementDesignerStyles.SearchBarTextStyle);
             PlatformDrawer.DrawImage(searchIconRect, "SearchIcon", true);
             if (EditorGUI.EndChangeCheck())
             {
@@ -148,7 +152,7 @@ namespace Invert.Core.GraphDesigner.Unity
                         break;
                 }
             }
-            
+
         }
 
         public Rect CalculateBounds(Rect diagramRect)
@@ -156,20 +160,20 @@ namespace Invert.Core.GraphDesigner.Unity
             if (RequestPosition.HasValue)
             {
 
-                if (TreeModel == null) return new Rect(0,0,0,0);
+                if (TreeModel == null) return new Rect(0, 0, 0, 0);
                 var selectedItem = TreeModel.SelectedData as IItem;
 
                 var rect = new Rect().WithSize(QuickAccessWidth, selectedItem == null ? QuickAccessHeigth - 200 : QuickAccessHeigth).WithOrigin(RequestPosition.Value.x, RequestPosition.Value.y);
                 if (rect.height > diagramRect.height) rect = rect.WithHeight(Mathf.Max(diagramRect.height, 230));
 
-                if (rect.yMax > diagramRect.yMax) rect = rect.WithOrigin(rect.x, diagramRect.yMax - rect.height - 15 );
+                if (rect.yMax > diagramRect.yMax) rect = rect.WithOrigin(rect.x, diagramRect.yMax - rect.height - 15);
                 if (rect.xMax > diagramRect.xMax) rect = rect.WithOrigin(diagramRect.xMax - rect.width - 15, rect.y);
 
                 return rect;
 
 
             }
-            var rectNorm =  new Rect().WithSize(QuickAccessWidth, QuickAccessHeigth).CenterInsideOf(diagramRect);
+            var rectNorm = new Rect().WithSize(QuickAccessWidth, QuickAccessHeigth).CenterInsideOf(diagramRect);
             if (rectNorm.height > diagramRect.height) rectNorm = rectNorm.WithHeight(Mathf.Max(diagramRect.height, 230));
             return rectNorm;
 
@@ -198,9 +202,9 @@ namespace Invert.Core.GraphDesigner.Unity
         {
             var item = i as SelectionMenuItem;
             if (item == null || item.Action == null) return;
-            Execute(new LambdaCommand("",item.Action));
+            Execute(new LambdaCommand("", item.Action));
             HideSelection();
-       }
+        }
 
         protected TreeViewModel ConstructViewModel(SelectionMenu items)
         {

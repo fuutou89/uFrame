@@ -1,100 +1,105 @@
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Common;
-using Invert.Common.UI;
-using Invert.Core;
-using Invert.Core.GraphDesigner;
-using Invert.Core.GraphDesigner.Unity;
-using Invert.Data;
-
+using uFrame.Editor.Compiling.Events;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.NavigationSystem;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Unity;
+using uFrame.Editor.Validation;
 using UnityEditor;
 using UnityEngine;
 
-public class ErrorsPlugin : DiagramPlugin
-    , IDrawErrorsList
-    , INodeValidated
-    , IDataRecordRemoved
+namespace uFrame.Editor.InspectorWindow
 {
-    private List<ErrorInfo> _errorInfo = new List<ErrorInfo>();
-    private IPlatformDrawer _platformDrawer;
-    private TreeViewModel _errorInfoList;
-    private static GUIStyle _eventButtonStyleSmall;
-
-    public List<ErrorInfo> ErrorInfo
+    public class ErrorsPlugin : DiagramPlugin
+        , IDrawErrorsList
+        , INodeValidated
+        , IDataRecordRemoved
     {
-        get { return _errorInfo; }
-        set { _errorInfo = value; }
-    }
+        private List<ErrorInfo> _errorInfo = new List<ErrorInfo>();
+        private IPlatformDrawer _platformDrawer;
+        private TreeViewModel _errorInfoList;
+        private static GUIStyle _eventButtonStyleSmall;
 
-    public TreeViewModel ErrorInfoList
-    {
-        get { return _errorInfoList; }
-        set { _errorInfoList = value; }
-    }
-
-    public IPlatformDrawer PlatformDrawer
-    {
-        get { return _platformDrawer ?? (_platformDrawer = Container.Resolve<IPlatformDrawer>()); }
-        set { _platformDrawer = value; }
-    }
-
-    public static GUIStyle EventButtonStyleSmall
-    {
-        get
+        public List<ErrorInfo> ErrorInfo
         {
-            var textColor = Color.white;
-            if (_eventButtonStyleSmall == null)
-                _eventButtonStyleSmall = new GUIStyle
-                {
-                    normal = { background = ElementDesignerStyles.GetSkinTexture("EventButton"), textColor = EditorGUIUtility.isProSkin ? Color.white : Color.black },
-                    active = { background = ElementDesignerStyles.CommandBarClosedStyle.normal.background },
-                    stretchHeight = true,
-
-                    fixedHeight = 25,
-                    border = new RectOffset(3, 3, 3, 3),
-
-                    padding = new RectOffset(25, 0, 5, 5)
-                };
-
-            return _eventButtonStyleSmall;
-        }
-    }
-
-    public void DrawErrors(Rect rect)
-    {
-        GUIHelpers.IsInsepctor = false;
-        if (InvertGraphEditor.PlatformDrawer == null) return;
-
-        var d = InvertGraphEditor.PlatformDrawer as UnityDrawer;
-        d.DrawStretchBox(rect,CachedStyles.WizardListItemBoxStyle,10);        
-
-
-        if (!ErrorInfo.Any())
-        {
-            var textRect = rect;
-            var cacheColor = GUI.color;
-            GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, 0.4f);
-            d.DrawLabel(textRect, "No Issues Found", CachedStyles.WizardSubBoxTitleStyle, DrawingAlignment.MiddleCenter);
-            GUI.color = cacheColor;
-            return;
+            get { return _errorInfo; }
+            set { _errorInfo = value; }
         }
 
-        if (ErrorInfoList == null) return;
-        if (ErrorInfoList.IsDirty) ErrorInfoList.Refresh();
-
-        Signal<IDrawTreeView>(_=>_.DrawTreeView(rect,ErrorInfoList, (m,i) =>
+        public TreeViewModel ErrorInfoList
         {
-            
-            var bp = i as ErrorInfo;
-            if (bp != null && bp.SourceNode != null)
+            get { return _errorInfoList; }
+            set { _errorInfoList = value; }
+        }
+
+        public IPlatformDrawer PlatformDrawer
+        {
+            get { return _platformDrawer ?? (_platformDrawer = Container.Resolve<IPlatformDrawer>()); }
+            set { _platformDrawer = value; }
+        }
+
+        public static GUIStyle EventButtonStyleSmall
+        {
+            get
             {
-                Execute(new NavigateToNodeCommand()
-                {
-                    Node = bp.SourceNode,
-                    Select = true
-                });
+                var textColor = Color.white;
+                if (_eventButtonStyleSmall == null)
+                    _eventButtonStyleSmall = new GUIStyle
+                    {
+                        normal = { background = ElementDesignerStyles.GetSkinTexture("EventButton"), textColor = EditorGUIUtility.isProSkin ? Color.white : Color.black },
+                        active = { background = ElementDesignerStyles.CommandBarClosedStyle.normal.background },
+                        stretchHeight = true,
+
+                        fixedHeight = 25,
+                        border = new RectOffset(3, 3, 3, 3),
+
+                        padding = new RectOffset(25, 0, 5, 5)
+                    };
+
+                return _eventButtonStyleSmall;
             }
-        }));
+        }
+
+        public void DrawErrors(Rect rect)
+        {
+            GUIHelpers.IsInsepctor = false;
+            if (InvertGraphEditor.PlatformDrawer == null) return;
+
+            var d = InvertGraphEditor.PlatformDrawer as UnityDrawer;
+            d.DrawStretchBox(rect,CachedStyles.WizardListItemBoxStyle,10);        
+
+
+            if (!ErrorInfo.Any())
+            {
+                var textRect = rect;
+                var cacheColor = GUI.color;
+                GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, 0.4f);
+                d.DrawLabel(textRect, "No Issues Found", CachedStyles.WizardSubBoxTitleStyle, DrawingAlignment.MiddleCenter);
+                GUI.color = cacheColor;
+                return;
+            }
+
+            if (ErrorInfoList == null) return;
+            if (ErrorInfoList.IsDirty) ErrorInfoList.Refresh();
+
+            Signal<IDrawTreeView>(_=>_.DrawTreeView(rect,ErrorInfoList, (m,i) =>
+            {
+            
+                var bp = i as ErrorInfo;
+                if (bp != null && bp.SourceNode != null)
+                {
+                    Execute(new NavigateToNodeCommand()
+                    {
+                        Node = bp.SourceNode,
+                        Select = true
+                    });
+                }
+            }));
 
 
 //        // var itemRect = new Rect(0f, 0f, rect.width, 25);
@@ -136,45 +141,46 @@ public class ErrorsPlugin : DiagramPlugin
 //        }
 //        
     
-    }
+        }
 
-    public void NodeValidated(IDiagramNode node)
-    {
-        ErrorInfo.Clear();
-        Signal<IQueryErrors>(_=>_.QueryErrors(ErrorInfo));
-        UpdateList();
-    }
+        public void NodeValidated(IDiagramNode node)
+        {
+            ErrorInfo.Clear();
+            Signal<IQueryErrors>(_=>_.QueryErrors(ErrorInfo));
+            UpdateList();
+        }
 
-    private void UpdateList()
-    {
-        if (ErrorInfoList == null) ErrorInfoList = new TreeViewModel();
-        ErrorInfoList.SingleIconSelector = i =>
+        private void UpdateList()
         {
-            var item = i as ErrorInfo;
-            if (item == null) return "DotIcon";
-            if (item.Siverity == ValidatorType.Error) return "ErrorIcon_Micro";
-            if (item.Siverity == ValidatorType.Warning) return "WarningIcon_Micro";
-            return "DotIcon";
-        };
-        ErrorInfoList.Data = ErrorInfo.OfType<IItem>().ToList();
-        ErrorInfoList.Submit = i =>
-        {
-            
-            var bp = i as ErrorInfo;
-            if (bp != null && bp.SourceNode != null)
+            if (ErrorInfoList == null) ErrorInfoList = new TreeViewModel();
+            ErrorInfoList.SingleIconSelector = i =>
             {
-                Execute(new NavigateToNodeCommand()
+                var item = i as ErrorInfo;
+                if (item == null) return "DotIcon";
+                if (item.Siverity == ValidatorType.Error) return "ErrorIcon_Micro";
+                if (item.Siverity == ValidatorType.Warning) return "WarningIcon_Micro";
+                return "DotIcon";
+            };
+            ErrorInfoList.Data = ErrorInfo.OfType<IItem>().ToList();
+            ErrorInfoList.Submit = i =>
+            {
+            
+                var bp = i as ErrorInfo;
+                if (bp != null && bp.SourceNode != null)
                 {
-                    Node = bp.SourceNode,
-                    Select = true
-                });
-            }
-        };
-    }
+                    Execute(new NavigateToNodeCommand()
+                    {
+                        Node = bp.SourceNode,
+                        Select = true
+                    });
+                }
+            };
+        }
 
-    public void RecordRemoved(IDataRecord record)
-    {
-        ErrorInfo.RemoveAll(p => p.Record.Identifier == record.Identifier);
-    }
+        public void RecordRemoved(IDataRecord record)
+        {
+            ErrorInfo.RemoveAll(p => p.Record.Identifier == record.Identifier);
+        }
 
+    }
 }

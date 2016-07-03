@@ -1,7 +1,7 @@
 using uFrame.MVVM.Bindings;
 using UnityEngine;
 
-namespace uFrame.MVVM
+namespace uFrame.MVVM.Views
 {
     public abstract class ViewComponent : MonoBehaviour, IBindingProvider
     {

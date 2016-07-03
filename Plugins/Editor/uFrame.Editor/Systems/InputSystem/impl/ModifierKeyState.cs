@@ -1,4 +1,4 @@
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Input
 { 
     public class ModifierKeyState
     {

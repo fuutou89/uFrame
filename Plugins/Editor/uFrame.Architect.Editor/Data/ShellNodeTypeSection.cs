@@ -1,5 +1,6 @@
-using Invert.Core.GraphDesigner;
-using Invert.Json;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Configurations;
+using uFrame.Json;
 
 namespace uFrame.Architect.Editor.Data
 {
@@ -8,12 +9,11 @@ namespace uFrame.Architect.Editor.Data
         [JsonProperty]
         public bool AllowAdding { get; set; }
 
-
-
         public override string ClassName
         {
             get { return this.Name + "Reference"; }
         }
+
         [JsonProperty, InspectorProperty]
         public SectionVisibility Visibility { get; set; }
 

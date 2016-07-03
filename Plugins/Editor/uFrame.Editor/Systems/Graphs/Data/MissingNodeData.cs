@@ -1,33 +1,35 @@
 ﻿using System.Collections.Generic;
-using Invert.Core.GraphDesigner;
 
-public class MissingNodeData : GraphNode
+namespace uFrame.Editor.Graphs.Data
 {
-
-
-    public override void NodeItemRemoved(IDiagramNodeItem item)
+    public class MissingNodeData : GraphNode
     {
-        
-    }
+
+
+        public override void NodeItemRemoved(IDiagramNodeItem item)
+        {
+
+        }
 
 
 
-    public override IEnumerable<IDiagramNodeItem> DisplayedItems
-    {
-        get { yield break; }
-    }
+        public override IEnumerable<IDiagramNodeItem> DisplayedItems
+        {
+            get { yield break; }
+        }
 
-    public override string Label { get { return string.Empty; } }
+        public override string Label { get { return string.Empty; } }
 
-    public override string Name
-    {
-        get { return Label; }
+        public override string Name
+        {
+            get { return Label; }
 
-    }
+        }
 
-    public override IEnumerable<IDiagramNodeItem> PersistedItems
-    {
-        get { yield break; }
-        set {  }
+        public override IEnumerable<IDiagramNodeItem> PersistedItems
+        {
+            get { yield break; }
+            set { }
+        }
     }
 }

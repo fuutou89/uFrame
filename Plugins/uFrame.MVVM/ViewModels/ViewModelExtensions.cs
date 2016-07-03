@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Text;
 using System.Xml.Serialization;
-using Invert.StateMachine;
-//using uFrame.IOC;
-using Invert.IOC;
+using uFrame.IOC;
 using uFrame.Kernel;
-using uFrame.Serialization;
+using uFrame.Kernel.Serialization;
+using uFrame.Kernel.Serialization.Json;
+using uFrame.Kernel.Serialization.Storage;
+using uFrame.MVVM.StateMachines;
 
-namespace uFrame.MVVM
+namespace uFrame.MVVM.ViewModels
 {
     public static class ViewModelExtensions
     {

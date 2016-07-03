@@ -1,7 +1,8 @@
 using System;
+using uFrame.Editor.Graphs.Data;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Configurations
 {
     public class Slot : GraphItemAttribute
     {

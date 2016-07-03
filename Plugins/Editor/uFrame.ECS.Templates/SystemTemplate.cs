@@ -1,9 +1,10 @@
 ﻿using System.Linq;
-using Invert.Core.GraphDesigner;
-using uFrame.ECS;
+using uFrame.ECS.APIs;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.Systems;
+using uFrame.Editor.Compiling.CodeGen;
 
-
-namespace Invert.uFrame.ECS.Templates
+namespace uFrame.ECS.Templates
 {
     [ForceBaseType(typeof(EcsSystem))]
     [RequiresNamespace("uFrame.ECS")]

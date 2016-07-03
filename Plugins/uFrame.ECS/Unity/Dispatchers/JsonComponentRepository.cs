@@ -1,7 +1,7 @@
-using Invert.Json;
+using uFrame.Json;
 using UnityEngine;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.UnityUtilities
 {
     public class JsonComponentRepository : ComponentRepositoryBehaviour
     {

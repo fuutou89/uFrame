@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Invert.Core
+namespace uFrame.Editor.Core
 {
     public class DefaultLogger : IDebugLogger
     {

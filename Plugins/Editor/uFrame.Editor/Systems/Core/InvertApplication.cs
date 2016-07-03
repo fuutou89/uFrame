@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Invert.IOC;
+using uFrame.Editor.Core.MultiThreading;
+using uFrame.IOC;
 
-namespace Invert.Core
+namespace uFrame.Editor.Core
 {
     public static class InvertApplication
     {

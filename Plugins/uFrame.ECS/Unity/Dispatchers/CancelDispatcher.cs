@@ -1,7 +1,8 @@
 using uFrame.Attributes;
+using uFrame.ECS.Components;
 using UnityEngine.EventSystems;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.UnityUtilities
 {
     [UFrameEventDispatcher("On Cancel"), uFrameCategory("uGUI")]
     public class CancelDispatcher : EcsDispatcher, ICancelHandler

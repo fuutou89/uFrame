@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
-using Invert.Common;
+using uFrame.Editor.Unity;
+using uFrame.Editor.Windows;
 using UnityEngine;
 
-namespace Invert.Windows
+namespace uFrame.Editor.WindowsPlugin
 {
 
     public class WindowSelectionPanel : Area<IEnumerable<IWindowFactory>>

@@ -1,4 +1,6 @@
-namespace uFrame.ECS
+using uFrame.ECS.Components;
+
+namespace uFrame.ECS.UnityUtilities
 {
     public class DespawnEntity
     {

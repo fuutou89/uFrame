@@ -1,7 +1,10 @@
 using System.ComponentModel;
-using Invert.Data;
+using uFrame.Editor.Core;
+using uFrame.Editor.Core.MultiThreading;
+using uFrame.Editor.Database;
+using uFrame.Editor.Database.Data;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Validation
 {
     public class ValidateDatabaseCommand : Command, IBackgroundCommand
     {

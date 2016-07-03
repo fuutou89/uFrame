@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
-namespace Invert.Core
+using uFrame.Editor.Core;
+
+namespace uFrame.Editor.Platform
 {
     public interface IWindowManager
     {

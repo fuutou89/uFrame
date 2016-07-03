@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Invert.Data;
-using Invert.Json;
+using uFrame.Editor.Database.Data;
+using uFrame.Json;
 
-namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem
+namespace uFrame.Editor.Koinonia.Data
 {
     public class KoinoniaSettings : IDataRecord
     {

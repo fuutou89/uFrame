@@ -1,4 +1,7 @@
-namespace Invert.Core.GraphDesigner
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.Drawers.Schemas;
+
+namespace uFrame.Editor.Platform
 {
     public interface IStyleProvider
     {

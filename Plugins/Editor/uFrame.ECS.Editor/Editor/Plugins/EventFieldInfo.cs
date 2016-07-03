@@ -1,7 +1,7 @@
 using System;
 using uFrame.Attributes;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Plugins
 {
     public class EventFieldInfo
     {

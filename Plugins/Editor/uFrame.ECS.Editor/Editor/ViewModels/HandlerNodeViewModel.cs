@@ -1,8 +1,14 @@
-using Invert.Core;
-using Invert.Core.GraphDesigner;
-using Invert.Data;
+using uFrame.ECS.Editor.ChildItems;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.Editor.Plugins;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.Scaffolding;
+using uFrame.Editor.GraphUI.ViewModels;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.ViewModels
 {
     using System.Collections.Generic;
 
@@ -13,7 +19,7 @@ namespace Invert.uFrame.ECS
             get { return true; }
         }
 
-        public HandlerNodeViewModel(HandlerNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
+        public HandlerNodeViewModel(HandlerNode graphItemObject, DiagramViewModel diagramViewModel) : 
                 base(graphItemObject, diagramViewModel) {
         }
 

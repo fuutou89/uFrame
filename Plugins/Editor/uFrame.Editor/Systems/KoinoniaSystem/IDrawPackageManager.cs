@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem
+namespace uFrame.Editor.Koinonia
 {
     public interface IDrawPackageManager
     {

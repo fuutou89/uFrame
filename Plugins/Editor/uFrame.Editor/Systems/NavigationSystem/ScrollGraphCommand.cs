@@ -1,6 +1,7 @@
+using uFrame.Editor.Core;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.NavigationSystem
 {
     public class ScrollGraphCommand : Command
     {

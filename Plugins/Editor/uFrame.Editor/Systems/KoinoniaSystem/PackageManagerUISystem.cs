@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Common;
-using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Classes;
-using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Commands;
-using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Data;
-using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.ViewModels;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Core;
+using uFrame.Editor.Koinonia.Classes;
+using uFrame.Editor.Koinonia.Commands;
+using uFrame.Editor.Koinonia.Data;
+using uFrame.Editor.Koinonia.ViewModels;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Unity;
+using uFrame.Editor.WindowsPlugin;
 using UnityEditor;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem
+namespace uFrame.Editor.Koinonia
 {
 
     public class PackageManagerUISystem : DiagramPlugin, IDrawPackageManager, IDrawPackagePage, IDrawPackageControlPanel

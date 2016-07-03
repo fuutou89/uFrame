@@ -4,8 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CodeGen
 {
     public class TemplateContext<TData> : TemplateContext
     {

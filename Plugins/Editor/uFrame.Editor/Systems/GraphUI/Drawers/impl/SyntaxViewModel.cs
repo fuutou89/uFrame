@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using uFrame.Editor.GraphUI.ViewModels;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.Drawers
 {
     public class SyntaxViewModel : GraphItemViewModel
     {

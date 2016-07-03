@@ -3,9 +3,14 @@ using System.CodeDom;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Core;
-using Invert.Core.GraphDesigner;
 using uFrame.Kernel;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Compiling.CommonNodes;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Kernel.Serialization;
+using uFrame.MVVM.ViewModels;
 
 namespace uFrame.MVVM.Templates
 {

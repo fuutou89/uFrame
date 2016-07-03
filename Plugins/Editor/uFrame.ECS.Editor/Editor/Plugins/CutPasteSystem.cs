@@ -1,12 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Core;
-using Invert.Core.GraphDesigner;
-using Invert.IOC;
-using Invert.Json;
+using uFrame.Editor;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Input;
+using uFrame.Editor.Platform;
+using uFrame.IOC;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Plugins
 {
     public class CutPasteSystem : DiagramPlugin,
         IExecuteCommand<PickupCommand>,

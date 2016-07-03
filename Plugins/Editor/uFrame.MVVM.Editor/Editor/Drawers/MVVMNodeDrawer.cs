@@ -1,8 +1,7 @@
+using uFrame.Editor.GraphUI.Drawers;
+
 namespace uFrame.MVVM
 {
-    using Invert.Core.GraphDesigner;
-
-
     public class MVVMNodeDrawer : GenericNodeDrawer<MVVMNode,MVVMNodeViewModel> {
         
         public MVVMNodeDrawer(MVVMNodeViewModel viewModel) : 

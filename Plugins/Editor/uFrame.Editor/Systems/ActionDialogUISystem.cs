@@ -1,4 +1,4 @@
-﻿namespace Invert.Core.GraphDesigner.Unity.WindowsSystem
+﻿namespace uFrame.Editor
 {
     class ActionDialogUISystem
     {

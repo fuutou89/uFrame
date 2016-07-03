@@ -1,12 +1,22 @@
-﻿using Invert.Core;
-using Invert.Core.GraphDesigner;
+﻿using uFrame.Editor;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Compiling.CommonNodes;
+using uFrame.Editor.Core;
+using uFrame.Editor.Documentation;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Workspaces.Data;
+using uFrame.IOC;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.Workspaces;
 
 namespace uFrame.Architect.Editor
 {
     using Data;
     using Generators;
 
-    using Invert.IOC;
+
     [UnityEditor.InitializeOnLoad]
     public class PluginDesigner : DiagramPlugin
     {

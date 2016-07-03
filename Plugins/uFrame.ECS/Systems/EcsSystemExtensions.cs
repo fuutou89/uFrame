@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using uFrame.ECS.APIs;
+using uFrame.ECS.Components;
 using uFrame.Kernel;
 using UniRx;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.Systems
 {
     /// <summary>
     /// These extensions are for facilitating the construction of systems. Component Created/Destroyed, Property Changes, Collection Modifications..etc

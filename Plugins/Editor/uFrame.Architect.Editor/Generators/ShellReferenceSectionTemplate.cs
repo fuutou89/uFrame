@@ -1,10 +1,11 @@
 using System.CodeDom;
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Architect.Editor.Data;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Graphs.Data;
 
 namespace uFrame.Architect.Editor.Generators
 {
-    using Data;
-
     [TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}Reference")]
     public class ShellReferenceSectionTemplate : GenericReferenceItem<IDiagramNodeItem>,
         IClassTemplate<ShellNodeTypeReferenceSection>

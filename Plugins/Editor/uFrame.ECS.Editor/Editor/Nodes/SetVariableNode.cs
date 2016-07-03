@@ -1,9 +1,12 @@
 using uFrame.Attributes;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
     using System.Collections.Generic;
-    using Invert.Core.GraphDesigner;
+    
 
     [ActionTitle("Set Variable"),uFrameCategory("Assign", "Set", "Variables")]
     public class SetVariableNode : CustomAction {
@@ -98,6 +101,6 @@ namespace Invert.uFrame.ECS
             }
         }
     }
-    public partial interface ISetVariableConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface ISetVariableConnectable : IDiagramNodeItem, IConnectable {
     }
 }

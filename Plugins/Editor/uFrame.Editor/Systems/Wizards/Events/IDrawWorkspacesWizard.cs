@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using uFrame.Editor.Platform;
+using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Systems.Wizards.api
+namespace uFrame.Editor.Wizards.Events
 {
     public interface IDrawWorkspacesWizard
     {

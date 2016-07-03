@@ -1,7 +1,7 @@
 using System.CodeDom;
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Compiling.CodeGen;
 
-namespace Invert.uFrame.ECS.Templates
+namespace uFrame.ECS.Templates
 {
     public partial class GroupItemTemplate
     {

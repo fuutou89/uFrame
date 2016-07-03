@@ -1,7 +1,8 @@
 using System;
 using System.Collections;
+using uFrame.Editor.Core;
 
-namespace Invert.Core.GraphDesigner.Unity
+namespace uFrame.Editor.Unity
 {
     public class TaskSystem : DiagramPlugin, IUpdate, ITaskHandler
     {

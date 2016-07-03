@@ -1,6 +1,6 @@
 using System;
 
-namespace Invert.Windows
+namespace uFrame.Editor.Windows
 {
     public interface IWindowFactory
     {

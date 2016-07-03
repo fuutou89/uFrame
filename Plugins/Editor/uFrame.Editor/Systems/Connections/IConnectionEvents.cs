@@ -1,4 +1,6 @@
-namespace Invert.Core.GraphDesigner
+using uFrame.Editor.Graphs.Data;
+
+namespace uFrame.Editor.Connections
 {
     public interface IConnectionEvents
     {

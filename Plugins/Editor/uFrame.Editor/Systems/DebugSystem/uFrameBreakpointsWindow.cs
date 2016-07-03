@@ -1,15 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Invert.Core;
-using Invert.Core.GraphDesigner;
-using Invert.Data;
-using Invert.IOC;
-using Invert.uFrame.ECS;
 using UnityEditor;
 using UnityEngine;
+using uFrame.Editor.Database.Data;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.Editor.Core;
+using uFrame.Editor.Menus;
+using uFrame.Editor.NavigationSystem;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Unity;
+using uFrame.IOC;
 
 //namespace Assets.Plugins.Editor.uFrame.ECS.Editor.DebugSystem
-namespace uFrame.Editor
+namespace uFrame.Editor.DebugSystem
 {
     public class uFrameBreakpointsWindowPlugin : DiagramPlugin
         , IToolbarQuery

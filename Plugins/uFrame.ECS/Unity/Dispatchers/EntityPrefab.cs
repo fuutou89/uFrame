@@ -1,7 +1,8 @@
+using uFrame.ECS.Components;
 using uFrame.Kernel;
 using UnityEngine;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.UnityUtilities
 {
     public class EntityPrefab : MonoBehaviour
     {

@@ -1,4 +1,8 @@
-namespace Invert.Core.GraphDesigner
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Input;
+
+namespace uFrame.Editor.Platform
 {
     public interface ICreateConnectionMenuEvent
     {

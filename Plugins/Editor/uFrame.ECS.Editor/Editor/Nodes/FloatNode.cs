@@ -1,11 +1,13 @@
 using System.CodeDom;
-using Invert.Json;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
+using uFrame.Json;
 
-namespace Invert.uFrame.ECS
-{
-    using Invert.Core.GraphDesigner;
-    using Data;
 
+namespace uFrame.ECS.Editor.Nodes
+{    
     public class FloatNode : FloatNodeBase {
         private float _value;
         public override string Name
@@ -39,6 +41,6 @@ namespace Invert.uFrame.ECS
         }
     }
     
-    public partial interface IFloatConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IFloatConnectable : IDiagramNodeItem, IConnectable {
     }
 }

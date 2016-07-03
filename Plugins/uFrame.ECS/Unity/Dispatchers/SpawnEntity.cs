@@ -1,6 +1,7 @@
+using uFrame.ECS.Components;
 using UnityEngine;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.UnityUtilities
 {
     public class SpawnEntity
     {

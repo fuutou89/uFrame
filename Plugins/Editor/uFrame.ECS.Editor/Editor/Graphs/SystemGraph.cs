@@ -1,8 +1,10 @@
-using Invert.Json;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.Editor.Database.Data;
+using uFrame.Json;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Graphs
 {
-    using Invert.Data;
+    
 
     public class SystemGraph : SystemGraphBase, IVariableNameProvider {
 

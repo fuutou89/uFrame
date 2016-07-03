@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
-using Invert.Common;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.Drawers.Schemas;
+using uFrame.Editor.Platform;
 using UnityEditor;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity
+namespace uFrame.Editor.Unity
 {
     public class UnityStyleProvider : IStyleProvider
     {

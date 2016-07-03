@@ -1,7 +1,9 @@
 using System;
-using Invert.Data;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Graphs.Data
 {
     public class ErrorInfo : IItem
     {

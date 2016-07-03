@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Classes
+namespace uFrame.Editor.Koinonia.Classes
 {
     public abstract class UFramePackage : IUFramePackage
     {

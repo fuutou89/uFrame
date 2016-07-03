@@ -1,10 +1,11 @@
 using System.Collections.Generic;
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Architect.Editor.Data;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Documentation;
 
 namespace uFrame.Architect.Editor
 {
-    using Data;
-
     [TemplateClass(TemplateLocation.Both, "{0}DocumentationProvider")]
     public class DocumentationTemplate : DocumentationDefaultProvider, IClassTemplate<ShellPluginNode>
     {

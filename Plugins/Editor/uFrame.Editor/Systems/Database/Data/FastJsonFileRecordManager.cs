@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Invert.Json;
+using uFrame.Json;
 
-namespace Invert.Data
+namespace uFrame.Editor.Database.Data
 {
     public class FastJsonFileRecordManager : IDataRecordManager
     {

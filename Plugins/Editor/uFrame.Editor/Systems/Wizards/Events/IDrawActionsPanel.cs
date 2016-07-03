@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Wizards.Data;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Systems.GraphUI.api
+namespace uFrame.Editor.Wizards.Events
 {
     public interface IDrawActionsPanel
     {

@@ -1,4 +1,4 @@
-namespace Invert.Core.GraphDesigner.Unity.WindowsPlugin
+namespace uFrame.Editor.LogSystem
 {
     public interface ILogEvents
     {

@@ -1,7 +1,10 @@
 using System;
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.ViewModels;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.QuickAccess
 {
     public class QuickAddItem :IItem
     {

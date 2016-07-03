@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
+using uFrame.Editor.Core;
 
-namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Commands
+namespace uFrame.Editor.Koinonia.Commands
 {
     public class RunQueuedOperationsCommand : IBackgroundCommand
     {

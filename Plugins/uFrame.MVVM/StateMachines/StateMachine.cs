@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using uFrame.MVVM;
+using uFrame.MVVM.ViewModels;
 using UniRx;
-using UnityEngine;
 
-namespace Invert.StateMachine
+namespace uFrame.MVVM.StateMachines
 {
     public class StateMachine : P<State>
     {

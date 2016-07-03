@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-//using uFrame.IOC;
-using Invert.IOC;
+using uFrame.IOC;
 using uFrame.Kernel;
+using uFrame.MVVM.Events;
+using uFrame.MVVM.ViewModels;
+using uFrame.MVVM.Views;
 using UniRx;
 using UnityEngine;
 

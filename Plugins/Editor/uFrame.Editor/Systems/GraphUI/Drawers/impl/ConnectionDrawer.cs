@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Platform;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.Drawers
 {
     public class ConnectionDrawer : Drawer<ConnectionViewModel>
     {

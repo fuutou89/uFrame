@@ -1,8 +1,12 @@
 ﻿using System;
-using Invert.Common;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Input;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Unity;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.Drawers
 {
     public class NoteNodeDrawer : DiagramNodeDrawer<NoteNodeViewModel>
     {

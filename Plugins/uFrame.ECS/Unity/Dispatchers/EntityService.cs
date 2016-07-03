@@ -2,13 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using uFrame.Actions.Attributes;
 using uFrame.Attributes;
+using uFrame.ECS.APIs;
+using uFrame.ECS.Components;
+using uFrame.ECS.Systems;
 using uFrame.Kernel;
 using UniRx;
 using UnityEngine;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.UnityUtilities
 {
     public class EntityService : EcsSystem
     {

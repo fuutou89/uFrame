@@ -1,4 +1,8 @@
-﻿namespace Invert.Core.GraphDesigner
+﻿using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.GraphUI.ViewModels;
+
+namespace uFrame.Editor.GraphUI.Scaffolding
 {
 
     public class ScaffoldNode<TData> where TData : GenericNode

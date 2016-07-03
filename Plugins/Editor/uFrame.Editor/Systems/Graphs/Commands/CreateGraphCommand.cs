@@ -1,9 +1,13 @@
 using System;
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Core;
+using uFrame.Editor.Attributes;
 
-public class CreateGraphCommand : Command
+namespace uFrame.Editor.Graphs.Commands
 {
-    [InspectorProperty]
-    public string Name { get; set; }
-    public Type GraphType { get; set; }
+    public class CreateGraphCommand : Command
+    {
+        [InspectorProperty]
+        public string Name { get; set; }
+        public Type GraphType { get; set; }
+    }
 }

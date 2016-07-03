@@ -1,7 +1,9 @@
-﻿using uFrame.Kernel;
+﻿using uFrame.ECS.APIs;
+using uFrame.ECS.UnityUtilities;
+using uFrame.Kernel;
 using UnityEngine;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.Components
 {
     public partial class Entity : uFrameComponent, IEcsComponent
     {

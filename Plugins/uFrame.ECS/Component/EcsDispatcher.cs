@@ -1,6 +1,6 @@
 using uFrame.Kernel;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.Components
 {
     /// <summary>
     /// Used for dispatching entity events that come from standard unity messages/events.

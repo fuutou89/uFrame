@@ -6,7 +6,7 @@ using uFrame.Attributes;
 using uFrame.ECS;
 using UnityEngine;
 
-namespace uFrame.Actions
+namespace uFrame.ECS.Actions
 {
     [ActionLibrary, uFrameCategory("Condition")]
     public static class Comparisons

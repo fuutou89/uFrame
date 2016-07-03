@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Invert.IOC;
+using uFrame.IOC;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Graphs.Data
 {
     public static class FilterExtensions
     {

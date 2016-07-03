@@ -1,4 +1,4 @@
-namespace Invert.Core.GraphDesigner.Unity
+namespace uFrame.Editor.WindowsPlugin
 {
     public class Response
     {

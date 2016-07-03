@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Systems.GraphUI
+namespace uFrame.Editor.GraphUI
 {
     public interface IOverlayDrawer
     {

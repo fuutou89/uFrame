@@ -1,4 +1,7 @@
-public class GraphData : UnityGraphData
+namespace uFrame.Editor.Unity
 {
+    public class GraphData : UnityGraphData
+    {
 
+    }
 }

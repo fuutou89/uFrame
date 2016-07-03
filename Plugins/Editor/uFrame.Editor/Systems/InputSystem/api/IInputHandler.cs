@@ -1,4 +1,6 @@
-namespace Invert.Core.GraphDesigner
+using uFrame.Editor.Platform;
+
+namespace uFrame.Editor.Input
 {
     public interface IInputHandler
     {

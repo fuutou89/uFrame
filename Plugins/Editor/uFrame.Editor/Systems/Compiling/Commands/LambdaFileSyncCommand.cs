@@ -1,6 +1,7 @@
 ﻿using System;
+using uFrame.Editor.Core;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.Commands
 {
     public class LambdaFileSyncCommand : LambdaCommand, IFileSyncCommand
     {

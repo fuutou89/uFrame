@@ -1,10 +1,14 @@
-using Invert.Data;
-using Invert.Json;
+using uFrame.ECS.Editor.Plugins;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Nodes;
+using uFrame.Json;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
     using System.Collections.Generic;
-    using Invert.Core.GraphDesigner;
+    
 
     public class EventIds : IntegerIdProvider { }
 
@@ -85,6 +89,6 @@ namespace Invert.uFrame.ECS
 
     }
     
-    public partial interface IEventConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IEventConnectable : IDiagramNodeItem, IConnectable {
     }
 }

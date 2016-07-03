@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Graphs.Data;
 
 namespace uFrame.Architect.Editor.Data
 {

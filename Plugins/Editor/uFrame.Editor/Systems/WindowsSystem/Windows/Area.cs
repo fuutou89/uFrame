@@ -1,10 +1,9 @@
 using System;
-using Invert.Core;
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Core;
+using uFrame.Editor.Platform;
 
-namespace Invert.Windows
+namespace uFrame.Editor.Windows
 {
-
     public abstract class Area<TData> : Area
     {
         private IPlatformDrawer _drawer;

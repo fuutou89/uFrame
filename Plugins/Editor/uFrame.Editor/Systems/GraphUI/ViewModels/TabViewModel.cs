@@ -1,6 +1,7 @@
+using uFrame.Editor.Graphs.Data;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.ViewModels
 {
     public class TabViewModel : ViewModel
     {

@@ -1,12 +1,20 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Core.GraphDesigner.Systems.GraphUI;
-using Invert.Data;
-using Invert.IOC;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.GraphUI.Events;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Menus;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Undo;
+using uFrame.Editor.Workspaces.Data;
+using uFrame.IOC;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI
 {
     public class DesignerWindow : DiagramPlugin,
         IGraphWindow,

@@ -1,7 +1,11 @@
 ﻿using System;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Input;
+using uFrame.Editor.Menus;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Platform
 {
     public interface IPlatformDrawer
     {

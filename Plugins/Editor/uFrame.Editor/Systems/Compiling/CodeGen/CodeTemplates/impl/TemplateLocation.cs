@@ -1,6 +1,6 @@
 using System;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CodeGen
 {
     [Flags]
     public enum TemplateLocation

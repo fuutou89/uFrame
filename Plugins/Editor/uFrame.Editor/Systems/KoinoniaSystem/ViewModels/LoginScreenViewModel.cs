@@ -1,7 +1,8 @@
-﻿using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Commands;
-using Invert.Core.GraphDesigner.Unity.WindowsPlugin;
+﻿using uFrame.Editor.Core;
+using uFrame.Editor.Koinonia.Commands;
+using uFrame.Editor.Windows;
 
-namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem.ViewModels
+namespace uFrame.Editor.Koinonia.ViewModels
 {
     public class LoginScreenViewModel : WindowViewModel
     {

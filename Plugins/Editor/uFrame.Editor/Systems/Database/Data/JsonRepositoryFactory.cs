@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Invert.Data
+namespace uFrame.Editor.Database.Data
 {
     public class JsonRepositoryFactory : ITypeRepositoryFactory
     {

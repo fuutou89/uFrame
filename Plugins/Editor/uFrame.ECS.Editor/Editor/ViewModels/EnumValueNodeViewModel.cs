@@ -1,11 +1,13 @@
-namespace Invert.uFrame.ECS
+using uFrame.ECS.Editor.Nodes;
+using uFrame.Editor.GraphUI.ViewModels;
+
+namespace uFrame.ECS.Editor.ViewModels
 {
     using System.Collections.Generic;
 
-
     public class EnumValueNodeViewModel : EnumValueNodeViewModelBase {
         
-        public EnumValueNodeViewModel(EnumValueNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
+        public EnumValueNodeViewModel(EnumValueNode graphItemObject, DiagramViewModel diagramViewModel) : 
                 base(graphItemObject, diagramViewModel) {
         }
 

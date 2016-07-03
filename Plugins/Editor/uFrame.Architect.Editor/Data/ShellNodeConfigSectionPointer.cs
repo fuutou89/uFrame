@@ -1,7 +1,9 @@
 using System.Collections.Generic;
-using Invert.Core.GraphDesigner;
-using Invert.Data;
-using Invert.Json;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Database.Data;
+using uFrame.Json;
 
 namespace uFrame.Architect.Editor.Data
 {

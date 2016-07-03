@@ -1,7 +1,7 @@
-namespace Invert.uFrame.ECS
+using uFrame.Editor.Graphs.Data;
+
+namespace uFrame.ECS.Editor.Nodes
 {
-
-
     public class NullNode : NullNodeBase {
         public override string ValueExpression
         {
@@ -9,6 +9,6 @@ namespace Invert.uFrame.ECS
         }
     }
     
-    public partial interface INullConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface INullConnectable : IDiagramNodeItem, IConnectable {
     }
 }

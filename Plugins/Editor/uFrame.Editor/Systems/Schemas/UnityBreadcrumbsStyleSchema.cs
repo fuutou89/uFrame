@@ -1,7 +1,8 @@
-﻿using Invert.Common;
+﻿using uFrame.Editor.GraphUI.Drawers.Schemas;
+using uFrame.Editor.Unity;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity.Schemas
+namespace uFrame.Editor.Schemas
 {
     class UnityBreadcrumbsStyleSchema : BreadcrumbsStyleSchema
     {

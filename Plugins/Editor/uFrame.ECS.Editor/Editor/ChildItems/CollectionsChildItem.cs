@@ -1,4 +1,9 @@
-namespace Invert.uFrame.ECS
+using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.Editor.Plugins;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
+
+namespace uFrame.ECS.Editor.ChildItems
 {
     using System;
     using System.Collections.Generic;
@@ -37,6 +42,6 @@ namespace Invert.uFrame.ECS
         }
     }
     
-    public partial interface ICollectionsConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface ICollectionsConnectable : IDiagramNodeItem, IConnectable {
     }
 }

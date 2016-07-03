@@ -1,13 +1,11 @@
 ﻿using System;
-using Invert.IOC;
+using uFrame.Editor.Graphs.Data;
+using uFrame.IOC;
 
-
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Configurations
 {
     public static class ConfigExtensions
     {
-
-
         public static NodeConfig<TNode> GetNodeConfig<TNode>(this IUFrameContainer container) where TNode : GenericNode, IConnectable
         {
             var config = GetNodeConfig(container, typeof(TNode)) as NodeConfig<TNode>;

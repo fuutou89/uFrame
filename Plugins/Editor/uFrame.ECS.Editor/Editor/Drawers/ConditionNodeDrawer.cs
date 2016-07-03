@@ -1,8 +1,9 @@
-namespace Invert.uFrame.ECS
+using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.Editor.ViewModels;
+using uFrame.Editor.GraphUI.Drawers;
+
+namespace uFrame.ECS.Editor.Drawers
 {
-    using Invert.Core.GraphDesigner;
-
-
     public class ConditionNodeDrawer : GenericNodeDrawer<ConditionNode,ConditionNodeViewModel> {
         
         public ConditionNodeDrawer(ConditionNodeViewModel viewModel) : 

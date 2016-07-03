@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using uFrame.Editor.Core;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Documentation
 {
     public class DocumentationDefaultProvider : IDocumentationProvider
     {

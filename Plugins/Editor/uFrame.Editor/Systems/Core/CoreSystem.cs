@@ -1,6 +1,6 @@
-﻿using Invert.IOC;
+﻿using uFrame.IOC;
 
-namespace Invert.Core
+namespace uFrame.Editor.Core
 {
     public class CoreSystem : CorePlugin, IExecuteCommand<LambdaCommand>
     {

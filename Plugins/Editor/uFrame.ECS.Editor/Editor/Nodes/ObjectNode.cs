@@ -1,9 +1,12 @@
 using uFrame.Attributes;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
     using System.Collections.Generic;
-    using Invert.Core.GraphDesigner;
+    
     [ActionTitle("Create Object"),uFrameCategory("Create")]
     public class CreateObject : CustomAction
     {
@@ -145,6 +148,6 @@ namespace Invert.uFrame.ECS
         }
     }
 
-    public partial interface IObjectConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IObjectConnectable : IDiagramNodeItem, IConnectable {
     }
 }

@@ -2,7 +2,7 @@ using System;
 using System.Reflection;
 using uFrame.Editor.Attributes;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.ViewModels
 {
     public class PropertyFieldViewModel : ItemViewModel
     {

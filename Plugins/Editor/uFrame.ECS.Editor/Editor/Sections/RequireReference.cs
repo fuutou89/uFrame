@@ -1,10 +1,10 @@
-namespace Invert.uFrame.ECS
+using uFrame.Editor.Graphs.Data;
+
+namespace uFrame.ECS.Editor.Sections
 {
-
-
     public class RequireReference : RequireReferenceBase {
     }
     
-    public partial interface IRequireConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IRequireConnectable : IDiagramNodeItem, IConnectable {
     }
 }

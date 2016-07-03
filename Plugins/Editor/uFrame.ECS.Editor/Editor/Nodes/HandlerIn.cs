@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Core.GraphDesigner;
-using Invert.Data;
 using uFrame.Attributes;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
     public class EntityGroupIn : SelectionFor<IMappingsConnectable, HandlerInValue>, IFilterInput
     {

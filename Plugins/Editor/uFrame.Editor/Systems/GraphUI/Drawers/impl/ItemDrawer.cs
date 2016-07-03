@@ -1,7 +1,11 @@
 ﻿using System.Linq;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Input;
+using uFrame.Editor.Platform;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.Drawers
 {
     public class ItemDrawer<TViewModel> : ItemDrawer where TViewModel : ItemViewModel
     {

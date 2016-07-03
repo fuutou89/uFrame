@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Data;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Database.Data;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Graphs.Data
 {
     public static class ErrorInfoExtensions
     {

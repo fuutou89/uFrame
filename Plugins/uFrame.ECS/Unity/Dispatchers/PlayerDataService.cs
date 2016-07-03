@@ -1,9 +1,10 @@
 using System.Linq;
 using uFrame.Attributes;
+using uFrame.ECS.Systems;
 using uFrame.Kernel;
 using UniRx;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.UnityUtilities
 {
     public class PlayerDataService : EcsSystem, IPlayerDataService
     {

@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Invert.Common;
-using Invert.Common.UI;
-using Invert.Core;
-using Invert.Core.GraphDesigner;
-using Invert.Data;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.InspectorWindow;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Unity;
 using UnityEngine;
 
-namespace Assets.Plugins.Editor.uFrame.Editor.Systems.NavigationSystem
+namespace uFrame.Editor.NavigationSystem
 {
     public class NavigationHistoryUISystem : DiagramPlugin, IDrawNavigationHistory, ICommandExecuted
     {

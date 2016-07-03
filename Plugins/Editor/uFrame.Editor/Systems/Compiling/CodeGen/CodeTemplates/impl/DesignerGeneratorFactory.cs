@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Invert.IOC;
+using uFrame.Editor.Database;
+using uFrame.IOC;
 
-
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CodeGen
 {
     public abstract class DesignerGeneratorFactory
     {

@@ -1,8 +1,9 @@
 using System.CodeDom;
-using Invert.Core.GraphDesigner;
-using uFrame.ECS;
+using uFrame.ECS.APIs;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.Editor.Compiling.CodeGen;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Template
 {
     public class ComponentCreatedWriter : HandlerCodeWriter<ComponentCreatedEvent>
     {

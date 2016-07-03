@@ -1,4 +1,4 @@
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Graphs
 {
 
 

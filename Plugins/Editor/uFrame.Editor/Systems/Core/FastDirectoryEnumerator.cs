@@ -6,7 +6,9 @@ using System.Runtime.InteropServices;
 using System.Security.Permissions;
 using Microsoft.Win32.SafeHandles;
 
-/// <summary>
+namespace uFrame.Editor.Core
+{
+    /// <summary>
     /// A fast enumerator of files in a directory.  Use this if you need to get attributes for 
     /// all files in a directory.
     /// </summary>
@@ -217,11 +219,11 @@ using Microsoft.Win32.SafeHandles;
         private class FileEnumerator : IEnumerator<FileData>
         {
             [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-            private static extern SafeFindHandle FindFirstFile(string fileName, 
+            private static extern SafeFindHandle FindFirstFile(string fileName,
                 [In, Out] WIN32_FIND_DATA data);
 
             [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-            private static extern bool FindNextFile(SafeFindHandle hndFindFile, 
+            private static extern bool FindNextFile(SafeFindHandle hndFindFile,
                     [In, Out, MarshalAs(UnmanagedType.LPStruct)] WIN32_FIND_DATA lpFindFileData);
 
             /// <summary>
@@ -262,7 +264,7 @@ using Microsoft.Win32.SafeHandles;
                 m_filter = filter;
                 m_searchOption = searchOption;
                 m_currentContext = new SearchContext(path);
-                
+
                 if (m_searchOption == SearchOption.AllDirectories)
                 {
                     m_contextStack = new Stack<SearchContext>();
@@ -416,3 +418,4 @@ using Microsoft.Win32.SafeHandles;
             #endregion
         }
     }
+}

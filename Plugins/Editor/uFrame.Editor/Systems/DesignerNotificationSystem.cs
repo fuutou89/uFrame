@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Common;
+using uFrame.Editor.Core;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.GraphUI.Events;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Unity;
 using UnityEditor;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity.Notifications
+namespace uFrame.Editor
 {
 
     public class DesignerNotificationSystem : DiagramPlugin, INotify, IDesignerWindowEvents

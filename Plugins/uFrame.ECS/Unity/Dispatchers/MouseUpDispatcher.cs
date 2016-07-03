@@ -1,6 +1,7 @@
 using uFrame.Attributes;
+using uFrame.ECS.Components;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.UnityUtilities
 {
     [UFrameEventDispatcher("On Mouse Up"), uFrameCategory("Unity Messages")]
     public class MouseUpDispatcher : EcsDispatcher

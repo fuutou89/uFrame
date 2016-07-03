@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Invert.Data;
-using Invert.Json;
+using uFrame.Editor.Database.Data;
+using uFrame.Json;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Graphs.Data
 {
     public class FilterItem : IDataRecordRemoved, IFilterItem
     {

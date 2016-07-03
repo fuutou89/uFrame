@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Invert.Data;
-using Invert.Json;
+using uFrame.Editor.Database.Data;
+using uFrame.Json;
 
-namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Data
+namespace uFrame.Editor.Koinonia.Data
 {
-    public class UFramePackageDescriptor : IDataRecord 
+    public class UFramePackageDescriptor : IDataRecord
     {
         [JsonProperty]
         public string Id { get; set; }
@@ -15,26 +15,26 @@ namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Data
         [JsonProperty]
 
         public string Description { get; set; }
-[JsonProperty]
+        [JsonProperty]
 
         public UFramePackageManagementType ManagementType { get; set; }
-[JsonProperty]
+        [JsonProperty]
 
         public string ProjectIconUrl { get; set; }
 
-//        public string Code; // done using based on Title            
-//        public string Slug { get; set; }
+        //        public string Code; // done using based on Title            
+        //        public string Slug { get; set; }
         [JsonProperty]
         public List<string> RevisionIds { get; set; }
 
         [JsonProperty]
 
         public string RepositoryUrl { get; set; }
-[JsonProperty]
-        
+        [JsonProperty]
+
         public bool IsPublic { get; set; }
-[JsonProperty]
-        
+        [JsonProperty]
+
         public PackageState State { get; set; }
 
         public override bool Equals(object obj)
@@ -53,7 +53,8 @@ namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Data
         }
 
         public bool Changed { get; set; }
-        public IEnumerable<string> ForeignKeys {
+        public IEnumerable<string> ForeignKeys
+        {
             get { yield break; }
         }
 

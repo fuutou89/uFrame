@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using Invert.Data;
-using Invert.Json;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Workspaces.Data;
+using uFrame.Json;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.NavigationSystem
 {
     public class NavHistoryItem : IDataRecord, IItem
     {

@@ -1,6 +1,9 @@
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Core;
 
-public class AddGraphToWorkspace : Command
+namespace uFrame.Editor.Graphs.Commands
 {
+    public class AddGraphToWorkspace : Command
+    {
 
+    }
 }

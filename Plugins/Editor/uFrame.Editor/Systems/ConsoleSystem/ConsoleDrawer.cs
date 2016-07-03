@@ -1,8 +1,11 @@
 using System;
-using Invert.Common;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Unity;
+using UnityEditor;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity.WindowsPlugin
+namespace uFrame.Editor.Console
 {
     public class ConsoleDrawer : Drawer<ConsoleViewModel>
     {

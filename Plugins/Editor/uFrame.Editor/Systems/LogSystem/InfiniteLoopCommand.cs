@@ -1,6 +1,7 @@
 using System.ComponentModel;
+using uFrame.Editor.Core;
 
-namespace Invert.Core.GraphDesigner.Unity.LogSystem
+namespace uFrame.Editor.LogSystem
 {
     public class InfiniteLoopCommand : ICommand, IBackgroundCommand
     {

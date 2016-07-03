@@ -1,4 +1,4 @@
-namespace Invert.uFrame.ECS.Templates
+namespace uFrame.ECS.Templates
 {
     //public partial class ComponentGroupManagerTemplate
     //{

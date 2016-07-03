@@ -1,5 +1,5 @@
-using Invert.Data;
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Database.Data;
 
 namespace uFrame.Editor.Attributes
 {

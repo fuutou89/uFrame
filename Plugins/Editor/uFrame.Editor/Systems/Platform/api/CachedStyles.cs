@@ -1,6 +1,9 @@
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.Drawers.Schemas;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Platform
 {
     public static class CachedStyles
     {

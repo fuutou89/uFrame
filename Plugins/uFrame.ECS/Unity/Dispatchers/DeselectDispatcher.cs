@@ -1,7 +1,8 @@
 using uFrame.Attributes;
+using uFrame.ECS.Components;
 using UnityEngine.EventSystems;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.UnityUtilities
 {
     [UFrameEventDispatcher("On Deselect"), uFrameCategory("uGUI")]
     public class DeselectDispatcher : EcsDispatcher, IDeselectHandler

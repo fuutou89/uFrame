@@ -1,6 +1,7 @@
+using uFrame.Editor.Graphs.Data;
+
 namespace uFrame.MVVM
 {
-    using Invert.Core.GraphDesigner;
     using System.Collections.Generic;
 
 
@@ -37,7 +38,7 @@ namespace uFrame.MVVM
         }
     }
 
-    public partial interface ICommandConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable
+    public partial interface ICommandConnectable : IDiagramNodeItem, IConnectable
     {
     }
 }

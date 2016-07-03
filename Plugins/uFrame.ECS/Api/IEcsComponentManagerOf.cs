@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UniRx;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.APIs
 {
     public interface IEcsComponentManagerOf<TComponentType> : IEcsComponentManager
     {

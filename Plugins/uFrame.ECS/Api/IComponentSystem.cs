@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using uFrame.ECS.Components;
 using UniRx;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.APIs
 {
     public interface IComponentSystem : IEcsSystem
     {

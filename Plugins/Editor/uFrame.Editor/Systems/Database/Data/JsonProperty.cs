@@ -1,4 +1,4 @@
-namespace Invert.Json
+namespace uFrame.Editor.Database.Data
 {
 
 }

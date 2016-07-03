@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using uFrame.Editor.Graphs.Data.Types;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.TypesSystem
 {
     public interface IQueryTypes
     {

@@ -1,11 +1,14 @@
 ﻿using System.CodeDom;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using Invert.Core.GraphDesigner;
+    
 
 
     public class CollectionModifiedHandlerNode : CollectionModifiedHandlerNodeBase {
@@ -154,6 +157,6 @@ namespace Invert.uFrame.ECS
         }
     }
     
-    public partial interface ICollectionModifiedHandlerConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface ICollectionModifiedHandlerConnectable : IDiagramNodeItem, IConnectable {
     }
 }

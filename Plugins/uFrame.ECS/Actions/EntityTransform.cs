@@ -1,8 +1,8 @@
 using uFrame.Attributes;
-using uFrame.ECS;
+using uFrame.ECS.Components;
 using UnityEngine;
 
-namespace uFrame.Actions
+namespace uFrame.ECS.Actions
 {
     [ActionLibrary, uFrameCategory("Transform","Entity")]
     public static class EntityTransform

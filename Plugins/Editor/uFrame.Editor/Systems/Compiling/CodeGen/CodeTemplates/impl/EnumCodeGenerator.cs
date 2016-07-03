@@ -1,4 +1,4 @@
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CodeGen
 {
     //public class EnumCodeGenerator : CodeGenerator
     //{

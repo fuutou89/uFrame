@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Data;
-using Invert.Json;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Json;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Workspaces.Data
 {
     public class Workspace : IDataRecord, IDataRecordRemoved, ITreeItem, IDataHeirarchy
     {

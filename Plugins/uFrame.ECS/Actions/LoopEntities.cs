@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using uFrame.Attributes;
 using uFrame.ECS;
 
-namespace uFrame.Actions
+namespace uFrame.ECS.Actions
 {
-
+    //TODO
 }

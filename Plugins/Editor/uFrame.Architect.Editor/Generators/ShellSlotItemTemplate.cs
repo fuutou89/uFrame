@@ -1,13 +1,13 @@
 using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
-using Invert.Core.GraphDesigner;
-using Invert.Data;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Architect.Editor.Data;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
 
 namespace uFrame.Architect.Editor.Generators
 {
-    using Data;
-
     [TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}")]
     [RequiresNamespace("Invert.Data")]
     public class ShellSlotItemTemplate : GenericSlot, IClassTemplate<IShellSlotType>

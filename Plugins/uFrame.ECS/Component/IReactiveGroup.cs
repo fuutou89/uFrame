@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using uFrame.ECS.APIs;
 using UniRx;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.Components
 {
     public interface IReactiveGroup : IEcsComponentManager
     {

@@ -1,4 +1,6 @@
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Graphs.Data;
 
 namespace uFrame.Architect.Editor.Generators
 {

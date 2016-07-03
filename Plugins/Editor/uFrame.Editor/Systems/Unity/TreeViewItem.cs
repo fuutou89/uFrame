@@ -1,21 +1,25 @@
-using Invert.Core;
+using uFrame.Editor.Core;
 using UnityEngine;
 
-public class TreeViewItem
+namespace uFrame.Editor.Unity
 {
-    public TreeViewItem Parent { get; set; }
-
-    public ITreeItem ParentData
+    public class TreeViewItem
     {
-        get { return Parent == null ? null : Parent.Data as ITreeItem; }
+        public TreeViewItem Parent { get; set; }
+
+        public ITreeItem ParentData
+        {
+            get { return Parent == null ? null : Parent.Data as ITreeItem; }
+        }
+
+        public bool IsChecked { get; set; }
+        public IItem Data { get; set; }
+        public int Index { get; set; }
+        public bool Visible { get; set; }
+        public int Indent { get; set; }
+        public string Icon { get; set; }
+        public bool Highlighted { get; set; }
+        public bool Selected { get; set; }
+        public Color? ColorMark { get; set; }
     }
-    public bool IsChecked { get; set; }
-    public IItem Data { get; set; }
-    public int Index { get; set; }
-    public bool Visible { get; set; }
-    public int Indent { get; set; }
-    public string Icon { get; set; }
-    public bool Highlighted { get; set; }
-    public bool Selected { get; set; }
-    public Color? ColorMark { get; set; }
 }

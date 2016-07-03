@@ -1,13 +1,16 @@
 using System.CodeDom;
-using Invert.Data;
-using Invert.Json;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
+using uFrame.Json;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
     using System;
     using System.Collections.Generic;
-    using Invert.Core.GraphDesigner;
-
+    
+    using global::uFrame.Editor.Attributes;
 
     public class VariableNode : VariableNodeBase, IContextVariable , ITypedItem, IMemberInfo
     {
@@ -118,7 +121,7 @@ namespace Invert.uFrame.ECS
         }
     }
 
-    public partial interface IVariableConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable
+    public partial interface IVariableConnectable : IDiagramNodeItem, IConnectable
     {
     }
 }

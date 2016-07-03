@@ -1,12 +1,17 @@
-using Invert.Json;
+using uFrame.ECS.Editor.ChildItems;
+using uFrame.ECS.Editor.Plugins;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
+using uFrame.Editor.Platform;
+using uFrame.Json;
 using UnityEngine;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
     using System.Collections.Generic;
-    using Invert.Core.GraphDesigner;
-    using Invert.Data;
-
+    
     public enum DescriptorNodeType
     {
         Components,
@@ -92,6 +97,6 @@ namespace Invert.uFrame.ECS
         }
     }
     
-    public partial interface IDescriptorConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IDescriptorConnectable : IDiagramNodeItem, IConnectable {
     }
 }

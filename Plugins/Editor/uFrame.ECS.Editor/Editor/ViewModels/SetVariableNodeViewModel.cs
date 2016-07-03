@@ -1,6 +1,8 @@
-using Invert.Core.GraphDesigner;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.Editor.GraphUI.Drawers.Schemas;
+using uFrame.Editor.GraphUI.ViewModels;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.ViewModels
 {
     using System.Collections.Generic;
 
@@ -25,7 +27,7 @@ namespace Invert.uFrame.ECS
             set { base.Name = value; }
         }
 
-        public SetVariableNodeViewModel(SetVariableNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
+        public SetVariableNodeViewModel(SetVariableNode graphItemObject, DiagramViewModel diagramViewModel) : 
                 base(graphItemObject, diagramViewModel) {
         }
     }

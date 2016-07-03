@@ -1,9 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Data;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CodeGen
 {
     public class RegisteredTemplateGeneratorsFactory : DesignerGeneratorFactory<IDataRecord>
     {
@@ -96,7 +100,6 @@ namespace Invert.Core.GraphDesigner
         public static void AddCodeTemplate<TNode,TGeneratorTemplate>(this NodeConfig<TNode> nodeConfig ) where TGeneratorTemplate : class, IClassTemplate<TNode>, new() where TNode : GenericNode
         {
             RegisteredTemplateGeneratorsFactory.RegisterTemplate<TNode, TGeneratorTemplate>();
-        
         }
     }
 

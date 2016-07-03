@@ -1,11 +1,14 @@
 using System;
 
-public class UFToggleGroup : Attribute
+namespace uFrame.MVVM.Attributes
 {
-    public UFToggleGroup(string checkers)
+    public class UFToggleGroup : Attribute
     {
-        Name = checkers;
-    }
+        public UFToggleGroup(string checkers)
+        {
+            Name = checkers;
+        }
 
-    public string Name { get; set; }
+        public string Name { get; set; }
+    }
 }

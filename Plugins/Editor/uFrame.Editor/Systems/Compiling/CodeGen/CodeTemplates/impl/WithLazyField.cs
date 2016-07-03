@@ -1,7 +1,7 @@
 using System;
 using System.CodeDom;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CodeGen
 {
     [AttributeUsage(AttributeTargets.Property)]
     public class WithLazyField : WithField

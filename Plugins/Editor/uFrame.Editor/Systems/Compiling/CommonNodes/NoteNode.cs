@@ -1,9 +1,10 @@
-﻿using Invert.Json;
-using UnityEngine;
-using Invert.Data;
+﻿using UnityEngine;
 using uFrame.Editor.Attributes;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Database.Data;
+using uFrame.Json;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CommonNodes
 {
     public class NoteNode : GenericNode
     {

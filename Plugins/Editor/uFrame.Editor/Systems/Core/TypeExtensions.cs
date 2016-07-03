@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Invert.Core
+namespace uFrame.Editor.Core
 {
     static class TypeExtensions
     {

@@ -1,7 +1,8 @@
-using uFrame.Actions;
 using uFrame.Attributes;
+using uFrame.ECS.Actions;
+using uFrame.ECS.Components;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.UnityUtilities
 {
     [ActionTitle("Spawn")]
     public class Despawn : UFAction

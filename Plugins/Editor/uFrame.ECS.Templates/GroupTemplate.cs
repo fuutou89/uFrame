@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using Invert.Core.GraphDesigner;
-using uFrame.ECS;
 using UniRx;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.ECS.APIs;
 
-namespace Invert.uFrame.ECS.Templates
+namespace uFrame.ECS.Templates
 {
     public partial class GroupTemplate
     {

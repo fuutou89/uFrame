@@ -1,7 +1,8 @@
 using uFrame.Attributes;
+using uFrame.ECS.Components;
 using UnityEngine.EventSystems;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.UnityUtilities
 {
     [UFrameEventDispatcher("Pointer Enter"), uFrameCategory("uGUI")]
     public class PointerEnterDispatcher : EcsDispatcher, IPointerEnterHandler

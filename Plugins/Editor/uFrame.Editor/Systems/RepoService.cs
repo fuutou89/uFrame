@@ -1,7 +1,7 @@
-using Invert.Data;
-using Invert.IOC;
+using uFrame.Editor.Database.Data;
+using uFrame.IOC;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor
 {
     public class RepoService : DiagramPlugin
     {

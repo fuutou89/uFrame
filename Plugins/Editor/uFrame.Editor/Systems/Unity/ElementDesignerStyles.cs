@@ -1,12 +1,13 @@
-using Invert.Common.UI;
 using System;
 using System.Reflection;
-using Invert.Core.GraphDesigner;
-using Invert.Core.GraphDesigner.Unity.Schemas;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.Drawers.Schemas;
+using uFrame.Editor.Schemas;
+using uFrame.Editor.WindowsPlugin;
 using UnityEditor;
 using UnityEngine;
 
-namespace Invert.Common
+namespace uFrame.Editor.Unity
 {
     public static class ElementDesignerStyles
     {

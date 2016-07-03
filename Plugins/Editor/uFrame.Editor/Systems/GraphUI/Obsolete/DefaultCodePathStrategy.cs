@@ -1,6 +1,7 @@
 using System.IO;
+using uFrame.Editor.Graphs.Data;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI
 {
     public class DefaultCodePathStrategy : ICodePathStrategy
     {

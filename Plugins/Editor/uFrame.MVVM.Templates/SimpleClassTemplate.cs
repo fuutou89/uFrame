@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Core;
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data;
 
 namespace uFrame.MVVM.Templates
 {

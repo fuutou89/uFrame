@@ -2,10 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Invert.Data;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Compiling.Commands;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.Platform;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor
 {
     public class CodeFileSyncSystem : DiagramPlugin
         //, 

@@ -1,9 +1,9 @@
 using System;
-using Invert.Core;
-using Invert.IOC;
+using uFrame.Editor.Core;
+using uFrame.IOC;
 using UnityEngine;
 
-namespace Invert.Windows
+namespace uFrame.Editor.Windows
 {
     public interface IWindowFactory<TWindow> : IWindowFactory
     {

@@ -1,4 +1,6 @@
-namespace Invert.Core.GraphDesigner
+using uFrame.Editor.Database;
+
+namespace uFrame.Editor.GraphUI
 {
     public class GraphConfiguration : IGraphConfiguration
     {

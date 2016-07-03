@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
-using uFrame.ECS;
+using uFrame.Common;
+using uFrame.ECS.APIs;
+using uFrame.ECS.Systems;
+using uFrame.ECS.UnityUtilities;
 using uFrame.Kernel;
 using UniRx;
 using UnityEngine;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.UnityUtilities
 {
     public class EcsSystemLoader : SystemLoader
     {

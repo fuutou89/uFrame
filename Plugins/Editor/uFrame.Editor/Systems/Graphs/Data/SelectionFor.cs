@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Data;
+using uFrame.Editor.Database.Data;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Graphs.Data
 {
     public class SelectionFor<TFor, TValue> : GenericSlot, IDynamicDataRecord, IDataHeirarchy, IDataRecordRemoved
         where TValue : InputSelectionValue, new()

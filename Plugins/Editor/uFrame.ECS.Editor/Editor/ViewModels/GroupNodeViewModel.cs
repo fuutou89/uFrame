@@ -1,11 +1,13 @@
-using Invert.Core.GraphDesigner;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.GraphUI.ViewModels;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.ViewModels
 {
     public class GroupNodeViewModel : GroupNodeViewModelBase
     {
 
-        public GroupNodeViewModel(GroupNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
+        public GroupNodeViewModel(GroupNode graphItemObject, DiagramViewModel diagramViewModel) : 
                 base(graphItemObject, diagramViewModel) {
         }
 

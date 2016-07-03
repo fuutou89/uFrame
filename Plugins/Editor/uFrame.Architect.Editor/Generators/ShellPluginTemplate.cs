@@ -1,12 +1,15 @@
 ﻿using System.CodeDom;
 using System.Linq;
-using Invert.Core.GraphDesigner;
-using Invert.IOC;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Architect.Editor.Data;
+using uFrame.Editor;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.TypesSystem;
+using uFrame.IOC;
 
 namespace uFrame.Architect.Editor.Generators
 {
-    using Data;
-
     [TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}")]
     public class ShellPluginTemplate : DiagramPlugin, IClassTemplate<ShellPluginNode>
     {
@@ -31,7 +34,7 @@ namespace uFrame.Architect.Editor.Generators
         }
 
         [GenerateMethod("Get{0}SelectionCommand", TemplateLocation.Both, true)]
-        public virtual Invert.Core.GraphDesigner.SelectTypeCommand GetSelectionCommand()
+        public virtual SelectTypeCommand GetSelectionCommand()
         {
             Ctx._("return new SelectTypeCommand() {{ IncludePrimitives = true, AllowNone = false }}");
             return null;

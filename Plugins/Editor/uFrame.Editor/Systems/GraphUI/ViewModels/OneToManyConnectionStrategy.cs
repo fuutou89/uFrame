@@ -1,4 +1,4 @@
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.ViewModels
 {
     //public class OneToManyConnectionStrategy<TSource,TTarget> : 
     //    DefaultConnectionStrategy<TSource,TTarget>

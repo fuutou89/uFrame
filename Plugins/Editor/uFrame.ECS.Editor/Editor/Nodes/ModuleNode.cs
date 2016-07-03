@@ -1,7 +1,7 @@
-using Invert.Core.GraphDesigner;
 using uFrame.Editor.Attributes;
+using uFrame.Editor.Graphs.Data;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
     public class ModuleNode : ModuleNodeBase, IAlwaysGenerate {
         public override bool AllowOutputs
@@ -15,6 +15,6 @@ namespace Invert.uFrame.ECS
     
     }
     
-    public partial interface IModuleConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IModuleConnectable : IDiagramNodeItem, IConnectable {
     }
 }

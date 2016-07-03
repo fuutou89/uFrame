@@ -1,4 +1,4 @@
-namespace Invert.uFrame.Editor.ViewModels
+namespace uFrame.Editor.GraphUI.ViewModels
 {
     //public class InheritanceConnectionStrategy<TSource> :
     //    DefaultConnectionStrategy<TSource, TSource>

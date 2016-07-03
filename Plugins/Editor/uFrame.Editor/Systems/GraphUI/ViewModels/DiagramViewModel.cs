@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using Invert.Data;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.Input;
+using uFrame.Editor.NavigationSystem;
+using uFrame.Kernel.Collection;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.ViewModels
 {
-    public class DiagramViewModel : Invert.Core.GraphDesigner.ViewModel, IDataRecordInserted, IDataRecordRemoved, IDataRecordPropertyChanged
+    public class DiagramViewModel : ViewModel, IDataRecordInserted, IDataRecordRemoved, IDataRecordPropertyChanged
     {
         private ObservableCollection<GraphItemViewModel> _graphItems = new ObservableCollection<GraphItemViewModel>();
     

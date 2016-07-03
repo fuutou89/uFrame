@@ -1,8 +1,11 @@
 ﻿using System;
 using System.CodeDom;
 using System.Linq;
-using Invert.Core.GraphDesigner;
 using uFrame.Kernel;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Configurations;
+using uFrame.IOC;
+using uFrame.MVVM.ViewModels;
 
 namespace uFrame.MVVM.Templates
 {
@@ -88,7 +91,7 @@ namespace uFrame.MVVM.Templates
                 var instance = Ctx.ItemAs<InstancesReference>();
                 Ctx.SetType(instance.SourceItem.Name.AsViewModel());
 
-                Ctx.AddAttribute(typeof(Invert.IOC.InjectAttribute))
+                Ctx.AddAttribute(typeof(InjectAttribute))
                     .Arguments.Add(new CodeAttributeArgument(new CodePrimitiveExpression(instance.Name)));
 
                 Ctx._if("this.{0} == null", instance.Name.AsField())
@@ -112,7 +115,7 @@ namespace uFrame.MVVM.Templates
             get
             {
                 Ctx.SetType(Ctx.Item.Name.AsController());
-                Ctx.AddAttribute(typeof(Invert.IOC.InjectAttribute));
+                Ctx.AddAttribute(typeof(InjectAttribute));
                 Ctx.CurrentDeclaration._private_(Ctx.CurrentProperty.Type, Ctx.Item.Name.AsController().AsField());
                 Ctx.LazyGet(Ctx.Item.Name.AsController().AsField(), "Container.CreateInstance(typeof({0})) as {0};",
                     Ctx.Item.Name.AsController());

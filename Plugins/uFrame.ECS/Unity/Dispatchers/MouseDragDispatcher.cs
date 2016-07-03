@@ -1,6 +1,7 @@
 using uFrame.Attributes;
+using uFrame.ECS.Components;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.UnityUtilities
 {
     [UFrameEventDispatcher("On Mouse Drag"), uFrameCategory("Unity Messages")]
     public class MouseDragDispatcher : EcsDispatcher

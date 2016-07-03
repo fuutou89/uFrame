@@ -1,11 +1,11 @@
 using System.CodeDom;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Graphs.Data;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
     using System.Collections.Generic;
-    using Invert.Core.GraphDesigner;
-
-
+   
     public class ComponentDestroyedNode : ComponentDestroyedNodeBase {
         public override int SetupOrder
         {
@@ -87,6 +87,6 @@ namespace Invert.uFrame.ECS
         }
     }
     
-    public partial interface IComponentDestroyedConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IComponentDestroyedConnectable : IDiagramNodeItem, IConnectable {
     }
 }

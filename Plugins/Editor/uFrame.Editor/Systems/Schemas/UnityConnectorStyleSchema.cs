@@ -1,7 +1,9 @@
-﻿using Invert.Common;
+﻿using uFrame.Editor.GraphUI.Drawers.Schemas;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Unity;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Schemas
 {
     public class UnityConnectorStyleSchema : ConnectorStyleSchema
     {

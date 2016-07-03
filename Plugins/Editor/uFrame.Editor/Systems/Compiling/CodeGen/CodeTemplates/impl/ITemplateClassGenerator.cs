@@ -1,8 +1,9 @@
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using uFrame.Editor.Graphs.Data;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CodeGen
 {
     public interface ITemplateClassGenerator
     {

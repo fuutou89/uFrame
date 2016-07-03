@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Configurations
 {
     [Browsable(false)]
     public class ReferenceSection : Section

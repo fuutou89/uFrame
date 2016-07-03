@@ -1,6 +1,6 @@
-using Invert.Json;
+using uFrame.Json;
 
-namespace Invert.Core.GraphDesigner.Unity
+namespace uFrame.Editor.WindowsPlugin
 {
     public class MarketItem : Response
     {

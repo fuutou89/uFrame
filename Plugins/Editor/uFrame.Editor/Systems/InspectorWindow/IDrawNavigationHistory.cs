@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public interface IDrawNavigationHistory
+namespace uFrame.Editor.InspectorWindow
 {
-    void DrawNavigationHistory(Rect rect);
+    public interface IDrawNavigationHistory
+    {
+        void DrawNavigationHistory(Rect rect);
+    }
 }

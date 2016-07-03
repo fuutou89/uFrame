@@ -1,7 +1,7 @@
 using uFrame.Attributes;
 using UnityEngine;
 
-namespace uFrame.Actions
+namespace uFrame.ECS.Actions
 {
     [ActionLibrary, uFrameCategory("Vector2")]
     public static class Vector2Library

@@ -1,3 +1,5 @@
+using uFrame.Editor.Graphs.Data;
+
 namespace uFrame.MVVM
 {
 
@@ -5,6 +7,6 @@ namespace uFrame.MVVM
     public class SimpleClassNode : SimpleClassNodeBase, IHandlersConnectable {
     }
     
-    public partial interface ISimpleClassConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface ISimpleClassConnectable : IDiagramNodeItem, IConnectable {
     }
 }

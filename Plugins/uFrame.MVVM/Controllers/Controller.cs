@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-//using uFrame.IOC;
-using Invert.IOC;
+using uFrame.IOC;
 using uFrame.Kernel;
+using uFrame.MVVM.ViewModels;
 
 namespace uFrame.MVVM
 {

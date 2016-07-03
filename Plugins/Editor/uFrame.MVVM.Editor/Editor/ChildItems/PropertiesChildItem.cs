@@ -1,3 +1,5 @@
+using uFrame.Editor.Graphs.Data;
+
 namespace uFrame.MVVM
 {
     using System;
@@ -19,7 +21,7 @@ namespace uFrame.MVVM
         }
     }
 
-    public partial interface IPropertiesConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable
+    public partial interface IPropertiesConnectable : IDiagramNodeItem, IConnectable
     {
     }
 }

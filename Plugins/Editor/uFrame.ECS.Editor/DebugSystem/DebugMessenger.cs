@@ -1,11 +1,15 @@
 ﻿using System;
-using Invert.Core;
-using Invert.Core.GraphDesigner;
-using Invert.IOC;
-using Invert.uFrame.ECS;
+using uFrame.Common;
+using uFrame.ECS.APIs;
+using uFrame.ECS.Components;
+using uFrame.ECS.Editor.Plugins;
+using uFrame.ECS.UnityUtilities;
 using UnityEditor;
 using UniRx;
 using uFrame.Editor;
+using uFrame.Editor.Core;
+using uFrame.Editor.DebugSystem;
+using uFrame.IOC;
 
 namespace uFrame.ECS.Debug
 {

@@ -1,6 +1,7 @@
+using uFrame.MVVM.ViewModels;
 using UnityEngine;
 
-namespace uFrame.MVVM
+namespace uFrame.MVVM.Views
 {
     public interface IViewResolver
     {

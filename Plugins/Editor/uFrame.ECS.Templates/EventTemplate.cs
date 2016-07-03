@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Invert.Core.GraphDesigner;
 using UnityEngine;
+using uFrame.Editor.Compiling.CodeGen;
 
-namespace Invert.uFrame.ECS.Templates
+namespace uFrame.ECS.Templates
 {
     [RequiresNamespace("uFrame.ECS")]
     [RequiresNamespace("UniRx")]

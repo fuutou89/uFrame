@@ -1,14 +1,17 @@
-﻿using Invert.Data;
+﻿using uFrame.ECS.Editor.Plugins;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
+using uFrame.Editor.TypesSystem;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Invert.Core;
-    using Invert.Core.GraphDesigner;
-
-
+    
     public class PropertyNode : PropertyNodeBase, IContextVariable
     {
 
@@ -221,7 +224,7 @@ namespace Invert.uFrame.ECS
 
     }
 
-    public partial interface IPropertyConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable
+    public partial interface IPropertyConnectable : IDiagramNodeItem, IConnectable
     {
     }
 }

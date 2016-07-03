@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEditor;
 
-namespace Invert.Core.GraphDesigner.Unity
+namespace uFrame.Editor.Unity
 {
     public class ThreadingUtils
     {

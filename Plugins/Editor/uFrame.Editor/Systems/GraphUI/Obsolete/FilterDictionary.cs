@@ -1,7 +1,8 @@
 using System.Collections.Generic;
-using Invert.Json;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Json;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI
 {
     public abstract class FilterDictionary<TValue> : IJsonObject
     {

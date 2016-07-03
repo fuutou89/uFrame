@@ -1,6 +1,10 @@
-﻿using Invert.IOC;
+﻿using uFrame.Editor.Compiling.CommonNodes;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.IOC;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor
 {
     public class NotesPlugin : DiagramPlugin
     {

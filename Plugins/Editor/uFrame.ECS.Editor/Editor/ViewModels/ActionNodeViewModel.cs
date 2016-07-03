@@ -1,7 +1,10 @@
-using Invert.Core.GraphDesigner;
-using Invert.Data;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.Drawers.Schemas;
+using uFrame.Editor.GraphUI.ViewModels;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.ViewModels
 {
     using System.Collections.Generic;
 
@@ -90,7 +93,7 @@ namespace Invert.uFrame.ECS
             set { base.Name = value; }
         }
 
-        public ActionNodeViewModel(ActionNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) :
+        public ActionNodeViewModel(ActionNode graphItemObject, DiagramViewModel diagramViewModel) :
                 base(graphItemObject, diagramViewModel)
         {
         }

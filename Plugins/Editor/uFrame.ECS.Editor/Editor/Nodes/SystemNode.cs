@@ -1,11 +1,12 @@
-using Invert.Data;
-using Invert.Json;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Json;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Invert.Core.GraphDesigner;
+    
 
 
     public class SystemNode : SystemNodeBase, IClassNode {
@@ -52,6 +53,6 @@ namespace Invert.uFrame.ECS
         }
     }
     
-    public partial interface ISystemConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface ISystemConnectable : IDiagramNodeItem, IConnectable {
     }
 }

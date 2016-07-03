@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UniRx;
 
-namespace Invert.StateMachine
+namespace uFrame.MVVM.StateMachines
 {
     public abstract class State : IObserver<StateMachineTrigger>
     {

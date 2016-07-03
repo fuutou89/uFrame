@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CodeGen
 {
     /// <summary>
     /// This is only required when for some reason you can't create a template using the actual base class you want

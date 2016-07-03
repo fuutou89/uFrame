@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
-using Invert.Core;
-using Invert.Core.GraphDesigner;
-using Invert.IOC;
-using uFrame.Actions;
 using UnityEditor;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.ECS.Actions;
+using uFrame.Editor;
+using uFrame.Editor.Core;
+using uFrame.IOC;
 
 namespace uFrame.MVVM.Templates
 {

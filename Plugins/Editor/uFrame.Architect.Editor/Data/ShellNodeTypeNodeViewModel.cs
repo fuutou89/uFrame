@@ -1,4 +1,5 @@
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.ViewModels;
 
 namespace uFrame.Architect.Editor.Data
 {

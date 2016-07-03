@@ -1,14 +1,17 @@
 ﻿using System.CodeDom;
-using Invert.Data;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
-    using Invert.Core.GraphDesigner;
+    
 
 
     public class CollectionItemAddedNode : CollectionItemAddedNodeBase {
         private bool _immediate;
-        [Invert.Json.JsonProperty, NodeProperty("Invoked immediately on all items upon subscription.")]
+        [Json.JsonProperty, NodeProperty("Invoked immediately on all items upon subscription.")]
         public virtual bool Immediate
         {
             get { return _immediate; }
@@ -51,6 +54,6 @@ namespace Invert.uFrame.ECS
         }
     }
     
-    public partial interface ICollectionItemAddedConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface ICollectionItemAddedConnectable : IDiagramNodeItem, IConnectable {
     }
 }

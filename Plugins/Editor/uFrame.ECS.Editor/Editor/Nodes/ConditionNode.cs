@@ -1,10 +1,12 @@
-using Invert.Json;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Json;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
     using System.Collections.Generic;
-    using Invert.Core.GraphDesigner;
-    using Data;
 
     public class ConditionNode : ConditionNodeBase {
         private PropertyIn _ainput;
@@ -115,6 +117,6 @@ namespace Invert.uFrame.ECS
         
     }
     
-    public partial interface IConditionConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IConditionConnectable : IDiagramNodeItem, IConnectable {
     }
 }

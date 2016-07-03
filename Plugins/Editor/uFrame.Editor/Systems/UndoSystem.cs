@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Invert.Data;
-using Invert.IOC;
-using Invert.Json;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Input;
+using uFrame.Editor.Menus;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Undo;
+using uFrame.IOC;
+using uFrame.Json;
 using UnityEngine;
-using JSON = Invert.Json.JSON;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor
 {
     public class UndoSystem : DiagramPlugin,
         IDataRecordPropertyBeforeChange,

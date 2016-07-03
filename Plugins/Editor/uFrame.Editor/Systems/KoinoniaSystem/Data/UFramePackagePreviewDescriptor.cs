@@ -1,6 +1,6 @@
-﻿using Invert.Json;
+﻿using uFrame.Json;
 
-namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Data
+namespace uFrame.Editor.Koinonia.Data
 {
     public class UFramePackagePreviewDescriptor
     {

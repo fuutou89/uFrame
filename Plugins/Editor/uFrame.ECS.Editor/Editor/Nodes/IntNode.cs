@@ -1,11 +1,12 @@
 using System.CodeDom;
-using Invert.Json;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
+using uFrame.Json;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
-    using Invert.Core.GraphDesigner;
-    using Invert.Data;
-
     public class IntNode : IntNodeBase {
         private int _value;
 
@@ -41,6 +42,6 @@ namespace Invert.uFrame.ECS
         }
     }
     
-    public partial interface IIntConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IIntConnectable : IDiagramNodeItem, IConnectable {
     }
 }

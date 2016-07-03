@@ -1,7 +1,7 @@
-using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Classes;
+using uFrame.Editor.Koinonia.Classes;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem
+namespace uFrame.Editor.Koinonia
 {
     public interface IDrawPackageControlPanel
     {

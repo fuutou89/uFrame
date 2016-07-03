@@ -1,6 +1,6 @@
 using System;
 
-namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Classes
+namespace uFrame.Editor.Koinonia.Classes
 {
     public class ProjectLinkAttribute : Attribute
     {

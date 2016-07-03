@@ -1,6 +1,6 @@
-using Invert.Core.GraphDesigner;
-using Invert.Data;
-using Invert.Json;
+using uFrame.Editor.Attributes;
+using uFrame.Json;
+using uFrame.Editor.Database.Data;
 
 namespace uFrame.Architect.Editor.Data
 {

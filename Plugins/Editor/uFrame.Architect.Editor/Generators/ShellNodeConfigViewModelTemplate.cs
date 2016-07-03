@@ -1,10 +1,13 @@
 using System;
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Architect.Editor.Data;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Platform;
 
 namespace uFrame.Architect.Editor.Generators
 {
-    using Data;
-
     [TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}NodeViewModel", AutoInherit = false)]
     public class ShellNodeConfigViewModelTemplate : GenericNodeViewModel<GenericNode>, IClassTemplate<ShellNodeConfig>
     {
@@ -40,7 +43,7 @@ namespace uFrame.Architect.Editor.Generators
         {
             get
             {
-                Ctx._("return Invert.Core.GraphDesigner.NodeStyle.{0}", Enum.GetName(typeof(NodeStyle), Ctx.Data.NodeStyle));
+                Ctx._("return NodeStyle.{0}", Enum.GetName(typeof(NodeStyle), Ctx.Data.NodeStyle));
                 return NodeStyle.Normal;
             }
         }

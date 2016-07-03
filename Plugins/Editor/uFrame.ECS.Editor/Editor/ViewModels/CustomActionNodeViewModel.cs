@@ -1,13 +1,15 @@
-using Invert.Core.GraphDesigner;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.GraphUI.ViewModels;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.ViewModels
 {
     using System.Collections.Generic;
 
 
     public class CustomActionNodeViewModel : CustomActionNodeViewModelBase {
         
-        public CustomActionNodeViewModel(CustomActionNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
+        public CustomActionNodeViewModel(CustomActionNode graphItemObject, DiagramViewModel diagramViewModel) : 
                 base(graphItemObject, diagramViewModel) {
         }
 

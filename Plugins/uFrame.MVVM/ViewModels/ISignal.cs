@@ -1,8 +1,11 @@
 using System;
 
-public interface ISignal
+namespace uFrame.MVVM.ViewModels
 {
-    Type SignalType { get; }
-    void Publish(object data);
-    void Publish();
+    public interface ISignal
+    {
+        Type SignalType { get; }
+        void Publish(object data);
+        void Publish();
+    }
 }

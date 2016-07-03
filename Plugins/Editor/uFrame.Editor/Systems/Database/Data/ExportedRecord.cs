@@ -1,6 +1,6 @@
-using Invert.Json;
+using uFrame.Json;
 
-namespace Invert.Data
+namespace uFrame.Editor.Database.Data
 {
     public class ExportedRecord
     {

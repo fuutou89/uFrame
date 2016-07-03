@@ -1,8 +1,7 @@
+using uFrame.Editor.GraphUI.Drawers;
+
 namespace uFrame.MVVM
 {
-    using Invert.Core.GraphDesigner;
-
-
     public class CommandNodeDrawer : GenericNodeDrawer<CommandNode,CommandNodeViewModel> {
         
         public CommandNodeDrawer(CommandNodeViewModel viewModel) : 

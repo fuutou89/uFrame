@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Platform
 {
     public interface IDebugWindowEvents
     {

@@ -1,19 +1,42 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Reflection;
-using Invert.Data;
-using Invert.IOC;
-using Invert.uFrame.Editor;
 using uFrame.Attributes;
+using uFrame.Editor;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Compiling.CommonNodes;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Documentation;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.GraphUI.Events;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Input;
+using uFrame.Editor.NavigationSystem;
+using uFrame.Editor.Platform;
+using uFrame.Editor.QuickAccess;
+using uFrame.Editor.TypesSystem;
+using uFrame.Editor.WindowsPlugin;
+using uFrame.Editor.Workspaces;
+using uFrame.Editor.Workspaces.Commands;
+using uFrame.IOC;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Plugins
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Invert.Core;
-    using Invert.Core.GraphDesigner;
+    using ChildItems;
+    using Drawers;
+    using Graphs;
+    using Nodes;
+    using ViewModels;
     public interface IQueryActionMetaInfo
     {
         void QueryActions(List<IActionMetaInfo> actions);

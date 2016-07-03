@@ -1,9 +1,12 @@
 using System;
 using System.Linq;
-using Invert.Data;
+using uFrame.Editor.Connections;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.ViewModels
 {
     public abstract class DefaultConnectionStrategy<TOutputData, TInputData> : DefaultConnectionStrategy
         where TOutputData : IGraphItem

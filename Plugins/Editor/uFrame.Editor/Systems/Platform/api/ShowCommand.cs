@@ -1,6 +1,8 @@
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Platform
 {
     public class ShowCommand : Command
     {

@@ -1,6 +1,9 @@
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Core;
 
-public class CreateGraphMenuCommand : Command
+namespace uFrame.Editor.Graphs.Commands
 {
+    public class CreateGraphMenuCommand : Command
+    {
 
+    }
 }

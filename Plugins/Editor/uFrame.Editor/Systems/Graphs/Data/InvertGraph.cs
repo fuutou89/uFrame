@@ -1,10 +1,13 @@
-﻿using Invert.Data;
-using Invert.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-namespace Invert.Core.GraphDesigner
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Json;
+
+namespace uFrame.Editor.Graphs.Data
 {
     public class InvertGraph : IGraphData, IItem, IJsonTypeResolver, IDataRecordRemoved, ITreeItem
     {
@@ -338,6 +341,7 @@ namespace Invert.Core.GraphDesigner
         {
             get { return _config ?? (_config = Repository.GetSingle<uFrameDatabaseConfig>()); }
         }
+
         [InspectorProperty("All the code generated for this graph will be placed inside this namespace.")]
         public string Namespace
         {

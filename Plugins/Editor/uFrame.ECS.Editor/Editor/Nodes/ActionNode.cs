@@ -4,14 +4,21 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Invert.Core;
-using Invert.Core.GraphDesigner;
-using Invert.Data;
-using Invert.Json;
 using uFrame.Attributes;
+using uFrame.ECS.Editor.ChildItems;
+using uFrame.ECS.Editor.Plugins;
+using uFrame.ECS.Editor.ViewModels;
 using UnityEngine;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.DebugSystem;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Json;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
     public interface IContextVariable : IDiagramNodeItem
     {
@@ -720,7 +727,7 @@ namespace Invert.uFrame.ECS
                 
             }
         }
-          
+
         public override IEnumerable<IConnectable> Connectables
         {
             get
@@ -729,7 +736,7 @@ namespace Invert.uFrame.ECS
                 if (_branches != null)
                     foreach (var item in Branches) yield return item;
             }
-        } 
+        }
 
         public ActionBranch[] Branches
         {
@@ -814,6 +821,7 @@ namespace Invert.uFrame.ECS
     public class ActionIn : SelectionFor<IContextVariable, VariableSelection>, IActionIn, IDynamicDataRecord
     {
         private string _variableName;
+
 
         public override bool CanInputFrom(IConnectable output)
         {
@@ -1205,7 +1213,6 @@ namespace Invert.uFrame.ECS
 
         public override bool CanOutputTo(IConnectable input)
         {
-
             return true;
             return base.CanOutputTo(input);
         }

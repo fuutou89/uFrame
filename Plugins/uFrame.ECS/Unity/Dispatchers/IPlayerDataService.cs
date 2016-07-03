@@ -1,4 +1,4 @@
-namespace uFrame.ECS
+namespace uFrame.ECS.UnityUtilities
 {
     public interface IPlayerDataService
     {

@@ -1,30 +1,34 @@
 using System.CodeDom;
 using System.Linq;
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Configurations;
 
-[TemplateClass(TemplateLocation.DesignerFile)]
-public class EnumNodeGenerator : IClassTemplate<EnumNode>, ITemplateCustomFilename
+namespace uFrame.Editor.Compiling.CommonNodes
 {
-    public string OutputPath
+    [TemplateClass(TemplateLocation.DesignerFile)]
+    public class EnumNodeGenerator : IClassTemplate<EnumNode>, ITemplateCustomFilename
     {
-        get { return Path2.Combine("Enums"); }
-    }
-
-    public bool CanGenerate
-    {
-        get { return true; }
-    }
-
-    public void TemplateSetup()
-    {
-        Ctx.CurrentDeclaration.IsEnum = true;
-        Ctx.CurrentDeclaration.BaseTypes.Clear();
-        foreach (var item in Ctx.Data.Items.OrderBy(s=>s.Name))
+        public string OutputPath
         {
-            this.Ctx.CurrentDeclaration.Members.Add(new CodeMemberField(this.Ctx.CurrentDeclaration.Name, item.Name));
+            get { return Path2.Combine("Enums"); }
         }
-    }
 
-    public TemplateContext<EnumNode> Ctx { get; set; }
-    public string Filename { get { return Path2.Combine("Enums", Ctx.Data.Name + ".cs"); } }
+        public bool CanGenerate
+        {
+            get { return true; }
+        }
+
+        public void TemplateSetup()
+        {
+            Ctx.CurrentDeclaration.IsEnum = true;
+            Ctx.CurrentDeclaration.BaseTypes.Clear();
+            foreach (var item in Ctx.Data.Items.OrderBy(s => s.Name))
+            {
+                this.Ctx.CurrentDeclaration.Members.Add(new CodeMemberField(this.Ctx.CurrentDeclaration.Name, item.Name));
+            }
+        }
+
+        public TemplateContext<EnumNode> Ctx { get; set; }
+        public string Filename { get { return Path2.Combine("Enums", Ctx.Data.Name + ".cs"); } }
+    }
 }

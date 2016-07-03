@@ -1,18 +1,24 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
-using Invert.Data;
-using Invert.Json;
-using Invert.uFrame.ECS;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Unity;
+using uFrame.Json;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.UpgradingSystem
 {
     public class UpgradingSystem : DiagramPlugin
-        , IExecuteCommand<Import16Command>
-        , IExecuteCommand<FixTypes>
-        , IToolbarQuery
-        
+            , IExecuteCommand<Import16Command>
+            , IExecuteCommand<FixTypes>
+            , IToolbarQuery
+
     {
         public void Execute(Import16Command command)
         {
@@ -139,7 +145,7 @@ namespace Invert.Core.GraphDesigner
                 var filterId = item.Key;
                 foreach (KeyValuePair<string, JSONNode> positionItem in item.Value.AsObject)
                 {
-                    
+
                     var filterItem = new FilterItem();
                     filterItem.FilterId = filterId;
                     filterItem.NodeId = positionItem.Key;

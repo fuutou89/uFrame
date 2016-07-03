@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Invert.uFrame.Editor
+namespace uFrame.Editor.GraphUI.Events
 {
     public interface IDrawGraphExplorer
     {

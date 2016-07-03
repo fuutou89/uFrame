@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using Invert.Data;
 using UnityEngine;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Kernel.Collection;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.ViewModels
 { 
     public abstract class GraphItemViewModel<TData> : GraphItemViewModel
     {

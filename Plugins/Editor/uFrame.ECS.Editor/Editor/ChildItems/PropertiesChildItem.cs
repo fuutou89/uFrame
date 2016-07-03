@@ -1,11 +1,15 @@
-using Invert.Json;
 using uFrame.Attributes;
+using System;
+using System.Collections.Generic;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.Editor.Plugins;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Json;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.ChildItems
 {
-    using System;
-    using System.Collections.Generic;
-    using Invert.Core.GraphDesigner;
+
 
     public interface IDescriptorItem : IDiagramNodeItem, ITypedItem
     {
@@ -114,6 +118,6 @@ namespace Invert.uFrame.ECS
         }
     }
     
-    public partial interface IPropertiesConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IPropertiesConnectable : IDiagramNodeItem, IConnectable {
     }
 }

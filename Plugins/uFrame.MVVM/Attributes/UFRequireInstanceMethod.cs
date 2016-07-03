@@ -1,11 +1,14 @@
 using System;
 
-public class UFRequireInstanceMethod : Attribute
+namespace uFrame.MVVM.Attributes
 {
-    public UFRequireInstanceMethod(string canmovetochanged)
+    public class UFRequireInstanceMethod : Attribute
     {
-        MethodName = canmovetochanged;
-    }
+        public UFRequireInstanceMethod(string canmovetochanged)
+        {
+            MethodName = canmovetochanged;
+        }
 
-    public string MethodName { get; set; }
+        public string MethodName { get; set; }
+    }
 }

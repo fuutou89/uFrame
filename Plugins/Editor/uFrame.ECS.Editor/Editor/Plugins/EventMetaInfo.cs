@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Core;
 using uFrame.Attributes;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data.Types;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Plugins
 {
     public interface IEventMetaInfo : IItem, ITypeInfo
     {

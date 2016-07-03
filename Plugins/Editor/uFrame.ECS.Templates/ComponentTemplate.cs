@@ -1,10 +1,11 @@
 using System.CodeDom;
-using Invert.Core.GraphDesigner;
-using uFrame.ECS;
+using uFrame.ECS.Components;
+using uFrame.ECS.Editor.ChildItems;
 using UnityEngine;
 using UniRx;
+using uFrame.Editor.Compiling.CodeGen;
 
-namespace Invert.uFrame.ECS.Templates
+namespace uFrame.ECS.Templates
 {
     [RequiresNamespace("uFrame.ECS")]
     [RequiresNamespace("UniRx")]

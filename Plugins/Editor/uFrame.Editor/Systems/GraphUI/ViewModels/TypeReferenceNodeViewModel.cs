@@ -1,6 +1,9 @@
 using System.Collections.Generic;
+using uFrame.Editor.Compiling.CommonNodes;
+using uFrame.Editor.GraphUI.Drawers.Schemas;
+using uFrame.Editor.Platform;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.ViewModels
 {
     public class TypeReferenceNodeViewModel : DiagramNodeViewModel<TypeReferenceNode>
     {

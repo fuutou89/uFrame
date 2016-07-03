@@ -1,12 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-using Invert.Data;
 using UnityEngine;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.Drawers.Schemas;
+using uFrame.Editor.Platform;
+using uFrame.Kernel.Collection;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.ViewModels
 {
 
     public abstract class DiagramNodeViewModel<TData> : DiagramNodeViewModel where TData : IDiagramNode

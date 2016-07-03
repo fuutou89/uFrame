@@ -2,7 +2,7 @@ using System;
 using System.CodeDom;
 using System.Reflection;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CodeGen
 {
     public class WithAttributes : TemplateAttribute
     {

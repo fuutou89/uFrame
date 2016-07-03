@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.ViewModels
 {
     public class NavigationItem
     {

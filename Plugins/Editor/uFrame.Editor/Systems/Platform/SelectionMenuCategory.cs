@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using uFrame.Editor.Core;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Platform
 {
     public class SelectionMenuCategory : ITreeItem
     {

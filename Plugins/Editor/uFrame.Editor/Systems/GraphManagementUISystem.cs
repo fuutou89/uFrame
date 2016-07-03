@@ -1,15 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Invert.Common;
-using Invert.Core;
-using Invert.Core.GraphDesigner;
-using Invert.Core.GraphDesigner.Systems.GraphUI;
-using Invert.Core.GraphDesigner.Systems.GraphUI.api;
-using Invert.Data;
-using Invert.IOC;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Commands;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.GraphUI.Events;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Unity;
+using uFrame.Editor.Wizards.Data;
+using uFrame.Editor.Wizards.Events;
+using uFrame.IOC;
 using UnityEngine;
 
-namespace Assets.UnderConstruction.Editor
+namespace uFrame.Editor
 {
     public class GraphManagementUISystem : DiagramPlugin, IQueryDesignerWindowModalContent, IQueryGraphsActions, INewTabRequested
     {

@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using uFrame.Editor.GraphUI.ViewModels;
+using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity.WindowsPlugin
+namespace uFrame.Editor.Windows
 {
     public class WindowViewModel : GraphItemViewModel
     {

@@ -1,60 +1,70 @@
-using Invert.Core;
-using Invert.Core.GraphDesigner;
-using Invert.IOC;
+using uFrame.Editor.Core;
+using uFrame.IOC;
 using UnityEditor;
 
-public class DialogSystem : DiagramPlugin
-    ,IExecuteCommand<ShowSaveFileDialog>
-    ,IExecuteCommand<ShowOpenFileDialog>
-    ,IExecuteCommand<ShowOpenFolderDialog>
-    ,IExecuteCommand<ShowSaveFolderDialog>
+namespace uFrame.Editor
 {
-    public override void Initialize(UFrameContainer container)
+    public class DialogSystem : DiagramPlugin
+        , IExecuteCommand<ShowSaveFileDialog>
+        , IExecuteCommand<ShowOpenFileDialog>
+        , IExecuteCommand<ShowOpenFolderDialog>
+        , IExecuteCommand<ShowSaveFolderDialog>
     {
-        base.Initialize(container);
+        public override void Initialize(UFrameContainer container)
+        {
+            base.Initialize(container);
+        }
+
+        public void Execute(ShowSaveFileDialog command)
+        {
+            command.Result = EditorUtility.SaveFilePanel(command.Title, command.Directory, command.DefaultName,
+                command.Extension);
+        }
+
+        public void Execute(ShowOpenFileDialog command)
+        {
+            command.Result = EditorUtility.OpenFilePanel(command.Title, command.Directory, command.Extension);
+        }
+
+        public void Execute(ShowOpenFolderDialog command)
+        {
+            command.Result = EditorUtility.OpenFolderPanel(command.Title, command.Folder, command.DefaultName);
+        }
+
+        public void Execute(ShowSaveFolderDialog command)
+        {
+            command.Result = EditorUtility.SaveFolderPanel(command.Title, command.Folder, command.DefaultName);
+        }
     }
 
-    public void Execute(ShowSaveFileDialog command)
+    public class ShowSaveFileDialog : Command
     {
-        command.Result = EditorUtility.SaveFilePanel(command.Title,command.Directory, command.DefaultName, command.Extension);
+        public string Result { get; set; }
+        public string DefaultName { get; set; }
+        public string Extension { get; set; }
+        public string Message { get; set; }
+        public string Directory { get; set; }
     }
 
-    public void Execute(ShowOpenFileDialog command)
+    public class ShowOpenFileDialog : Command
     {
-        command.Result = EditorUtility.OpenFilePanel(command.Title, command.Directory, command.Extension);
+        public string Directory { get; set; }
+        public string[] Filters { get; set; }
+        public string Result { get; set; }
+        public string Extension { get; set; }
     }
 
-    public void Execute(ShowOpenFolderDialog command)
+    public class ShowOpenFolderDialog : Command
     {
-        command.Result = EditorUtility.OpenFolderPanel(command.Title, command.Folder, command.DefaultName);
+        public string Result { get; set; }
+        public string Folder { get; set; }
+        public string DefaultName { get; set; }
     }
 
-    public void Execute(ShowSaveFolderDialog command)
+    public class ShowSaveFolderDialog : Command
     {
-        command.Result = EditorUtility.SaveFolderPanel(command.Title, command.Folder, command.DefaultName);
+        public string Result { get; set; }
+        public string Folder { get; set; }
+        public string DefaultName { get; set; }
     }
-}
-
-public class ShowSaveFileDialog : Command {
-    public string Result { get; set; }
-    public string DefaultName { get; set; }
-    public string Extension { get; set; }
-    public string Message { get; set; }
-    public string Directory { get; set; }
-}
-public class ShowOpenFileDialog : Command {
-    public string Directory { get; set; }
-    public string[] Filters { get; set; }
-    public string Result { get; set; }
-    public string Extension { get; set; }
-}
-public class ShowOpenFolderDialog : Command {
-    public string Result { get; set; }
-    public string Folder { get; set; }
-    public string DefaultName { get; set; }
-}
-public class ShowSaveFolderDialog : Command {
-    public string Result { get; set; }
-    public string Folder { get; set; }
-    public string DefaultName { get; set; }
 }

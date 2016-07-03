@@ -1,7 +1,9 @@
 ﻿using System;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Windows;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity.WindowsPlugin
+namespace uFrame.Editor
 {
 
     public class WindowsSystem : DiagramPlugin, IOpenWindow

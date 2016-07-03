@@ -2,7 +2,11 @@
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Graphs.Data;
+using uFrame.IOC;
+using uFrame.MVVM.ViewModels;
 
 namespace uFrame.MVVM.Templates
 {
@@ -74,7 +78,7 @@ namespace uFrame.MVVM.Templates
             get
             {
                 Ctx.SetType(typeof(IViewModelManager)); // I force this so it doesn't change it
-                Ctx.CurrentProperty.CustomAttributes.Add(new CodeAttributeDeclaration(typeof(Invert.IOC.InjectAttribute).ToCodeReference(), new CodeAttributeArgument(new CodePrimitiveExpression(Ctx.Data.Name))));
+                Ctx.CurrentProperty.CustomAttributes.Add(new CodeAttributeDeclaration(typeof(InjectAttribute).ToCodeReference(), new CodeAttributeArgument(new CodePrimitiveExpression(Ctx.Data.Name))));
                 return null;
             }
         }
@@ -86,7 +90,7 @@ namespace uFrame.MVVM.Templates
             {
 
                 Ctx.CurrentProperty.CustomAttributes.Add(new CodeAttributeDeclaration(
-                    typeof(Invert.IOC.InjectAttribute).ToCodeReference(),
+                    typeof(InjectAttribute).ToCodeReference(),
                     new CodeAttributeArgument(new CodePrimitiveExpression(Ctx.ItemAs<InstancesReference>().Name))
                     ));
 

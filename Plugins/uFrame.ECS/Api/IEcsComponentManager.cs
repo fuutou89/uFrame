@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using UniRx;
+using uFrame.ECS.Components;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.APIs
 {
     /// <summary>
     /// Manages components of a specific type

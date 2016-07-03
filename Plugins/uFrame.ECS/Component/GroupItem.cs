@@ -1,7 +1,9 @@
 ﻿using System;
+using uFrame.ECS.APIs;
+using uFrame.ECS.UnityUtilities;
 using UniRx;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.Components
 {
     /// <summary>
     /// The base class for all group items, for example ReactiveGroup`TGroupItem`

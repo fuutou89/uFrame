@@ -1,4 +1,4 @@
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Core
 {
     public abstract class Feature : CorePlugin
     {

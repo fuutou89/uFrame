@@ -1,4 +1,4 @@
-﻿namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Data
+﻿namespace uFrame.Editor.Koinonia.Data
 {
     public enum UFramePackageManagementType
     {

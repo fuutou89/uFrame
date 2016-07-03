@@ -1,17 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using Invert.Common;
-using Invert.Core;
-using Invert.Core.GraphDesigner;
-using Invert.Data;
-using Invert.IOC;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.GraphUI.Events;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.NavigationSystem;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Unity;
+using uFrame.IOC;
 using UnityEditor;
 using UnityEngine;
 
-namespace Invert.uFrame.Editor
+namespace uFrame.Editor.GraphUI
 {
-
     public interface IExplorerProvider
     {
         string Name { get; }

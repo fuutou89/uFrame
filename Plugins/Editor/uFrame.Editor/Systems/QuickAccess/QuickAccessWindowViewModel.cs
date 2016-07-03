@@ -1,34 +1,36 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Invert.Core;
-using Invert.Windows;
+using uFrame.Editor.Core;
+using uFrame.Editor.Windows;
 
-public class QuickAccessWindowViewModel : IWindow
+namespace uFrame.Editor.QuickAccess
 {
-    private readonly QuickAccessContext _context;
-
-    public QuickAccessWindowViewModel(QuickAccessContext context)
+    public class QuickAccessWindowViewModel : IWindow
     {
-        _context = context;
-        UpdateSearch();
-    }
-    public int SelectedIndex { get; set; }
-    private List<QuickAccessItem> _quickLaunchItems;
-    private string _searchText = "";
-    public string Identifier { get; set; }
+        private readonly QuickAccessContext _context;
 
-    public string SearchText
-    {
-        get { return _searchText; }
-        set { _searchText = value; }
-    }
+        public QuickAccessWindowViewModel(QuickAccessContext context)
+        {
+            _context = context;
+            UpdateSearch();
+        }
+        public int SelectedIndex { get; set; }
+        private List<QuickAccessItem> _quickLaunchItems;
+        private string _searchText = "";
+        public string Identifier { get; set; }
 
-    public void UpdateSearch()
-    {
-        QuickLaunchItems.Clear();
-        var launchItems = new List<IItem>();
+        public string SearchText
+        {
+            get { return _searchText; }
+            set { _searchText = value; }
+        }
 
-        InvertApplication.SignalEvent<IQuickAccessEvents>(_ => _.QuickAccessItemsEvents(_context, launchItems));
+        public void UpdateSearch()
+        {
+            QuickLaunchItems.Clear();
+            var launchItems = new List<IItem>();
+
+            InvertApplication.SignalEvent<IQuickAccessEvents>(_ => _.QuickAccessItemsEvents(_context, launchItems));
         
 //        foreach (var item in launchItems.SelectMany(p => p))
 //        {
@@ -41,61 +43,62 @@ public class QuickAccessWindowViewModel : IWindow
 //            //    break;
 //            //}
 //        }
-        GroupedLaunchItems = QuickLaunchItems.GroupBy(p => p.Group).ToArray();
+            GroupedLaunchItems = QuickLaunchItems.GroupBy(p => p.Group).ToArray();
 
-    }
+        }
 
-    public IGrouping<string, QuickAccessItem>[] GroupedLaunchItems { get; set; }
+        public IGrouping<string, QuickAccessItem>[] GroupedLaunchItems { get; set; }
 
-    public List<QuickAccessItem> QuickLaunchItems
-    {
-        get { return _quickLaunchItems ?? (_quickLaunchItems = new List<QuickAccessItem>()); }
-        set { _quickLaunchItems = value; }
-    }
+        public List<QuickAccessItem> QuickLaunchItems
+        {
+            get { return _quickLaunchItems ?? (_quickLaunchItems = new List<QuickAccessItem>()); }
+            set { _quickLaunchItems = value; }
+        }
 
     
 
-    public void ItemSelected(QuickAccessItem item)
-    {
-        InvertApplication.Execute(new LambdaCommand("Select Item", () =>
+        public void ItemSelected(QuickAccessItem item)
         {
-            QuickLaunchItems[SelectedIndex].Action(QuickLaunchItems[SelectedIndex].Item);
-        }));
-        InvertApplication.SignalEvent<IWindowsEvents>(i=>i.WindowRequestCloseWithViewModel(this));
-    }
+            InvertApplication.Execute(new LambdaCommand("Select Item", () =>
+            {
+                QuickLaunchItems[SelectedIndex].Action(QuickLaunchItems[SelectedIndex].Item);
+            }));
+            InvertApplication.SignalEvent<IWindowsEvents>(i=>i.WindowRequestCloseWithViewModel(this));
+        }
 
 
-    public void Execute()
-    {
-        InvertApplication.Execute(new LambdaCommand("Select Item", () =>
+        public void Execute()
         {
-            QuickLaunchItems[SelectedIndex].Action(QuickLaunchItems[SelectedIndex].Item);
-        }));
-        InvertApplication.SignalEvent<IWindowsEvents>(i => i.WindowRequestCloseWithViewModel(this));
-    }
+            InvertApplication.Execute(new LambdaCommand("Select Item", () =>
+            {
+                QuickLaunchItems[SelectedIndex].Action(QuickLaunchItems[SelectedIndex].Item);
+            }));
+            InvertApplication.SignalEvent<IWindowsEvents>(i => i.WindowRequestCloseWithViewModel(this));
+        }
 
-    public void MoveUp()
-    {
-        if (SelectedIndex <= 0)
-            SelectedIndex = QuickLaunchItems.Count -1;
-        else
-            SelectedIndex--;
-    }
-
-    public void MoveDown()
-    {
-        SelectedIndex = (SelectedIndex+1) % QuickLaunchItems.Count;
-    }
-
-    public void Execute(QuickAccessItem item)
-    {
-        var x = item.Item;
-        var z = item;
-        InvertApplication.Execute(new LambdaCommand("Select Item", () =>
+        public void MoveUp()
         {
-            z.Action(x);
-        }));
+            if (SelectedIndex <= 0)
+                SelectedIndex = QuickLaunchItems.Count -1;
+            else
+                SelectedIndex--;
+        }
 
-        InvertApplication.SignalEvent<IWindowsEvents>(i => i.WindowRequestCloseWithViewModel(this));
+        public void MoveDown()
+        {
+            SelectedIndex = (SelectedIndex+1) % QuickLaunchItems.Count;
+        }
+
+        public void Execute(QuickAccessItem item)
+        {
+            var x = item.Item;
+            var z = item;
+            InvertApplication.Execute(new LambdaCommand("Select Item", () =>
+            {
+                z.Action(x);
+            }));
+
+            InvertApplication.SignalEvent<IWindowsEvents>(i => i.WindowRequestCloseWithViewModel(this));
+        }
     }
 }

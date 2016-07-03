@@ -1,4 +1,7 @@
-public interface IQuickAccessContext
+namespace uFrame.Editor.QuickAccess
 {
+    public interface IQuickAccessContext
+    {
     
+    }
 }

@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CodeGen
 {
     public abstract class OutputGenerator
     {

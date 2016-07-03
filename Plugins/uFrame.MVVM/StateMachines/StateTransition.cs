@@ -1,4 +1,4 @@
-﻿namespace Invert.StateMachine
+﻿namespace uFrame.MVVM.StateMachines
 {
     public class StateTransition
     {

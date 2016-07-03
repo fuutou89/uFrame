@@ -1,6 +1,12 @@
-using Invert.IOC;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database;
+using uFrame.Editor.Database.Events;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Workspaces.Data;
+using uFrame.Editor.Workspaces.Events;
+using uFrame.IOC;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Menus
 {
     public class Toolbars : DiagramPlugin, IToolbarQuery, ICommandExecuted, IChangeDatabase, IWorkspaceChanged
     {

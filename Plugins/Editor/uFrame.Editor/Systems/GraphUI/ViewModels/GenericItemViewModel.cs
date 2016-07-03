@@ -1,4 +1,6 @@
-namespace Invert.Core.GraphDesigner
+using uFrame.Editor.Graphs.Data;
+
+namespace uFrame.Editor.GraphUI.ViewModels
 {
     public class GenericItemViewModel<TData> : ItemViewModel<TData> where TData : IDiagramNodeItem
     {

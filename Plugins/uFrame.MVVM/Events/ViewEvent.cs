@@ -1,6 +1,7 @@
 using uFrame.Kernel;
+using uFrame.MVVM.Views;
 
-namespace uFrame.MVVM
+namespace uFrame.MVVM.Events
 {
     public class ViewEvent
     {

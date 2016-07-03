@@ -1,8 +1,9 @@
+using uFrame.Editor.Compiling.CommonNodes;
+using uFrame.Editor.Workspaces;
+using uFrame.IOC;
+
 namespace uFrame.MVVM
 {
-    using Invert.Core.GraphDesigner;
-
-
     public class uFrameMVVM : uFrameMVVMBase
     {
         public override decimal LoadPriority
@@ -10,7 +11,7 @@ namespace uFrame.MVVM
             get { return 500; }
         }
 
-        public override void Initialize(Invert.IOC.UFrameContainer container)
+        public override void Initialize(UFrameContainer container)
         {
             base.Initialize(container);
             SubSystem.Name = "SubSystem";

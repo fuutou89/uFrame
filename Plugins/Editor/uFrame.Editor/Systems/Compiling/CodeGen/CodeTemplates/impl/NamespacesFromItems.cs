@@ -1,8 +1,9 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using uFrame.Editor.Graphs.Data;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CodeGen
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public class NamespacesFromItems : TemplateAttribute
@@ -11,8 +12,6 @@ namespace Invert.Core.GraphDesigner
         {
             get { return -3; }
         }
-
-  
 
         public string Namespace { get; set; }
         public override void Modify(object templateInstance, MemberInfo info, TemplateContext ctx)

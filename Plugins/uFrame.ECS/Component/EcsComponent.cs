@@ -2,13 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Invert.Json;
 using uFrame.Attributes;
 using uFrame.Kernel;
 using UniRx;
 using UnityEngine;
+using uFrame.ECS.APIs;
+using uFrame.ECS.Systems;
+using uFrame.Json;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.Components
 {
     /// <summary>
     /// The base class for all ECS components, these components are nothing more than just data.  
@@ -96,7 +98,7 @@ namespace uFrame.ECS
             base.KernelLoaded();
             if (EntityId != 0)
             {
-                EcsComponentService.Instance.RegisterComponentInstance(this.GetType(),this);
+                EcsComponentService.Instance.RegisterComponentInstance(GetType(),this);
                 return;
             }
           

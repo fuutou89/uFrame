@@ -1,7 +1,9 @@
 using System.Linq;
+using uFrame.Editor.Graphs;
+using uFrame.Editor.Graphs.Data;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.ViewModels
 {
     public class InputOutputStrategy : DefaultConnectionStrategy<IConnectable, IConnectable>
     {

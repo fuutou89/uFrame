@@ -1,6 +1,7 @@
 using uFrame.Attributes;
+using uFrame.ECS.Components;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.UnityUtilities
 {
     [UFrameEventDispatcher("On Mouse Enter"), uFrameCategory("Unity Messages")]
     public class MouseEnterDispatcher : EcsDispatcher

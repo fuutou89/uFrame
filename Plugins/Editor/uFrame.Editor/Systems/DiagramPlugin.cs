@@ -1,7 +1,9 @@
 ﻿using System;
-using Invert.IOC;
+using uFrame.Editor.Core;
+using uFrame.Editor.GraphUI;
+using uFrame.IOC;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor
 {
     public abstract class DiagramPlugin : CorePlugin, IDiagramPlugin
     {

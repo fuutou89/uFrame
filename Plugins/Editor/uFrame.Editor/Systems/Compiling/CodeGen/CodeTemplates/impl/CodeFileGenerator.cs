@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.CSharp;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CodeGen
 {
     public class CodeFileGenerator : FileGeneratorBase
     {

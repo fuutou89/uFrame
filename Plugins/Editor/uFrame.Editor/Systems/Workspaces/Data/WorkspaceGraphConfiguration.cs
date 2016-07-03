@@ -1,6 +1,6 @@
 using System;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Workspaces.Data
 {
     public class WorkspaceGraphConfiguration
     {

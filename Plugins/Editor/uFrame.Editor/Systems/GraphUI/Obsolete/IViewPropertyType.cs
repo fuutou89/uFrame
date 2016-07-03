@@ -1,3 +1,6 @@
-public interface IViewPropertyType
+namespace uFrame.Editor.GraphUI
 {
+    public interface IViewPropertyType
+    {
+    }
 }

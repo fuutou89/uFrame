@@ -1,6 +1,8 @@
-using Invert.Core.GraphDesigner;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Plugins
 {
     public class GroupActionNodes : Command
     {

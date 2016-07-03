@@ -1,4 +1,6 @@
-namespace Invert.Json
+using uFrame.Json;
+
+namespace uFrame.Editor.Graphs.Data
 {
     public interface IJsonObject
     {

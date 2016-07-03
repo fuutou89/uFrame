@@ -1,6 +1,7 @@
+using uFrame.Editor.Platform;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.Drawers
 {
     public interface IInspectorPropertyDrawer
     {

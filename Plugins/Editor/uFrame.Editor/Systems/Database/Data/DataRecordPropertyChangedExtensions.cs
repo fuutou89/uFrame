@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Linq;
-using Invert.Json;
 
-namespace Invert.Data
+namespace uFrame.Editor.Database.Data
 {
     public static class DataRecordPropertyChangedExtensions
     {

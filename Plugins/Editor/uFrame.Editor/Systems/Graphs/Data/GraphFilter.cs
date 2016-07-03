@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Invert.Data;
+using uFrame.Editor.Database.Data;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Graphs.Data
 {
 
     public class GraphFilter : IGraphFilter

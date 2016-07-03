@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.UnityUtilities
 {
     public class EntityPrefabPool : MonoBehaviour
     {

@@ -1,9 +1,9 @@
 using System;
-//using uFrame.IOC;
-using Invert.IOC;
+using uFrame.IOC;
 using uFrame.Kernel;
 using uFrame.MVVM;
 using uFrame.MVVM.Bindings;
+using uFrame.MVVM.ViewModels;
 using UnityEngine;
 
 namespace uFrame.MVVM

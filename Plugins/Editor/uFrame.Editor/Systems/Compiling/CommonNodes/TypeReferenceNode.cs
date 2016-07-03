@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
-using Invert.Json;
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
+using uFrame.Json;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CommonNodes
 {
     public class TypeReferenceNode : GenericNode, IClassTypeNode, ITypedItem
     {

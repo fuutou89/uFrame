@@ -1,16 +1,19 @@
-﻿
-using Invert.Data;
-using Invert.Json;
-using UnityEngine;
+﻿using UnityEngine;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using uFrame.ECS.Editor.ChildItems;
+using uFrame.ECS.Editor.Plugins;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
+using uFrame.Editor.Nodes;
+using uFrame.Json;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Invert.Core.GraphDesigner;
-
     public class CollectionTypeInfo : ITypeInfo
     {
         public static SystemTypeInfo ListType = new SystemTypeInfo(typeof(IList));
@@ -290,6 +293,6 @@ namespace Invert.uFrame.ECS
        
     }
     
-    public partial interface IComponentConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IComponentConnectable : IDiagramNodeItem, IConnectable {
     }
 }

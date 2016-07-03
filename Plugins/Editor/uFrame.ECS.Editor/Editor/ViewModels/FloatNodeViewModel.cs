@@ -1,10 +1,11 @@
-namespace Invert.uFrame.ECS
+using uFrame.ECS.Editor.Nodes;
+using uFrame.Editor.GraphUI.ViewModels;
+
+namespace uFrame.ECS.Editor.ViewModels
 {
-
-
     public class FloatNodeViewModel : FloatNodeViewModelBase {
         
-        public FloatNodeViewModel(FloatNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
+        public FloatNodeViewModel(FloatNode graphItemObject, DiagramViewModel diagramViewModel) : 
                 base(graphItemObject, diagramViewModel) {
         }
     }

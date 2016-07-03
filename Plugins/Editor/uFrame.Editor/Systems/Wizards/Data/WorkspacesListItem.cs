@@ -1,4 +1,6 @@
-namespace Invert.Core.GraphDesigner.Systems.GraphUI.api
+using uFrame.Editor.Workspaces.Data;
+
+namespace uFrame.Editor.Wizards.Data
 {
     public class WorkspacesListItem
     {

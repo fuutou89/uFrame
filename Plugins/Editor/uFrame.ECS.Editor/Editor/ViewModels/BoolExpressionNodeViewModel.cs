@@ -1,10 +1,11 @@
-namespace Invert.uFrame.ECS
+using uFrame.ECS.Editor.Nodes;
+using uFrame.Editor.GraphUI.ViewModels;
+
+namespace uFrame.ECS.Editor.ViewModels
 {
-
-
     public class BoolExpressionNodeViewModel : BoolExpressionNodeViewModelBase {
         
-        public BoolExpressionNodeViewModel(BoolExpressionNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
+        public BoolExpressionNodeViewModel(BoolExpressionNode graphItemObject, DiagramViewModel diagramViewModel) : 
                 base(graphItemObject, diagramViewModel) {
         }
     }

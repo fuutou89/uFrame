@@ -1,6 +1,7 @@
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Workspaces;
+using uFrame.Editor.Workspaces.Data;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Plugins
 {
     public class LibraryWorkspace : Workspace
     {

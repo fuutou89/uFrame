@@ -1,8 +1,9 @@
 using System.Collections;
-using uFrame.ECS;
+using uFrame.ECS.Components;
+using uFrame.ECS.Systems;
 using UnityEngine.EventSystems;
 
-namespace uFrame.Actions
+namespace uFrame.ECS.Actions
 {
     public abstract class UFAction
     {

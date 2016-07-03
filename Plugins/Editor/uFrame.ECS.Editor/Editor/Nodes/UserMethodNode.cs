@@ -1,10 +1,9 @@
 using System.CodeDom;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Graphs.Data;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
-    using Invert.Core.GraphDesigner;
-
-
     public class UserMethodNode : UserMethodNodeBase {
 
         public override void WriteCode(ISequenceVisitor visitor, TemplateContext ctx)
@@ -36,6 +35,6 @@ namespace Invert.uFrame.ECS
         }
     }
     
-    public partial interface IUserMethodConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IUserMethodConnectable : IDiagramNodeItem, IConnectable {
     }
 }

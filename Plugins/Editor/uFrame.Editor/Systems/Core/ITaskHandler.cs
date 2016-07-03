@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace Invert.Core
+namespace uFrame.Editor.Core
 {
     public interface ITaskHandler
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Invert.Data
+namespace uFrame.Editor.Database.Data
 {
     public interface IDataRecordManager
     {

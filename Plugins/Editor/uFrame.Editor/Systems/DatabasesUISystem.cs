@@ -1,12 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Invert.Common;
-using Invert.Core.GraphDesigner.Systems.GraphUI.api;
-using Invert.Core.GraphDesigner.Unity;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Commands;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Database.Events;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.GraphUI.Events;
+using uFrame.Editor.Input;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Unity;
+using uFrame.Editor.Wizards.Data;
+using uFrame.Editor.Wizards.Events;
 using UnityEditor;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Systems.GraphUI
+namespace uFrame.Editor
 {
 
     public class DatabasesUISystem : DiagramPlugin, 

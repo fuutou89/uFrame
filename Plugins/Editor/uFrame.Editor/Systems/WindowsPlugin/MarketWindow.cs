@@ -1,11 +1,11 @@
 using System;
 using System.Linq;
-using Invert.Common;
-using Invert.Common.UI;
+using uFrame.Editor.Core;
+using uFrame.Editor.Unity;
 using UnityEditor;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity
+namespace uFrame.Editor.WindowsPlugin
 {
     public class MarketWindow : EditorWindow
     {

@@ -1,10 +1,10 @@
 using System;
 using uFrame.Attributes;
-using uFrame.ECS;
+using uFrame.ECS.APIs;
 using uFrame.Kernel;
 using UniRx;
 
-namespace uFrame.Actions
+namespace uFrame.ECS.Actions
 {
     [ActionTitle("Interval"), uFrameCategory("Timers"), AsyncAction, ActionDescription("Repeat something over time with an certain interval.")]
     public class Interval : UFAction

@@ -1,4 +1,4 @@
-namespace Invert.Windows
+namespace uFrame.Editor.Windows
 {
     public interface IWindow
     {

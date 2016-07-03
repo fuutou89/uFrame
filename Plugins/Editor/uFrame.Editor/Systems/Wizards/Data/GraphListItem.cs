@@ -1,4 +1,6 @@
-namespace Assets.UnderConstruction.Editor
+using uFrame.Editor.Unity;
+
+namespace uFrame.Editor.Wizards.Data
 {
     public class GraphListItem
     {

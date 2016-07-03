@@ -1,6 +1,7 @@
 using UniRx;
 using System;
 using uFrame.Kernel;
+using uFrame.MVVM.ViewModels;
 
 // Required for WP8 and Store APPS
 

@@ -1,25 +1,29 @@
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.GraphUI;
 using UnityEditor;
 
-public class uFrameVersionProcessor : AssetPostprocessor
+namespace uFrame.Editor.Unity
 {
-   
-    private const string VERSION_KEY = "uFrame.InstalledVersion";
-
-    private static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
+    public class uFrameVersionProcessor : AssetPostprocessor
     {
-        var lastVersion = EditorPrefs.GetString(VERSION_KEY, "");
-        if (lastVersion != InvertGraphEditor.CURRENT_VERSION)
+
+        private const string VERSION_KEY = "uFrame.InstalledVersion";
+
+        private static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets,
+            string[] movedFromAssetPaths)
         {
-            EditorApplication.delayCall += ShowChangeLog;
-            EditorPrefs.SetString(VERSION_KEY, InvertGraphEditor.CURRENT_VERSION);
+            var lastVersion = EditorPrefs.GetString(VERSION_KEY, "");
+            if (lastVersion != InvertGraphEditor.CURRENT_VERSION)
+            {
+                EditorApplication.delayCall += ShowChangeLog;
+                EditorPrefs.SetString(VERSION_KEY, InvertGraphEditor.CURRENT_VERSION);
+            }
         }
-    }
 
-    private static void ShowChangeLog()
-    {
-        EditorApplication.delayCall -= ShowChangeLog;
-        EditorApplication.ExecuteMenuItem("Window/uFrame/Welcome Screen");
-        
+        private static void ShowChangeLog()
+        {
+            EditorApplication.delayCall -= ShowChangeLog;
+            EditorApplication.ExecuteMenuItem("Window/uFrame/Welcome Screen");
+
+        }
     }
 }

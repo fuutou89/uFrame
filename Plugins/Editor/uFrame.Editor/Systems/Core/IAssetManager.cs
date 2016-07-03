@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Invert.Core
+namespace uFrame.Editor.Core
 {
     public interface IAssetManager
     {

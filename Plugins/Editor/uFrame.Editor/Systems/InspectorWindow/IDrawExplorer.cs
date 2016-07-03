@@ -1,4 +1,7 @@
-public interface IDrawExplorer
+namespace uFrame.Editor.InspectorWindow
 {
-    void DrawExplorer();
+    public interface IDrawExplorer
+    {
+        void DrawExplorer();
+    }
 }

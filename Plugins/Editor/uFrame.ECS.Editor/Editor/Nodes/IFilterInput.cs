@@ -1,6 +1,6 @@
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Graphs.Data;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
     public interface IFilterInput : IDiagramNodeItem
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Invert.Core
+namespace uFrame.Editor.Core.MultiThreading
 {
     public class BackgroundTaskCommand : ICommand
     {

@@ -1,4 +1,4 @@
-﻿namespace Invert.Core.GraphDesigner
+﻿namespace uFrame.Editor.GraphUI.Events
 {
     public interface INewTabRequested
     {

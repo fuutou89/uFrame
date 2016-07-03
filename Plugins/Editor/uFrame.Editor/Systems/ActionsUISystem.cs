@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using Invert.Common;
-using Invert.Core.GraphDesigner.Systems.GraphUI;
-using Invert.Core.GraphDesigner.Systems.GraphUI.api;
-using Invert.Core.GraphDesigner.Unity.InspectorWindow;
+using uFrame.Editor.Core;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.InspectorWindow;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Unity;
+using uFrame.Editor.Wizards.Data;
+using uFrame.Editor.Wizards.Events;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity.Wizards
+namespace uFrame.Editor
 {
 
 

@@ -1,14 +1,18 @@
-﻿namespace uFrame.ECS.Editor.ActionExplorerSystem
+﻿using uFrame.ECS.Editor.Plugins;
+using uFrame.Editor;
+using uFrame.Editor.Core;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.GraphUI.Events;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Unity;
+
+namespace uFrame.ECS.Editor.ActionExplorerSystem
 {
     using UnityEngine;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
-    using Invert.Common;
-    using Invert.Core;
-    using Invert.Core.GraphDesigner;
-    using Invert.Core.GraphDesigner.Systems.GraphUI;
-    using Invert.uFrame.ECS;
     using UnityEditor;
 
     public class ActionExplorerUISystem : DiagramPlugin, IQueryDesignerWindowModalContent

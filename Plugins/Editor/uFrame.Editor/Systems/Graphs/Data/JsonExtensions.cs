@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using uFrame.Json;
 using UnityEngine;
 
-namespace Invert.Json
+namespace uFrame.Editor.Graphs.Data
 {
     public static class JsonExtensions
     {

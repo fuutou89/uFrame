@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Reflection;
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Documentation;
+using uFrame.Editor.Graphs.Data;
 
 namespace uFrame.Architect.Editor
 {

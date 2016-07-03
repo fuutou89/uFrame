@@ -1,17 +1,19 @@
 using System.CodeDom;
 using System.Text.RegularExpressions;
-using Invert.Data;
-using Invert.Json;
 using uFrame.Attributes;
 using UnityEngine;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
+using uFrame.Json;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Invert.Core.GraphDesigner;
-
     public class DynamicTypeInfo : ITypeInfo
     {
         public static SystemTypeInfo ObjectInfo = new SystemTypeInfo(typeof(object));
@@ -691,7 +693,7 @@ namespace Invert.uFrame.ECS
         }
     }
 
-    public partial interface ILoopCollectionConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable
+    public partial interface ILoopCollectionConnectable : IDiagramNodeItem, IConnectable
     {
     }
 

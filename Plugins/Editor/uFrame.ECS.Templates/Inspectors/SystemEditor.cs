@@ -1,7 +1,8 @@
-﻿using Invert.Core;
+﻿using uFrame.ECS.Systems;
+using uFrame.Editor.Core;
 using UnityEditor;
 
-[UnityEditor.CustomEditor(typeof(uFrame.ECS.EcsSystem),true)]
+[UnityEditor.CustomEditor(typeof(EcsSystem),true)]
 public class SystemEditor : Editor
 {
     public override void OnInspectorGUI()

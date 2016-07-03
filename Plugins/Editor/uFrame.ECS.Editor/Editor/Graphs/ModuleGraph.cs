@@ -1,8 +1,9 @@
-using Invert.Core;
-using Invert.Data;
-using Invert.Json;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Json;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Graphs
 {
     using System.Collections.Generic;
 

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Invert.Core
+namespace uFrame.Editor.Core
 {
     public class DefaultTreeItem : DefaultItem, ITreeItem
     {

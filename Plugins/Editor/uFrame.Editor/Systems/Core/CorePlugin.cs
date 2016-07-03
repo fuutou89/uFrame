@@ -1,7 +1,7 @@
 using System;
-using Invert.IOC;
+using uFrame.IOC;
 
-namespace Invert.Core
+namespace uFrame.Editor.Core
 {
     public abstract class CorePlugin : ICorePlugin
     {

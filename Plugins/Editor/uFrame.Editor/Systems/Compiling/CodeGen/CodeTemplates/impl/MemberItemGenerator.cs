@@ -1,4 +1,4 @@
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CodeGen
 {
     //public abstract class MemberItemGenerator<TItem> : IMemberGenerator
     //{

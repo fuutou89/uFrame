@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace Invert.Core
+namespace uFrame.Editor.Core
 {
     public static class StringExtensions
     {

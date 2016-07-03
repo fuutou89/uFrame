@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace Invert.Core
+namespace uFrame.Editor.Core.MultiThreading
 {
     public class BackgroundTask
     {

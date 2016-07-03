@@ -1,7 +1,8 @@
-﻿using Invert.Core.GraphDesigner.Unity.WindowsPlugin;
-using Invert.Data;
+﻿using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Windows;
 
-namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem.ViewModels
+namespace uFrame.Editor.Koinonia.ViewModels
 {
     public class PackageManagerWindow : WindowViewModel
     {

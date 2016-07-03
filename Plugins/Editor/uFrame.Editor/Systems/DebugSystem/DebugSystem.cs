@@ -1,16 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Invert.Common.UI;
-using Invert.Data;
-using Invert.uFrame.ECS;
 using UnityEditor;
 using UnityEngine;
-using Invert.Core.GraphDesigner;
-using Invert.Core;
+using uFrame.Common;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.Editor.ViewModels;
+using uFrame.Editor.Compiling.Commands;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.Input;
+using uFrame.Editor.Menus;
+using uFrame.Editor.NavigationSystem;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Unity;
 
-//namespace Invert.Core.GraphDesigner
-namespace uFrame.Editor
+namespace uFrame.Editor.DebugSystem
 {
     public class DebugEvent : Command
     {

@@ -3,8 +3,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.Scaffolding;
+using uFrame.Editor.Unity;
+using uFrame.Editor.Workspaces.Data;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Documentation
 {
 
     public abstract class DocumentationPage

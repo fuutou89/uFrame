@@ -1,10 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
-using Invert.Data;
-using Invert.IOC;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Compiling.Commands;
+using uFrame.Editor.Compiling.Events;
+using uFrame.Editor.Core;
+using uFrame.Editor.Core.MultiThreading;
+using uFrame.Editor.Database.Commands;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI;
+using uFrame.IOC;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Validation
 {
     public class ValidationSystem : DiagramPlugin, 
         IDataRecordPropertyChanged, 

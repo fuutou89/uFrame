@@ -1,13 +1,12 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using Invert.Core;
+using uFrame.Editor.Core;
 using UnityEditor;
 using UnityEngine;
 
-namespace Invert.Common.UI
+namespace uFrame.Editor.Unity
 {
     public class GUIHelpers
     {

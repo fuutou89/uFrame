@@ -1,7 +1,8 @@
-namespace Invert.uFrame.ECS
+using uFrame.Editor.Graphs.Data;
+
+namespace uFrame.ECS.Editor.Nodes
 {
     using System.Linq;
-
 
     public class AnyTrueNode : AnyTrueNodeBase {
         public override string GetExpression()
@@ -10,6 +11,6 @@ namespace Invert.uFrame.ECS
         }
     }
     
-    public partial interface IAnyTrueConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IAnyTrueConnectable : IDiagramNodeItem, IConnectable {
     }
 }

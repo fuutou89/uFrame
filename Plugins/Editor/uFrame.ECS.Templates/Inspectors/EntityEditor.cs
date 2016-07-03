@@ -2,17 +2,22 @@
 using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Common.UI;
-using Invert.Core;
-using Invert.Core.GraphDesigner;
-using Invert.Data;
-using Invert.IOC;
-using Invert.uFrame.ECS;
 using uFrame.Attributes;
-using uFrame.ECS;
+using uFrame.ECS.Components;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.Editor.Plugins;
+using uFrame.Editor;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.NavigationSystem;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Unity;
+using uFrame.IOC;
 using Object = UnityEngine.Object;
 
-[UnityEditor.CustomEditor(typeof(uFrame.ECS.Entity))]
+[UnityEditor.CustomEditor(typeof(Entity))]
 public class EntityEditor : Editor
 {
     private static Dictionary<int, List<string>> _markers;

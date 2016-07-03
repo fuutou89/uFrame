@@ -1,4 +1,4 @@
-namespace Invert.Data
+namespace uFrame.Editor.Database.Data
 {
     public interface IValueItem
     {

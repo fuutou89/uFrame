@@ -1,13 +1,16 @@
 ﻿using System.CodeDom;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
-    using Invert.Core.GraphDesigner;
-    using Invert.Data;
 
     public class PropertyChangedNode : PropertyChangedNodeBase, ISequenceNode, ISetupCodeWriter {
         private PropertyIn _PropertyIn;
@@ -31,7 +34,7 @@ namespace Invert.uFrame.ECS
             get { return  PropertyIn.Item; }
         }
 
-        [Invert.Json.JsonProperty()]
+        [Json.JsonProperty()]
         public virtual string PropertyInId
         {
             get
@@ -62,14 +65,14 @@ namespace Invert.uFrame.ECS
                 return _PropertyIn ?? (_PropertyIn = new PropertyIn() { Node = this, Identifier = PropertyInId, GroupIn=EntityGroup, Repository = Repository, });
             }
         }
-        [Invert.Json.JsonProperty, NodeProperty("Only invoked when the property is set to a different value than the current value.")]
+        [Json.JsonProperty, NodeProperty("Only invoked when the property is set to a different value than the current value.")]
         public virtual bool OnlyWhenChanged
         {
             get { return _onlyWhenChanged; }
             set { this.Changed("OnlyWhenChanged", ref _onlyWhenChanged, value); }
         }
 
-        [Invert.Json.JsonProperty, NodeProperty("Invoked immediately upon subscription.")]
+        [Json.JsonProperty, NodeProperty("Invoked immediately upon subscription.")]
         public virtual bool Immediate
         {
             get { return _immediate; }
@@ -234,6 +237,6 @@ namespace Invert.uFrame.ECS
         }
     }
     
-    public partial interface IPropertyChangedConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IPropertyChangedConnectable : IDiagramNodeItem, IConnectable {
     }
 }

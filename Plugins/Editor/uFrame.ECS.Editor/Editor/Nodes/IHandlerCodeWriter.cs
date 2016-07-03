@@ -1,8 +1,8 @@
 using System;
 using System.CodeDom;
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Compiling.CodeGen;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
     public interface IHandlerCodeWriter
     {

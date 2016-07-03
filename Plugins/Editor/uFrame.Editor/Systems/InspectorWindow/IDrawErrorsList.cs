@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public interface IDrawErrorsList
+namespace uFrame.Editor.InspectorWindow
 {
-    void DrawErrors(Rect rect);
+    public interface IDrawErrorsList
+    {
+        void DrawErrors(Rect rect);
+    }
 }

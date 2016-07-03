@@ -1,4 +1,4 @@
-namespace Invert.Core
+namespace uFrame.Editor.Core.MultiThreading
 {
     public interface ICommandProgressEvent
     {

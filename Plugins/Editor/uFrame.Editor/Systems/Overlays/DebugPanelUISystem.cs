@@ -1,9 +1,14 @@
 ﻿using System.Collections.Generic;
-using Invert.Core.GraphDesigner.Systems.GraphUI;
+using uFrame.Editor.Core;
+using uFrame.Editor.DebugSystem;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.GraphUI.Events;
+using uFrame.Editor.Platform;
 using UnityEditor;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity
+namespace uFrame.Editor.Overlays
 {
     public class DebugPanelUISystem : DiagramPlugin, IOverlayDrawer, IQueryDesignerWindowOverlayContent
     {

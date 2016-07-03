@@ -1,8 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using Invert.IOC;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Compiling.CommonNodes;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Connections;
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.GraphUI.Events;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Input;
+using uFrame.Editor.Platform;
+using uFrame.IOC;
 using UnityEngine;
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor
 {
     public class GraphDesignerPlugin : DiagramPlugin, 
         IConnectionEvents,

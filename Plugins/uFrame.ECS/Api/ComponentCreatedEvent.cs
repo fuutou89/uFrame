@@ -1,6 +1,4 @@
-using uFrame.Attributes;
-
-namespace uFrame.ECS
+namespace uFrame.ECS.APIs
 {
     
     public class ComponentCreatedEvent

@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using uFrame.Editor.Graphs.Data;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.ViewModels
 {
     public class ConnectorInfo
     {

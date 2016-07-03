@@ -1,7 +1,8 @@
-using Invert.Json;
 using uFrame.Editor.Attributes;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Json;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CommonNodes
 {
     public class ScreenshotNode : GenericNode
     {

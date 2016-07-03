@@ -1,10 +1,10 @@
-namespace Invert.uFrame.ECS
+using uFrame.Editor.Graphs.Data;
+
+namespace uFrame.ECS.Editor.Nodes
 {
-
-
     public class StartTimerNode : StartTimerNodeBase {
     }
     
-    public partial interface IStartTimerConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IStartTimerConnectable : IDiagramNodeItem, IConnectable {
     }
 }

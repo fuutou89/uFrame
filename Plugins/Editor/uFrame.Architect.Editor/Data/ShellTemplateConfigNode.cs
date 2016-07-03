@@ -1,5 +1,7 @@
-using Invert.Core.GraphDesigner;
-using Invert.Json;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Json;
 
 namespace uFrame.Architect.Editor.Data
 {

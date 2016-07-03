@@ -1,7 +1,7 @@
 ﻿using System;
-using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Data;
+using uFrame.Editor.Koinonia.Data;
 
-namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Extensions
+namespace uFrame.Editor.Koinonia.Extensions
 {
     public static class UFramePackageExtensions
     {

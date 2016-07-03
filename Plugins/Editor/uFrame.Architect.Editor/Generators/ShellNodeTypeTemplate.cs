@@ -1,12 +1,13 @@
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Architect.Editor.Data;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Graphs.Data;
 
 namespace uFrame.Architect.Editor.Generators
 {
-    using Data;
-
     [TemplateClass(TemplateLocation.Both, ClassNameFormat = "{0}Node")]
     public class ShellNodeTypeTemplate : GenericNode, IClassTemplate<ShellNodeTypeNode>
     {

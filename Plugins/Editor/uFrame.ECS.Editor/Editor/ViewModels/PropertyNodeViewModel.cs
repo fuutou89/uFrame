@@ -1,6 +1,8 @@
-using Invert.Core.GraphDesigner;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.ViewModels;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.ViewModels
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -9,7 +11,7 @@ namespace Invert.uFrame.ECS
     public class PropertyNodeViewModel : PropertyNodeViewModelBase {
         private string _name;
 
-        public PropertyNodeViewModel(PropertyNode graphItemObject, Invert.Core.GraphDesigner.DiagramViewModel diagramViewModel) : 
+        public PropertyNodeViewModel(PropertyNode graphItemObject, DiagramViewModel diagramViewModel) : 
                 base(graphItemObject, diagramViewModel) {
         }
 

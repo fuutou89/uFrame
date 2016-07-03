@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CodeGen
 {
     public class Inside : TemplateAttribute
     {

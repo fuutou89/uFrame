@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Invert.Core.GraphDesigner.Systems.GraphUI
+namespace uFrame.Editor.GraphUI.Events
 {
     public interface IQueryDesignerWindowOverlayContent
     {

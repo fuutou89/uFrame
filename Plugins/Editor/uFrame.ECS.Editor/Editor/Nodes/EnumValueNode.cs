@@ -1,14 +1,13 @@
 using System.CodeDom;
-using Invert.Data;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
     using System;
     using System.Collections.Generic;
-    using Invert.Core.GraphDesigner;
-
-
-
+   
     public class EnumValueSelection : SelectionFor<IContextVariable, EnumSelectionValue>
     {
         public override bool AllowInputs
@@ -136,6 +135,6 @@ namespace Invert.uFrame.ECS
 
 
 
-    public partial interface IEnumValueConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IEnumValueConnectable : IDiagramNodeItem, IConnectable {
     }
 }

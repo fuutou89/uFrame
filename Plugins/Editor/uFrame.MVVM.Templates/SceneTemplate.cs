@@ -1,8 +1,9 @@
 ﻿using System;
 using System.CodeDom;
 using UnityEngine;
-using Invert.Core.GraphDesigner;
 using uFrame.Kernel;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Configurations;
 
 namespace uFrame.MVVM.Templates
 {

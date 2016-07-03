@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace uFrame.MVVM
+namespace uFrame.MVVM.ViewModels
 {
     public class ViewModelCommand
     {

@@ -1,4 +1,6 @@
-namespace Invert.Core.GraphDesigner.Systems.GraphUI.api
+using uFrame.Editor.Database;
+
+namespace uFrame.Editor.Wizards.Data
 {
     public class DatabasesListItem
     {

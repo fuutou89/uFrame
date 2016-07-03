@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using uFrame.Editor.Graphs.Data;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Configurations
 {
     public class ConfigurationProxyConfiguration : GraphItemConfiguration
     {

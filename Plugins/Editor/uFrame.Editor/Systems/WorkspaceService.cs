@@ -1,9 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Invert.IOC;
+using uFrame.Editor.Core;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.Input;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Workspaces.Commands;
+using uFrame.Editor.Workspaces.Data;
+using uFrame.Editor.Workspaces.Events;
+using uFrame.IOC;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor
 {
     public class WorkspaceService : RepoService,
         IRemoveWorkspace,

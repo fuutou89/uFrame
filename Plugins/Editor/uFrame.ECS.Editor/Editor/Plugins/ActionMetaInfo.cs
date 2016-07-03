@@ -3,11 +3,14 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Invert.Core;
-using Invert.Core.GraphDesigner;
 using uFrame.Attributes;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Core;
+using uFrame.Editor.DebugSystem;
+using uFrame.Editor.Graphs.Data.Types;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Plugins
 {
     public interface IActionMetaInfo : ITypeInfo
     {

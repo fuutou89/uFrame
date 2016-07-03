@@ -1,6 +1,7 @@
 ﻿using System;
+using uFrame.Editor.Core;
 using UnityEngine;
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Input
 {
     public interface IKeyBinding
     {

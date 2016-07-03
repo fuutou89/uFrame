@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Invert.Data;
+using uFrame.Editor.Database.Data;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Graphs.Data
 {
 
     public interface IDiagramNode : IDiagramNodeItem, IDataHeirarchy

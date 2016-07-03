@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UniRx;
 
-namespace uFrame.MVVM
+namespace uFrame.MVVM.ViewModels
 {
     public class P<T> : ISubject<T>, IObservableProperty, INotifyPropertyChanged
     {

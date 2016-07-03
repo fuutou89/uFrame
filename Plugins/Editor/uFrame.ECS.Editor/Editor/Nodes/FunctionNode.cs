@@ -1,10 +1,10 @@
-namespace Invert.uFrame.ECS
+using uFrame.Editor.Graphs.Data;
+
+namespace uFrame.ECS.Editor.Nodes
 {
-
-
     public class FunctionNode : FunctionNodeBase {
     }
     
-    public partial interface IFunctionConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IFunctionConnectable : IDiagramNodeItem, IConnectable {
     }
 }

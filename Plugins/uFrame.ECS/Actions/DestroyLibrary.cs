@@ -1,9 +1,10 @@
 using System;
 using uFrame.Attributes;
-using uFrame.ECS;
+using uFrame.ECS.APIs;
+using uFrame.ECS.UnityUtilities;
 using UnityEngine;
 
-namespace uFrame.Actions
+namespace uFrame.ECS.Actions
 {
     [ActionLibrary, uFrameCategory("Destroy", "Component", "Entity")]
     public static class DestroyLibrary

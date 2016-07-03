@@ -1,4 +1,4 @@
-namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem.ViewModels
+namespace uFrame.Editor.Koinonia.ViewModels
 {
     public enum AuthorizationState
     {

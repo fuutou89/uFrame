@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Invert.Core.GraphDesigner.Unity
+namespace uFrame.Editor.WindowsPlugin
 {
     public class MarketInfo : Response
     {

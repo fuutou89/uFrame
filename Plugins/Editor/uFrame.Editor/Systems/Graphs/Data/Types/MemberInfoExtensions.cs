@@ -1,13 +1,16 @@
 using System.Linq;
 
-public static class MemberInfoExtensions
+namespace uFrame.Editor.Graphs.Data.Types
 {
-    public static TAttribute GetAttribute<TAttribute>(this IMemberInfo memberInfo)
+    public static class MemberInfoExtensions
     {
-        return memberInfo.GetAttributes().OfType<TAttribute>().FirstOrDefault();
-    }
-    public static bool HasAttribute<TAttribute>(this IMemberInfo memberInfo)
-    {
-        return memberInfo.GetAttributes().OfType<TAttribute>().Any();
+        public static TAttribute GetAttribute<TAttribute>(this IMemberInfo memberInfo)
+        {
+            return memberInfo.GetAttributes().OfType<TAttribute>().FirstOrDefault();
+        }
+        public static bool HasAttribute<TAttribute>(this IMemberInfo memberInfo)
+        {
+            return memberInfo.GetAttributes().OfType<TAttribute>().Any();
+        }
     }
 }

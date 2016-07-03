@@ -1,6 +1,7 @@
-using Invert.IOC;
+using uFrame.Editor.Workspaces.Data;
+using uFrame.IOC;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Workspaces
 {
     public static class ConfigurationExtensions
     {

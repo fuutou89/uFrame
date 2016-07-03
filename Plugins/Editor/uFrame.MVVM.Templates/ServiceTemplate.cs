@@ -2,8 +2,11 @@
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Core.GraphDesigner;
 using uFrame.Kernel;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Graphs.Data;
+using uFrame.MVVM.ViewModels;
 
 namespace uFrame.MVVM.Templates
 {

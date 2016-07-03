@@ -1,9 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Invert.Data;
-using Invert.IOC;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Graphs.Data.Types;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.Events;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Input;
+using uFrame.Editor.Platform;
+using uFrame.IOC;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.TypesSystem
 {
     public class TypesSystem : DiagramPlugin
         , IContextMenuQuery

@@ -1,9 +1,14 @@
 ﻿using System.Linq;
-using Invert.Data;
-using Invert.IOC;
+using uFrame.Editor.Console;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.LogSystem;
+using uFrame.Editor.Windows;
+using uFrame.IOC;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity.WindowsPlugin
+namespace uFrame.Editor
 {
 
     public class ConsoleSystem : DiagramPlugin, IDataRecordInserted

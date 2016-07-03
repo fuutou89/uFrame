@@ -1,13 +1,19 @@
 using System.CodeDom;
-using Invert.Json;
 using uFrame.Attributes;
+using uFrame.ECS.Editor.Plugins;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.DebugSystem;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Nodes;
+using uFrame.Json;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Compiling.CodeGen;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Invert.Core.GraphDesigner;
-    using Invert.Data;
+    
 
     public class CustomActionNode : CustomActionNodeBase, IActionMetaInfo, IDemoVersionLimit, IClassNode
     {
@@ -150,6 +156,6 @@ namespace Invert.uFrame.ECS
         }
     }
     
-    public partial interface ICustomActionConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface ICustomActionConnectable : IDiagramNodeItem, IConnectable {
     }
 }

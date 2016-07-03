@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Invert.Data
+namespace uFrame.Editor.Database.Data
 {
     public interface IRepository
     {

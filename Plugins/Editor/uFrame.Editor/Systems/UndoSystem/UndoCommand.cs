@@ -1,4 +1,6 @@
-namespace Invert.Core.GraphDesigner
+using uFrame.Editor.Core;
+
+namespace uFrame.Editor.Undo
 {
     public class UndoCommand : Command
     {

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Data;
-using Invert.Json;
+using uFrame.Editor.Database.Data;
+using uFrame.Json;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Graphs.Data
 {
     public class ConnectionData : IJsonObject, IDataRecord, IDataRecordRemoved
     {

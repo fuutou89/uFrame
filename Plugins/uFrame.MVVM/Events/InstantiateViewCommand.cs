@@ -1,7 +1,9 @@
 using uFrame.Kernel;
+using uFrame.MVVM.ViewModels;
+using uFrame.MVVM.Views;
 using UnityEngine;
 
-namespace uFrame.MVVM
+namespace uFrame.MVVM.Events
 {
     public class InstantiateViewCommand
     {

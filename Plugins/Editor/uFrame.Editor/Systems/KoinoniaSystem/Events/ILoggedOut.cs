@@ -1,4 +1,4 @@
-﻿namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Events
+﻿namespace uFrame.Editor.Koinonia.Events
 {
     public interface ILoggedOut
     {

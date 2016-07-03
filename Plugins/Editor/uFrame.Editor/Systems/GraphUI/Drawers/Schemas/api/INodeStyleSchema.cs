@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using uFrame.Editor.Graphs.Data;
+using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.Drawers.Schemas
 {
 
     public interface INodeStyleSchema

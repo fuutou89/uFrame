@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using uFrame.ECS.APIs;
+using uFrame.ECS.Components;
 using uFrame.Kernel;
 using UniRx;
 using UnityEngine;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.Systems
 {
     public class BlackBoardGroup : DescriptorGroup<IBlackBoardComponent>
     {

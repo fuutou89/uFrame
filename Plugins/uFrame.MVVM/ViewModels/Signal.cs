@@ -2,7 +2,7 @@ using System;
 using uFrame.Kernel;
 using UniRx;
 
-namespace uFrame.MVVM
+namespace uFrame.MVVM.ViewModels
 {
     public class Signal<TClass> : ISubject<TClass>, ISignal where TClass : ViewModelCommand, new()
     {

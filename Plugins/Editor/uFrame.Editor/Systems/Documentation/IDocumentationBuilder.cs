@@ -1,6 +1,9 @@
 using System;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Documentation
 {
     public interface IDocumentationBuilder
     {

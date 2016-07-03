@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Linq;
-using Invert.uFrame.ECS;
+using uFrame.ECS.Editor.ViewModels;
+using uFrame.Editor;
+using uFrame.Editor.Core;
+using uFrame.Editor.Input;
+using uFrame.Editor.Platform;
 using UnityEditor;
 
-namespace Invert.Core.GraphDesigner.ECS
+namespace uFrame.ECS.Editor.Utilities
 {
     public class UnityECSUtilitySystem : DiagramPlugin,
         IExecuteCommand<AddComponentToSelectionCommand>,

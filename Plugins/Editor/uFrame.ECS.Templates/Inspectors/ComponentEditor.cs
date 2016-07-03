@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
-using Invert.Core;
+using uFrame.ECS.Components;
+using uFrame.Editor.Core;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-[UnityEditor.CustomEditor(typeof(uFrame.ECS.EcsComponent), true)]
+[UnityEditor.CustomEditor(typeof(EcsComponent), true)]
 public class ComponentEditor : Editor
 {
     public override void OnInspectorGUI()

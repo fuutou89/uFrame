@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace uFrame.MVVM
+namespace uFrame.MVVM.ViewModels
 {
     /// <summary>
     /// The view model manager is a class that encapsulates a list of viewmodels

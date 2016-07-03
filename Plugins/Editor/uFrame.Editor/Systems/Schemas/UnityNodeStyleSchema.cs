@@ -1,8 +1,10 @@
-﻿using Invert.Common;
-using Invert.Core.GraphDesigner.Schemas.impl;
+﻿using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.Drawers.Schemas;
+using uFrame.Editor.Unity;
+using uFrame.Editor.WindowsPlugin;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity.Schemas
+namespace uFrame.Editor.Schemas
 {
     public class UnityNodeStyleSchema : NodeStyleSchema
     {

@@ -1,98 +1,102 @@
 using System.Collections.Generic;
-using Invert.Core.GraphDesigner;
-using Invert.Json;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Json;
 using UnityEngine;
 
-public class FilterPositionData : IJsonObject
+namespace uFrame.Editor.GraphUI
 {
-    private Dictionary<string, FilterLocations> _positions;
 
-    public Dictionary<string, FilterLocations> Positions
+    public class FilterPositionData : IJsonObject
     {
-        get { return _positions ?? (_positions = new Dictionary<string, FilterLocations>()); }
-        set { _positions = value; }
-    }
-    
-    public bool HasPosition(IGraphFilter filter, IDiagramNode node)
-    {
-        if (Positions.ContainsKey(filter.Identifier))
+        private Dictionary<string, FilterLocations> _positions;
+
+        public Dictionary<string, FilterLocations> Positions
         {
-            var filterData = Positions[filter.Identifier];
-            if (filterData.Keys.Contains(node.Identifier)) return true;
+            get { return _positions ?? (_positions = new Dictionary<string, FilterLocations>()); }
+            set { _positions = value; }
         }
-        return false;
-    }
-    public Vector2 this[IGraphFilter filter, IDiagramNode node]
-    {
-        get
+
+        public bool HasPosition(IGraphFilter filter, IDiagramNode node)
         {
             if (Positions.ContainsKey(filter.Identifier))
             {
                 var filterData = Positions[filter.Identifier];
-                if (filterData.Keys.Contains(node.Identifier))
-                    return filterData[node];
-
-
+                if (filterData.Keys.Contains(node.Identifier)) return true;
             }
-            return Vector2.zero;
+            return false;
         }
-        set
+        public Vector2 this[IGraphFilter filter, IDiagramNode node]
         {
-            if (!Positions.ContainsKey(filter.Identifier))
+            get
             {
-                Positions.Add(filter.Identifier, new FilterLocations());
-            }
+                if (Positions.ContainsKey(filter.Identifier))
+                {
+                    var filterData = Positions[filter.Identifier];
+                    if (filterData.Keys.Contains(node.Identifier))
+                        return filterData[node];
 
-            Positions[filter.Identifier][node] = value;
-        }
-    }
-    public Vector2 this[IGraphFilter filter, string node]
-    {
-        get
-        {
-            if (Positions.ContainsKey(filter.Identifier))
+
+                }
+                return Vector2.zero;
+            }
+            set
             {
-                var filterData = Positions[filter.Identifier];
-                if (filterData.Keys.Contains(node))
-                    return filterData[node];
+                if (!Positions.ContainsKey(filter.Identifier))
+                {
+                    Positions.Add(filter.Identifier, new FilterLocations());
+                }
 
-
+                Positions[filter.Identifier][node] = value;
             }
-            return Vector2.zero;
         }
-        set
+        public Vector2 this[IGraphFilter filter, string node]
         {
-            if (!Positions.ContainsKey(filter.Identifier))
+            get
             {
-                Positions.Add(filter.Identifier, new FilterLocations());
+                if (Positions.ContainsKey(filter.Identifier))
+                {
+                    var filterData = Positions[filter.Identifier];
+                    if (filterData.Keys.Contains(node))
+                        return filterData[node];
+
+
+                }
+                return Vector2.zero;
             }
+            set
+            {
+                if (!Positions.ContainsKey(filter.Identifier))
+                {
+                    Positions.Add(filter.Identifier, new FilterLocations());
+                }
 
-            Positions[filter.Identifier][node] = value;
+                Positions[filter.Identifier][node] = value;
+            }
         }
-    }
-    public void Serialize(JSONClass cls)
-    {
-        foreach (var item in Positions)
+        public void Serialize(JSONClass cls)
         {
-            cls.Add(item.Key, item.Value.Serialize());
+            foreach (var item in Positions)
+            {
+                cls.Add(item.Key, item.Value.Serialize());
+            }
         }
-    }
 
-    public void Deserialize(JSONClass cls)
-    {
-
-        Positions.Clear();
-        foreach (KeyValuePair<string, JSONNode> cl in cls)
+        public void Deserialize(JSONClass cls)
         {
-            var locations = new FilterLocations();
-            if (!(cl.Value is JSONClass)) continue;
-            locations.Deserialize(cl.Value.AsObject);
-            Positions.Add(cl.Key, locations);
-        }
-    }
 
-    public void Remove(IGraphFilter currentFilter, string identifier)
-    {
-        Positions[currentFilter.Identifier].Remove(identifier);
+            Positions.Clear();
+            foreach (KeyValuePair<string, JSONNode> cl in cls)
+            {
+                var locations = new FilterLocations();
+                if (!(cl.Value is JSONClass)) continue;
+                locations.Deserialize(cl.Value.AsObject);
+                Positions.Add(cl.Key, locations);
+            }
+        }
+
+        public void Remove(IGraphFilter currentFilter, string identifier)
+        {
+            Positions[currentFilter.Identifier].Remove(identifier);
+        }
     }
 }

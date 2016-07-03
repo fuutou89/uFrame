@@ -1,7 +1,8 @@
 using uFrame.Attributes;
+using uFrame.ECS.Components;
 using UnityEngine;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.UnityUtilities
 {
     [UFrameEventDispatcher("On Collision Stay 2D"), uFrameCategory("Unity Messages")]
     public class OnCollisionStay2DDispatcher : EcsDispatcher

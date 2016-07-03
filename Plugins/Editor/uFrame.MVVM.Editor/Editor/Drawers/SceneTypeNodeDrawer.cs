@@ -1,8 +1,7 @@
+using uFrame.Editor.GraphUI.Drawers;
+
 namespace uFrame.MVVM
 {
-    using Invert.Core.GraphDesigner;
-
-
     public class SceneTypeNodeDrawer : GenericNodeDrawer<SceneTypeNode,SceneTypeNodeViewModel> {
         
         public SceneTypeNodeDrawer(SceneTypeNodeViewModel viewModel) : 

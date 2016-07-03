@@ -1,10 +1,12 @@
 using System;
 using uFrame.Kernel;
+using uFrame.MVVM.Events;
 using uFrame.MVVM.Services;
+using uFrame.MVVM.ViewModels;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace uFrame.MVVM
+namespace uFrame.MVVM.Views
 {
     public static class ViewExtensions
     {

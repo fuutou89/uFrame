@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
+using uFrame.Editor.Graphs.Data;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.ViewModels
 {
     public class ViewModel<TData> : ViewModel
     {

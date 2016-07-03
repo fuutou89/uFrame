@@ -1,4 +1,7 @@
-namespace Invert.Core.GraphDesigner
+using uFrame.Editor.Core;
+using uFrame.Editor.Input;
+
+namespace uFrame.Editor.Platform
 {
     public class ContextMenus : DiagramPlugin,
         IShowContextMenu

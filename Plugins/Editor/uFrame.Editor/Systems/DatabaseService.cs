@@ -4,12 +4,23 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using Invert.Data;
-using Invert.IOC;
-using Invert.Json;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database;
+using uFrame.Editor.Database.Commands;
+using uFrame.Editor.Database.Data;
+using uFrame.Editor.Database.Events;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Input;
+using uFrame.Editor.Menus;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Workspaces.Data;
+using uFrame.IOC;
+using uFrame.Json;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor
 {
     public static class uFrameVersion
     {

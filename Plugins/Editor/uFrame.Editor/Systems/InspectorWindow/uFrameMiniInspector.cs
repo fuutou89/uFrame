@@ -1,8 +1,14 @@
 ﻿using System.Collections.Generic;
-using Invert.Common;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Core;
+using uFrame.Editor.GraphUI;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.Editor.Platform;
+using uFrame.Editor.Unity;
 using UnityEngine;
 
-namespace Invert.Core.GraphDesigner.Unity.InspectorWindow
+namespace uFrame.Editor.InspectorWindow
 {
     public class uFrameMiniInspector
     {

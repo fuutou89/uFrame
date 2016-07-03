@@ -3,7 +3,7 @@ using System.Collections;
 using uFrame.Kernel;
 using UnityEngine;
 
-namespace uFrame.ECS
+namespace uFrame.ECS.APIs
 {
     public interface IEcsSystem : ISystemService, IDisposableContainer
     {

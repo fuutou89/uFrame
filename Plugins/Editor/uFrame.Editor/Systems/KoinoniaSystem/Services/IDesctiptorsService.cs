@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Classes;
-using Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Data;
+using uFrame.Editor.Koinonia.Classes;
+using uFrame.Editor.Koinonia.Data;
 
-namespace Invert.Core.GraphDesigner.Unity.KoinoniaSystem.Services
+namespace uFrame.Editor.Koinonia.Service
 {
     public interface IDesctiptorsService
     {

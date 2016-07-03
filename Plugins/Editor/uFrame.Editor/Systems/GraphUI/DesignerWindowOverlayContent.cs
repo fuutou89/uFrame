@@ -1,4 +1,4 @@
-namespace Invert.Core.GraphDesigner.Systems.GraphUI
+namespace uFrame.Editor.GraphUI
 {
     public class DesignerWindowOverlayContent
     {

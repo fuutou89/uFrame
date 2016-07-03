@@ -1,6 +1,7 @@
 using System;
+using uFrame.MVVM.ViewModels;
 
-namespace uFrame.MVVM
+namespace uFrame.MVVM.Views
 {
     /// <summary>
     /// A View is a visual representation of a ViewModel. For example: A UI dialog, Player, Weapon, etc...

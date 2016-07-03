@@ -1,12 +1,14 @@
 using uFrame.Attributes;
+using System;
+using System.Collections.Generic;
+using uFrame.ECS.Editor.Plugins;
+using uFrame.Editor.Attributes;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.Graphs.Data.Types;
+using uFrame.Editor.Database.Data;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.ChildItems
 {
-    using System;
-    using System.Collections.Generic;
-    using Invert.Core.GraphDesigner;
-    using Invert.Data;
-
     public class InputsChildItem : InputsChildItemBase, IActionFieldInfo
     {
         public bool IsGenericArgument { get { return false; } }
@@ -58,7 +60,7 @@ namespace Invert.uFrame.ECS
         }
     }
 
-    public partial interface IInputsConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable
+    public partial interface IInputsConnectable : IDiagramNodeItem, IConnectable
     {
     }
 }

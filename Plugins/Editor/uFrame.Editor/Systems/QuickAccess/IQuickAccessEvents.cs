@@ -1,7 +1,10 @@
 using System.Collections.Generic;
-using Invert.Core;
+using uFrame.Editor.Core;
 
-public interface IQuickAccessEvents
+namespace uFrame.Editor.QuickAccess
 {
-    void QuickAccessItemsEvents(QuickAccessContext context, List<IItem> items);
+    public interface IQuickAccessEvents
+    {
+        void QuickAccessItemsEvents(QuickAccessContext context, List<IItem> items);
+    }
 }

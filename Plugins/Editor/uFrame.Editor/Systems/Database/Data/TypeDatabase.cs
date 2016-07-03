@@ -2,10 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Invert.Core;
-using Invert.Json;
+using uFrame.Editor.Core;
 
-namespace Invert.Data
+namespace uFrame.Editor.Database.Data
 {
     public class TypeDatabase : IRepository
     {

@@ -1,7 +1,9 @@
-using Invert.Core.GraphDesigner;
+using uFrame.ECS.Editor.Nodes;
+using uFrame.Editor.Core;
+using uFrame.Editor.GraphUI.ViewModels;
 using UnityEngine;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Plugins
 {
     public class AddSlotInputNodeCommand : Command
     {

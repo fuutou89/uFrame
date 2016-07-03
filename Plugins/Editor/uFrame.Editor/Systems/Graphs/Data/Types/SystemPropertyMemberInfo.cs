@@ -3,95 +3,98 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-public class SystemPropertyMemberInfo : IMemberInfo
+namespace uFrame.Editor.Graphs.Data.Types
 {
-    private PropertyInfo PropertyInfo;
-
-    public SystemPropertyMemberInfo(PropertyInfo propertyInfo)
+    public class SystemPropertyMemberInfo : IMemberInfo
     {
-        PropertyInfo = propertyInfo;
-    }
+        private PropertyInfo PropertyInfo;
 
-    public string MemberName { get { return PropertyInfo.Name; } }
-
-    public ITypeInfo MemberType
-    {
-        get
+        public SystemPropertyMemberInfo(PropertyInfo propertyInfo)
         {
-            return new SystemTypeInfo(PropertyInfo.PropertyType);
+            PropertyInfo = propertyInfo;
+        }
+
+        public string MemberName { get { return PropertyInfo.Name; } }
+
+        public ITypeInfo MemberType
+        {
+            get
+            {
+                return new SystemTypeInfo(PropertyInfo.PropertyType);
+            }
+        }
+
+        public IEnumerable<Attribute> GetAttributes()
+        {
+            return PropertyInfo.GetCustomAttributes(true).OfType<Attribute>();
         }
     }
-
-    public IEnumerable<Attribute> GetAttributes()
+    public class SystemMethodParameterInfo : IMemberInfo
     {
-        return PropertyInfo.GetCustomAttributes(true).OfType<Attribute>();
-    }
-}
-public class SystemMethodParameterInfo : IMemberInfo
-{
-    private ParameterInfo ParameterInfo;
+        private ParameterInfo ParameterInfo;
 
-    public SystemMethodParameterInfo(ParameterInfo methodInfo)
-    {
-        ParameterInfo = methodInfo;
-    }
-
-    public string MemberName { get { return ParameterInfo.Name; } }
-
-    public ITypeInfo MemberType
-    {
-        get
+        public SystemMethodParameterInfo(ParameterInfo methodInfo)
         {
-            return new SystemTypeInfo(ParameterInfo.ParameterType);
+            ParameterInfo = methodInfo;
         }
-    }
 
-    public IEnumerable<Attribute> GetAttributes()
-    {
-        return ParameterInfo.GetCustomAttributes(true).OfType<Attribute>();
-    }
+        public string MemberName { get { return ParameterInfo.Name; } }
 
-}
-public class SystemMethodMemberInfo : IMethodMemberInfo
-{
-    private MethodInfo MethodInfo;
-
-    public SystemMethodMemberInfo(MethodInfo methodInfo)
-    {
-        MethodInfo = methodInfo;
-    }
-
-    public string MemberName { get { return MethodInfo.Name; } }
-
-    public ITypeInfo MemberType
-    {
-        get
+        public ITypeInfo MemberType
         {
-            return new SystemTypeInfo(MethodInfo.ReturnType);
+            get
+            {
+                return new SystemTypeInfo(ParameterInfo.ParameterType);
+            }
         }
-    }
 
-    public IEnumerable<Attribute> GetAttributes()
-    {
-        return MethodInfo.GetCustomAttributes(true).OfType<Attribute>();
-    }
-
-
-    public string MethodIdentifier
-    {
-        get
+        public IEnumerable<Attribute> GetAttributes()
         {
-            return string.Format("{0}({1})", MemberName,
-                string.Join(",",GetParameters().Select(p => p.MemberType.TypeName).ToArray()));
+            return ParameterInfo.GetCustomAttributes(true).OfType<Attribute>();
         }
+
     }
-
-
-    public IEnumerable<IMemberInfo> GetParameters()
+    public class SystemMethodMemberInfo : IMethodMemberInfo
     {
-        foreach (var item in MethodInfo.GetParameters())
+        private MethodInfo MethodInfo;
+
+        public SystemMethodMemberInfo(MethodInfo methodInfo)
         {
-            yield return new SystemMethodParameterInfo(item);
+            MethodInfo = methodInfo;
+        }
+
+        public string MemberName { get { return MethodInfo.Name; } }
+
+        public ITypeInfo MemberType
+        {
+            get
+            {
+                return new SystemTypeInfo(MethodInfo.ReturnType);
+            }
+        }
+
+        public IEnumerable<Attribute> GetAttributes()
+        {
+            return MethodInfo.GetCustomAttributes(true).OfType<Attribute>();
+        }
+
+
+        public string MethodIdentifier
+        {
+            get
+            {
+                return string.Format("{0}({1})", MemberName,
+                    string.Join(",", GetParameters().Select(p => p.MemberType.TypeName).ToArray()));
+            }
+        }
+
+
+        public IEnumerable<IMemberInfo> GetParameters()
+        {
+            foreach (var item in MethodInfo.GetParameters())
+            {
+                yield return new SystemMethodParameterInfo(item);
+            }
         }
     }
 }

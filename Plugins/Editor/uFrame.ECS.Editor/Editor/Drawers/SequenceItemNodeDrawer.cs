@@ -1,12 +1,15 @@
+using uFrame.ECS.Editor.Nodes;
+using uFrame.ECS.Editor.ViewModels;
+using uFrame.Editor.DebugSystem;
+using uFrame.Editor.GraphUI.Drawers;
+using uFrame.Editor.Platform;
 using UnityEditor;
 using UnityEngine;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Drawers
 {
     using System;
-    using Invert.Core.GraphDesigner;
-
-
+   
     public class SequenceItemNodeDrawer : GenericNodeDrawer<SequenceItemNode, SequenceItemNodeViewModel>
     {
 

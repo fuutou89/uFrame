@@ -1,8 +1,11 @@
 ﻿using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.CodeGen
 {
     public class GenericNodeGenerator<TData> : CodeGenerator where TData : GenericNode
     {

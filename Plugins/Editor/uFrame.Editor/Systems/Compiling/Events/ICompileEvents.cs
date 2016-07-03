@@ -1,6 +1,8 @@
-using Invert.Data;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Database;
+using uFrame.Editor.Database.Data;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Compiling.Events
 {
     /// <summary>
     /// Events that are fired during the compilation process.

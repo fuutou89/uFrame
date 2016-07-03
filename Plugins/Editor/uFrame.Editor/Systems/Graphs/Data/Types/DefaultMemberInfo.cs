@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
 
-public class DefaultMemberInfo : IMemberInfo
+namespace uFrame.Editor.Graphs.Data.Types
 {
-    public string MemberName { get; set; }
-    public ITypeInfo MemberType { get; set; }
-    public IEnumerable<Attribute> GetAttributes()
+    public class DefaultMemberInfo : IMemberInfo
     {
-        yield break;
+        public string MemberName { get; set; }
+        public ITypeInfo MemberType { get; set; }
+        public IEnumerable<Attribute> GetAttributes()
+        {
+            yield break;
+        }
     }
 }

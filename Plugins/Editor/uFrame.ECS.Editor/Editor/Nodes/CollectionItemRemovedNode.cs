@@ -1,8 +1,10 @@
 using System.CodeDom;
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Graphs.Data;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
-    using Invert.Core.GraphDesigner;
+    
 
 
     public class CollectionItemRemovedNode : CollectionItemRemovedNodeBase {
@@ -62,6 +64,6 @@ namespace Invert.uFrame.ECS
         }
     }
     
-    public partial interface ICollectionItemRemovedConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface ICollectionItemRemovedConnectable : IDiagramNodeItem, IConnectable {
     }
 }

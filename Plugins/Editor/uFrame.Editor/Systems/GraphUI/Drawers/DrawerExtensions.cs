@@ -1,6 +1,10 @@
-using Invert.IOC;
+using uFrame.Editor.Configurations;
+using uFrame.Editor.Graphs.Data;
+using uFrame.Editor.GraphUI.Scaffolding;
+using uFrame.Editor.GraphUI.ViewModels;
+using uFrame.IOC;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.GraphUI.Drawers
 {
     public static class DrawerExtensions
     {

@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using uFrame.ECS.Editor.ChildItems;
+using uFrame.Editor.Graphs.Data;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
-    public partial interface IMappingsConnectable : Invert.Core.GraphDesigner.IDiagramNode, Invert.Core.GraphDesigner.IConnectable
+    public partial interface IMappingsConnectable : IDiagramNode, IConnectable
     {
         System.Collections.Generic.IEnumerable<ComponentNode> SelectComponents { get; }
 

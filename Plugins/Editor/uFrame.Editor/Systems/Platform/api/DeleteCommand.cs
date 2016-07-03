@@ -1,6 +1,8 @@
-using Invert.Data;
+using uFrame.Editor.Compiling.Commands;
+using uFrame.Editor.Core;
+using uFrame.Editor.Database.Data;
 
-namespace Invert.Core.GraphDesigner
+namespace uFrame.Editor.Platform
 {
     public class DeleteCommand : Command, IFileSyncCommand
     {

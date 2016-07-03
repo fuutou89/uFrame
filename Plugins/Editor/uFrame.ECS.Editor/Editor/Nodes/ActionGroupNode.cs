@@ -1,10 +1,9 @@
+using uFrame.Editor.Compiling.CodeGen;
+using uFrame.Editor.Graphs.Data;
 using UnityEngine;
 
-namespace Invert.uFrame.ECS
+namespace uFrame.ECS.Editor.Nodes
 {
-    using Invert.Core.GraphDesigner;
-
-
     public class ActionGroupNode : ActionGroupNodeBase, IVariableContextProvider {
         public override Color Color
         {
@@ -19,6 +18,6 @@ namespace Invert.uFrame.ECS
 
     }
     
-    public partial interface IActionGroupConnectable : Invert.Core.GraphDesigner.IDiagramNodeItem, Invert.Core.GraphDesigner.IConnectable {
+    public partial interface IActionGroupConnectable : IDiagramNodeItem, IConnectable {
     }
 }

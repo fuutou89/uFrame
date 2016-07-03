@@ -1,36 +1,21 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.ComponentModel;
 using System.Linq;
+using uFrame.Kernel.Collection;
 
-
-#if DLL
-using Invert.uFrame.Editor;
-namespace Invert.MVVM
-{
-
-#else 
 using UniRx;
-namespace uFrame.MVVM { 
-#endif
-
+namespace uFrame.MVVM.ViewModels
+{ 
 
 public class ModelCollection<T> : ObservableCollection<T>
-#if !DLL
     , IObservable<NotifyCollectionChangedEventArgs>,IObservableProperty
-#endif
 {
-#if !DLL
     public ModelCollection(ViewModel owner, string propertyName)
     {
         Owner = owner;
         PropertyName = propertyName;
     }
-#endif
-    
+
     public ModelCollection()
     {
     }

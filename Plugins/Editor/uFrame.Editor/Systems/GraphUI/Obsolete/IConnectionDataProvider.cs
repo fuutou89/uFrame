@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
-using Invert.Core.GraphDesigner;
+using uFrame.Editor.Graphs.Data;
 
-[Obsolete]
-public interface IConnectionDataProvider
+namespace uFrame.Editor.GraphUI
 {
-    IEnumerable<ConnectionData> Connections { get; }
+    [Obsolete]
+    public interface IConnectionDataProvider
+    {
+        IEnumerable<ConnectionData> Connections { get; }
+    }
 }

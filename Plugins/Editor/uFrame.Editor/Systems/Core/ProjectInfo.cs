@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 
 
-namespace Invert.Common.Utilities
+namespace uFrame.Editor.Core
 {
     public static class ProjectInfo
     {
