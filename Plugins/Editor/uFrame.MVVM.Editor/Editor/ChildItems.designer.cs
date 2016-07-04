@@ -18,7 +18,7 @@ namespace uFrame.MVVM {
     using uFrame.Editor.Graphs.Data;
     
     
-    public class CommandsChildItemBase : uFrame.Editor.Graphs.Data.GenericTypedChildItem {
+    public class CommandsChildItemBase : uFrame.Editor.Graphs.Data.GenericTypedChildItem, ITransitionsConnectable {
         
         public override bool AllowMultipleInputs {
             get {

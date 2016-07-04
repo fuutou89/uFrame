@@ -49,7 +49,7 @@ namespace uFrame.MVVM {
     public partial interface IServiceConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
     }
     
-    public class ComputedPropertyNodeBase : uFrame.Editor.Graphs.Data.GenericNode {
+    public class ComputedPropertyNodeBase : uFrame.Editor.Graphs.Data.GenericNode, ITransitionsConnectable {
         
         public override bool AllowMultipleInputs {
             get {

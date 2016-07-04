@@ -10,6 +10,7 @@ using uFrame.Editor.Configurations;
 using uFrame.Editor.Core;
 using uFrame.Editor.Graphs.Data;
 using uFrame.Kernel.Serialization;
+using uFrame.MVVM.StateMachines;
 using uFrame.MVVM.ViewModels;
 
 namespace uFrame.MVVM.Templates
@@ -56,7 +57,8 @@ namespace uFrame.MVVM.Templates
                 Ctx.TryAddNamespace(type.Namespace);
             }
 
-            ViewModelProperties = Ctx.Data.AllProperties.ToArray();
+            StateMachineProperties = Ctx.Data.AllProperties.Where(p => (p.RelatedNode() is StateMachineNode)).ToArray();
+            ViewModelProperties = Ctx.Data.AllProperties.Where(p => !StateMachineProperties.Contains(p)).ToArray();
             if(Ctx.IsDesignerFile)
             {
                 foreach(var item in Ctx.Data.ComputedProperties)
@@ -107,10 +109,10 @@ namespace uFrame.MVVM.Templates
                 //   Ctx._("{0}.CollectionChanged += {1}CollectionChanged", property.Name.AsField(), property.Name);
             }
 
-            //foreach (var item in StateMachineProperties)
-            //{
-            //    Ctx._("{0} = new {1}(this, \"{2}\")", item.Name.AsSubscribableField(), item.RelatedTypeName, item.Name);
-            //}
+            foreach (var item in StateMachineProperties)
+            {
+                Ctx._("{0} = new {1}(this, \"{2}\")", item.Name.AsSubscribableField(), item.RelatedTypeName, item.Name);
+            }
 
             foreach (var item in Ctx.Data.ComputedProperties)
             {
@@ -120,29 +122,50 @@ namespace uFrame.MVVM.Templates
             // TODO : State Machine Relate
             foreach (var item in Ctx.Data.ComputedProperties)
             {
-                //var transition = item.OutputTo<TransitionsChildItem>();
-                //if (transition == null) continue;
-                //var stateMachineNode = transition.Node as IClassTypeNode;
-                //var property =
-                //    stateMachineNode.ReferencesOf<PropertiesChildItem>().FirstOrDefault(p => p.Node == Ctx.Data);
-                //if (property == null) continue;
-                //Ctx._("{0}.{1}.AddComputer({2})", property.Name.AsSubscribableProperty(), transition.Name,
-                //    item.Name.AsSubscribableProperty());
+                var transition = item.OutputTo<TransitionsChildItem>();
+                if (transition == null) continue;
+                var stateMachineNode = transition.Node as IClassTypeNode;
+                var property =
+                    stateMachineNode.ReferencesOf<PropertiesChildItem>().FirstOrDefault(p => p.Node == Ctx.Data);
+                if (property == null) continue;
+                Ctx._("{0}.{1}.AddComputer({2})", property.Name.AsSubscribableProperty(), transition.Name,
+                    item.Name.AsSubscribableProperty());
             }
 
             foreach (var item in Ctx.Data.LocalCommands)
             {
                 ////Transition.Subscribe(_ => StateMachineProperty.B.OnNext(true));
-                //var transition = item.OutputTo<TransitionsChildItem>();
-                //if (transition == null) continue;
-                //var stateMachineNode = transition.Node as IClassTypeNode;
-                //var property =
-                //    stateMachineNode.ReferencesOf<PropertiesChildItem>().FirstOrDefault(p => p.Node == Ctx.Data);
-                //if (property == null) continue;
-                //Ctx._("{0}.Subscribe(_ => {1}.{2}.OnNext(true))", item.Name, property.Name.AsSubscribableProperty(),
-                //    transition.Name);
+                var transition = item.OutputTo<TransitionsChildItem>();
+                if (transition == null) continue;
+                var stateMachineNode = transition.Node as IClassTypeNode;
+                var property =
+                    stateMachineNode.ReferencesOf<PropertiesChildItem>().FirstOrDefault(p => p.Node == Ctx.Data);
+                if (property == null) continue;
+                Ctx._("{0}.Subscribe(_ => {1}.{2}.OnNext(true))", item.Name, property.Name.AsSubscribableProperty(),
+                    transition.Name);
             }
         }
+
+        #region StateMachineProperties
+        //[TemplateProperty(uFrameFormats.SUBSCRIBABLE_PROPERTY_FORMAT, AutoFillType.NameAndTypeWithBackingField)]
+        [ForEach("StateMachineProperties"), GenerateProperty, WithField]
+        public virtual _ITEMTYPE_ _Name2_Property
+        {
+            get { return null; }
+        }
+
+        //[TemplateProperty(TemplateLocation.DesignerFile, AutoFillType.NameOnly)]
+        [ForEach("StateMachineProperties"), GenerateProperty]
+        public virtual State _Name2_
+        {
+            get
+            {
+                Ctx._("return {0}.Value", Ctx.Item.Name.AsSubscribableProperty());
+                return null;
+            }
+            set { Ctx._("{0}.Value = value", Ctx.Item.Name.AsSubscribableProperty()); }
+        }
+        #endregion
 
         #region ViewModelProperties
 
@@ -255,11 +278,11 @@ namespace uFrame.MVVM.Templates
                         viewModelPropertyData.Name, elementNode.Name.AsViewModel());
 
                 }
-                //else if (relatedNode is StateMachineNode)
-                //{
-                //    Ctx._("this.{0}.SetState(stream.DeserializeString(\"{1}\"))", viewModelPropertyData.FieldName,
-                //        viewModelPropertyData.Name);
-                //}
+                else if (relatedNode is StateMachineNode)
+                {
+                    Ctx._("this.{0}.SetState(stream.DeserializeString(\"{1}\"))", viewModelPropertyData.FieldName,
+                        viewModelPropertyData.Name);
+                }
                 else
                 {
                     if (viewModelPropertyData.Type == null) continue;
@@ -320,11 +343,10 @@ namespace uFrame.MVVM.Templates
                     Ctx._("if (stream.DeepSerialize) stream.SerializeObject(\"{0}\", this.{0});",
                         viewModelPropertyData.Name);
                 }
-                //else if (relatedNode is StateMachineNode)
-                //{
-
-                //    Ctx._("stream.SerializeString(\"{0}\", this.{0}.Name);", viewModelPropertyData.Name);
-                //}
+                else if (relatedNode is StateMachineNode)
+                {
+                    Ctx._("stream.SerializeString(\"{0}\", this.{0}.Name);", viewModelPropertyData.Name);
+                }
                 else
                 {
                     if (viewModelPropertyData.Type == null) continue;

@@ -210,8 +210,10 @@ namespace uFrame.MVVM {
             StateMachine.Inheritable();
             StateMachine.Color(NodeColor.Carrot);
             StateMachine.HasSubNode<StateNode>();
+            container.Connectable<ComputedPropertyNode,TransitionsChildItem>();
             container.Connectable<ElementNode,Element>();
             container.Connectable<StartState,StateNode>();
+            container.Connectable<CommandsChildItem,TransitionsChildItem>();
             container.Connectable<TransitionsChildItem,StateTransitionsReference>();
             container.Connectable<HandlersReference,SimpleClassNode>();
             container.Connectable<StateTransitionsReference,StateNode>();
