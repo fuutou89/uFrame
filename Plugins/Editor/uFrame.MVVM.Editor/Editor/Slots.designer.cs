@@ -88,4 +88,40 @@ namespace uFrame.MVVM {
     
     public partial interface IScenePropertiesConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
     }
+    
+    public class StartStateBase : SingleOutputSlot<IStartStateConnectable>, IStateConnectable {
+        
+        public override string Name {
+            get {
+                return "Start State";
+            }
+            set {
+            }
+        }
+        
+        public override bool AllowMultipleInputs {
+            get {
+                return false;
+            }
+        }
+        
+        public override bool AllowMultipleOutputs {
+            get {
+                return false;
+            }
+        }
+        
+        public override bool AllowSelection {
+            get {
+                return false;
+            }
+        }
+        
+        public override System.Collections.Generic.IEnumerable<uFrame.Editor.Database.Data.IValueItem> GetAllowed() {
+            return Repository.AllOf<IStartStateConnectable>().OfType<IValueItem>();;
+        }
+    }
+    
+    public partial interface IStartStateConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
+    }
 }

@@ -57,10 +57,12 @@ namespace uFrame.Editor.GraphUI.Drawers
    
             if (_endPos.x < _startPos.x)
             {
-                points.Add(curr = curr + new Vector2(20f, 0f));
-                points.Add(curr = curr + new Vector2(0f, (_endPos.y - _startPos.y)/2f));
-                points.Add(_endPos - new Vector2(20f, (_endPos.y - _startPos.y)/2f));
-                points.Add(_endPos - new Vector2(20f, 0f));
+                int offset = 0;
+                if (_endPos.y < _startPos.y) offset = 10;
+                points.Add(curr = curr + new Vector2(20f + offset, 0f));
+                points.Add(curr = curr + new Vector2(0f, (_endPos.y - _startPos.y) / 2f + offset));
+                points.Add(_endPos - new Vector2(20f + offset, (_endPos.y - _startPos.y) / 2f - offset));
+                points.Add(_endPos - new Vector2(20f + offset, 0f));
             }
             else
             {

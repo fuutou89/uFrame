@@ -49,6 +49,24 @@ namespace uFrame.MVVM {
     public partial interface IServiceConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
     }
     
+    public class ComputedPropertyNodeBase : uFrame.Editor.Graphs.Data.GenericNode {
+        
+        public override bool AllowMultipleInputs {
+            get {
+                return true;
+            }
+        }
+        
+        public override bool AllowMultipleOutputs {
+            get {
+                return true;
+            }
+        }
+    }
+    
+    public partial interface IComputedPropertyConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
+    }
+    
     public class SimpleClassNodeBase : uFrame.Editor.Graphs.Data.GenericInheritableNode, uFrame.Editor.Graphs.Data.IClassTypeNode {
         
         public virtual string ClassName {
@@ -292,6 +310,37 @@ namespace uFrame.MVVM {
     public partial interface ICommandConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
     }
     
+    public class StateNodeBase : uFrame.Editor.Graphs.Data.GenericNode {
+        
+        public override bool AllowMultipleInputs {
+            get {
+                return true;
+            }
+        }
+        
+        public override bool AllowMultipleOutputs {
+            get {
+                return true;
+            }
+        }
+        
+        public virtual System.Collections.Generic.IEnumerable<uFrame.Editor.Core.IItem> PossibleStateTransitions {
+            get {
+                return this.Repository.AllOf<IStateTransitionsConnectable>().Cast<IItem>();
+            }
+        }
+        
+        [uFrame.Editor.Configurations.ReferenceSection("State Transitions", SectionVisibility.Always, false, false, typeof(IStateTransitionsConnectable), false, OrderIndex=0, HasPredefinedOptions=false, IsNewRow=true)]
+        public virtual System.Collections.Generic.IEnumerable<StateTransitionsReference> StateTransitions {
+            get {
+                return PersistedItems.OfType<StateTransitionsReference>();
+            }
+        }
+    }
+    
+    public partial interface IStateConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
+    }
+    
     public class MVVMNodeBase : uFrame.Editor.Graphs.Data.GenericNode {
         
         public override bool AllowMultipleInputs {
@@ -310,7 +359,17 @@ namespace uFrame.MVVM {
     public partial interface IMVVMConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
     }
     
-    public class ComputedPropertyNodeBase : uFrame.Editor.Graphs.Data.GenericNode {
+    public class StateMachineNodeBase : uFrame.Editor.Graphs.Data.GenericInheritableNode, uFrame.Editor.Graphs.Data.IClassTypeNode {
+        
+        private string _StartStateOutputSlotId;
+        
+        private StartState _StartState;
+        
+        public virtual string ClassName {
+            get {
+                return this.Name;
+            }
+        }
         
         public override bool AllowMultipleInputs {
             get {
@@ -318,13 +377,40 @@ namespace uFrame.MVVM {
             }
         }
         
-        public override bool AllowMultipleOutputs {
+        [uFrame.Editor.Configurations.Section("Transitions", SectionVisibility.Always, OrderIndex=1, IsNewRow=true)]
+        public virtual System.Collections.Generic.IEnumerable<TransitionsChildItem> Transitions {
             get {
-                return true;
+                return PersistedItems.OfType<TransitionsChildItem>();
+            }
+        }
+        
+        [uFrame.Json.JsonProperty()]
+        public virtual string StartStateOutputSlotId {
+            get {
+                if (_StartStateOutputSlotId == null) {
+                    _StartStateOutputSlotId = Guid.NewGuid().ToString();
+                }
+                return _StartStateOutputSlotId;
+            }
+            set {
+                _StartStateOutputSlotId = value;
+            }
+        }
+        
+        [uFrame.Editor.Configurations.OutputSlot("Start State", false, SectionVisibility.WhenNodeIsFilter, OrderIndex=0, IsNewRow=true)]
+        public virtual StartState StartStateOutputSlot {
+            get {
+                if (Repository == null) {
+                    return null;
+                }
+                if (_StartState != null) {
+                    return _StartState;
+                }
+                return _StartState ?? (_StartState = new StartState() { Repository = Repository, Node = this, Identifier = StartStateOutputSlotId });
             }
         }
     }
     
-    public partial interface IComputedPropertyConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
+    public partial interface IStateMachineConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
     }
 }

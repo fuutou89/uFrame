@@ -1,8 +1,0 @@
-{
-	"Identifier":"953615e0-5dbf-42b0-863a-facf82e22da1"	, 
-	"Time":"7/4/2016 11:22:54 AM"	, 
-	"Group":112254	, 
-	"DataRecordId":"1565e122-59e8-42bc-be5e-df8051e4bb0f"	, 
-	"Type":2	, 
-	"RecordType":"uFrame.Architect.Editor.Data.ShellNodeConfig, Assembly-CSharp-Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"	, 
-	"Data":"{\r\n\t\"Color\":25\t, \r\n\t\"NodeStyle\":0\t, \r\n\t\"Inheritable\":false\t, \r\n\t\"IsClass\":false\t, \r\n\t\"Row\":0\t, \r\n\t\"Column\":0\t, \r\n\t\"Visibility\":0\t, \r\n\t\"Name\":\"ComputedProperty\"\t, \r\n\t\"Order\":0\t, \r\n\t\"GraphId\":\"b15f6874-81a3-4294-b0e3-2f998b1476cb\"\t, \r\n\t\"Identifier\":\"1565e122-59e8-42bc-be5e-df8051e4bb0f\"\t, \r\n\t\"Expanded\":false}\r\n"}

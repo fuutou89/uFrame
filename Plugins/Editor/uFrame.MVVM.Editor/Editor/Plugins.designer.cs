@@ -26,6 +26,8 @@ namespace uFrame.MVVM {
         
         private uFrame.Editor.Configurations.NodeConfig<ServiceNode> _Service;
         
+        private uFrame.Editor.Configurations.NodeConfig<ComputedPropertyNode> _ComputedProperty;
+        
         private uFrame.Editor.Configurations.NodeConfig<SimpleClassNode> _SimpleClass;
         
         private uFrame.Editor.Configurations.NodeConfig<SubSystemNode> _SubSystem;
@@ -38,9 +40,11 @@ namespace uFrame.MVVM {
         
         private uFrame.Editor.Configurations.NodeConfig<CommandNode> _Command;
         
+        private uFrame.Editor.Configurations.NodeConfig<StateNode> _State;
+        
         private uFrame.Editor.Configurations.NodeConfig<MVVMNode> _MVVM;
         
-        private uFrame.Editor.Configurations.NodeConfig<ComputedPropertyNode> _ComputedProperty;
+        private uFrame.Editor.Configurations.NodeConfig<StateMachineNode> _StateMachine;
         
         public uFrame.Editor.Configurations.NodeConfig<ServiceNode> Service {
             get {
@@ -48,6 +52,15 @@ namespace uFrame.MVVM {
             }
             set {
                 _Service = value;
+            }
+        }
+        
+        public uFrame.Editor.Configurations.NodeConfig<ComputedPropertyNode> ComputedProperty {
+            get {
+                return _ComputedProperty;
+            }
+            set {
+                _ComputedProperty = value;
             }
         }
         
@@ -105,6 +118,15 @@ namespace uFrame.MVVM {
             }
         }
         
+        public uFrame.Editor.Configurations.NodeConfig<StateNode> State {
+            get {
+                return _State;
+            }
+            set {
+                _State = value;
+            }
+        }
+        
         public uFrame.Editor.Configurations.NodeConfig<MVVMNode> MVVM {
             get {
                 return _MVVM;
@@ -114,12 +136,12 @@ namespace uFrame.MVVM {
             }
         }
         
-        public uFrame.Editor.Configurations.NodeConfig<ComputedPropertyNode> ComputedProperty {
+        public uFrame.Editor.Configurations.NodeConfig<StateMachineNode> StateMachine {
             get {
-                return _ComputedProperty;
+                return _StateMachine;
             }
             set {
-                _ComputedProperty = value;
+                _StateMachine = value;
             }
         }
         
@@ -138,14 +160,18 @@ namespace uFrame.MVVM {
         public override void Initialize(uFrame.IOC.UFrameContainer container) {
             container.AddItem<BindingsReference>();
             container.AddTypeItem<CommandsChildItem>();
+            container.AddItem<TransitionsChildItem>();
             container.AddItem<HandlersReference>();
             container.AddTypeItem<PropertiesChildItem>();
             container.AddItem<InstancesReference>();
+            container.AddItem<StateTransitionsReference>();
             container.AddTypeItem<CollectionsChildItem>();
             Service = container.AddNode<ServiceNode,ServiceNodeViewModel,ServiceNodeDrawer>("Service");
             Service.Inheritable();
             Service.Color(NodeColor.LightGray);
             Service.HasSubNode<SimpleClassNode>();
+            ComputedProperty = container.AddNode<ComputedPropertyNode,ComputedPropertyNodeViewModel,ComputedPropertyNodeDrawer>("ComputedProperty");
+            ComputedProperty.Color(NodeColor.Darkolivegreen3);
             SimpleClass = container.AddNode<SimpleClassNode,SimpleClassNodeViewModel,SimpleClassNodeDrawer>("SimpleClass");
             SimpleClass.Inheritable();
             SimpleClass.Color(NodeColor.Gray);
@@ -168,21 +194,30 @@ namespace uFrame.MVVM {
             Element.HasSubNode<ViewNode>();
             Element.HasSubNode<CommandNode>();
             Element.HasSubNode<ComputedPropertyNode>();
+            Element.HasSubNode<StateMachineNode>();
             Command = container.AddNode<CommandNode,CommandNodeViewModel,CommandNodeDrawer>("Command");
             Command.Inheritable();
             Command.Color(NodeColor.Red);
+            State = container.AddNode<StateNode,StateNodeViewModel,StateNodeDrawer>("State");
+            State.Color(NodeColor.Olivedrab);
             MVVM = container.AddGraph<MVVMGraph, MVVMNode>("MVVMGraph");
             MVVM.Color(NodeColor.DarkGray);
             MVVM.HasSubNode<SimpleClassNode>();
             MVVM.HasSubNode<SubSystemNode>();
             MVVM.HasSubNode<SceneTypeNode>();
             MVVM.HasSubNode<ServiceNode>();
-            ComputedProperty = container.AddNode<ComputedPropertyNode,ComputedPropertyNodeViewModel,ComputedPropertyNodeDrawer>("ComputedProperty");
-            ComputedProperty.Color(NodeColor.Darkolivegreen3);
+            StateMachine = container.AddNode<StateMachineNode,StateMachineNodeViewModel,StateMachineNodeDrawer>("StateMachine");
+            StateMachine.Inheritable();
+            StateMachine.Color(NodeColor.Carrot);
+            StateMachine.HasSubNode<StateNode>();
             container.Connectable<ElementNode,Element>();
+            container.Connectable<StartState,StateNode>();
+            container.Connectable<TransitionsChildItem,StateTransitionsReference>();
             container.Connectable<HandlersReference,SimpleClassNode>();
-            container.Connectable<PropertiesChildItem,SceneProperties>();
+            container.Connectable<StateTransitionsReference,StateNode>();
             container.Connectable<PropertiesChildItem,ComputedPropertyNode>();
+            container.Connectable<PropertiesChildItem,StateMachineNode>();
+            container.Connectable<PropertiesChildItem,SceneProperties>();
         }
     }
 }

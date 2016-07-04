@@ -31,6 +31,19 @@ namespace uFrame.MVVM {
         }
     }
     
+    public class ComputedPropertyNodeViewModelBase : uFrame.Editor.GraphUI.ViewModels.GenericNodeViewModel<uFrame.Editor.Graphs.Data.GenericNode> {
+        
+        public ComputedPropertyNodeViewModelBase(ComputedPropertyNode graphItemObject, uFrame.Editor.GraphUI.ViewModels.DiagramViewModel diagramViewModel) : 
+                base(graphItemObject, diagramViewModel) {
+        }
+        
+        public override uFrame.Editor.Platform.NodeStyle NodeStyle {
+            get {
+                return NodeStyle.Normal;
+            }
+        }
+    }
+    
     public class SimpleClassNodeViewModelBase : uFrame.Editor.GraphUI.ViewModels.GenericNodeViewModel<uFrame.Editor.Graphs.Data.GenericNode> {
         
         public SimpleClassNodeViewModelBase(SimpleClassNode graphItemObject, uFrame.Editor.GraphUI.ViewModels.DiagramViewModel diagramViewModel) : 
@@ -109,6 +122,19 @@ namespace uFrame.MVVM {
         }
     }
     
+    public class StateNodeViewModelBase : uFrame.Editor.GraphUI.ViewModels.GenericNodeViewModel<uFrame.Editor.Graphs.Data.GenericNode> {
+        
+        public StateNodeViewModelBase(StateNode graphItemObject, uFrame.Editor.GraphUI.ViewModels.DiagramViewModel diagramViewModel) : 
+                base(graphItemObject, diagramViewModel) {
+        }
+        
+        public override uFrame.Editor.Platform.NodeStyle NodeStyle {
+            get {
+                return NodeStyle.Normal;
+            }
+        }
+    }
+    
     public class MVVMNodeViewModelBase : uFrame.Editor.GraphUI.ViewModels.GenericNodeViewModel<uFrame.Editor.Graphs.Data.GenericNode> {
         
         public MVVMNodeViewModelBase(MVVMNode graphItemObject, uFrame.Editor.GraphUI.ViewModels.DiagramViewModel diagramViewModel) : 
@@ -122,9 +148,9 @@ namespace uFrame.MVVM {
         }
     }
     
-    public class ComputedPropertyNodeViewModelBase : uFrame.Editor.GraphUI.ViewModels.GenericNodeViewModel<uFrame.Editor.Graphs.Data.GenericNode> {
+    public class StateMachineNodeViewModelBase : uFrame.Editor.GraphUI.ViewModels.GenericNodeViewModel<uFrame.Editor.Graphs.Data.GenericNode> {
         
-        public ComputedPropertyNodeViewModelBase(ComputedPropertyNode graphItemObject, uFrame.Editor.GraphUI.ViewModels.DiagramViewModel diagramViewModel) : 
+        public StateMachineNodeViewModelBase(StateMachineNode graphItemObject, uFrame.Editor.GraphUI.ViewModels.DiagramViewModel diagramViewModel) : 
                 base(graphItemObject, diagramViewModel) {
         }
         

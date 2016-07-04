@@ -36,6 +36,24 @@ namespace uFrame.MVVM {
     public partial interface ICommandsConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
     }
     
+    public class TransitionsChildItemBase : uFrame.Editor.Graphs.Data.GenericNodeChildItem, IStateTransitionsConnectable {
+        
+        public override bool AllowMultipleInputs {
+            get {
+                return true;
+            }
+        }
+        
+        public override bool AllowMultipleOutputs {
+            get {
+                return true;
+            }
+        }
+    }
+    
+    public partial interface ITransitionsConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
+    }
+    
     public class PropertiesChildItemBase : uFrame.Editor.Graphs.Data.GenericTypedChildItem {
         
         public override bool AllowMultipleInputs {

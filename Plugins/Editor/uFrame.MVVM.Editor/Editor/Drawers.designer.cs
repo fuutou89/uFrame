@@ -23,6 +23,13 @@ namespace uFrame.MVVM {
         }
     }
     
+    public class ComputedPropertyNodeDrawerBase : GenericNodeDrawer<ComputedPropertyNode,ComputedPropertyNodeViewModel> {
+        
+        public ComputedPropertyNodeDrawerBase(ComputedPropertyNodeViewModel viewModel) : 
+                base(viewModel) {
+        }
+    }
+    
     public class SimpleClassNodeDrawerBase : GenericNodeDrawer<SimpleClassNode,SimpleClassNodeViewModel> {
         
         public SimpleClassNodeDrawerBase(SimpleClassNodeViewModel viewModel) : 
@@ -65,6 +72,13 @@ namespace uFrame.MVVM {
         }
     }
     
+    public class StateNodeDrawerBase : GenericNodeDrawer<StateNode,StateNodeViewModel> {
+        
+        public StateNodeDrawerBase(StateNodeViewModel viewModel) : 
+                base(viewModel) {
+        }
+    }
+    
     public class MVVMNodeDrawerBase : GenericNodeDrawer<MVVMNode,MVVMNodeViewModel> {
         
         public MVVMNodeDrawerBase(MVVMNodeViewModel viewModel) : 
@@ -72,9 +86,9 @@ namespace uFrame.MVVM {
         }
     }
     
-    public class ComputedPropertyNodeDrawerBase : GenericNodeDrawer<ComputedPropertyNode,ComputedPropertyNodeViewModel> {
+    public class StateMachineNodeDrawerBase : GenericNodeDrawer<StateMachineNode,StateMachineNodeViewModel> {
         
-        public ComputedPropertyNodeDrawerBase(ComputedPropertyNodeViewModel viewModel) : 
+        public StateMachineNodeDrawerBase(StateMachineNodeViewModel viewModel) : 
                 base(viewModel) {
         }
     }

@@ -71,4 +71,22 @@ namespace uFrame.MVVM {
     
     public partial interface IInstancesConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
     }
+    
+    public class StateTransitionsReferenceBase : uFrame.Editor.Graphs.Data.GenericReferenceItem<IStateTransitionsConnectable>, IStateConnectable {
+        
+        public override bool AllowMultipleInputs {
+            get {
+                return true;
+            }
+        }
+        
+        public override bool AllowMultipleOutputs {
+            get {
+                return true;
+            }
+        }
+    }
+    
+    public partial interface IStateTransitionsConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
+    }
 }
