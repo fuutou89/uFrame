@@ -71,4 +71,11 @@ namespace uFrame.MVVM {
                 base(viewModel) {
         }
     }
+    
+    public class ComputedPropertyNodeDrawerBase : GenericNodeDrawer<ComputedPropertyNode,ComputedPropertyNodeViewModel> {
+        
+        public ComputedPropertyNodeDrawerBase(ComputedPropertyNodeViewModel viewModel) : 
+                base(viewModel) {
+        }
+    }
 }

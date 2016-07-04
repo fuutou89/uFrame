@@ -25,7 +25,7 @@ namespace uFrame.Editor.GraphUI
         {
             StartConnector = startConnector;
             PossibleConnections = new List<ConnectorViewModel>();
-            InvertApplication.Log("YUP YUP YUP");
+            //InvertApplication.Log("YUP YUP YUP");
             var items = diagramViewModel.GraphItems.OfType<ConnectorViewModel>().ToArray();
             foreach (var connector in items)
             {
@@ -36,9 +36,6 @@ namespace uFrame.Editor.GraphUI
                         PossibleConnections.Add(connector);
                     }
                 }
-
-                //PossibleConnections.Add(connector);
-
             }
             foreach (var a in PossibleConnections)
             {

@@ -309,4 +309,22 @@ namespace uFrame.MVVM {
     
     public partial interface IMVVMConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
     }
+    
+    public class ComputedPropertyNodeBase : uFrame.Editor.Graphs.Data.GenericNode {
+        
+        public override bool AllowMultipleInputs {
+            get {
+                return true;
+            }
+        }
+        
+        public override bool AllowMultipleOutputs {
+            get {
+                return true;
+            }
+        }
+    }
+    
+    public partial interface IComputedPropertyConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
+    }
 }

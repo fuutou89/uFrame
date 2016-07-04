@@ -10,6 +10,7 @@ using uFrame.Editor.GraphUI.ViewModels;
 using uFrame.Editor.Input;
 using uFrame.Editor.Menus;
 using uFrame.Editor.Platform;
+using uFrame.Editor.TypesSystem;
 using uFrame.Editor.WindowsPlugin;
 using uFrame.Editor.Workspaces.Data;
 using UnityEditor;
@@ -268,7 +269,7 @@ namespace uFrame.Editor.Unity
 
             if (designerWindow.Toolbar == null)
                 return;
-                //throw new ArgumentNullException("designerWindow.Toolbar");
+            //throw new ArgumentNullException("designerWindow.Toolbar");
             GUILayout.BeginArea(toolbarTopRect);
             if (toolbarTopRect.y > 20)
             {
@@ -703,7 +704,7 @@ namespace uFrame.Editor.Unity
                     var items = InvertGraphEditor.CurrentDiagramViewModel.CurrentRepository.AllOf<IGraphItem>().Where(p => type.IsAssignableFrom(p.GetType()));
 
                     var menu = new SelectionMenu();
-                    menu.AddItem(new SelectionMenuItem(string.Empty,"[None]", () =>
+                    menu.AddItem(new SelectionMenuItem(string.Empty, "[None]", () =>
                     {
                         InvertApplication.Execute(() =>
                         {
@@ -723,14 +724,8 @@ namespace uFrame.Editor.Unity
                     }
 
                     InvertApplication.SignalEvent<IShowSelectionMenu>(_ => _.ShowSelectionMenu(menu));
-
-
-
-                    //
-                    //                    InvertGraphEditor.WindowManager.InitItemWindow(items, 
-                    //                        
-                    //                    },true);
-
+       
+                    //InvertGraphEditor.WindowManager.InitItemWindow(items, () => {},true);
                 }
                 SetTooltipForRect(rect, d.InspectorTip);
 
@@ -764,17 +759,22 @@ namespace uFrame.Editor.Unity
                 }
                 else if (d.InspectorType == InspectorType.TypeSelection)
                 {
-
                     if (GUI.Button(rect, (string)d.CachedValue))
                     {
                         d.NodeViewModel.Select();
                         // TODO 2.0 Open Selection?
+                        InvertApplication.Execute(new SelectTypeCommand()
+                        {
+                            IncludePrimitives = true,
+                            PrimitiveOnly = false,
+                            AllowNone = false,
+                            Item = d.NodeViewModel.DataObject as ITypedItem
+                        });
+
                     }
+
                     SetTooltipForRect(rect, d.InspectorTip);
-
-
                 }
-
                 else
                 {
                     EditorGUI.BeginChangeCheck();
@@ -787,7 +787,6 @@ namespace uFrame.Editor.Unity
                         d.Setter(d.DataObject, d.CachedValue);
                     }
                 }
-
             }
             else
             {

@@ -529,7 +529,6 @@ namespace uFrame.Editor.GraphUI.ViewModels
             DiagramViewModel.Select(this);
             base.Select();
 
-
         }
 
         public override bool Enabled

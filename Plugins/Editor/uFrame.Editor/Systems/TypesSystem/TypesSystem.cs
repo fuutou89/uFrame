@@ -92,7 +92,8 @@ namespace uFrame.Editor.TypesSystem
                         }
                         else
                         {
-                            command.Item.RelatedType = type1.FullName;
+                            // TODO: Change RelatedType from FullName to TypeName, not sure if there is any bug
+                            command.Item.RelatedType = type1.TypeName;//type1.FullName;
                         }
 
                         if (command.OnSelectionFinished != null) command.OnSelectionFinished();

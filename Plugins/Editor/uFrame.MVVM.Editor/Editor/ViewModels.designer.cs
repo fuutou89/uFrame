@@ -121,4 +121,17 @@ namespace uFrame.MVVM {
             }
         }
     }
+    
+    public class ComputedPropertyNodeViewModelBase : uFrame.Editor.GraphUI.ViewModels.GenericNodeViewModel<uFrame.Editor.Graphs.Data.GenericNode> {
+        
+        public ComputedPropertyNodeViewModelBase(ComputedPropertyNode graphItemObject, uFrame.Editor.GraphUI.ViewModels.DiagramViewModel diagramViewModel) : 
+                base(graphItemObject, diagramViewModel) {
+        }
+        
+        public override uFrame.Editor.Platform.NodeStyle NodeStyle {
+            get {
+                return NodeStyle.Normal;
+            }
+        }
+    }
 }

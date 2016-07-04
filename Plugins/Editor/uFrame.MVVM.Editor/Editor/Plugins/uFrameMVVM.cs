@@ -1,6 +1,8 @@
 using uFrame.Editor.Compiling.CommonNodes;
 using uFrame.Editor.Workspaces;
 using uFrame.IOC;
+using System;
+using System.Collections.Generic;
 
 namespace uFrame.MVVM
 {

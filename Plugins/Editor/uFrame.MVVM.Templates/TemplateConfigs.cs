@@ -34,6 +34,7 @@ namespace uFrame.MVVM.Templates
             RegisteredTemplateGeneratorsFactory.RegisterTemplate<ElementNode, ControllerTemplate>();
             RegisteredTemplateGeneratorsFactory.RegisterTemplate<CommandsChildItem, ViewModelCommandClassTemplate>();
             RegisteredTemplateGeneratorsFactory.RegisterTemplate<CommandNode, CommandTemplate>();
+            RegisteredTemplateGeneratorsFactory.RegisterTemplate<ViewNode, ViewTemplate>();
         }
     }
 

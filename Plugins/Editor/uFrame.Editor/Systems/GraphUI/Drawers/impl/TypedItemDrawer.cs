@@ -66,7 +66,6 @@ namespace uFrame.Editor.GraphUI.Drawers
             if (TypedItemViewModel.IsEditable) TypedItemViewModel.EndEditing();
             TypedItemViewModel.Select();
             TypedItemViewModel.ShowSelectionListWindow();
-
         }
 
         public override void Draw(IPlatformDrawer platform, float scale)

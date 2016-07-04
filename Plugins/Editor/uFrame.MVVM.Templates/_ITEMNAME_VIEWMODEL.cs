@@ -1,6 +1,5 @@
 using uFrame.Editor.Compiling.CodeGen;
 using uFrame.Editor.Graphs.Data;
-using uFrame.Graphs;
 
 namespace uFrame.MVVM.Templates
 {

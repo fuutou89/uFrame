@@ -40,6 +40,8 @@ namespace uFrame.MVVM {
         
         private uFrame.Editor.Configurations.NodeConfig<MVVMNode> _MVVM;
         
+        private uFrame.Editor.Configurations.NodeConfig<ComputedPropertyNode> _ComputedProperty;
+        
         public uFrame.Editor.Configurations.NodeConfig<ServiceNode> Service {
             get {
                 return _Service;
@@ -112,6 +114,15 @@ namespace uFrame.MVVM {
             }
         }
         
+        public uFrame.Editor.Configurations.NodeConfig<ComputedPropertyNode> ComputedProperty {
+            get {
+                return _ComputedProperty;
+            }
+            set {
+                _ComputedProperty = value;
+            }
+        }
+        
         public virtual uFrame.Editor.TypesSystem.SelectTypeCommand GetPropertiesSelectionCommand() {
             return new SelectTypeCommand() { IncludePrimitives = true, AllowNone = false };
         }
@@ -156,6 +167,7 @@ namespace uFrame.MVVM {
             Element.HasSubNode<SimpleClassNode>();
             Element.HasSubNode<ViewNode>();
             Element.HasSubNode<CommandNode>();
+            Element.HasSubNode<ComputedPropertyNode>();
             Command = container.AddNode<CommandNode,CommandNodeViewModel,CommandNodeDrawer>("Command");
             Command.Inheritable();
             Command.Color(NodeColor.Red);
@@ -165,9 +177,12 @@ namespace uFrame.MVVM {
             MVVM.HasSubNode<SubSystemNode>();
             MVVM.HasSubNode<SceneTypeNode>();
             MVVM.HasSubNode<ServiceNode>();
+            ComputedProperty = container.AddNode<ComputedPropertyNode,ComputedPropertyNodeViewModel,ComputedPropertyNodeDrawer>("ComputedProperty");
+            ComputedProperty.Color(NodeColor.Darkolivegreen3);
             container.Connectable<ElementNode,Element>();
             container.Connectable<HandlersReference,SimpleClassNode>();
             container.Connectable<PropertiesChildItem,SceneProperties>();
+            container.Connectable<PropertiesChildItem,ComputedPropertyNode>();
         }
     }
 }

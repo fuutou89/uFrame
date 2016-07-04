@@ -32,9 +32,6 @@ using UnityEngine.UI;
 
 namespace uFrame.ECS.Editor
 {
-    using Editor;
-    using Graphs;
-
     public interface IQueryActionMetaInfo
     {
         void QueryActions(List<IActionMetaInfo> actions);

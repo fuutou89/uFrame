@@ -1,4 +1,4 @@
-﻿namespace uFrame.Graphs
+﻿namespace uFrame.MVVM.Templates
 {
     public static class uFrameFormats
     {
