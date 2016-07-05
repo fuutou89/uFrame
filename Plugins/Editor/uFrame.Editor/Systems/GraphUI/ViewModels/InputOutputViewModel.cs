@@ -76,7 +76,6 @@ namespace uFrame.Editor.GraphUI.ViewModels
 
         public void SelectItem()
         {
-
             var menu = new SelectionMenu();
             menu.AddItem(new SelectionMenuItem(string.Empty,"[None]", () =>
             {
@@ -98,14 +97,12 @@ namespace uFrame.Editor.GraphUI.ViewModels
 
             InvertApplication.SignalEvent<IShowSelectionMenu>(_=>_.ShowSelectionMenu(menu));
 
-//            InvertGraphEditor.WindowManager.InitItemWindow(ReferenceItem.GetAllowed().ToArray(), _ =>
-//            {
-//                InvertApplication.Execute(new LambdaCommand("Set Item", () =>
-//                {
-//                    
-//                   
-//                }));
-//            });
+            //InvertGraphEditor.WindowManager.InitItemWindow(ReferenceItem.GetAllowed().ToArray(), _ =>
+            //{
+            //    InvertApplication.Execute(new LambdaCommand("Set Item", () =>
+            //    {
+            //    }));
+            //});
         }
     }
 

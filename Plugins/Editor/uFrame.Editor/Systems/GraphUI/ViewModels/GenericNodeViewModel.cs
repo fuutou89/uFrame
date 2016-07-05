@@ -80,7 +80,7 @@ namespace uFrame.Editor.GraphUI.ViewModels
         {
             get { return GraphItem.Errors; }
         }
-        
+
         public override NodeColor Color
         {
             get
@@ -104,7 +104,7 @@ namespace uFrame.Editor.GraphUI.ViewModels
         {
             get
             {
-                if (IsCurrentFilter)return BoldStyleSchema;
+                if (IsCurrentFilter) return BoldStyleSchema;
 
                 switch (NodeStyle)
                 {
@@ -136,7 +136,7 @@ namespace uFrame.Editor.GraphUI.ViewModels
 
             //IsLocal = InvertGraphEditor.CurrentProject.CurrentGraph.NodeItems.Contains(GraphItemObject);
             if (NodeConfig.IsInput)
-                ApplyInputConfiguration(NodeConfig,DataObject as IGraphItem,InputConnector,NodeConfig.AllowMultipleInputs);
+                ApplyInputConfiguration(NodeConfig, DataObject as IGraphItem, InputConnector, NodeConfig.AllowMultipleInputs);
             if (NodeConfig.IsOutput)
                 ApplyOutputConfiguration(NodeConfig, DataObject as IGraphItem, InputConnector, NodeConfig.AllowMultipleOutputs);
             AddPropertyFields();
@@ -146,7 +146,7 @@ namespace uFrame.Editor.GraphUI.ViewModels
 
 
 
- 
+
 
         protected void CreateContentByConfiguration(IEnumerable<GraphItemConfiguration> graphItemConfigurations, GenericNode node = null)
         {
@@ -204,21 +204,21 @@ namespace uFrame.Editor.GraphUI.ViewModels
                 //    header.IsNewLine = true;
                 //}
 
-                header.AddCommand =section1.AllowAdding ? new LambdaCommand("Add Item",() =>
+                header.AddCommand = section1.AllowAdding ? new LambdaCommand("Add Item", () =>
                 {
                     OnAdd(section, section1, this);
-                }) : null; 
-                
-                
+                }) : null;
+
+
                 ContentItems.Add(header);
             }
 
             if (section1.GenericSelector != null && section1.ReferenceType == null)
             {
-                
-                foreach (var item in section1.GenericSelector(GraphItem).OfType<IDiagramNodeItem>().OrderBy(p=>p.Order))
+
+                foreach (var item in section1.GenericSelector(GraphItem).OfType<IDiagramNodeItem>().OrderBy(p => p.Order))
                 {
-                    
+
                     if (section.SourceType.IsAssignableFrom(item.GetType()))
                     {
                         var vm = GetDataViewModel(item) as GraphItemViewModel;
@@ -229,7 +229,7 @@ namespace uFrame.Editor.GraphUI.ViewModels
                             ApplyInputConfiguration(section, item, vm.InputConnector, section.AllowMultipleInputs);
                             ApplyOutputConfiguration(section, item, vm.OutputConnector, section.AllowMutlipleOutputs);
                         }
-                        
+
                         if (vm == null)
                         {
                             InvertApplication.LogError(
@@ -256,7 +256,7 @@ namespace uFrame.Editor.GraphUI.ViewModels
                     if (section.SourceType.IsAssignableFrom(item.GetType()))
                     {
                         var vm = GetDataViewModel(item) as ItemViewModel;
-                       
+
 
                         if (vm == null)
                         {
@@ -279,6 +279,7 @@ namespace uFrame.Editor.GraphUI.ViewModels
 
         private void OnAdd(NodeConfigSectionBase section, NodeConfigSectionBase section1, DiagramNodeViewModel vm)
         {
+            InvertApplication.Log("OnAdd");
             if (section1.AllowAdding && section1.ReferenceType != null && !section1.HasPredefinedOptions)
             {
                 SelectReferenceItem(section, section1);
@@ -302,10 +303,10 @@ namespace uFrame.Editor.GraphUI.ViewModels
             item.Node = vm.GraphItemObject as GraphNode;
             DiagramViewModel.CurrentRepository.Add(item);
             item.Name = item.Repository.GetUniqueName(section1.Name);
-          
+
             OnAdd(section1, item);
 
-            if (typeof (ITypedItem).IsAssignableFrom(section1.SourceType))
+            if (typeof(ITypedItem).IsAssignableFrom(section1.SourceType))
             {
                 InvertApplication.Execute(new SelectTypeCommand()
                 {
@@ -323,9 +324,9 @@ namespace uFrame.Editor.GraphUI.ViewModels
             else
             {
                 item.IsEditing = true;
-                
+
             }
-       
+
         }
 
         private void SelectFromOptions(NodeConfigSectionBase section1, DiagramNodeViewModel vm)
@@ -361,14 +362,9 @@ namespace uFrame.Editor.GraphUI.ViewModels
             }
             else
             {
-                InvertGraphEditor.WindowManager.InitItemWindow(
-                    section1.GenericSelector(GraphItem).ToArray()
-                        .Where(
-                            p =>
-                                !GraphItem.PersistedItems.OfType<GenericReferenceItem>()
-                                    .Select(x => x.SourceIdentifier)
-                                    .Contains(p.Identifier)),
-                    (selected) => { GraphItem.AddReferenceItem(selected, section1); });
+                IEnumerable<GenericReferenceItem> ritems = GraphItem.PersistedItems.OfType<GenericReferenceItem>();
+                IEnumerable<IGraphItem> items = section1.GenericSelector(GraphItem).ToArray().Where(p => !ritems.Select(x => x.SourceIdentifier).Contains(p.Identifier));
+                InvertGraphEditor.WindowManager.InitItemWindow(items, (selected) => { GraphItem.AddReferenceItem(selected, section1); });
             }
         }
 
@@ -377,7 +373,7 @@ namespace uFrame.Editor.GraphUI.ViewModels
         {
             if (!IsVisible(inputConfig.Visibility)) return;
             var nodeToUse = node ?? GraphItem;
-            var header =  new InputOutputViewModel();
+            var header = new InputOutputViewModel();
             header.Name = inputConfig.Name.GetValue(node);
             header.DataObject = inputConfig.IsAlias
                 ? DataObject
@@ -394,16 +390,16 @@ namespace uFrame.Editor.GraphUI.ViewModels
                 header.IsNewLine = true;
             }
             ContentItems.Add(header);
-            ApplyOutputConfiguration(inputConfig, header.DataObject as IGraphItem, header.OutputConnector,  true);
+            ApplyOutputConfiguration(inputConfig, header.DataObject as IGraphItem, header.OutputConnector, true);
             if (header.InputConnector != null)
-            header.OutputConnector.Configuration = inputConfig;
-            
+                header.OutputConnector.Configuration = inputConfig;
+
         }
 
         protected static void ApplyOutputConfiguration(GraphItemConfiguration inputConfig, IGraphItem dataItem, ConnectorViewModel connector, bool alwaysVisible = false)
         {
             if (connector != null)
-            connector.AlwaysVisible = alwaysVisible;
+                connector.AlwaysVisible = alwaysVisible;
             //var slot = dataItem as IDiagramNodeItem;
             //if (slot != null)
             //{
@@ -420,7 +416,7 @@ namespace uFrame.Editor.GraphUI.ViewModels
             header.DataObject = inputConfig.IsAlias ? DataObject : inputConfig.GetDataObject(nodeToUse);
             header.InputConnectorType = inputConfig.SourceType;
             header.IsInput = true;
-            
+
             if (inputConfig.AttributeInfo != null)
             {
                 header.IsNewLine = inputConfig.AttributeInfo.IsNewRow;
@@ -429,29 +425,29 @@ namespace uFrame.Editor.GraphUI.ViewModels
             {
                 header.IsNewLine = true;
             }
-            
+
             ContentItems.Add(header);
             var g = header.DataObject as IGraphItem;
             if (g != null)
             {
                 header.Name = g.Title;
             }
-            ApplyInputConfiguration(inputConfig, g,header.InputConnector, true);
+            ApplyInputConfiguration(inputConfig, g, header.InputConnector, true);
             if (header.InputConnector != null)
-            header.InputConnector.Configuration = inputConfig;
+                header.InputConnector.Configuration = inputConfig;
         }
 
-        protected static void ApplyInputConfiguration(GraphItemConfiguration inputConfig, IGraphItem dataItem, ConnectorViewModel connector,bool alwaysVisible = false)
+        protected static void ApplyInputConfiguration(GraphItemConfiguration inputConfig, IGraphItem dataItem, ConnectorViewModel connector, bool alwaysVisible = false)
         {
             if (connector != null)
-            connector.AlwaysVisible = alwaysVisible;
-            
+                connector.AlwaysVisible = alwaysVisible;
+
             //var slot = dataItem as IDiagramNodeItem;
             //if (slot != null)
             //{
             //    connector.Validator = slot.ValidateInput;
             //}
-       
+
         }
 
         protected bool IsVisible(SectionVisibility section)
@@ -460,7 +456,7 @@ namespace uFrame.Editor.GraphUI.ViewModels
             if (section == SectionVisibility.Always) return true;
             if (section == SectionVisibility.WhenNodeIsFilter)
             {
-                
+
                 return DiagramViewModel.GraphData.CurrentFilter == GraphItem;
             }
             return DiagramViewModel.GraphData.CurrentFilter != GraphItem;

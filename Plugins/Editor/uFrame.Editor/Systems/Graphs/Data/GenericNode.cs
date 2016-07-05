@@ -288,12 +288,18 @@ namespace uFrame.Editor.Graphs.Data
             var current = mirrorItems.FirstOrDefault(p => p.SourceIdentifier == item.Identifier);
             if (current != null && !mirrorSection.AllowDuplicates) return;
 
-            var newMirror = Activator.CreateInstance(mirrorSection.SourceType) as GenericReferenceItem;
-            newMirror.Node = this;
-            Node.Repository.Add(newMirror);
-            newMirror.SourceIdentifier = item.Identifier;
-       
-     
+            if (Node.Repository.GetById<IDiagramNode>(item.Identifier) == null)
+            {
+                Node.Repository.Add(item);
+            }
+            else
+            {
+                var newMirror = Activator.CreateInstance(mirrorSection.SourceType) as GenericReferenceItem;
+                newMirror.Node = this;
+                newMirror.SourceIdentifier = item.Identifier;
+                Node.Repository.Add(newMirror);
+            }
+            
             //Node.Project.AddItem(newMirror);
         }
         [Browsable(false)]
@@ -423,6 +429,7 @@ namespace uFrame.Editor.Graphs.Data
         {
             get
             {
+                //InvertApplication.Log(typeof(TSourceType).Name);
                 var sourceItem = SourceItemObject;
                 if (sourceItem is TSourceType)
                 {

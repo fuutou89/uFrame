@@ -18,7 +18,7 @@ namespace uFrame.MVVM {
     using uFrame.Editor.Graphs.Data;
     
     
-    public class CommandsChildItemBase : uFrame.Editor.Graphs.Data.GenericTypedChildItem, ITransitionsConnectable {
+    public class CommandsChildItemBase : uFrame.Editor.Graphs.Data.GenericTypedChildItem, ITransitionsConnectable, IBindingsConnectable {
         
         public override bool AllowMultipleInputs {
             get {
@@ -54,7 +54,7 @@ namespace uFrame.MVVM {
     public partial interface ITransitionsConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
     }
     
-    public class PropertiesChildItemBase : uFrame.Editor.Graphs.Data.GenericTypedChildItem {
+    public class PropertiesChildItemBase : uFrame.Editor.Graphs.Data.GenericTypedChildItem, IBindingsConnectable {
         
         public override bool AllowMultipleInputs {
             get {
@@ -72,7 +72,7 @@ namespace uFrame.MVVM {
     public partial interface IPropertiesConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
     }
     
-    public class CollectionsChildItemBase : uFrame.Editor.Graphs.Data.GenericTypedChildItem {
+    public class CollectionsChildItemBase : uFrame.Editor.Graphs.Data.GenericTypedChildItem, IBindingsConnectable {
         
         public override bool AllowMultipleInputs {
             get {

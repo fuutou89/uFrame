@@ -2,8 +2,11 @@ using uFrame.Editor.Compiling.CommonNodes;
 using uFrame.Editor.Workspaces;
 using uFrame.IOC;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using uFrame.Editor.Core;
+using uFrame.MVVM.Templates;
+using uFrame.Editor.GraphUI;
 
 namespace uFrame.MVVM
 {
@@ -30,7 +33,14 @@ namespace uFrame.MVVM
             MVVM.HasSubNode<TypeReferenceNode>();
             SubSystem.HasSubNode<TypeReferenceNode>();
             SubSystem.HasSubNode<EnumNode>();
+
+            uFrameMVVM.BindingTypes = InvertGraphEditor.Container.Instances
+                                                       .Where(p => p.Key.Item1 == typeof(uFrameBindingType))
+                                                       .ToArray<KeyValuePair<Tuple<Type, string>, object>>();
+            
+            InvertApplication.Log("----- : " + BindingTypes.Length);
         }
 
+        public static KeyValuePair<Tuple<Type, string>, object>[] BindingTypes;
     }
 }

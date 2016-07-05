@@ -5,6 +5,10 @@ using uFrame.ECS.Actions;
 using uFrame.Editor;
 using uFrame.Editor.Core;
 using uFrame.IOC;
+using uFrame.MVVM.Bindings;
+using uFrame.Editor.Graphs.Data;
+using System.CodeDom;
+using uFrame.MVVM.StateMachines;
 
 namespace uFrame.MVVM.Templates
 {
@@ -38,6 +42,24 @@ namespace uFrame.MVVM.Templates
             RegisteredTemplateGeneratorsFactory.RegisterTemplate<StateMachineNode, StateMachineTemplate>();
             RegisteredTemplateGeneratorsFactory.RegisterTemplate<StateNode, StateTemplate>();
             RegisteredTemplateGeneratorsFactory.RegisterTemplate<ViewComponentNode, ViewComponentTemplate>();
+
+            // Register bindable methods
+            container.AddBindingMethod(typeof(ViewBindings), "BindProperty", _ => _ is PropertiesChildItem || _ is ComputedPropertyNode)
+                     .SetNameFormat("{0} Changed")
+                     .ImplementWith(args =>
+                     {
+                         var sourceItem = args.SourceItem as ITypedItem;
+
+                         if (sourceItem.RelatedNode() is StateMachineNode)
+                         {
+                             args.Method.Parameters.Clear();
+                             args.Method.Parameters.Add(new CodeParameterDeclarationExpression(typeof(State), "State"));
+                         }
+                     });
+
+            container.AddBindingMethod(typeof(ViewBindings), "BindCollection", _ => _ is CollectionsChildItem)
+                     .SetNameFormat("{0} Collection Changed")
+                     .SetDescription("Collection bindings bind to a collection giving you two methods, {CollectionName}Added, and {CollectionName}Removed, override these methods to execute something when the collection is modified.");
         }
     }
 

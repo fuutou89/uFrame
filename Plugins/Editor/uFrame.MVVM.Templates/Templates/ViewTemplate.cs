@@ -101,15 +101,15 @@ namespace uFrame.MVVM.Templates
 
                     // TODO: Binding Method Generate
                     //// Grab the uFrame Binding Type
-                    //var bindingType = item.BindingType;
+                    var bindingType = item.BindingType;
                     //// Create the binding signature based on the Method Info
-                    //bindingType.CreateBindingSignature(new CreateBindingSignatureParams(
-                    //    Ctx.CurrentDeclaration, _ => source.RelatedTypeName.ToCodeReference(), Ctx.Data, source)
-                    //{
-                    //    Ctx = Ctx,
-                    //    BindingsReference = item,
-                    //    DontImplement = true
-                    //});
+                    bindingType.CreateBindingSignature(new CreateBindingSignatureParams(
+                        Ctx.CurrentDeclaration, _ => source.RelatedTypeName.ToCodeReference(), Ctx.Data, source)
+                    {
+                        Ctx = Ctx,
+                        BindingsReference = item,
+                        DontImplement = true
+                    });
                 }
             }
         }
@@ -224,7 +224,7 @@ namespace uFrame.MVVM.Templates
 
             foreach (var property in Ctx.Data.Element.LocalProperties)
             {
-                //if (property.RelatedTypeNode is StateMachineNode) continue;
+                if (property.RelatedTypeNode is StateMachineNode) continue;
                 // Make sure derived views don't duplicate in initialize vm
 
                 var field = Ctx.CurrentDeclaration._public_(property.RelatedTypeName, property.Name.AsField());
@@ -273,50 +273,50 @@ namespace uFrame.MVVM.Templates
 
             // TODO : need time to bring binding method back
             //// For each binding lets do some magic
-            //foreach (var item in Ctx.Data.Bindings)
-            //{
-            //    // Cast the source of our binding (ie: Property, Collection, Command..etc)
-            //    var source = item.SourceItem as ITypedItem;
-            //    // Create a boolean field for each property that has a binding this will serve the condition
-            //    // in the bind method to turn the binding on or off.
-            //    //   var bindingField = Ctx.CurrentDeclaration._public_(typeof (bool), "_Bind{0}", source.Name);
+            foreach (var item in Ctx.Data.Bindings)
+            {
+                // Cast the source of our binding (ie: Property, Collection, Command..etc)
+                var source = item.SourceItem as ITypedItem;
+                // Create a boolean field for each property that has a binding this will serve the condition
+                // in the bind method to turn the binding on or off.
+                //   var bindingField = Ctx.CurrentDeclaration._public_(typeof (bool), "_Bind{0}", source.Name);
 
 
-            //    var bindingField =
-            //    Ctx.CurrentDeclaration.Members.OfType<CodeMemberField>()
-            //        .FirstOrDefault(x => x.Name == string.Format("_Bind{0}", source.Name));
+                var bindingField =
+                Ctx.CurrentDeclaration.Members.OfType<CodeMemberField>()
+                    .FirstOrDefault(x => x.Name == string.Format("_Bind{0}", source.Name));
 
-            //    if (bindingField == null)
-            //    {
-            //        bindingField = Ctx.CurrentDeclaration._public_(typeof(bool), "_Bind{0}", source.Name);
+                if (bindingField == null)
+                {
+                    bindingField = Ctx.CurrentDeclaration._public_(typeof(bool), "_Bind{0}", source.Name);
 
-            //        // Bindings should always be on by default
-            //        bindingField.InitExpression = new CodePrimitiveExpression(true);
-            //        // Add a toggle group attribute to it, this hides and shows anything within the same group
-            //        bindingField.CustomAttributes.Add(
-            //            new CodeAttributeDeclaration(new CodeTypeReference(typeof(UFToggleGroup)),
-            //                new CodeAttributeArgument(new CodePrimitiveExpression(source.Name))));
-            //        // Hide them in the insepctor, our custom 'ViewInspector' class will handle them manually
-            //        bindingField.CustomAttributes.Add(
-            //            new CodeAttributeDeclaration(new CodeTypeReference(typeof(HideInInspector))));
-            //    }
+                    // Bindings should always be on by default
+                    bindingField.InitExpression = new CodePrimitiveExpression(true);
+                    // Add a toggle group attribute to it, this hides and shows anything within the same group
+                    bindingField.CustomAttributes.Add(
+                        new CodeAttributeDeclaration(new CodeTypeReference(typeof(UFToggleGroup)),
+                            new CodeAttributeArgument(new CodePrimitiveExpression(source.Name))));
+                    // Hide them in the insepctor, our custom 'ViewInspector' class will handle them manually
+                    bindingField.CustomAttributes.Add(
+                        new CodeAttributeDeclaration(new CodeTypeReference(typeof(HideInInspector))));
+                }
 
-            //    // Create the binding condition
-            //    var bindingCondition = Ctx._if("{0}", bindingField.Name);
-            //    // Grab the uFrame Binding Type
-            //    var bindingType = item.BindingType;
-            //    // Create the binding signature based on the Method Info
-            //    var bindingStatement =
-            //        bindingType.CreateBindingSignature(new CreateBindingSignatureParams(
-            //            Ctx.CurrentDeclaration, _ => source.RelatedTypeName.ToCodeReference(), Ctx.Data, source)
-            //        {
-            //            Ctx = Ctx
-            //        });
+                // Create the binding condition
+                var bindingCondition = Ctx._if("{0}", bindingField.Name);
+                // Grab the uFrame Binding Type
+                var bindingType = item.BindingType;
+                // Create the binding signature based on the Method Info
+                var bindingStatement =
+                    bindingType.CreateBindingSignature(new CreateBindingSignatureParams(
+                        Ctx.CurrentDeclaration, _ => source.RelatedTypeName.ToCodeReference(), Ctx.Data, source)
+                    {
+                        Ctx = Ctx
+                    });
 
 
-            //    // Add the binding statement to the condition
-            //    bindingCondition.TrueStatements.Add(bindingStatement);
-            //}
+                // Add the binding statement to the condition
+                bindingCondition.TrueStatements.Add(bindingStatement);
+            }
 
             foreach (var property in Ctx.Data.SceneProperties)
             {

@@ -170,7 +170,6 @@ namespace uFrame.Editor.InspectorWindow
         {
             Groups = Selected.SelectMany(x => GetInspectorOptions(x)).GroupBy(p=>p.DataObject.GetType().Name).ToArray();
         
-
             if (uFrameInspectorWindow.Instance != null)
                 uFrameInspectorWindow.Instance.Repaint();
         }

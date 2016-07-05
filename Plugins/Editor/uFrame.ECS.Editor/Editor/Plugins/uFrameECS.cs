@@ -32,66 +32,6 @@ using UnityEngine.UI;
 
 namespace uFrame.ECS.Editor
 {
-    public interface IQueryActionMetaInfo
-    {
-        void QueryActions(List<IActionMetaInfo> actions);
-    }
-
-    public class uFrameECSDescriptors : DiagramPlugin
-        , IContextMenuQuery
-
-    {
-        public void QueryContextMenu(ContextMenuUI ui, MouseEvent evt, params object[] obj)
-        {
-            var componentViewModel = obj.OfType<ComponentNodeViewModel>().FirstOrDefault();
-            if (componentViewModel != null)
-            {
-                var property = componentViewModel.DataObject as GraphNode;
-                var db = Container.Resolve<DatabaseService>().CurrentConfiguration;
-                foreach (var item in db.Database.All<DescriptorNode>())
-                {
-                    var item1 = item;
-                    ui.AddCommand(new ContextMenuItem()
-                    {
-                        Checked = property[item.Identifier],
-                        Title = item.Name,
-                        Group = "Descriptors",
-                        Command = new LambdaCommand(item.Name, () =>
-                        {
-                            property[item1.Identifier] = !property[item1.Identifier];
-                        })
-                    });
-                }
-            }
-            var propertyViewModel = obj.OfType<TypedItemViewModel>().FirstOrDefault();
-            if (propertyViewModel != null)
-            {
-                var property = propertyViewModel.DataObject as GenericTypedChildItem;
-                if (property != null)
-                {
-                    var db = Container.Resolve<DatabaseService>().CurrentConfiguration;
-                    if (db != null && db.Database != null)
-                    {
-                        foreach (var item in db.Database.All<DescriptorNode>())
-                        {
-                            var item1 = item;
-                            ui.AddCommand(new ContextMenuItem()
-                            {
-                                Checked = property[item.Identifier],
-                                Title = item.Name,
-                                Group = "Descriptors",
-                                Command = new LambdaCommand(item.Name, () =>
-                                {
-                                    property[item1.Identifier] = !property[item1.Identifier];
-                                })
-                            });
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     public class uFrameECS : uFrameECSBase,
         IContextMenuQuery, IQuickAccessEvents, IOnMouseDoubleClickEvent,
         IExecuteCommand<AddSlotInputNodeCommand>,
@@ -103,22 +43,12 @@ namespace uFrame.ECS.Editor
         IUpgradeDatabase,
         ICompilingStarted, IGraphSelectionEvents
     {
+        #region Properties
         public override decimal LoadPriority
         {
             get { return 500; }
         }
 
-        private static Dictionary<string, IActionMetaInfo> _actions;
-        private static Dictionary<string, EventMetaInfo> _events;
-        private readonly static HashSet<Type> _types = new HashSet<Type>();
-
-        static uFrameECS()
-        {
-
-            InvertApplication.CachedAssembly(typeof(Button).Assembly);
-            InvertApplication.CachedTypeAssembly(typeof(uFrameECS).Assembly);
-            InvertApplication.TypeAssemblies.AddRange(AppDomain.CurrentDomain.GetAssemblies().Where(p => p.FullName.StartsWith("Assembly")));
-        }
         public static Type EcsComponentType
         {
             get;
@@ -134,152 +64,6 @@ namespace uFrame.ECS.Editor
             get;
             set;
         }
-
-        public override void Initialize(UFrameContainer container)
-        {
-            base.Initialize(container);
-            container.RegisterInstance<IExplorerProvider>(new EventsExplorerProvider(), "Events");
-            container.RegisterConnectionStrategy<ECSConnectionStrategy>();
-            InvertGraphEditor.TypesContainer.RegisterInstance(new GraphTypeInfo()
-            {
-                Type = typeof(IDisposable),
-                IsPrimitive = false,
-                Label = "Disposable",
-                Name = "Disposable"
-            }, "IDisposable");
-            container.RegisterInstance<IDocumentationProvider>(this, "ECS");
-            container.RegisterGraphItem<HandlerNode, HandlerNodeViewModel, HandlerNodeDrawer>();
-            container.RegisterGraphItem<CustomAction, CustomActionViewModel, SequenceItemNodeDrawer>();
-            Handler.AllowAddingInMenu = false;
-            CollectionItemAdded.Name = "Collection Item Added Handler";
-            CollectionItemRemoved.Name = "Collection Item Removed Handler";
-            Library.HasSubNode<EnumNode>();
-            //            ComponentGroup.AllowAddingInMenu = false;
-            PropertyChanged.Name = "Property Changed Handler";
-            UserMethod.AllowAddingInMenu = false;
-            Action.AllowAddingInMenu = false;
-            SequenceItem.AllowAddingInMenu = false;
-            System.HasSubNode<EnumNode>();
-            //            VariableReference.AllowAddingInMenu = false;
-            CustomAction.Name = "Custom Action";
-            System.Name = "System";
-            Handler.Name = "Handler";
-            ComponentCreated.Name = "Component Created Handler";
-            ComponentDestroyed.Name = "Component Destroyed Handler";
-            Action.NodeColor.Literal = NodeColor.Green;
-            //System.HasSubNode<TypeReferenceNode>();
-            Module.HasSubNode<TypeReferenceNode>();
-            System.HasSubNode<TypeReferenceNode>();
-            Module.HasSubNode<NoteNode>();
-            //  container.RegisterDrawer<NoteNodeViewModel, NoteNodeDrawer>();
-
-            Module.HasSubNode<EnumNode>();
-            Group.HasSubNode<EnumValueNode>();
-            //System.HasSubNode<ComponentNode>();
-            // System.HasSubNode<ContextNode>(); 
-
-            Library.HasSubNode<TypeReferenceNode>();
-            Module.HasSubNode<ComponentNode>();
-            // System.HasSubNode<ComponentNode>();
-            container.RegisterDrawer<ItemViewModel<IContextVariable>, ItemDrawer>();
-            //container.AddItemFlag<ComponentsReference>("Multiple", UnityEngine.Color.blue);
-            //container.AddItemFlag<PropertiesChildItem>("Mapping", UnityEngine.Color.blue);
-            //container.AddItemFlag<PropertiesChildItem>("HideInUnityInspector", CachedStyles.GetColor(NodeColor.Azure4));
-            //container.AddNodeFlag<EventNode>("Dispatcher");
-            //System.HasSubNode<EnumNode>();
-            container.Connectable<IContextVariable, IActionIn>();
-            container.Connectable<IActionOut, IContextVariable>();
-
-            container.Connectable<ActionBranch, SequenceItemNode>();
-            container.Connectable<IMappingsConnectable, HandlerIn>();
-            container.Connectable<ActionBranch, BranchesChildItem>();
-            container.Connectable<IContextVariable, OutputsChildItem>();
-            container.Connectable<SequenceItemNode, BranchesChildItem>();
-            //container.AddWorkspaceConfig<LibraryWorkspace>("Library").WithGraph<LibraryGraph>("Library Graph");
-            container.AddWorkspaceConfig<EcsWorkspace>("ECS")
-                .WithGraph<LibraryGraph>("Library", "Create components, groups, events, custom actions, and more.")
-                .WithGraph<SystemGraph>("System", "System defines behaviour for items defines inside a your libraries.")
-                .WithGraph<ModuleGraph>("Module", "A module graph allows you to comprise library items and system as a single graph.")
-                ;
-            //container.AddWorkspaceConfig<BehaviourWorkspace>("Behaviour").WithGraph<SystemGraph>("System Graph");
-            EnumValue.Name = "Enum Value";
-            //            VariableReference.Name = "Var";
-
-
-            SystemTypes.Add(typeof(Button));
-            SystemTypes.Add(typeof(UnityEngine.UI.LayoutElement));
-            SystemTypes.Add(typeof(UnityEngine.UI.LayoutGroup));
-            SystemTypes.Add(typeof(UnityEngine.UI.GridLayoutGroup));
-            SystemTypes.Add(typeof(UnityEngine.UI.Text));
-            SystemTypes.Add(typeof(UnityEngine.UI.InputField));
-            //SystemTypes.Add(typeof (UnityEngine.UI.Dropdown));
-            SystemTypes.Add(typeof(UnityEngine.UI.ScrollRect));
-            SystemTypes.Add(typeof(UnityEngine.UI.Scrollbar));
-            SystemTypes.Add(typeof(UnityEngine.UI.Outline));
-            SystemTypes.Add(typeof(UnityEngine.UI.Toggle));
-            SystemTypes.Add(typeof(UnityEngine.UI.ToggleGroup));
-            SystemTypes.Add(typeof(UnityEngine.UI.Slider));
-            SystemTypes.Add(typeof(UnityEngine.Transform));
-            SystemTypes.Add(typeof(UnityEngine.PlayerPrefs));
-            SystemTypes.Add(typeof(UnityEngine.Application));
-
-
-
-            AddHandlerType(typeof(PropertyChangedNode));
-            AddHandlerType(typeof(ComponentDestroyedNode));
-            AddHandlerType(typeof(ComponentCreatedNode));
-            AddHandlerType(typeof(ActionGroupNode));
-            AddHandlerType(typeof(CollectionItemAddedNode));
-            AddHandlerType(typeof(CollectionItemRemovedNode));
-            AddHandlerType(typeof(CustomActionNode));
-
-
-        }
-
-
-        public override void Loaded(UFrameContainer container)
-        {
-            base.Loaded(container);
-            LoadActions();
-            LoadEvents();
-
-
-        }
-
-        public void LoadActions()
-        {
-            var actions = new List<IActionMetaInfo>();
-            Signal<IQueryActionMetaInfo>(_ => _.QueryActions(actions));
-            Actions.Clear();
-            foreach (var item in actions)
-            {
-                if (!Actions.ContainsKey(item.Identifier))
-                {
-
-                    Actions.Add(item.Identifier, item);
-
-                    // BAckwards compatability ERGH!!
-                    if (item.FullName != item.Identifier)
-                    {
-                        if (!Actions.ContainsKey(item.FullName))
-                            Actions.Add(item.FullName, item);
-                    }
-
-
-                }
-
-            }
-        }
-
-        private static void AddHandlerType(Type type)
-        {
-            var propertyTypes = FilterExtensions.AllowedFilterNodes[type] = new List<Type>();
-            foreach (var item in FilterExtensions.AllowedFilterNodes[typeof(HandlerNode)])
-            {
-                propertyTypes.Add(item);
-            }
-        }
-
 
         public IEnumerable<Type> EventTypes
         {
@@ -300,8 +84,6 @@ namespace uFrame.ECS.Editor
         }
 
         private IHandlerCodeWriter[] _codeWriters;
-        private static ActionMethodMetaInfo[] _converters;
-
         public IHandlerCodeWriter[] CodeWriters
         {
             get
@@ -310,6 +92,19 @@ namespace uFrame.ECS.Editor
                        (_codeWriters = EventCodeWriterTypes.Select(p => Activator.CreateInstance(p)).Cast<IHandlerCodeWriter>().ToArray());
             }
         }
+
+        private static ActionMethodMetaInfo[] _converters;
+
+        public static ActionMethodMetaInfo[] Converters
+        {
+            get
+            {
+                return _converters ??
+                       (_converters =
+                           uFrameECS.Actions.Values.OfType<ActionMethodMetaInfo>().Where(p => p.IsConverter).ToArray());
+            }
+        }
+
         public IEnumerable<Type> EventCodeWriterTypes
         {
             get
@@ -326,6 +121,174 @@ namespace uFrame.ECS.Editor
                 }
             }
         }
+
+        public MouseEvent LastMouseEvent { get; set; }
+
+        public static HashSet<Type> SystemTypes
+        {
+            get { return _types; }
+        }
+
+        private static Dictionary<string, IActionMetaInfo> _actions;
+
+        private static Dictionary<string, EventMetaInfo> _events;
+
+        private readonly static HashSet<Type> _types = new HashSet<Type>();
+
+        #endregion
+
+        static uFrameECS()
+        {
+            InvertApplication.CachedAssembly(typeof(Button).Assembly);
+            InvertApplication.CachedTypeAssembly(typeof(uFrameECS).Assembly);
+            InvertApplication.TypeAssemblies.AddRange(AppDomain.CurrentDomain.GetAssemblies().Where(p => p.FullName.StartsWith("Assembly")));
+        }
+
+        public override void Initialize(UFrameContainer container)
+        {
+            base.Initialize(container);
+            container.RegisterInstance<IDocumentationProvider>(this, "ECS");
+            container.RegisterInstance<IExplorerProvider>(new EventsExplorerProvider(), "Events");
+            container.RegisterConnectionStrategy<ECSConnectionStrategy>();
+            container.RegisterGraphItem<HandlerNode, HandlerNodeViewModel, HandlerNodeDrawer>();
+            container.RegisterGraphItem<CustomAction, CustomActionViewModel, SequenceItemNodeDrawer>();
+            container.RegisterDrawer<ItemViewModel<IContextVariable>, ItemDrawer>();
+            container.AddWorkspaceConfig<EcsWorkspace>("ECS")
+                .WithGraph<LibraryGraph>("Library", "Create components, groups, events, custom actions, and more.")
+                .WithGraph<SystemGraph>("System", "System defines behaviour for items defines inside a your libraries.")
+                .WithGraph<ModuleGraph>("Module", "A module graph allows you to comprise library items and system as a single graph.")
+                ;
+            //container.AddWorkspaceConfig<BehaviourWorkspace>("Behaviour").WithGraph<SystemGraph>("System Graph");
+            //container.AddWorkspaceConfig<LibraryWorkspace>("Library").WithGraph<LibraryGraph>("Library Graph");
+            InvertGraphEditor.TypesContainer.RegisterInstance(new GraphTypeInfo()
+            {
+                Type = typeof(IDisposable),
+                IsPrimitive = false,
+                Label = "Disposable",
+                Name = "Disposable"
+            }, "IDisposable");
+            //container.RegisterDrawer<NoteNodeViewModel, NoteNodeDrawer>();
+            //container.AddItemFlag<ComponentsReference>("Multiple", UnityEngine.Color.blue);
+            //container.AddItemFlag<PropertiesChildItem>("Mapping", UnityEngine.Color.blue);
+            //container.AddItemFlag<PropertiesChildItem>("HideInUnityInspector", CachedStyles.GetColor(NodeColor.Azure4));
+            //container.AddNodeFlag<EventNode>("Dispatcher");
+            //System.HasSubNode<EnumNode>();
+
+            CollectionItemAdded.Name = "Collection Item Added Handler";
+            CollectionItemRemoved.Name = "Collection Item Removed Handler";
+            PropertyChanged.Name = "Property Changed Handler";
+            CustomAction.Name = "Custom Action";
+            System.Name = "System";
+            Handler.Name = "Handler";
+            ComponentCreated.Name = "Component Created Handler";
+            ComponentDestroyed.Name = "Component Destroyed Handler";
+            EnumValue.Name = "Enum Value";
+            //VariableReference.Name = "Var";
+
+            Handler.AllowAddingInMenu = false;
+            UserMethod.AllowAddingInMenu = false;
+            Action.AllowAddingInMenu = false;
+            SequenceItem.AllowAddingInMenu = false;
+            //ComponentGroup.AllowAddingInMenu = false;
+            //VariableReference.AllowAddingInMenu = false;
+
+            Action.NodeColor.Literal = NodeColor.Green;
+
+            Group.HasSubNode<EnumValueNode>();
+            Library.HasSubNode<EnumNode>();
+            Library.HasSubNode<TypeReferenceNode>();
+            Module.HasSubNode<TypeReferenceNode>();
+            Module.HasSubNode<NoteNode>();
+            Module.HasSubNode<EnumNode>();
+            Module.HasSubNode<ComponentNode>();
+            System.HasSubNode<EnumNode>();
+            System.HasSubNode<TypeReferenceNode>();
+            //System.HasSubNode<ComponentNode>();
+            //System.HasSubNode<TypeReferenceNode>();
+            //System.HasSubNode<ComponentNode>();
+            //System.HasSubNode<ContextNode>(); 
+
+            container.Connectable<IContextVariable, IActionIn>();
+            container.Connectable<IActionOut, IContextVariable>();
+            container.Connectable<ActionBranch, SequenceItemNode>();
+            container.Connectable<IMappingsConnectable, HandlerIn>();
+            container.Connectable<ActionBranch, BranchesChildItem>();
+            container.Connectable<IContextVariable, OutputsChildItem>();
+            container.Connectable<SequenceItemNode, BranchesChildItem>();
+
+            SystemTypes.Add(typeof(Button));
+            SystemTypes.Add(typeof(UnityEngine.UI.LayoutElement));
+            SystemTypes.Add(typeof(UnityEngine.UI.LayoutGroup));
+            SystemTypes.Add(typeof(UnityEngine.UI.GridLayoutGroup));
+            SystemTypes.Add(typeof(UnityEngine.UI.Text));
+            SystemTypes.Add(typeof(UnityEngine.UI.InputField));
+            SystemTypes.Add(typeof(UnityEngine.UI.ScrollRect));
+            SystemTypes.Add(typeof(UnityEngine.UI.Scrollbar));
+            SystemTypes.Add(typeof(UnityEngine.UI.Outline));
+            SystemTypes.Add(typeof(UnityEngine.UI.Toggle));
+            SystemTypes.Add(typeof(UnityEngine.UI.ToggleGroup));
+            SystemTypes.Add(typeof(UnityEngine.UI.Slider));
+            SystemTypes.Add(typeof(UnityEngine.Transform));
+            SystemTypes.Add(typeof(UnityEngine.PlayerPrefs));
+            SystemTypes.Add(typeof(UnityEngine.Application));
+            //SystemTypes.Add(typeof (UnityEngine.UI.Dropdown));
+
+            AddHandlerType(typeof(PropertyChangedNode));
+            AddHandlerType(typeof(ComponentDestroyedNode));
+            AddHandlerType(typeof(ComponentCreatedNode));
+            AddHandlerType(typeof(ActionGroupNode));
+            AddHandlerType(typeof(CollectionItemAddedNode));
+            AddHandlerType(typeof(CollectionItemRemovedNode));
+            AddHandlerType(typeof(CustomActionNode));
+        }
+
+        private static void AddHandlerType(Type type)
+        {
+            var propertyTypes = FilterExtensions.AllowedFilterNodes[type] = new List<Type>();
+            foreach (var item in FilterExtensions.AllowedFilterNodes[typeof(HandlerNode)])
+            {
+                propertyTypes.Add(item);
+            }
+        }
+
+        public override void Loaded(UFrameContainer container)
+        {
+            base.Loaded(container);
+            LoadActions();
+            LoadEvents();
+        }
+
+        #region Load Actions
+        public void LoadActions()
+        {
+            var actions = new List<IActionMetaInfo>();
+            Signal<IQueryActionMetaInfo>(_ => _.QueryActions(actions));
+            Actions.Clear();
+            foreach (var item in actions)
+            {
+                if (!Actions.ContainsKey(item.Identifier))
+                {
+
+                    Actions.Add(item.Identifier, item);
+
+                    // BAckwards compatability ERGH!!
+                    if (item.FullName != item.Identifier)
+                    {
+                        if (!Actions.ContainsKey(item.FullName))
+                            Actions.Add(item.FullName, item);
+                    }
+                }
+            }
+        }
+
+        public static Dictionary<string, IActionMetaInfo> Actions
+        {
+            get { return _actions ?? (_actions = new Dictionary<string, IActionMetaInfo>()); }
+            set { _actions = value; }
+        }
+        #endregion
+
+        #region Load Events
         private void LoadEvents()
         {
 
@@ -382,27 +345,15 @@ namespace uFrame.ECS.Editor
             get { return _events ?? (_events = new Dictionary<string, EventMetaInfo>()); }
             set { _events = value; }
         }
-        public static Dictionary<string, IActionMetaInfo> Actions
-        {
-            get { return _actions ?? (_actions = new Dictionary<string, IActionMetaInfo>()); }
-            set { _actions = value; }
-        }
+        #endregion
 
-        public static ActionMethodMetaInfo[] Converters
-        {
-            get
-            {
-                return _converters ??
-                       (_converters =
-                           uFrameECS.Actions.Values.OfType<ActionMethodMetaInfo>().Where(p => p.IsConverter).ToArray());
-            }
-        }
+        #region Query Methods
+
         public void QueryContextMenu(ContextMenuUI ui, MouseEvent evt, params object[] objs)
         {
             var obj = objs.FirstOrDefault();
             if (obj is InputOutputViewModel)
             {
-
                 QuerySlotMenu(ui, (InputOutputViewModel)obj);
             }
             var handlerVM = obj as HandlerNodeViewModel;
@@ -472,8 +423,6 @@ namespace uFrame.ECS.Editor
                 }
             }
 
-
-
             //var nodeViewModel = obj as SequenceItemNodeViewModel;
             //if (nodeViewModel != null)
             //{
@@ -487,6 +436,7 @@ namespace uFrame.ECS.Editor
             //        }
             //    });
             //}
+
             var diagramViewModel = obj as DiagramViewModel;
 
             if (diagramViewModel != null)
@@ -595,8 +545,7 @@ namespace uFrame.ECS.Editor
                             Name = systemNode.Name + item1.Name
                         };
                         InvertGraphEditor.CurrentDiagramViewModel.AddNode(eventNode, LastMouseEvent != null ? LastMouseEvent.MousePosition : new Vector2(0, 0));
-                    })
-                    { Group = "Handlers" };
+                    }) { Group = "Handlers" };
                     menu.AddItem(qa, category);
                 }
                 foreach (var item in Events)
@@ -639,7 +588,6 @@ namespace uFrame.ECS.Editor
                 menu.AddItem(new SelectionMenuItem("Create", "Integer Variable", () => { vm.AddNode(new IntNode(), vm.LastMouseEvent.LastMousePosition); }), category);
                 menu.AddItem(new SelectionMenuItem("Create", "Literal", () => { vm.AddNode(new LiteralNode(), vm.LastMouseEvent.LastMousePosition); }), category);
 
-
                 //var currentFilter = currentGraph.CurrentFilter as HandlerNode;
                 //foreach (var item in currentFilter.GetAllContextVariables())
                 //{
@@ -665,6 +613,7 @@ namespace uFrame.ECS.Editor
 
 
         }
+
         private void QueryActions(SelectionMenu menu)
         {
             var mousePosition = UnityEngine.Event.current.mousePosition;
@@ -692,6 +641,118 @@ namespace uFrame.ECS.Editor
             });
         }
 
+        public void QueryPossibleConnections(SelectionMenu menu, DiagramViewModel diagramViewModel, ConnectorViewModel startConnector, Vector2 mousePosition)
+        {
+            var contextVar = startConnector.ConnectorFor.DataObject as IContextVariable;
+            if (contextVar != null)
+            {
+                menu.Items.Clear();
+                foreach (var item in contextVar.GetPropertyDescriptions())
+                {
+                    var item1 = item;
+                    menu.AddItem(new SelectionMenuItem(contextVar.ShortName, item.ShortName, () =>
+                    {
+                        var node = new PropertyNode()
+                        {
+                            Graph = diagramViewModel.GraphData,
+                        };
+                        diagramViewModel.AddNode(node, mousePosition).Collapsed = true;
+                        diagramViewModel.GraphData.AddConnection(startConnector.ConnectorFor.DataObject as IConnectable, node.Object);
+                        node.PropertySelection.SetInput(item1);
+                        node.IsSelected = true;
+                    }));
+                }
+                //foreach (var item in contextVar.VariableType.GetMembers().OfType<IMethodMemberInfo>())
+                //{
+                //    var item1 = item;
+                //    menu.AddItem(new SelectionMenuItem(contextVar.ShortName, item.MethodIdentifier, () =>
+                //    {
+
+                //    }));
+                //}
+
+            }
+
+            if (startConnector.ConnectorFor.DataObject is IVariableContextProvider)
+            {
+                menu.Items.Clear();
+                GetActionsMenu(menu, _ =>
+                {
+                    SequenceItemNode node = null;
+                    var type = _ as ActionMetaInfo;
+                    if (type != null && type.IsEditorClass)
+                    {
+                        node = Activator.CreateInstance(type.SystemType) as SequenceItemNode;
+                    }
+                    else
+                    {
+
+                        node = new ActionNode
+                        {
+                            Meta = _,
+                        };
+                        //node.Name = "";
+                    }
+                    node.Graph = diagramViewModel.GraphData;
+                    diagramViewModel.AddNode(node, mousePosition);
+                    diagramViewModel.GraphData.AddConnection(startConnector.ConnectorFor.DataObject as IConnectable, node);
+                    node.IsSelected = true;
+                    node.Name = "";
+                });
+            }
+
+        }
+
+        public void QueryTypes(List<ITypeInfo> typeInfo)
+        {
+            foreach (var item in SystemTypes)
+            {
+                typeInfo.Add(new SystemTypeInfo(item));
+            }
+            foreach (var item in Events)
+            {
+                typeInfo.Add(item.Value);
+            }
+        }
+
+        private IEnumerable<IItem> QueryConntectionActions(QuickAccessContext context)
+        {
+            var connectionHandler = context.Data as ConnectionHandler;
+            var diagramViewModel = connectionHandler.DiagramViewModel;
+
+            var category = new QuickAccessCategory()
+            {
+                Title = "Connections"
+            };
+
+            foreach (var item in Actions)
+            {
+
+                var qaItem = new QuickAccessItem(item.Value.CategoryPath.FirstOrDefault() ?? string.Empty, item.Value.Title, item.Value.Title, _ =>
+                {
+                    var actionInfo = _ as ActionMetaInfo;
+                    var node = new ActionNode()
+                    {
+                        Meta = actionInfo
+                    };
+                    node.Graph = diagramViewModel.GraphData;
+
+
+                    diagramViewModel.AddNode(node, context.MouseData.MouseUpPosition);
+                    diagramViewModel.GraphData.AddConnection(connectionHandler.StartConnector.ConnectorFor.DataObject as IConnectable, node);
+                    node.IsSelected = true;
+                    node.Name = "";
+                })
+                {
+                    Item = item.Value
+                };
+                category.Add(qaItem);
+            }
+            yield return category;
+        }
+        #endregion 
+
+        #region Get Methods
         private void GetActionsMenu(SelectionMenu menu, Action<IActionMetaInfo> onSelect)
         {
 
@@ -759,178 +820,71 @@ namespace uFrame.ECS.Editor
             }
         }
 
-        public void QueryPossibleConnections(SelectionMenu menu, DiagramViewModel diagramViewModel,
-            ConnectorViewModel startConnector,
-            Vector2 mousePosition)
+        public void GetPages(List<DocumentationPage> rootPages)
         {
-            var contextVar = startConnector.ConnectorFor.DataObject as IContextVariable;
-            if (contextVar != null)
+            //foreach (var item in Actions)
+            //{
+            //    rootPages.Add(new ActionPage() { MetaInfo = item.Value });
+            //}
+            var configs = Container.Resolve<DatabaseService>().Configurations.Values;
+            if (configs != null)
             {
-                menu.Items.Clear();
-                foreach (var item in contextVar.GetPropertyDescriptions())
+                foreach (var config in configs)
                 {
-                    var item1 = item;
-                    menu.AddItem(new SelectionMenuItem(contextVar.ShortName, item.ShortName, () =>
+                    var configPage = new ConfigPage(config);
+                    var componentsPage = new CategoryPage("Components/Descriptors/Groups");
+                    var systemsPage = new CategoryPage("Systems");
+                    var eventsPage = new CategoryPage("Events");
+                    configPage.ChildPages.Add(componentsPage);
+                    configPage.ChildPages.Add(systemsPage);
+                    configPage.ChildPages.Add(eventsPage);
+                    //var componentsPage = new ConfigPage(config);
+
+                    foreach (var item in config.Repository.AllOf<SystemNode>())
                     {
-                        var node = new PropertyNode()
-                        {
-                            Graph = diagramViewModel.GraphData,
-                        };
-                        diagramViewModel.AddNode(node, mousePosition).Collapsed = true;
-                        diagramViewModel.GraphData.AddConnection(startConnector.ConnectorFor.DataObject as IConnectable, node.Object);
-                        node.PropertySelection.SetInput(item1);
-                        node.IsSelected = true;
-                    }));
-                }
-                //foreach (var item in contextVar.VariableType.GetMembers().OfType<IMethodMemberInfo>())
-                //{
-                //    var item1 = item;
-                //    menu.AddItem(new SelectionMenuItem(contextVar.ShortName, item.MethodIdentifier, () =>
-                //    {
 
-                //    }));
-                //}
-
-            }
-
-            if (startConnector.ConnectorFor.DataObject is IVariableContextProvider)
-            {
-                menu.Items.Clear();
-                GetActionsMenu(menu, _ =>
-                {
-                    SequenceItemNode node = null;
-                    var type = _ as ActionMetaInfo;
-                    if (type != null && type.IsEditorClass)
-                    {
-                        node = Activator.CreateInstance(type.SystemType) as SequenceItemNode;
+                        //if (item.Comments != null)
+                        //{ 
+                        systemsPage.ChildPages.Add(new NodePage(item));
+                        //}
                     }
-                    else
+                    //foreach (var item in config.Repository.AllOf<HandlerNode>())
+                    //{
+                    //    if (item.Comments != null)
+                    //    {
+                    //        componentsPage.ChildPages.Add(new NodePage(item));
+                    //    }
+                    //}
+                    foreach (var item in config.Repository.AllOf<ComponentNode>())
                     {
-
-                        node = new ActionNode
-                        {
-                            Meta = _,
-                        };
-                        //node.Name = "";
+                        componentsPage.ChildPages.Add(new NodePage(item));
                     }
-                    node.Graph = diagramViewModel.GraphData;
-                    diagramViewModel.AddNode(node, mousePosition);
-                    diagramViewModel.GraphData.AddConnection(startConnector.ConnectorFor.DataObject as IConnectable, node);
-                    node.IsSelected = true;
-                    node.Name = "";
-                });
-            }
-
-        }
-        private IEnumerable<IItem> QueryConntectionActions(QuickAccessContext context)
-        {
-            var connectionHandler = context.Data as ConnectionHandler;
-            var diagramViewModel = connectionHandler.DiagramViewModel;
-
-            var category = new QuickAccessCategory()
-            {
-                Title = "Connections"
-            };
-
-            foreach (var item in Actions)
-            {
-
-                var qaItem = new QuickAccessItem(item.Value.CategoryPath.FirstOrDefault() ?? string.Empty, item.Value.Title, item.Value.Title, _ =>
-                {
-                    var actionInfo = _ as ActionMetaInfo;
-                    var node = new ActionNode()
+                    foreach (var item in config.Repository.AllOf<GroupNode>())
                     {
-                        Meta = actionInfo
-                    };
-                    node.Graph = diagramViewModel.GraphData;
-
-
-                    diagramViewModel.AddNode(node, context.MouseData.MouseUpPosition);
-                    diagramViewModel.GraphData.AddConnection(connectionHandler.StartConnector.ConnectorFor.DataObject as IConnectable, node);
-                    node.IsSelected = true;
-                    node.Name = "";
-                })
-                {
-                    Item = item.Value
-                };
-                category.Add(qaItem);
-            }
-            yield return category;
-        }
-
-        public void OnMouseDoubleClick(Drawer drawer, MouseEvent mouseEvent)
-        {
-            var d = drawer as DiagramDrawer;
-            if (d != null)
-            {
-                // When we've clicked nothing
-                if (d.DrawersAtMouse.Length < 1)
-                {
-                    LastMouseEvent = mouseEvent;
-                    //                    InvertApplication.SignalEvent<IWindowsEvents>(_ =>
-                    //                    {
-                    //                        _.ShowWindow("QuickAccessWindowFactory", "Add Node", null, mouseEvent.LastMousePosition,
-                    //                            new Vector2(500, 600));
-                    //                    });
-
-                    ShowQuickAccess(mouseEvent);
-
-                }
-                else
-                {
-
-                }
-                var firstOrDefault = d.DrawersAtMouse.FirstOrDefault();
-                if (firstOrDefault != null)
-                {
-                    var handlerVM = firstOrDefault.ViewModelObject as HandlerNodeViewModel;
-                    if (handlerVM != null)
-                    {
-                        if (false)
-                        {
-                            var config = InvertGraphEditor.Container.Resolve<IGraphConfiguration>();
-                            var fileGenerators = InvertGraphEditor.GetAllFileGenerators(config, new[] { handlerVM.DataObject as IDataRecord }).ToArray();
-                            var editableGenerator = fileGenerators.FirstOrDefault(p => p.Generators.Any(x => !x.AlwaysRegenerate));
-                            if (editableGenerator != null)
-                                InvertGraphEditor.Platform.OpenScriptFile(editableGenerator.AssetPath);
-                        }
+                        componentsPage.ChildPages.Add(new NodePage(item));
                     }
+                    foreach (var item in config.Repository.AllOf<DescriptorNode>())
+                    {
+
+                        componentsPage.ChildPages.Add(new NodePage(item));
+                    }
+
+                    foreach (var item in config.Repository.AllOf<EventNode>())
+                    {
+                        eventsPage.ChildPages.Add(new NodePage(item));
+                    }
+                    rootPages.Add(configPage);
                 }
             }
-
-
         }
 
-        private void ShowQuickAccess(MouseEvent mouseEvent)
+        public void GetDocumentation(IDocumentationBuilder node)
         {
-            if (InvertGraphEditor.CurrentDiagramViewModel != null)
-            {
-                var items = InvertGraphEditor.CurrentDiagramViewModel.SelectedNodeItems.ToArray();
-                foreach (var item in items)
-                {
-                    item.IsSelected = false;
-                }
-            }
-            var menu = new SelectionMenu();
-
-            QueryInsert(menu);
-
-            InvertApplication.SignalEvent<IShowSelectionMenu>(_ => _.ShowSelectionMenu(menu, mouseEvent.LastMousePosition - mouseEvent.ContextScroll - new Vector2(20, 0)));
-            //            InvertApplication.SignalEvent<IShowSelectionMenu>(_ => _.ShowSelectionMenu(new QuickAccessContext()
-            //            {
-            //                ContextType = typeof(IInsertQuickAccessContext),
-            //                MouseData = mouseEvent
-            //            }, mouseEvent.LastMousePosition));
 
         }
+        #endregion
 
-        public MouseEvent LastMouseEvent { get; set; }
-
-        public static HashSet<Type> SystemTypes
-        {
-            get { return _types; }
-        }
-
+        #region Execute Methods
         public void Execute(AddSlotInputNodeCommand command)
         {
             //var referenceNode = new VariableReferenceNode()
@@ -994,6 +948,70 @@ namespace uFrame.ECS.Editor
             groupNode.IsEditing = true;
             Container.Resolve<IRepository>().Add(groupNode);
         }
+        #endregion
+
+        #region Other Methods
+        public void OnMouseDoubleClick(Drawer drawer, MouseEvent mouseEvent)
+        {
+            var d = drawer as DiagramDrawer;
+            if (d != null)
+            {
+                // When we've clicked nothing
+                if (d.DrawersAtMouse.Length < 1)
+                {
+                    LastMouseEvent = mouseEvent;
+                    //InvertApplication.SignalEvent<IWindowsEvents>(_ =>
+                    //{
+                    //    _.ShowWindow("QuickAccessWindowFactory", "Add Node", null, mouseEvent.LastMousePosition,
+                    //        new Vector2(500, 600));
+                    //});
+                    ShowQuickAccess(mouseEvent);
+                }
+                else
+                {
+
+                }
+                var firstOrDefault = d.DrawersAtMouse.FirstOrDefault();
+                if (firstOrDefault != null)
+                {
+                    var handlerVM = firstOrDefault.ViewModelObject as HandlerNodeViewModel;
+                    if (handlerVM != null)
+                    {
+                        if (false)
+                        {
+                            var config = InvertGraphEditor.Container.Resolve<IGraphConfiguration>();
+                            var fileGenerators = InvertGraphEditor.GetAllFileGenerators(config, new[] { handlerVM.DataObject as IDataRecord }).ToArray();
+                            var editableGenerator = fileGenerators.FirstOrDefault(p => p.Generators.Any(x => !x.AlwaysRegenerate));
+                            if (editableGenerator != null)
+                                InvertGraphEditor.Platform.OpenScriptFile(editableGenerator.AssetPath);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void ShowQuickAccess(MouseEvent mouseEvent)
+        {
+            if (InvertGraphEditor.CurrentDiagramViewModel != null)
+            {
+                var items = InvertGraphEditor.CurrentDiagramViewModel.SelectedNodeItems.ToArray();
+                foreach (var item in items)
+                {
+                    item.IsSelected = false;
+                }
+            }
+            var menu = new SelectionMenu();
+
+            QueryInsert(menu);
+
+            InvertApplication.SignalEvent<IShowSelectionMenu>(_ => _.ShowSelectionMenu(menu, mouseEvent.LastMousePosition - mouseEvent.ContextScroll - new Vector2(20, 0)));
+            //InvertApplication.SignalEvent<IShowSelectionMenu>(_ => _.ShowSelectionMenu(new QuickAccessContext()
+            //{
+            //    ContextType = typeof(IInsertQuickAccessContext),
+            //    MouseData = mouseEvent
+            //}, mouseEvent.LastMousePosition));
+
+        }
 
         public void GrabDependencies(List<IDiagramNodeItem> items, GraphNode node)
         {
@@ -1013,101 +1031,6 @@ namespace uFrame.ECS.Editor
                 }
 
             }
-        }
-
-        public void QueryTypes(List<ITypeInfo> typeInfo)
-        {
-            foreach (var item in SystemTypes)
-            {
-                typeInfo.Add(new SystemTypeInfo(item));
-            }
-            foreach (var item in Events)
-            {
-                typeInfo.Add(item.Value);
-            }
-        }
-
-        public void GetDocumentation(IDocumentationBuilder node)
-        {
-
-        }
-
-        public void GetPages(List<DocumentationPage> rootPages)
-        {
-            //foreach (var item in Actions)
-            //{
-            //    rootPages.Add(new ActionPage() { MetaInfo = item.Value });
-            //}
-            var configs = Container.Resolve<DatabaseService>().Configurations.Values;
-            if (configs != null)
-            {
-                foreach (var config in configs)
-                {
-                    var configPage = new ConfigPage(config);
-                    var componentsPage = new CategoryPage("Components/Descriptors/Groups");
-                    var systemsPage = new CategoryPage("Systems");
-                    var eventsPage = new CategoryPage("Events");
-                    configPage.ChildPages.Add(componentsPage);
-                    configPage.ChildPages.Add(systemsPage);
-                    configPage.ChildPages.Add(eventsPage);
-                    //var componentsPage = new ConfigPage(config);
-
-                    foreach (var item in config.Repository.AllOf<SystemNode>())
-                    {
-
-                        //if (item.Comments != null)
-                        //{ 
-
-
-                        systemsPage.ChildPages.Add(new NodePage(item));
-
-                        //}
-
-                    }
-                    //foreach (var item in config.Repository.AllOf<HandlerNode>())
-                    //{
-                    //    if (item.Comments != null)
-                    //    {
-                    //        componentsPage.ChildPages.Add(new NodePage(item));
-                    //    }
-                    //}
-                    foreach (var item in config.Repository.AllOf<ComponentNode>())
-                    {
-
-                        componentsPage.ChildPages.Add(new NodePage(item));
-
-                    }
-                    foreach (var item in config.Repository.AllOf<GroupNode>())
-                    {
-
-                        componentsPage.ChildPages.Add(new NodePage(item));
-
-                    }
-                    foreach (var item in config.Repository.AllOf<DescriptorNode>())
-                    {
-
-                        componentsPage.ChildPages.Add(new NodePage(item));
-
-
-                    }
-
-                    foreach (var item in config.Repository.AllOf<EventNode>())
-                    {
-
-                        eventsPage.ChildPages.Add(new NodePage(item));
-
-                    }
-
-
-
-                    rootPages.Add(configPage);
-                }
-
-
-
-
-            }
-
         }
 
         public void UpgradeDatabase(uFrameDatabaseConfig item)
@@ -1133,7 +1056,7 @@ namespace uFrame.ECS.Editor
                     }
 
                 }
-       
+
                 //Execute(new SaveAndCompileCommand() { ForceCompileAll = true });
 
             }
@@ -1176,8 +1099,19 @@ namespace uFrame.ECS.Editor
 
             }
         }
+
+        
+        #endregion 
     }
 
+    #region Interface
+    public interface IQueryActionMetaInfo
+    {
+        void QueryActions(List<IActionMetaInfo> actions);
+    }
+    #endregion
+
+    #region DiagramPlugin
     public class ActionClassImporter : DiagramPlugin, IQueryActionMetaInfo
     {
         public IEnumerable<Type> ActionTypes
@@ -1244,6 +1178,7 @@ namespace uFrame.ECS.Editor
             }
         }
     }
+
     public class ActionLibraryImporter : DiagramPlugin, IQueryActionMetaInfo, IDataRecordInserted, IDataRecordPropertyChanged, IDataRecordRemoved
     {
         private static HashSet<Type> _staticLibraries;
@@ -1456,6 +1391,60 @@ namespace uFrame.ECS.Editor
         }
     }
 
+    public class uFrameECSDescriptors : DiagramPlugin, IContextMenuQuery
+    {
+        public void QueryContextMenu(ContextMenuUI ui, MouseEvent evt, params object[] obj)
+        {
+            var componentViewModel = obj.OfType<ComponentNodeViewModel>().FirstOrDefault();
+            if (componentViewModel != null)
+            {
+                var property = componentViewModel.DataObject as GraphNode;
+                var db = Container.Resolve<DatabaseService>().CurrentConfiguration;
+                foreach (var item in db.Database.All<DescriptorNode>())
+                {
+                    var item1 = item;
+                    ui.AddCommand(new ContextMenuItem()
+                    {
+                        Checked = property[item.Identifier],
+                        Title = item.Name,
+                        Group = "Descriptors",
+                        Command = new LambdaCommand(item.Name, () =>
+                        {
+                            property[item1.Identifier] = !property[item1.Identifier];
+                        })
+                    });
+                }
+            }
+            var propertyViewModel = obj.OfType<TypedItemViewModel>().FirstOrDefault();
+            if (propertyViewModel != null)
+            {
+                var property = propertyViewModel.DataObject as GenericTypedChildItem;
+                if (property != null)
+                {
+                    var db = Container.Resolve<DatabaseService>().CurrentConfiguration;
+                    if (db != null && db.Database != null)
+                    {
+                        foreach (var item in db.Database.All<DescriptorNode>())
+                        {
+                            var item1 = item;
+                            ui.AddCommand(new ContextMenuItem()
+                            {
+                                Checked = property[item.Identifier],
+                                Title = item.Name,
+                                Group = "Descriptors",
+                                Command = new LambdaCommand(item.Name, () =>
+                                {
+                                    property[item1.Identifier] = !property[item1.Identifier];
+                                })
+                            });
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #endregion
+
     public class ECSConnectionStrategy : DefaultConnectionStrategy
     {
         //protected override bool CanConnect(EventNode output, HandlerNode input)
@@ -1569,10 +1558,7 @@ namespace uFrame.ECS.Editor
             return list;
         }
     }
-    public class uFrameECSPage : DocumentationPage
-    {
 
-    }
     [AttributeUsage(AttributeTargets.Class)]
     public class AutoNamespaces : TemplateAttribute
     {
@@ -1595,6 +1581,11 @@ namespace uFrame.ECS.Editor
                 }
         }
     }
+
+    // TODO : Documentation Page
+    #region Documentation Page
+    public class uFrameECSPage : DocumentationPage { }
+
     public class ActionPage : DocumentationPage
     {
         public IActionMetaInfo MetaInfo { get; set; }
@@ -1733,7 +1724,7 @@ namespace uFrame.ECS.Editor
             var notes = Node.Children.OfType<NoteNode>().ToArray();
             if (notes.Length > 0)
             {
-            
+
                 foreach (var item in notes)
                 {
                     var re = _.EditableParagraph(item.HeaderText);
@@ -1758,5 +1749,5 @@ namespace uFrame.ECS.Editor
 
         }
     }
-
+    #endregion
 }
