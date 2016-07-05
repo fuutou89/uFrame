@@ -170,8 +170,7 @@ namespace uFrame.Editor.GraphUI
             else
             {
                 var mouseData = e;
-                InvertApplication.SignalEvent<IShowConnectionMenu>(
-                    _ => _.Show(DiagramViewModel, StartConnector, mouseData.MouseUpPosition));
+                InvertApplication.SignalEvent<IShowConnectionMenu>(_ => _.Show(DiagramViewModel, StartConnector, mouseData.MouseUpPosition));
 
                 //var allowedFilterNodes = FilterExtensions.AllowedFilterNodes[this.DiagramViewModel.CurrentRepository.CurrentFilter.GetType()];
                 //var menu = InvertGraphEditor.CreateCommandUI<ContextMenuUI>();

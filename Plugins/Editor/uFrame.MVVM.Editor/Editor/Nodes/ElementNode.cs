@@ -8,7 +8,7 @@ namespace uFrame.MVVM
     using uFrame.Editor.Configurations;
 
 
-    public class ElementNode : ElementNodeBase, IInstancesConnectable, IViewConnectable, IElementConnectable
+    public class ElementNode : ElementNodeBase
     {
         // TODO : RelatedElements
 

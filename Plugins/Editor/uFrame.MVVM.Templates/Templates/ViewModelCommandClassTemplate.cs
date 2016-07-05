@@ -62,7 +62,6 @@ namespace uFrame.MVVM.Templates
         {
             get 
             {
-                InvertApplication.Log(Ctx.Data.RelatedType);
                 return !string.IsNullOrEmpty(Ctx.Data.RelatedType) && !Ctx.Data.RelatedType.Contains("Void");
             }
         }

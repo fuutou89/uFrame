@@ -3,11 +3,17 @@ using uFrame.Editor.Workspaces;
 using uFrame.IOC;
 using System;
 using System.Collections.Generic;
+using uFrame.Editor.Core;
 
 namespace uFrame.MVVM
 {
     public class uFrameMVVM : uFrameMVVMBase
     {
+        static uFrameMVVM()
+        {
+            InvertApplication.CachedTypeAssembly(typeof(uFrameMVVM).Assembly);
+        }
+
         public override decimal LoadPriority
         {
             get { return 500; }

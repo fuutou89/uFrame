@@ -130,7 +130,7 @@ namespace uFrame.MVVM {
     public partial interface ISubSystemConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
     }
     
-    public class ViewNodeBase : uFrame.Editor.Graphs.Data.GenericInheritableNode, uFrame.Editor.Graphs.Data.IClassTypeNode {
+    public class ViewNodeBase : uFrame.Editor.Graphs.Data.GenericInheritableNode, uFrame.Editor.Graphs.Data.IClassTypeNode, IViewComponentConnectable {
         
         private string _ElementInputSlotId;
         
@@ -357,6 +357,24 @@ namespace uFrame.MVVM {
     }
     
     public partial interface IMVVMConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
+    }
+    
+    public class ViewComponentNodeBase : uFrame.Editor.Graphs.Data.GenericInheritableNode, uFrame.Editor.Graphs.Data.IClassTypeNode {
+        
+        public virtual string ClassName {
+            get {
+                return this.Name;
+            }
+        }
+        
+        public override bool AllowMultipleInputs {
+            get {
+                return true;
+            }
+        }
+    }
+    
+    public partial interface IViewComponentConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
     }
     
     public class StateMachineNodeBase : uFrame.Editor.Graphs.Data.GenericInheritableNode, uFrame.Editor.Graphs.Data.IClassTypeNode {

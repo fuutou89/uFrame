@@ -148,6 +148,19 @@ namespace uFrame.MVVM {
         }
     }
     
+    public class ViewComponentNodeViewModelBase : uFrame.Editor.GraphUI.ViewModels.GenericNodeViewModel<uFrame.Editor.Graphs.Data.GenericNode> {
+        
+        public ViewComponentNodeViewModelBase(ViewComponentNode graphItemObject, uFrame.Editor.GraphUI.ViewModels.DiagramViewModel diagramViewModel) : 
+                base(graphItemObject, diagramViewModel) {
+        }
+        
+        public override uFrame.Editor.Platform.NodeStyle NodeStyle {
+            get {
+                return NodeStyle.Normal;
+            }
+        }
+    }
+    
     public class StateMachineNodeViewModelBase : uFrame.Editor.GraphUI.ViewModels.GenericNodeViewModel<uFrame.Editor.Graphs.Data.GenericNode> {
         
         public StateMachineNodeViewModelBase(StateMachineNode graphItemObject, uFrame.Editor.GraphUI.ViewModels.DiagramViewModel diagramViewModel) : 

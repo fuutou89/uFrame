@@ -52,23 +52,13 @@ namespace uFrame.MVVM
 			}
 		}
 
-		public IEnumerable<string> ClassNameFormats
-		{
-			get
-			{
-				yield return "{0}";
-				yield return "{0}Base";
-				yield break;
-			}
-		}
-
 		public override void Validate(List<ErrorInfo> errors)
 		{
 			base.Validate(errors);
-			if (this.Element == null)
-			{
-				errors.AddError("This view must have an element.", this);
-			}
+            //if (this.Element == null)
+            //{
+            //    errors.AddError("This view must have an element.", this);
+            //}
 		}
     }
     

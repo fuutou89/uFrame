@@ -131,7 +131,6 @@ namespace uFrame.Editor.GraphUI.ViewModels
 
             OutputConnectorType = graphItemObject.GetType();
             InputConnectorType = graphItemObject.GetType();
-    
         }
         
         public override void PropertyChanged(IDataRecord record, string name, object previousValue, object nextValue)

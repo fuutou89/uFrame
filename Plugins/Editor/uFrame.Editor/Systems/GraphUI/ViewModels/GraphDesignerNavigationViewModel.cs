@@ -101,22 +101,26 @@ namespace uFrame.Editor.GraphUI.ViewModels
 
             foreach (var filter in new[] { DiagramViewModel.GraphData.RootFilter }.Concat(this.DiagramViewModel.GraphData.GetFilterPath()))
             {
-                var filter1 = filter;
-                var navigationItem = new NavigationItem()
-                {
-                    Icon = "CommandIcon",
-                    Title = filter.Name,
-                    State = DiagramViewModel.GraphData != null && DiagramViewModel.GraphData.CurrentFilter == filter ? NavigationItemState.Current : NavigationItemState.Regular,
-                    NavigationAction = x =>
-                    {
-                        InvertApplication.Execute(new LambdaCommand("Back", () => { DiagramViewModel.GraphData.PopToFilter(filter1); }));
-                    }       
-                };
-
+                var navigationItem = CreateNavigationItem(filter);
                 if (filter == DiagramViewModel.GraphData.RootFilter) navigationItem.SpecializedIcon = "RootFilterIcon";
 
                 Breadcrubs.Add(navigationItem);
             }
+        }
+
+        public NavigationItem CreateNavigationItem(IGraphFilter filter)
+        {
+            var navigationItem = new NavigationItem()
+            {
+                Icon = "CommandIcon",
+                Title = filter.Name,
+                State = DiagramViewModel.GraphData != null && DiagramViewModel.GraphData.CurrentFilter == filter ? NavigationItemState.Current : NavigationItemState.Regular,
+                NavigationAction = x =>
+                {
+                    InvertApplication.Execute(new LambdaCommand("Back", () => { DiagramViewModel.GraphData.PopToFilter(filter); }));
+                }   
+            };
+            return navigationItem;
         }
 
         public DiagramViewModel DiagramViewModel { get; set; }

@@ -98,28 +98,37 @@ namespace uFrame.Editor.Graphs.Data
             _filterStack = null;
         }
 
+        //public void PopToFilter(IGraphFilter filter1)
+        //{
+        //    PopToFilter(filter1);
+        //    return;
+        //    if (filter1 == null)
+        //    {
+        //        Repository.RemoveAll<FilterStackItem>(p => p.GraphId == this.Identifier && p.FilterId != RootFilterId);
+        //    }
+        //    else
+        //    {
+        //        foreach (var item in FilterStack)
+        //        {
+        //            if (item != filter1)
+        //            {
+        //                var item1 = item;
+        //                Repository.RemoveAll<FilterStackItem>(p => p.GraphId == this.Identifier && p.FilterId == item1.Identifier);
+        //            }
+        //        }
+        //    }
+
+        //    // Reset the lazy filter stack
+        //    _filterStack = null;
+        //}
+
+        //TODO : Fix Bug of Jumping error, may have bug, waiting to check !!
         public void PopToFilter(IGraphFilter filter1)
         {
-            if (filter1 == null)
+            while (CurrentFilter != filter1)
             {
-
-                Repository.RemoveAll<FilterStackItem>(p => p.GraphId == this.Identifier && p.FilterId != RootFilterId);
-
+                PopFilter();
             }
-            else
-            {
-                foreach (var item in FilterStack)
-                {
-                    if (item != filter1)
-                    {
-                        var item1 = item;
-                        Repository.RemoveAll<FilterStackItem>(p => p.GraphId == this.Identifier && p.FilterId == item1.Identifier);
-                    }
-                }
-            }
-
-            // Reset the lazy filter stack
-            _filterStack = null;
         }
 
         public void PopToFilterById(string filterId)

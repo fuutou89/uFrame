@@ -86,6 +86,13 @@ namespace uFrame.MVVM {
         }
     }
     
+    public class ViewComponentNodeDrawerBase : GenericNodeDrawer<ViewComponentNode,ViewComponentNodeViewModel> {
+        
+        public ViewComponentNodeDrawerBase(ViewComponentNodeViewModel viewModel) : 
+                base(viewModel) {
+        }
+    }
+    
     public class StateMachineNodeDrawerBase : GenericNodeDrawer<StateMachineNode,StateMachineNodeViewModel> {
         
         public StateMachineNodeDrawerBase(StateMachineNodeViewModel viewModel) : 

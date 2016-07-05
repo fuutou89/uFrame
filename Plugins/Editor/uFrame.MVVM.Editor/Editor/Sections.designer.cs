@@ -54,7 +54,7 @@ namespace uFrame.MVVM {
     public partial interface IHandlersConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
     }
     
-    public class InstancesReferenceBase : uFrame.Editor.Graphs.Data.GenericReferenceItem<IInstancesConnectable> {
+    public class InstancesReferenceBase : uFrame.Editor.Graphs.Data.GenericReferenceItem<IInstancesConnectable>, IElementConnectable {
         
         public override bool AllowMultipleInputs {
             get {

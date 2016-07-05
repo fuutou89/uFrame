@@ -220,6 +220,14 @@ namespace uFrame.IOC
                 var obj2 = Activator.CreateInstance(type, constructorArgs);
                 Inject(obj2);
                 return obj2;
+                //try
+                //{
+                   
+                //}
+                //catch(Exception e)
+                //{
+                //    UnityEngine.Debug.Log("An error occurred:" + e);
+                //}
             }
 #if !NETFX_CORE
             ConstructorInfo[] constructor = type.GetConstructors(BindingFlags.Public | BindingFlags.Instance);

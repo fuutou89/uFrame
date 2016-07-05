@@ -175,7 +175,7 @@ namespace uFrame.Editor
                 if (record is IGraphData) return;
 
                 var diagramItem = record as IDiagramNodeItem;
-                if (diagramItem != null)
+                if (diagramItem != null && diagramItem.Graph != null)
                 {
                     diagramItem.Graph.IsDirty = true;
                 }

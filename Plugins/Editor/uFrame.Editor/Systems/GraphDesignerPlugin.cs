@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Collections.Generic;
 using uFrame.Editor.Compiling.CodeGen;
 using uFrame.Editor.Compiling.CommonNodes;
@@ -14,6 +15,7 @@ using uFrame.Editor.Input;
 using uFrame.Editor.Platform;
 using uFrame.IOC;
 using UnityEngine;
+
 namespace uFrame.Editor
 {
     public class GraphDesignerPlugin : DiagramPlugin, 
@@ -161,7 +163,6 @@ namespace uFrame.Editor
             Vector2 mousePosition)
         {
     
-
             var currentGraph = InvertApplication.Container.Resolve<WorkspaceService>().CurrentWorkspace.CurrentGraph;
             var allowedFilterNodes = FilterExtensions.AllowedFilterNodes[currentGraph.CurrentFilter.GetType()];
             foreach (var item in allowedFilterNodes)
@@ -169,12 +170,13 @@ namespace uFrame.Editor
                 if (item.IsInterface) continue;
                 if (item.IsAbstract) continue;
 
+                //if(item.FullName == "uFrame.MVVM.ViewNode") continue;
+
                 var node = Activator.CreateInstance(item) as IDiagramNode;
                 node.Repository = diagramViewModel.CurrentRepository;
                 node.GraphId = currentGraph.Identifier;
 
                 var vm = InvertGraphEditor.Container.GetNodeViewModel(node, diagramViewModel) as DiagramNodeViewModel;
-
 
                 if (vm == null) continue;
                 vm.IsCollapsed = false;
