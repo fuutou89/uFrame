@@ -34,13 +34,9 @@ namespace uFrame.MVVM
             SubSystem.HasSubNode<TypeReferenceNode>();
             SubSystem.HasSubNode<EnumNode>();
 
-            uFrameMVVM.BindingTypes = InvertGraphEditor.Container.Instances
-                                                       .Where(p => p.Key.Item1 == typeof(uFrameBindingType))
-                                                       .ToArray<KeyValuePair<Tuple<Type, string>, object>>();
-            
-            InvertApplication.Log("----- : " + BindingTypes.Length);
+            uFrameMVVM.BindingTypes = InvertGraphEditor.Container.Instances.Where(p => p.Key.Item1 == typeof(uFrameBindingType)).ToArray();
         }
 
-        public static KeyValuePair<Tuple<Type, string>, object>[] BindingTypes;
+        public static KeyValuePair<Tuple<Type, string>, object>[] BindingTypes { get; set; }
     }
 }

@@ -16,34 +16,27 @@ namespace uFrame.MVVM
 		{
 			get
 			{
-                IEnumerable<ITypedItem> bindableProperties = this.Element.BindableProperties;
-                foreach(ITypedItem bp in bindableProperties)
+                foreach (var item in Element.BindableProperties)
                 {
-                    KeyValuePair<Tuple<Type, string>, object>[] array = uFrameMVVM.BindingTypes;
-
-                    for(int i = 0; i < array.Length; i++)
+                    foreach (var mapping in uFrameMVVM.BindingTypes)
                     {
-                       uFrameBindingType bindableType = array[i].Value as uFrameBindingType;
-                       if(bindableType != null)
-                       {
-                           if(bindableType.CanBind(bp))
-                           {
-                               BindingsReference br = this.Bindings.FirstOrDefault(p => p.BindingName == array[i].Key.Item2 
-                                                                                        && p.BindingType == bindableType
-                                                                                        && p.SourceIdentifier == bp.Identifier);
-                               if(br == null)
-                               {
-                                   yield return new BindingsReference
-                                   {
-                                       Repository = bp.Repository,
-                                       Node = this,
-                                       SourceIdentifier = bp.Identifier,
-                                       BindingName = array[i].Key.Item2,
-                                       BindingType = bindableType
-                                   };
-                               }
-                           }
-                       }
+                        var bindableType = mapping.Value as uFrameBindingType;
+                        if (bindableType == null) continue;
+                        if (!bindableType.CanBind(item)) continue;
+                        if (Bindings.FirstOrDefault(p => p.BindingName == mapping.Key.Item2
+                                                      && p.BindingType == bindableType 
+                                                      && p.SourceIdentifier == item.Identifier) != null)
+                            continue;
+
+                        yield return new BindingsReference()
+                        {
+                            Repository = item.Repository,
+                            Node = this,
+                            SourceIdentifier = item.Identifier,
+                            BindingName = mapping.Key.Item2,
+                            BindingType = bindableType,
+                        };
+
                     }
                 }
 			}
@@ -61,33 +54,30 @@ namespace uFrame.MVVM
 		{
 			get
 			{
-				ElementNode elementNode = this.ElementInputSlot.InputFrom<ElementNode>();
-				ElementNode result;
-				if (elementNode == null)
-				{
-					ViewNode viewNode = this.BaseNode as ViewNode;
-					if (viewNode != null)
-					{
-						result = viewNode.Element;
-					}
-					else
-					{
-						result = null;
-					}
-				}
-				else
-				{
-					result = elementNode;
-				}
-				return result;
-			}
+                var elementNode = ElementInputSlot.InputFrom<ElementNode>();
+                if (elementNode == null)
+                {
+                    var baseView = BaseNode as ViewNode;
+                    if (baseView != null)
+                    {
+                        return baseView.Element;
+                    }
+
+                }
+                else
+                {
+                    return elementNode;
+                }
+
+                return null;
+            }
 		}
 
 		public IEnumerable<PropertiesChildItem> SceneProperties
 		{
 			get
 			{
-				return this.ScenePropertiesInputSlot.InputsFrom<PropertiesChildItem>();
+				return this.ScenePropertiesInputSlot.InputsFrom<PropertiesChildItem>().Distinct();
 			}
 		}
 

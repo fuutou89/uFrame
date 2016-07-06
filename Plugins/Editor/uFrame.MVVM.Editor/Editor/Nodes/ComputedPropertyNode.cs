@@ -27,16 +27,27 @@ namespace uFrame.MVVM {
             }
         }
 
-        public override string RelatedType
+        public override IEnumerable<IItem> PossibleSubProperties
         {
             get
             {
-                return this.PropertyType;
+                return
+                    InputProperties.Select(p => p.RelatedTypeNode)
+                        .OfType<ElementNode>()
+                        .SelectMany(p => p.AllProperties)
+                        .Cast<IItem>();
             }
-            set
-            {
-                this.PropertyType = value;
-            }
+        }
+
+        public IEnumerable<PropertiesChildItem> InputProperties
+        {
+            get { return this.InputsFrom<PropertiesChildItem>(); }
+        }
+
+        public override string RelatedType
+        {
+            get { return this.PropertyType; }
+            set { this.PropertyType = value; }
         }
 
         [NodeProperty(InspectorType.TypeSelection)]
@@ -56,23 +67,17 @@ namespace uFrame.MVVM {
         {
             get
             {
-                string result;
-                if (this.Graph != null)
+                if (Graph != null && this.Graph != null)
                 {
-                    IClassTypeNode classTypeNode = this.Graph.AllGraphItems.OfType<IClassTypeNode>().FirstOrDefault((IClassTypeNode p) => p.Identifier == this.PropertyType);
-                    if (classTypeNode != null)
+                    var type = this.Graph.AllGraphItems.OfType<IClassTypeNode>().FirstOrDefault(p => p.Identifier == PropertyType) as IClassTypeNode;
+                    if (type != null)
                     {
-                        result = classTypeNode.ClassName;
-                        return result;
+                        return type.ClassName;
                     }
                 }
-                result = (string.IsNullOrEmpty(this.PropertyType) ? typeof(bool).Name : this.PropertyType);
-                return result;
+                return string.IsNullOrEmpty(PropertyType) ? typeof(Boolean).Name : PropertyType;
             }
-            set
-            {
-                this.PropertyType = value;
-            }
+            set { this.PropertyType = value; }
         }
     }
     

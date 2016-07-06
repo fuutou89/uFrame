@@ -62,6 +62,19 @@ namespace uFrame.MVVM {
                 return true;
             }
         }
+        
+        public virtual System.Collections.Generic.IEnumerable<uFrame.Editor.Core.IItem> PossibleSubProperties {
+            get {
+                return this.Repository.AllOf<ISubPropertiesConnectable>().Cast<IItem>();
+            }
+        }
+        
+        [uFrame.Editor.Configurations.ReferenceSection("SubProperties", SectionVisibility.Always, false, false, typeof(ISubPropertiesConnectable), false, OrderIndex=0, HasPredefinedOptions=false, IsNewRow=true)]
+        public virtual System.Collections.Generic.IEnumerable<SubPropertiesReference> SubProperties {
+            get {
+                return PersistedItems.OfType<SubPropertiesReference>();
+            }
+        }
     }
     
     public partial interface IComputedPropertyConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {

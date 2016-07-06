@@ -44,16 +44,10 @@ namespace uFrame.MVVM
         {
             get
 			{
-				uFrameBindingType bindingType = this._bindingType;
-				if (bindingType == null)
-				{
-                    bindingType = uFrameMVVM.BindingTypes
-                                            .Where(p => p.Key.Item2 == this.BindingName)
-                                            .Select(p => p.Value)
-                                            .FirstOrDefault<object>() as uFrameBindingType;
-				}
-				return bindingType;
-			}
+                return _bindingType ?? (_bindingType = uFrameMVVM.BindingTypes
+                                                                 .Where(p => p.Key.Item2 == BindingName)
+                                                                 .Select(p => p.Value).FirstOrDefault() as uFrameBindingType);
+            }
             set
             {
                 this._bindingType = value;
@@ -64,16 +58,7 @@ namespace uFrame.MVVM
         {
             get
             {
-                string result;
-                if (base.SourceItem == null)
-                {
-                    result = "Error: Bindable Not Found";
-                }
-                else
-                {
-                    result = string.Format(this.BindingType.DisplayFormat, base.SourceItem.Name);
-                }
-                return result;
+                return SourceItem == null ? "Error: Bindable Not Found" : string.Format(BindingType.DisplayFormat, SourceItem.Name);
             }
         }
 

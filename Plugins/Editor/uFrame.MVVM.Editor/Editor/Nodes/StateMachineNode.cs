@@ -17,6 +17,33 @@ namespace uFrame.MVVM {
             }
         }
 
+        public override bool AllowInputs
+        {
+            get { return true; }
+        }
+
+        public override bool AllowOutputs
+        {
+            get { return false; }
+        }
+
+        public override void Validate(List<ErrorInfo> errors)
+        {
+            base.Validate(errors);
+            if (Name.ToLower() == "startstate")
+            {
+                errors.AddError("StartState is reserved", this, () =>
+                {
+                    Name = Graph.Name + "StartState";
+                });
+            }
+            if (StartStateOutputSlot == null) return;
+            if (StartStateOutputSlot.OutputTo<StateNode>() == null)
+            {
+                errors.AddError("State Machine requires a start state.", this);
+            }
+        }
+
         public IEnumerable<StateNode> States
         {
             get

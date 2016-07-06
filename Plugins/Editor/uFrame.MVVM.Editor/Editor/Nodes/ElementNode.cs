@@ -10,13 +10,39 @@ namespace uFrame.MVVM
 
     public class ElementNode : ElementNodeBase
     {
-        // TODO : RelatedElements
+        public override void Validate(List<ErrorInfo> errors)
+        {
+            base.Validate(errors);
+            var ps = ChildItemsWithInherited.OfType<ITypedItem>().ToArray();
+            foreach (var p1 in ps)
+            {
+                foreach (var p2 in ps)
+                {
+                    if (p1.Name == p2.Name && p1 != p2)
+                    {
+                        errors.AddError(string.Format("Duplicate \"{0}\"", p1.Name), this);
+                    }
+                }
+            }
+        }
+
+        public IEnumerable<ElementNode> RelatedElements
+        {
+            get
+            {
+                return this.Graph.AllGraphItems
+                                 .OfType<SubSystemNode>()
+                                 .SelectMany(p => p.Children)
+                                 .OfType<ElementNode>()
+                                 .Distinct();
+            }
+        }
 
         public virtual IEnumerable<ComputedPropertyNode> ComputedProperties
         {
             get
             {
-                return this.Children.OfType<ComputedPropertyNode>().Distinct();
+                return this.Children.OfType<ComputedPropertyNode>();
             }
         }
 
@@ -24,7 +50,7 @@ namespace uFrame.MVVM
         {
             get
             {
-                return this.Graph.AllGraphItems.OfType<InstancesReference>().Where(p => p.SourceIdentifier == this.Identifier).Select(i => i);
+                return this.Graph.AllGraphItems.OfType<InstancesReference>().Where(p => p.SourceIdentifier == this.Identifier);
             }
         }
 
@@ -32,14 +58,8 @@ namespace uFrame.MVVM
         {
             get
             {
-                foreach (ComputedPropertyNode computedPropertyNode in this.ComputedProperties)
-                {
-                    yield return computedPropertyNode;
-                }
-                foreach (PropertiesChildItem propertiesChildItem in this.LocalProperties)
-                {
-                    yield return propertiesChildItem;
-                }
+                foreach (var item in ComputedProperties) yield return item;
+                foreach (var item in LocalProperties) yield return item;
             }
         }
 
@@ -47,28 +67,17 @@ namespace uFrame.MVVM
         {
             get
             {
-                foreach (ComputedPropertyNode computedPropertyNode in this.ComputedProperties)
+                foreach (var item in ComputedProperties) yield return item;
+                foreach (var item in LocalProperties) yield return item;
+                foreach (var item in LocalCollections) yield return item;
+                foreach (var item in LocalCommands) yield return item;
+
+                var baseElement = BaseNode as ElementNode;
+                if (baseElement != null)
                 {
-                    yield return computedPropertyNode;
-                }
-                foreach (PropertiesChildItem propertiesChildItem in this.LocalProperties)
-                {
-                    yield return propertiesChildItem;
-                }
-                foreach (CollectionsChildItem collectionsChildItem in this.LocalCollections)
-                {
-                    yield return collectionsChildItem;
-                }
-                foreach (CommandsChildItem commandsChildItem in this.LocalCommands)
-                {
-                    yield return commandsChildItem;
-                }
-                ElementNode elementNode = this.BaseNode as ElementNode;
-                if (elementNode != null)
-                {
-                    foreach (ITypedItem typedItem in elementNode.BindableProperties)
+                    foreach (var item in baseElement.BindableProperties)
                     {
-                        yield return typedItem;
+                        yield return item;
                     }
                 }
             }
@@ -78,16 +87,16 @@ namespace uFrame.MVVM
         {
             get
             {
-                ElementNode elementNode = this.BaseNode as ElementNode;
-                if (elementNode != null)
+                var baseElement = BaseNode as ElementNode;
+                if (baseElement != null)
                 {
-                    foreach (ITypedItem typedItem in elementNode.AllProperties)
+                    foreach (var property in baseElement.AllProperties)
                     {
-                        yield return typedItem;
+                        yield return property;
                     }
-                    foreach (ITypedItem typedItem2 in elementNode.AllPropertiesWithInherited)
+                    foreach (var property in baseElement.AllPropertiesWithInherited)
                     {
-                        yield return typedItem2;
+                        yield return property;
                     }
                 }
             }
@@ -97,16 +106,16 @@ namespace uFrame.MVVM
         {
             get
             {
-                ElementNode elementNode = this.BaseNode as ElementNode;
-                if (elementNode != null)
+                var baseElement = BaseNode as ElementNode;
+                if (baseElement != null)
                 {
-                    foreach (PropertiesChildItem propertiesChildItem in elementNode.LocalProperties)
+                    foreach (var property in baseElement.LocalProperties)
                     {
-                        yield return propertiesChildItem;
+                        yield return property;
                     }
-                    foreach (PropertiesChildItem propertiesChildItem2 in elementNode.InheritedProperties)
+                    foreach (var property in baseElement.InheritedProperties)
                     {
-                        yield return propertiesChildItem2;
+                        yield return property;
                     }
                 }
             }
@@ -116,16 +125,16 @@ namespace uFrame.MVVM
         {
             get
             {
-                ElementNode elementNode = this.BaseNode as ElementNode;
-                if (elementNode != null)
+                var baseElement = BaseNode as ElementNode;
+                if (baseElement != null)
                 {
-                    foreach (CollectionsChildItem collectionsChildItem in elementNode.LocalCollections)
+                    foreach (var property in baseElement.LocalCollections)
                     {
-                        yield return collectionsChildItem;
+                        yield return property;
                     }
-                    foreach (CollectionsChildItem collectionsChildItem2 in elementNode.InheritedCollections)
+                    foreach (var property in baseElement.InheritedCollections)
                     {
-                        yield return collectionsChildItem2;
+                        yield return property;
                     }
                 }
             }
@@ -135,16 +144,16 @@ namespace uFrame.MVVM
         {
             get
             {
-                ElementNode elementNode = this.BaseNode as ElementNode;
-                if (elementNode != null)
+                var baseElement = BaseNode as ElementNode;
+                if (baseElement != null)
                 {
-                    foreach (CommandsChildItem commandsChildItem in elementNode.LocalCommands)
+                    foreach (var property in baseElement.LocalCommands)
                     {
-                        yield return commandsChildItem;
+                        yield return property;
                     }
-                    foreach (CommandsChildItem commandsChildItem2 in elementNode.InheritedCommands)
+                    foreach (var property in baseElement.InheritedCommands)
                     {
-                        yield return commandsChildItem2;
+                        yield return property;
                     }
                 }
             }
@@ -154,20 +163,18 @@ namespace uFrame.MVVM
         {
             get
             {
-                foreach (CommandsChildItem commandsChildItem in this.LocalCommands)
+                foreach (var item in LocalCommands)
+                    yield return item;
+                var baseElement = BaseNode as ElementNode;
+                if (baseElement != null)
                 {
-                    yield return commandsChildItem;
-                }
-                ElementNode elementNode = this.BaseNode as ElementNode;
-                if (elementNode != null)
-                {
-                    foreach (CommandsChildItem commandsChildItem2 in elementNode.LocalCommands)
+                    foreach (var property in baseElement.LocalCommands)
                     {
-                        yield return commandsChildItem2;
+                        yield return property;
                     }
-                    foreach (CommandsChildItem commandsChildItem3 in elementNode.InheritedCommands)
+                    foreach (var property in baseElement.InheritedCommands)
                     {
-                        yield return commandsChildItem3;
+                        yield return property;
                     }
                 }
             }
@@ -178,16 +185,16 @@ namespace uFrame.MVVM
         {
             get
             {
-                if (this.Graph.CurrentFilter == this)
+                if (Graph.CurrentFilter == this)
                 {
-                    foreach (PropertiesChildItem propertiesChildItem in this.InheritedProperties)
+                    foreach (var item in InheritedProperties)
                     {
-                        yield return propertiesChildItem;
+                        yield return item;
                     }
                 }
-                foreach (PropertiesChildItem propertiesChildItem2 in this.LocalProperties)
+                foreach (var item in LocalProperties)
                 {
-                    yield return propertiesChildItem2;
+                    yield return item;
                 }
             }
         }
@@ -197,16 +204,16 @@ namespace uFrame.MVVM
         {
             get
             {
-                if (this.Graph.CurrentFilter == this)
+                if (Graph.CurrentFilter == this)
                 {
-                    foreach (CollectionsChildItem collectionsChildItem in this.InheritedCollections)
+                    foreach (var item in InheritedCollections)
                     {
-                        yield return collectionsChildItem;
+                        yield return item;
                     }
                 }
-                foreach (CollectionsChildItem collectionsChildItem2 in this.LocalCollections)
+                foreach (var item in LocalCollections)
                 {
-                    yield return collectionsChildItem2;
+                    yield return item;
                 }
             }
         }
@@ -216,16 +223,16 @@ namespace uFrame.MVVM
         {
             get
             {
-                if (this.Graph.CurrentFilter == this)
+                if (Graph.CurrentFilter == this)
                 {
-                    foreach (CommandsChildItem commandsChildItem in this.InheritedCommands)
+                    foreach (var item in InheritedCommands)
                     {
-                        yield return commandsChildItem;
+                        yield return item;
                     }
                 }
-                foreach (CommandsChildItem commandsChildItem2 in this.LocalCommands)
+                foreach (var item in LocalCommands)
                 {
-                    yield return commandsChildItem2;
+                    yield return item;
                 }
             }
         }
@@ -234,9 +241,9 @@ namespace uFrame.MVVM
         {
             get
             {
-                foreach (CommandsChildItem commandsChildItem in this.LocalCommands)
+                foreach (var item in LocalCommands)
                 {
-                    yield return commandsChildItem;
+                    yield return item;
                 }
             }
         }
@@ -266,27 +273,10 @@ namespace uFrame.MVVM
             }
         }
 
-        public override void Validate(List<ErrorInfo> errors)
+        public override string TypeName
         {
-            base.Validate(errors);
-            ITypedItem[] array = base.ChildItemsWithInherited.OfType<ITypedItem>().ToArray<ITypedItem>();
-            ITypedItem[] array2 = array;
-            for (int i = 0; i < array2.Length; i++)
-            {
-                ITypedItem typedItem = array2[i];
-                ITypedItem[] array3 = array;
-                for (int j = 0; j < array3.Length; j++)
-                {
-                    ITypedItem typedItem2 = array3[j];
-                    bool flag = typedItem.Name == typedItem2.Name && typedItem != typedItem2;
-                    if (flag)
-                    {
-                        errors.AddError(string.Format("Duplicate \"{0}\"", typedItem.Name), this);
-                    }
-                }
-            }
+            get { return this.Name + "ViewModel"; }
         }
-
     }
 
     public partial interface IElementConnectable : IDiagramNodeItem, IConnectable

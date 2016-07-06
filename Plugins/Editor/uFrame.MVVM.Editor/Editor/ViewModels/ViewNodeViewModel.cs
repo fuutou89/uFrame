@@ -7,5 +7,10 @@ namespace uFrame.MVVM
         public ViewNodeViewModel(ViewNode graphItemObject, DiagramViewModel diagramViewModel) : 
                 base(graphItemObject, diagramViewModel) {
         }
+
+        public override string IconName
+        {
+            get { return "ViewIcon"; }
+        }
     }
 }

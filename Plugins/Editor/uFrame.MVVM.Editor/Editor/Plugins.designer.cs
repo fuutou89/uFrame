@@ -174,6 +174,7 @@ namespace uFrame.MVVM {
             container.AddItem<TransitionsChildItem>();
             container.AddItem<HandlersReference>();
             container.AddTypeItem<PropertiesChildItem>();
+            container.AddItem<SubPropertiesReference>();
             container.AddItem<InstancesReference>();
             container.AddItem<StateTransitionsReference>();
             container.AddTypeItem<CollectionsChildItem>();
@@ -233,9 +234,10 @@ namespace uFrame.MVVM {
             container.Connectable<CommandsChildItem,BindingsReference>();
             container.Connectable<TransitionsChildItem,StateTransitionsReference>();
             container.Connectable<HandlersReference,SimpleClassNode>();
-            container.Connectable<PropertiesChildItem,BindingsReference>();
             container.Connectable<PropertiesChildItem,SceneProperties>();
+            container.Connectable<PropertiesChildItem,BindingsReference>();
             container.Connectable<PropertiesChildItem,ComputedPropertyNode>();
+            container.Connectable<PropertiesChildItem,SubPropertiesReference>();
             container.Connectable<InstancesReference,ElementNode>();
             container.Connectable<StateTransitionsReference,StateNode>();
             container.Connectable<CollectionsChildItem,BindingsReference>();

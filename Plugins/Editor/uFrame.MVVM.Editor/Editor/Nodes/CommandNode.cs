@@ -25,15 +25,10 @@ namespace uFrame.MVVM
         public override void Validate(List<ErrorInfo> errors)
         {
             base.Validate(errors);
-            if (ConnectableExtensions.ReferenceOf<CommandsChildItem>(this) == null)
+            if(this.ReferenceOf<CommandsChildItem>() == null)
             {
                 errors.AddError("This node must be linked to a Element Command, if you want a generic command use a 'SimpleClass'.", this);
             }
-        }
-
-        public override bool EndEditing()
-        {
-            return base.EndEditing();
         }
     }
 

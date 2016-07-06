@@ -54,6 +54,24 @@ namespace uFrame.MVVM {
     public partial interface IHandlersConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
     }
     
+    public class SubPropertiesReferenceBase : uFrame.Editor.Graphs.Data.GenericReferenceItem<ISubPropertiesConnectable> {
+        
+        public override bool AllowMultipleInputs {
+            get {
+                return true;
+            }
+        }
+        
+        public override bool AllowMultipleOutputs {
+            get {
+                return true;
+            }
+        }
+    }
+    
+    public partial interface ISubPropertiesConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
+    }
+    
     public class InstancesReferenceBase : uFrame.Editor.Graphs.Data.GenericReferenceItem<IInstancesConnectable>, IElementConnectable {
         
         public override bool AllowMultipleInputs {

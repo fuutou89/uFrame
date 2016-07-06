@@ -288,8 +288,9 @@ namespace uFrame.Editor.Graphs.Data
             var current = mirrorItems.FirstOrDefault(p => p.SourceIdentifier == item.Identifier);
             if (current != null && !mirrorSection.AllowDuplicates) return;
 
-            if (Node.Repository.GetById<IDiagramNode>(item.Identifier) == null)
+            if (Node.Repository.GetById<IDiagramNodeItem>(item.Identifier) == null)
             {
+                InvertApplication.Log("AAA");
                 Node.Repository.Add(item);
             }
             else
