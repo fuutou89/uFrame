@@ -54,7 +54,7 @@ namespace uFrame.MVVM {
     public partial interface ITransitionsConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
     }
     
-    public class PropertiesChildItemBase : uFrame.Editor.Graphs.Data.GenericTypedChildItem, IBindingsConnectable {
+    public class PropertiesChildItemBase : uFrame.Editor.Graphs.Data.GenericTypedChildItem, IBindingsConnectable, IScenePropertiesConnectable, IComputedPropertyConnectable {
         
         public override bool AllowMultipleInputs {
             get {

@@ -2,6 +2,9 @@ using uFrame.Editor.Attributes;
 using uFrame.Editor.Graphs.Data;
 using uFrame.Editor.Graphs.Data.Types;
 using uFrame.Json;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace uFrame.MVVM
 {
@@ -57,14 +60,13 @@ namespace uFrame.MVVM
         {
             get
             {
-                string name = base.Name;
-                if (this.OutputCommand != null)
+                var oc = OutputCommand;
+                if(oc != null)
                 {
-                    name = this.OutputCommand.Name;
+                    return oc.Name;
                 }
-                return name;
+                return base.Name;
             }
-
             set
             {
                 base.Name = value;
@@ -82,26 +84,33 @@ namespace uFrame.MVVM
             if(this.OutputCommand != null)
             {
                 base.IsEditing = false;
+                return;
             }
-            else
-            {
-                base.BeginEditing();
-            }
+            base.BeginEditing();
         }
 
         public override bool CanOutputTo(IConnectable input)
         {
-            bool result;
-            if(this.OutputTo<IClassTypeNode>() != null)
+            if (this.OutputTo<IClassTypeNode>() != null)
             {
-                result = false;
+                return false;
             }
-            else
+            if (input is HandlersReference) return false;
+            return base.CanOutputTo(input);
+        }
+
+        public override void Validate(List<ErrorInfo> errors)
+        {
+            base.Validate(errors);
+            var otherCommand = Node.Graph.AllGraphItems.OfType<CommandsChildItem>()
+                                         .FirstOrDefault(p => p != this && p.Name == this.Name && p.OutputCommand == null);
+            if (otherCommand != null)
             {
-                result = (!(input is HandlersReference) && base.CanOutputTo(input));
+
+                errors.AddError(string.Format("The command {0} is already being used on node {1}.", this.Name, otherCommand.Node.Name), 
+                                this,
+                                () => { Name = this.Node.Name + this.Name; });
             }
-            return result;
-            //return base.CanOutputTo(input);
         }
     }
 

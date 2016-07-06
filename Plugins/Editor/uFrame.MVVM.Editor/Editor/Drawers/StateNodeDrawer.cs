@@ -19,8 +19,7 @@ namespace uFrame.MVVM
         public override void Draw(IPlatformDrawer platform, float scale)
         {
             base.Draw(platform, scale);
-            bool isCurrentState = base.NodeViewModel.IsCurrentState;
-            if (isCurrentState)
+            if (NodeViewModel.IsCurrentState)
             {
                 Rect r = new Rect(this.Bounds.x - 9f, this.Bounds.y + 1f, this.Bounds.width + 19f, this.Bounds.height + 9f);
                 platform.DrawStretchBox(r.Scale(base.Scale), CachedStyles.BoxHighlighter1, 20f);
