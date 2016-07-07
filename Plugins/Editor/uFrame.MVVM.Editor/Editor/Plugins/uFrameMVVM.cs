@@ -60,8 +60,9 @@ namespace uFrame.MVVM
                 Command = new ScaffoldOrUpdateKernelCommand(),
                 Title = "Update Kernel",
                 Position = ToolbarPosition.Right,
-                //Description = "Start code generation process. This generates C# code based on the nodes and items in the diagram.",
-                Order = -1
+                Description = "Start Create/Update MVVM Kernel.",
+                Order = -1,
+                IsDelayCall = true
             });
         }
 

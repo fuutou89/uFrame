@@ -23,7 +23,7 @@ namespace uFrame.Kernel
 
         public static IEnumerator InstantiateSceneAsyncAdditively(string sceneName)
         {
-            var asyncOperation = SceneManager.LoadSceneAsync(sceneName); //Application.LoadLevelAdditiveAsync(sceneName);
+            var asyncOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive); //Application.LoadLevelAdditiveAsync(sceneName);
             float lastProgress = -1;
             while (!asyncOperation.isDone)
             {

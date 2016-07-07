@@ -71,7 +71,14 @@ namespace uFrame.Editor.Unity
             var guiContent = new GUIContent(command.Title);
             if (GUILayout.Button(guiContent, style))
             {
-                EditorApplication.delayCall += () => { InvertApplication.Execute(command.Command); };
+                if (command.IsDelayCall) // Fix the invalide status, stack error
+                {
+                    EditorApplication.delayCall += () => { InvertApplication.Execute(command.Command); };
+                }
+                else
+                {
+                    InvertApplication.Execute(command.Command);
+                }
             }
             InvertGraphEditor.PlatformDrawer.SetTooltipForRect(GUILayoutUtility.GetLastRect(),command.Description);
             
