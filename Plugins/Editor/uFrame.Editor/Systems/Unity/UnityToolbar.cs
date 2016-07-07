@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using uFrame.Editor.Core;
 using uFrame.Editor.GraphUI;
@@ -18,14 +19,15 @@ namespace uFrame.Editor.Unity
             {
                 DoCommand(editorCommand);
             }
-            GUILayout.FlexibleSpace();
 
+
+            GUILayout.FlexibleSpace();
 
             foreach (var editorCommand in RightCommands.OrderBy(p => p.Order))
             {
-         
                 DoCommand(editorCommand);
             }
+            
             GUILayout.EndHorizontal();
         }
 
@@ -69,7 +71,7 @@ namespace uFrame.Editor.Unity
             var guiContent = new GUIContent(command.Title);
             if (GUILayout.Button(guiContent, style))
             {
-                InvertApplication.Execute(command.Command);
+                EditorApplication.delayCall += () => { InvertApplication.Execute(command.Command); };
             }
             InvertGraphEditor.PlatformDrawer.SetTooltipForRect(GUILayoutUtility.GetLastRect(),command.Description);
             
