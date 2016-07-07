@@ -1,12 +1,7 @@
-﻿using UnityEngine;
-using System;
-using System.Linq;
-using System.Collections;
+﻿using System;
 using uFrame.MVVM.StateMachines;
 using uFrame.Editor.Compiling.CodeGen;
 using uFrame.Editor.Configurations;
-using uFrame.MVVM.ViewModels;
-using System.Collections.Generic;
 using uFrame.Editor.Graphs.Data;
 
 namespace uFrame.MVVM.Templates
@@ -24,7 +19,7 @@ namespace uFrame.MVVM.Templates
                 {
                     throw new Exception(Ctx.Data.Name + " Graph name is empty");
                 }
-                return Path2.Combine("StateMachine.designer", Ctx.Data.Container().Name + "StateMachine.designer.cs");
+                return Path2.Combine(Ctx.Data.Graph.Name + "/StateMachines.designer", Ctx.Data.Container().Name + "StateMachine.designer.cs");
             }
         }
 
@@ -56,8 +51,7 @@ namespace uFrame.MVVM.Templates
             }
         }
 
-        //[GenerateMethod(TemplateLocation.DesignerFile, AutoFill = AutoFillType.NameOnly, NameFormat = "{0}Transition")]
-        [ForEach("StateTransitions"), GenerateMethod(CallBase = false), WithNameFormat("{0}Transition")]
+        [ForEach("StateTransitions"), GenerateMethod, WithNameFormat("{0}Transition")]
         public void TransitionMethod()
         {
             Ctx._("this.Transition(this.{0})", Ctx.Item.Name);

@@ -18,7 +18,7 @@ namespace uFrame.MVVM.Templates
                 {
                     throw new Exception(Ctx.Data.Name + " Graph name is empty");
                 }
-                return Path2.Combine("ViewModels.designer", Ctx.Data.Name + "ViewModel.designer.cs");
+                return Path2.Combine(Ctx.Data.Graph.Name + "/ViewModels.designer", Ctx.Data.Name + "ViewModel.designer.cs");
             }
         }
 

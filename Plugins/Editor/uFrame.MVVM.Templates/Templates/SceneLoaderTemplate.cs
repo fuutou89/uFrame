@@ -20,11 +20,8 @@ namespace uFrame.MVVM.Templates
                 {
                     throw new Exception(Ctx.Data.Name + " Graph name is empty");
                 }
-                if(Ctx.IsDesignerFile)
-                {
-                    return Path2.Combine("Scenes.designer", Ctx.Data.Name + "Loader.designer.cs");
-                }
-                return Path2.Combine("Scenes", Ctx.Data.Name + "Loader.cs");
+                return Ctx.IsDesignerFile ? Path2.Combine(Ctx.Data.Graph.Name, "SceneLoader.designer.cs") 
+                                          : Path2.Combine(Ctx.Data.Graph.Name + "/SceneLoaders", Ctx.Data.Name + "Loader.cs");
             }
         }
 
@@ -35,11 +32,9 @@ namespace uFrame.MVVM.Templates
 
         public void TemplateSetup()
         {
-            if(Ctx.IsDesignerFile)
-            {
-                Ctx.CurrentDeclaration.BaseTypes.Clear();
-                Ctx.CurrentDeclaration.BaseTypes.Add(string.Format("SceneLoader<{0}>", Ctx.Data.Name));
-            }
+            if (!Ctx.IsDesignerFile) return;
+            Ctx.CurrentDeclaration.BaseTypes.Clear();
+            Ctx.CurrentDeclaration.BaseTypes.Add(string.Format("SceneLoader<{0}>", Ctx.Data.Name));
         }
     }
 

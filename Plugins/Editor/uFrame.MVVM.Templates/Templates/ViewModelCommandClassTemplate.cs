@@ -19,7 +19,8 @@ namespace uFrame.MVVM.Templates
                 {
                     throw new Exception(Ctx.Data.Name + " Graph name is empty");
                 }
-                return Path2.Combine("Commands.designer", Ctx.Data.Name + "Command.designer.cs");
+                //return Path2.Combine("Commands.designer", Ctx.Data.Name + "Command.designer.cs");
+                return Path2.Combine(Ctx.Data.Node.Graph.Name, "ViewModelCommands.designer.cs");
             }
         }
 
@@ -49,7 +50,7 @@ namespace uFrame.MVVM.Templates
                     Ctx.TryAddNamespace(type.Namespace);
             }
             Ctx.CurrentDeclaration.Name = Ctx.Data.Name + "Command";
-            Ctx.AddCondition("Argument", _ => !string.IsNullOrEmpty(_.RelatedType) && !_.RelatedType.Contains("Void"));
+            Ctx.AddCondition("Argument", _ => _.HasArgument);
         }
     }
 
@@ -60,9 +61,9 @@ namespace uFrame.MVVM.Templates
     {
         public bool HasArgument
         {
-            get 
+            get
             {
-                return !string.IsNullOrEmpty(Ctx.Data.RelatedType) && !Ctx.Data.RelatedType.Contains("Void");
+                return Ctx.Data.HasArgument;
             }
         }
 

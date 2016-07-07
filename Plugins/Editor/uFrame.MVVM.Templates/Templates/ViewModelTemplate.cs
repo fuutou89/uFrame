@@ -30,11 +30,8 @@ namespace uFrame.MVVM.Templates
                 {
                     throw new Exception(Ctx.Data.Name + " Graph name is empty");
                 }
-                if (Ctx.IsDesignerFile)
-                {
-                    return Path2.Combine("ViewModels.designer", Ctx.Data.Name + "ViewModel.designer.cs");
-                }
-                return Path2.Combine("ViewModels", Ctx.Data.Name + "ViewModel.cs");
+                return Ctx.IsDesignerFile ? Path2.Combine(Ctx.Data.Graph.Name + "/ViewModels.designer", Ctx.Data.Name + "ViewModel.designer.cs")
+                                          : Path2.Combine(Ctx.Data.Graph.Name + "/ViewModels", Ctx.Data.Name + "ViewModel.cs");
             }
         }
 
@@ -59,12 +56,10 @@ namespace uFrame.MVVM.Templates
 
             StateMachineProperties = Ctx.Data.AllProperties.Where(p => (p.RelatedNode() is StateMachineNode)).ToArray();
             ViewModelProperties = Ctx.Data.AllProperties.Where(p => !StateMachineProperties.Contains(p)).ToArray();
-            if(Ctx.IsDesignerFile)
+            if (!Ctx.IsDesignerFile) return;
+            foreach(var item in Ctx.Data.ComputedProperties)
             {
-                foreach(var item in Ctx.Data.ComputedProperties)
-                {
-                    Ctx.CurrentDeclaration._private_(typeof(IDisposable), "_{0}Disposable", item.Name);
-                }
+                Ctx.CurrentDeclaration._private_(typeof(IDisposable), "_{0}Disposable", item.Name);
             }
         }
 
@@ -228,14 +223,12 @@ namespace uFrame.MVVM.Templates
         {
             var cmd = Ctx.ItemAs<CommandsChildItem>();
 
-            bool hasArgument = (!string.IsNullOrEmpty(cmd.RelatedType) && !cmd.RelatedType.Contains("Void"));
-
-            if(hasArgument)
+            if(cmd.HasArgument)
             {
                 Ctx.CurrentMethod.Parameters.Add(new CodeParameterDeclarationExpression(cmd.RelatedTypeName, "argument"));
             }
 
-            if(!hasArgument)
+            if (!cmd.HasArgument)
             {
                 Ctx._("this.{0}.OnNext(new {1}())", cmd.Name, cmd.ClassName);
             }
@@ -294,15 +287,7 @@ namespace uFrame.MVVM.Templates
             foreach (var collection in Ctx.Data.LocalCollections)
             {
                 var relatedNode = collection.RelatedTypeNode;
-                if (relatedNode is EnumNode)
-                {
-                    //var statement = new CodeSnippetStatement(string.Format("\t\tstream.SerializeInt(\"{0}\", (int)this.{0});", viewModelPropertyData.Name));
-                    //writeMethod.Statements.Add(statement);
-
-                    //var dstatement = new CodeSnippetStatement(string.Format("\t\tthis.{0} = ({1})stream.DeserializeInt(\"{0}\");", viewModelPropertyData.Name, viewModelPropertyData.RelatedTypeName));
-                    //readMethod.Statements.Add(dstatement);
-                }
-                else if (relatedNode is ElementNode)
+                if (relatedNode is ElementNode)
                 {
                     var elementNode = relatedNode as ElementNode;
 
@@ -311,17 +296,6 @@ namespace uFrame.MVVM.Templates
                     Ctx._("this.{0}.AddRange(stream.DeserializeObjectArray<{1}>(\"{0}\"))", collection.Name,
                         elementNode.Name.AsViewModel());
                     Ctx.PopStatements();
-                }
-                else
-                {
-                    //if (collection.Type == null) continue;
-                    //if (!AcceptableTypes.ContainsKey(viewModelPropertyData.Type)) continue;
-                    //viewModelPropertyData.IsEnum(data.OwnerData);
-                    //var statement = new CodeSnippetStatement(string.Format("\t\tstream.Serialize{0}(\"{1}\", this.{1});", AcceptableTypes[viewModelPropertyData.Type], viewModelPropertyData.Name));
-                    //writeMethod.Statements.Add(statement);
-
-                    //var dstatement = new CodeSnippetStatement(string.Format("\t\tthis.{0} = stream.Deserialize{1}(\"{0}\");", viewModelPropertyData.Name, AcceptableTypes[viewModelPropertyData.Type]));
-                    //readMethod.Statements.Add(dstatement);
                 }
             }
         }
@@ -358,29 +332,10 @@ namespace uFrame.MVVM.Templates
             foreach (var collection in Ctx.Data.LocalCollections)
             {
                 var relatedNode = collection.RelatedTypeNode;
-                if (relatedNode is EnumNode)
-                {
-                    //var statement = new CodeSnippetStatement(string.Format("\t\tstream.SerializeInt(\"{0}\", (int)this.{0});", viewModelPropertyData.Name));
-                    //writeMethod.Statements.Add(statement);
-
-                    //var dstatement = new CodeSnippetStatement(string.Format("\t\tthis.{0} = ({1})stream.DeserializeInt(\"{0}\");", viewModelPropertyData.Name, viewModelPropertyData.RelatedTypeName));
-                    //readMethod.Statements.Add(dstatement);
-                }
-                else if (relatedNode is ElementNode)
+                if (relatedNode is ElementNode)
                 {
                     Ctx._("if (stream.DeepSerialize) stream.SerializeArray(\"{0}\", this.{0})",
                         collection.Name);
-                }
-                else
-                {
-                    //if (collection.Type == null) continue;
-                    //if (!AcceptableTypes.ContainsKey(viewModelPropertyData.Type)) continue;
-                    //viewModelPropertyData.IsEnum(data.OwnerData);
-                    //var statement = new CodeSnippetStatement(string.Format("\t\tstream.Serialize{0}(\"{1}\", this.{1});", AcceptableTypes[viewModelPropertyData.Type], viewModelPropertyData.Name));
-                    //writeMethod.Statements.Add(statement);
-
-                    //var dstatement = new CodeSnippetStatement(string.Format("\t\tthis.{0} = stream.Deserialize{1}(\"{0}\");", viewModelPropertyData.Name, AcceptableTypes[viewModelPropertyData.Type]));
-                    //readMethod.Statements.Add(dstatement);
                 }
             }
         }
@@ -395,11 +350,9 @@ namespace uFrame.MVVM.Templates
             //base.FillCommands(list);
             foreach (var commandChildItem in Ctx.Data.LocalCommands)
             {
-                bool hasArgument = (!string.IsNullOrEmpty(commandChildItem.RelatedType) && !commandChildItem.RelatedType.Contains("Void"));
-
                 Ctx._("list.Add(new ViewModelCommandInfo(\"{0}\", {0}) {{ ParameterType = typeof({1}) }})",
                     commandChildItem.Name,
-                    !hasArgument ? "void" : commandChildItem.RelatedTypeName
+                    !commandChildItem.HasArgument ? "void" : commandChildItem.RelatedTypeName
                     );
             }
 
@@ -442,23 +395,21 @@ namespace uFrame.MVVM.Templates
             var computed = Ctx.ItemAs<ComputedPropertyNode>();
             foreach (var item in computed.InputsFrom<PropertiesChildItem>())
             {
-                //if (!computed.SubProperties.Any())
-                //{
-                //    Ctx._("yield return {0}", item.Name.AsSubscribableProperty());
-                //    continue;
-                //}
+                if (!computed.SubProperties.Any())
+                {
+                    Ctx._("yield return {0}", item.Name.AsSubscribableProperty());
+                    continue;
+                }
 
                 var relatedNode = item.RelatedTypeNode;
-                if (relatedNode != null)
+                if (relatedNode == null) continue;
+
+                Ctx._("{0}.Take(1).Subscribe(_ => Reset{1}())", item.Name.AsSubscribableProperty(), computed.Name);
+                var conditionStatements = Ctx._if("{0}.Value != null", item.Name.AsSubscribableProperty()).TrueStatements;
+                foreach (var p in computed.SubProperties.Where(p => p.SourceItem.Node == relatedNode))
                 {
-                    Ctx._("{0}.Take(1).Subscribe(_ => Reset{1}())", item.Name.AsSubscribableProperty(), computed.Name);
-                    var conditionStatements = Ctx._if("{0}.Value != null", item.Name.AsSubscribableProperty())
-                        .TrueStatements;
-                    //foreach (var p in computed.SubProperties.Where(p => p.SourceItem.Node == relatedNode))
-                    //{
-                    //    conditionStatements._("yield return {0}.Value.{1}", item.Name.AsSubscribableProperty(),
-                    //        p.Name.AsSubscribableProperty());
-                    //}
+                    conditionStatements._("yield return {0}.Value.{1}", item.Name.AsSubscribableProperty(),
+                        p.Name.AsSubscribableProperty());
                 }
             }
             foreach (var item in computed.InputsFrom<ComputedPropertyNode>())
@@ -486,7 +437,7 @@ namespace uFrame.MVVM.Templates
 
         //[TemplateMethod(TemplateLocation.Both, AutoFill = AutoFillType.NameOnly, NameFormat = "Compute{0}")]
         [ForEach("ComputedProperties"), GenerateMethod]
-        public virtual Boolean Compute_Name_()
+        public virtual bool Compute_Name_()
         {
             var type = Ctx.ItemAs<ComputedPropertyNode>().RelatedTypeName;
             Ctx.SetType(type);

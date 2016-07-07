@@ -9,21 +9,18 @@ namespace uFrame.MVVM.Templates
     [NamespacesFromItems]
     public partial class SceneSettingsTemplate : IClassTemplate<SceneTypeNode>, ITemplateCustomFilename
     {
-        public TemplateContext<SceneTypeNode> Ctx { get; set;}
+        public TemplateContext<SceneTypeNode> Ctx { get; set; }
 
         public string Filename
         {
             get
             {
-                if(Ctx.Data.Name == null)
+                if (Ctx.Data.Name == null)
                 {
                     throw new Exception(Ctx.Data.Name + " Graph name is empty");
                 }
-                if(Ctx.IsDesignerFile)
-                {
-                    return Path2.Combine("ScenesSettings.designer", Ctx.Data.Name + "Setting.designer.cs");
-                }
-                return Path2.Combine("ScenesSettings", Ctx.Data.Name + "Setting.cs");
+                return Ctx.IsDesignerFile ? Path2.Combine(Ctx.Data.Graph.Name, "SceneSettings.designer.cs")
+                                          : Path2.Combine(Ctx.Data.Graph.Name + "/ScenesSettings", Ctx.Data.Name + "Setting.cs");
             }
         }
 
@@ -34,11 +31,9 @@ namespace uFrame.MVVM.Templates
 
         public void TemplateSetup()
         {
-            if(Ctx.IsDesignerFile)
-            {
-                Ctx.CurrentDeclaration.BaseTypes.Clear();
-                Ctx.SetBaseType("SceneSettings<{0}>", Ctx.Data.Name);
-            }
+            if (!Ctx.IsDesignerFile) return;
+            Ctx.CurrentDeclaration.BaseTypes.Clear();
+            Ctx.SetBaseType("SceneSettings<{0}>", Ctx.Data.Name);
         }
     }
 
@@ -46,7 +41,7 @@ namespace uFrame.MVVM.Templates
     [RequiresNamespace("uFrame.Kernel.Serialization")]
     public partial class SceneSettingsTemplate
     {
-        
+
     }
 }
 

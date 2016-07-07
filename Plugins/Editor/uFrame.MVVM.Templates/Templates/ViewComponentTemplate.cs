@@ -1,17 +1,12 @@
 ﻿using System;
 using System.CodeDom;
-using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using uFrame.Kernel;
 using uFrame.Editor.Compiling.CodeGen;
-using uFrame.Editor.Compiling.CommonNodes;
 using uFrame.Editor.Configurations;
 using uFrame.Editor.Core;
 using uFrame.Editor.Graphs.Data;
-using uFrame.Kernel.Serialization;
 using uFrame.MVVM.ViewModels;
-using uFrame.MVVM.Attributes;
 using uFrame.MVVM.Views;
 
 namespace uFrame.MVVM.Templates
@@ -29,11 +24,8 @@ namespace uFrame.MVVM.Templates
                 {
                     throw new Exception(Ctx.Data.Name + " Graph name is empty");
                 }
-                if (Ctx.IsDesignerFile)
-                {
-                    return Path2.Combine("ViewComponents.designer", Ctx.Data.Name + ".designer.cs");
-                }
-                return Path2.Combine("ViewComponents", Ctx.Data.Name + ".cs");
+                return Ctx.IsDesignerFile ? Path2.Combine(Ctx.Data.Graph.Name, "ViewComponents.designer.cs")
+                                          : Path2.Combine(Ctx.Data.Graph.Name + "/ViewComponents", Ctx.Data.Name + ".cs");
             }
         }
 
@@ -96,7 +88,7 @@ namespace uFrame.MVVM.Templates
             get
             {
                 return Ctx.Data.View.Element.InheritedCommandsWithLocal
-                          .Where(p => !string.IsNullOrEmpty(p.RelatedTypeName) && !p.RelatedTypeName.Contains("Void") && p.OutputCommand == null);
+                          .Where(p => ((CommandsChildItem)p).HasArgument && p.OutputCommand == null);
             }
         }
 
@@ -105,7 +97,7 @@ namespace uFrame.MVVM.Templates
             get
             {
                 return Ctx.Data.View.Element.InheritedCommandsWithLocal
-                            .Where(p => string.IsNullOrEmpty(p.RelatedTypeName) || p.RelatedTypeName.Contains("Void"));
+                            .Where(p => !((CommandsChildItem)p).HasArgument);
             }
         }
 

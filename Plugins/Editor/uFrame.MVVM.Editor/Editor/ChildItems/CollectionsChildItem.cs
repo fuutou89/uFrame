@@ -17,8 +17,7 @@ namespace uFrame.MVVM
 
         public override bool CanOutputTo(IConnectable input)
         {
-            if (this.OutputTo<IClassTypeNode>() != null) return false;
-            return base.CanOutputTo(input);
+            return this.OutputTo<IClassTypeNode>() == null && base.CanOutputTo(input);
         }
 
         public override string DefaultTypeName

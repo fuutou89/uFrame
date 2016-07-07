@@ -25,9 +25,9 @@ namespace uFrame.MVVM.Templates
                 }
                 if(Ctx.IsDesignerFile)
                 {
-                    return Path2.Combine("Controllers.designer", Ctx.Data.Name + "Controller.designer.cs");
+                    return Path2.Combine(Ctx.Data.Graph.Name + "/Controllers.designer", Ctx.Data.Name + "Controller.designer.cs");
                 }
-                return Path2.Combine("Controllers", Ctx.Data.Name + "Controller.cs");
+                return Path2.Combine(Ctx.Data.Graph.Name + "/Controllers", Ctx.Data.Name + "Controller.cs");
             }
         }
 
@@ -42,13 +42,15 @@ namespace uFrame.MVVM.Templates
 
     public partial class ControllerTemplate
     {
+
+
         public IEnumerable<ITypedItem> CommandsWithoutArgs
         {
-            get { return Ctx.Data.AllCommandHandlers.Where(p => string.IsNullOrEmpty(p.RelatedTypeName) || p.RelatedTypeName.Contains("Void")); }
+            get { return Ctx.Data.AllCommandHandlers.Where(p => !((CommandsChildItem)p).HasArgument); }
         }
         public IEnumerable<ITypedItem> CommandsWithArgs
         {
-            get { return Ctx.Data.AllCommandHandlers.Where(p => !string.IsNullOrEmpty(p.RelatedTypeName) && !p.RelatedTypeName.Contains("Void")); }
+            get { return Ctx.Data.AllCommandHandlers.Where(p => ((CommandsChildItem)p).HasArgument); }
         }
         public IEnumerable<InstancesReference> Instances
         {
@@ -56,9 +58,7 @@ namespace uFrame.MVVM.Templates
             {
                 if (Ctx.Data.BaseNode == null)
                 {
-                    foreach (
-                        var item in Ctx.Data.Graph.NodeItems.OfType<SubSystemNode>().SelectMany(p => p.Instances).Distinct()
-                        )
+                    foreach (var item in Ctx.Data.Graph.NodeItems.OfType<SubSystemNode>().SelectMany(p => p.Instances).Distinct())
                     {
                         yield return item;
                     }
@@ -68,8 +68,6 @@ namespace uFrame.MVVM.Templates
 
         public string NameAsViewModel { get { return Ctx.Data.Name.AsViewModel(); } }
 
-
-        //[TemplateProperty(TemplateLocation.DesignerFile, AutoFill = AutoFillType.NameAndTypeWithBackingField, NameFormat = "{0}ViewModelManager")]
         [GenerateProperty, WithField]
         public IViewModelManager _Name_ViewModelManager
         {
@@ -86,17 +84,12 @@ namespace uFrame.MVVM.Templates
         {
             get
             {
-
                 Ctx.CurrentProperty.CustomAttributes.Add(new CodeAttributeDeclaration(
                     typeof(InjectAttribute).ToCodeReference(),
                     new CodeAttributeArgument(new CodePrimitiveExpression(Ctx.ItemAs<InstancesReference>().Name))
                     ));
 
                 return null;
-            }
-            set
-            {
-
             }
         }
 
@@ -105,20 +98,6 @@ namespace uFrame.MVVM.Templates
         {
             base.Setup();
             Ctx._comment("This is called when the controller is created");
-            if (Ctx.IsDesignerFile)
-            {
-                //foreach (var command in Ctx.Data.AllCommandHandlers)
-                //{
-                //    Ctx._("this.OnEvent<{0}Command>().Subscribe(this.{0}Handler)", command.Name);
-                //}
-                //foreach (var command in Ctx.Data.Handlers.Where(p => !(p.SourceItem is CommandsChildItem)))
-                //{
-                //    Ctx._("this.OnEvent<{0}>().Subscribe(this.{0}Handler)", command.Name);
-                //}
-
-                //Ctx._("this.EventAggregator.OnViewModelCreated<{0}>().Subscribe(vm => this.Initialize{1}(vm as {0}));", Ctx.Data.Name.AsViewModel(), Ctx.Data.Name);
-                //Ctx._("this.EventAggregator.OnViewModelDestroyed<{0}>().Subscribe(this.DisposingViewModel);", Ctx.Data.Name.AsViewModel());
-            }
         }
 
         [GenerateProperty]
@@ -158,15 +137,12 @@ namespace uFrame.MVVM.Templates
         {
             Ctx._comment("This is called when a {0} is created", NameAsViewModel);
             Ctx.CurrentMethod.Parameters[0].Type = new CodeTypeReference(NameAsViewModel);
-            if (Ctx.IsDesignerFile)
+            if (!Ctx.IsDesignerFile) return;
+            foreach (var command in Ctx.Data.LocalCommands)
             {
-                foreach (var command in Ctx.Data.LocalCommands)
-                {
-                    Ctx._("viewModel.{0}.Action = this.{0}Handler", command.Name);
-                }
-                Ctx._("{0}ViewModelManager.Add(viewModel)", Ctx.Data.Name);
+                Ctx._("viewModel.{0}.Action = this.{0}Handler", command.Name);
             }
-
+            Ctx._("{0}ViewModelManager.Add(viewModel)", Ctx.Data.Name);
         }
 
         [GenerateMethod(TemplateLocation.DesignerFile, true)]
@@ -195,30 +171,25 @@ namespace uFrame.MVVM.Templates
                 Ctx.CurrentMethod.Parameters[0].Type = new CodeTypeReference(Ctx.Item.Name);
             }
 
-            if (Ctx.IsDesignerFile)
+            if (!Ctx.IsDesignerFile) return;
+            if (!(Ctx.Item is CommandsChildItem)) return;
+
+            var c = Ctx.TypedItem;
+            if (Ctx.ItemAs<CommandsChildItem>().OutputCommand != null)
             {
-                if (Ctx.Item is CommandsChildItem)
-                {
-                    var c = Ctx.TypedItem;
-                    if (Ctx.ItemAs<CommandsChildItem>().OutputCommand != null)
-                    {
-                        Ctx._("this.{0}(command.Sender as {1}, command)", c.Name, c.Node.Name.AsViewModel());
-
-                    }
-                    else if (string.IsNullOrEmpty(c.RelatedType) || c.RelatedType.Contains("Void"))
-                    {
-                        Ctx._("this.{0}(command.Sender as {1})", c.Name, c.Node.Name.AsViewModel());
-                    }
-                    else
-                    {
-                        Ctx._("this.{0}(command.Sender as {1}, command.Argument)", c.Name, c.Node.Name.AsViewModel());
-                    }
-                    if (Ctx.ItemAs<CommandsChildItem>().Publish)
-                    {
-                        Ctx._("this.Publish(command)");
-                    }
-                }
-
+                Ctx._("this.{0}(command.Sender as {1}, command)", c.Name, c.Node.Name.AsViewModel());
+            }
+            else if (string.IsNullOrEmpty(c.RelatedType) || c.RelatedType.Contains("Void"))
+            {
+                Ctx._("this.{0}(command.Sender as {1})", c.Name, c.Node.Name.AsViewModel());
+            }
+            else
+            {
+                Ctx._("this.{0}(command.Sender as {1}, command.Argument)", c.Name, c.Node.Name.AsViewModel());
+            }
+            if (Ctx.ItemAs<CommandsChildItem>().Publish)
+            {
+                Ctx._("this.Publish(command)");
             }
         }
 
@@ -227,7 +198,6 @@ namespace uFrame.MVVM.Templates
         {
             _Name2_(viewModel);
             Ctx.CurrentMethod.Parameters[1].Type = new CodeTypeReference(Ctx.TypedItem.RelatedTypeName);
-
         }
     }
 }

@@ -25,9 +25,8 @@ namespace uFrame.MVVM.Templates
         public override void Initialize(UFrameContainer container)
         {
             base.Initialize(container);
-            Debug.Log("---- Initialize MvvmTemplate ----");
             RegisteredTemplateGeneratorsFactory.RegisterTemplate<SubSystemNode, SystemLoaderTemplate>();
-            RegisteredTemplateGeneratorsFactory.RegisterTemplate<SubSystemNode, SystemLoaderPartialTemplate>();
+            //RegisteredTemplateGeneratorsFactory.RegisterTemplate<SubSystemNode, SystemLoaderPartialTemplate>();
             RegisteredTemplateGeneratorsFactory.RegisterTemplate<SceneTypeNode, SceneTemplate>();
             RegisteredTemplateGeneratorsFactory.RegisterTemplate<SceneTypeNode, SceneLoaderTemplate>();
             RegisteredTemplateGeneratorsFactory.RegisterTemplate<SceneTypeNode, SceneSettingsTemplate>();
@@ -60,6 +59,64 @@ namespace uFrame.MVVM.Templates
             container.AddBindingMethod(typeof(ViewBindings), "BindCollection", _ => _ is CollectionsChildItem)
                      .SetNameFormat("{0} Collection Changed")
                      .SetDescription("Collection bindings bind to a collection giving you two methods, {CollectionName}Added, and {CollectionName}Removed, override these methods to execute something when the collection is modified.");
+
+            container.AddBindingMethod(typeof(ViewBindings), "BindCommandExecuted", _ => _ is CommandsChildItem)
+                     .SetNameFormat("{0} Executed")
+                     .SetDescription("The executed binding is for listening to when a command is invoked on a view.  It will provide you with a method in the format {CommandName}Executed({CommandClass} data)")
+                     .ImplementWith(args =>
+                     {
+                         args.Method.Parameters[0].Name = "command";
+                         var commandItem = args.SourceItem as CommandsChildItem;
+                         args.Method.Parameters[0].Type = commandItem.ClassName.ToCodeReference();
+                     });
+
+            container.AddBindingMethod(typeof(ViewBindings), "BindToViewCollection", _ => _ is CollectionsChildItem)
+                     .SetNameFormat("{0} View Collection Changed")
+                     .SetDescription("The view collection changed binding automatically creates views for each element's viewmodel when created.")
+                     .ImplementWith(args =>
+                     {
+                         if (args.Method.Name.EndsWith("CreateView"))
+                         {
+                             args.Method.Parameters[0].Name = "viewModel";
+                             args.Method._("return InstantiateView(viewModel)");
+                         }
+                         else
+                         {
+                             args.Method.Parameters[0].Name = "view";
+                         }
+                     });
+
+            container.AddBindingMethod(typeof(ViewBindings), "BindStateProperty", _ => _ is PropertiesChildItem && _.RelatedNode() is StateMachineNode)
+                     .SetNameFormat("{0} State Changed")
+                     .SetDescription("Binding to a state property creates methods for each state, and in the designer code will property call the each state's method when it changes.")
+                     .ImplementWith(args =>
+                     {
+                         args.Method.Parameters[0].Type = typeof(State).ToCodeReference();
+                         var sourceItem = args.SourceItem as ITypedItem;
+                         var stateMachine = sourceItem.RelatedNode() as StateMachineNode;
+                         if (args.IsDesignerFile)
+                         {
+                             foreach (var state in stateMachine.States)
+                             {
+                                 var method = new CodeMemberMethod()
+                                 {
+                                     Name = "On" + state.Name,
+                                     Attributes = MemberAttributes.Public
+                                 };
+                                 var conditionStatement =
+                                     new CodeConditionStatement(
+                                         new CodeSnippetExpression(string.Format("arg1 is {0}", state.Name)));
+                                 conditionStatement.TrueStatements.Add(
+                                     new CodeMethodInvokeExpression(new CodeThisReferenceExpression(), method.Name));
+
+                                 args.Method.Statements.Add(conditionStatement);
+                                 args.Decleration.Members.Add(method);
+
+                             }
+
+                         }
+                         args.Method.Parameters[0].Type = "uFrame.MVVM.StateMachine.State".ToCodeReference();
+                     });
         }
     }
 

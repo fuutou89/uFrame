@@ -1,15 +1,11 @@
 ﻿using System;
 using System.CodeDom;
 using UnityEngine;
-using System.Collections.Generic;
 using System.Linq;
-using uFrame.Kernel;
 using uFrame.Editor.Compiling.CodeGen;
-using uFrame.Editor.Compiling.CommonNodes;
 using uFrame.Editor.Configurations;
 using uFrame.Editor.Core;
 using uFrame.Editor.Graphs.Data;
-using uFrame.Kernel.Serialization;
 using uFrame.MVVM.ViewModels;
 using uFrame.MVVM.Attributes;
 using uFrame.MVVM.Views;
@@ -29,11 +25,8 @@ namespace uFrame.MVVM.Templates
                 {
                     throw new Exception(Ctx.Data.Name + " Graph name is empty");
                 }
-                if(Ctx.IsDesignerFile)
-                {
-                    return Path2.Combine("Views.designer", Ctx.Data.Name + ".designer.cs");
-                }
-                return Path2.Combine("Views", Ctx.Data.Name + ".cs");
+                return Ctx.IsDesignerFile ? Path2.Combine(Ctx.Data.Graph.Name + "/Views.designer", Ctx.Data.Name + ".designer.cs")
+                                          : Path2.Combine(Ctx.Data.Graph.Name + "/Views", Ctx.Data.Name + ".cs");
             }
         }
 
@@ -61,7 +54,7 @@ namespace uFrame.MVVM.Templates
                 Ctx.SetBaseType(typeof(ViewBase));
             }
             // Add namespaces based on the types used for properties
-            //Ctx.AddIterator("ViewComponentProperty", _ => _.OutputsTo<ViewComponentNode>());
+            Ctx.AddIterator("ViewComponentProperty", _ => _.OutputsTo<ViewComponentNode>());
             // Add the iterators for template method/property
             if (Ctx.Data.BaseNode == null)
             {
@@ -90,27 +83,25 @@ namespace uFrame.MVVM.Templates
             Ctx.AddCondition("ViewModelProperty", _ => !_.IsDerivedOnly);
             Ctx.AddCondition("DefaultIdentifier", _ => !_.IsDerivedOnly);
             Ctx.AddCondition("ViewModelType", _ => !_.IsDerivedOnly);
-            if (!Ctx.IsDesignerFile)
-            {
-                // For each binding lets do some magic
-                foreach (var item in Ctx.Data.Bindings)
-                {
-                    // Cast the source of our binding (ie: Property, Collection, Command..etc)
-                    var source = item.SourceItem as ITypedItem;
-                    if (source == null) continue;
+            if (Ctx.IsDesignerFile) return;
 
-                    // TODO: Binding Method Generate
-                    //// Grab the uFrame Binding Type
-                    var bindingType = item.BindingType;
-                    //// Create the binding signature based on the Method Info
-                    bindingType.CreateBindingSignature(new CreateBindingSignatureParams(
-                        Ctx.CurrentDeclaration, _ => source.RelatedTypeName.ToCodeReference(), Ctx.Data, source)
-                    {
-                        Ctx = Ctx,
-                        BindingsReference = item,
-                        DontImplement = true
-                    });
-                }
+            // For each binding lets do some magic
+            foreach (var item in Ctx.Data.Bindings)
+            {
+                // Cast the source of our binding (ie: Property, Collection, Command..etc)
+                var source = item.SourceItem as ITypedItem;
+                if (source == null) continue;
+
+                // Grab the uFrame Binding Type
+                var bindingType = item.BindingType;
+                // Create the binding signature based on the Method Info
+                bindingType.CreateBindingSignature(new CreateBindingSignatureParams(
+                    Ctx.CurrentDeclaration, _ => source.RelatedTypeName.ToCodeReference(), Ctx.Data, source)
+                {
+                    Ctx = Ctx,
+                    BindingsReference = item,
+                    DontImplement = true
+                });
             }
         }
     }
@@ -162,15 +153,15 @@ namespace uFrame.MVVM.Templates
         }
 
         [GenerateMethod("Calculate{0}", TemplateLocation.Both, true)]
-        protected virtual String CalculateProperty()
+        protected virtual string CalculateProperty()
         {
             Ctx.SetType(Ctx.TypedItem.RelatedTypeName);
             Ctx._("return default({0})", Ctx.TypedItem.RelatedTypeName);
-            return default(String);
+            return default(string);
         }
 
         [GenerateMethod("Get{0}Observable", TemplateLocation.DesignerFile, false)]
-        protected virtual UniRx.IObservable<String> GetPropertyObservable()
+        protected virtual UniRx.IObservable<string> GetPropertyObservable()
         {
             this.Ctx.SetTypeArgument(Ctx.TypedItem.RelatedTypeName);
             Ctx._("return this.UpdateAsObservable().Select(p=>Calculate{0}())", Ctx.Item.Name);
@@ -271,8 +262,7 @@ namespace uFrame.MVVM.Templates
 
             Ctx.CurrentMethod.invoke_base(true);
 
-            // TODO : need time to bring binding method back
-            //// For each binding lets do some magic
+            // For each binding lets do some magic
             foreach (var item in Ctx.Data.Bindings)
             {
                 // Cast the source of our binding (ie: Property, Collection, Command..etc)
@@ -346,6 +336,21 @@ namespace uFrame.MVVM.Templates
             Ctx.CurrentMethod.Parameters[0].Type = new CodeTypeReference(Ctx.TypedItem.RelatedTypeName);
             Ctx._("{0}.{1}.OnNext(new {1}Command() {{ Sender = {0}, Argument = arg }})", Ctx.Data.Element.Name,
                 Ctx.Item.Name);
+        }
+
+        [GenerateProperty("{0}")]
+        public virtual _ITEMTYPE_ ViewComponentProperty
+        {
+            get
+            {
+
+                var field = Ctx.CurrentDeclaration._private_(Ctx.Item.Name, Ctx.Item.Name.AsField());
+                field.CustomAttributes.Add(new CodeAttributeDeclaration(typeof(SerializeField).ToCodeReference()));
+                Ctx.CurrentProperty.Type = field.Type;
+                Ctx._("return {0} ?? ({0} = this.gameObject.EnsureComponent<{1}>())", field.Name, Ctx.Item.Name);
+                return null;
+            }
+
         }
     }
 }

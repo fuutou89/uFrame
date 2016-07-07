@@ -1,7 +1,5 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
 using System.Linq;
-using System.Collections;
 using uFrame.MVVM.StateMachines;
 using uFrame.Editor.Compiling.CodeGen;
 using uFrame.Editor.Configurations;
@@ -23,7 +21,7 @@ namespace uFrame.MVVM.Templates
                 {
                     throw new Exception(Ctx.Data.Name + " Graph name is empty");
                 }
-                return Path2.Combine("StateMachine.designer", Ctx.Data.Name + "StateMachine.designer.cs");
+                return Path2.Combine(Ctx.Data.Graph.Name + "/StateMachines.designer", Ctx.Data.Name + "StateMachine.designer.cs");
             }
         }
 

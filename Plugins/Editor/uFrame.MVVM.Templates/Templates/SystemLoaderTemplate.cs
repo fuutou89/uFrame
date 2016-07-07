@@ -4,12 +4,15 @@ using System.Linq;
 using uFrame.Kernel;
 using uFrame.Editor.Compiling.CodeGen;
 using uFrame.Editor.Configurations;
+using uFrame.Editor.Core;
+using uFrame.Editor.Graphs.Data;
 using uFrame.IOC;
 using uFrame.MVVM.ViewModels;
+using UnityEngine;
 
 namespace uFrame.MVVM.Templates
 {
-    [TemplateClass(TemplateLocation.Both, "{0}Loader"), AsPartial]
+    [TemplateClass(TemplateLocation.Both, "{0}Loader")]
     [AutoNamespaces]
     [NamespacesFromItems]
     public partial class SystemLoaderTemplate : IClassTemplate<SubSystemNode>, ITemplateCustomFilename
@@ -24,11 +27,8 @@ namespace uFrame.MVVM.Templates
                 {
                     throw new Exception(Ctx.Data.Name + " Graph name is empty");
                 }
-                if (Ctx.IsDesignerFile)
-                {
-                    return Path2.Combine("Systems.designer", Ctx.Data.Name + "Loader.designer.cs");
-                }
-                return Path2.Combine("Systems", Ctx.Data.Name + "Loader.cs");
+                return Ctx.IsDesignerFile ? Path2.Combine(Ctx.Data.Graph.Name + "/SystemLoaders.designer", Ctx.Data.Name + "Loader.designer.cs")
+                                          : Path2.Combine(Ctx.Data.Graph.Name + "/SystemsLoaders", Ctx.Data.Name + "Loader.cs");
             }
         }
 
@@ -39,10 +39,19 @@ namespace uFrame.MVVM.Templates
 
         public void TemplateSetup()
         {
-            if (!Ctx.IsDesignerFile)
+            foreach (var property in Ctx.Data.PersistedItems.OfType<ITypedItem>())
             {
-                Ctx.CurrentDeclaration.BaseTypes.Clear();
+                var type = InvertApplication.FindTypeByNameExternal(property.RelatedTypeName);
+                if (type == null) continue;
+
+                Ctx.TryAddNamespace(type.Namespace);
             }
+
+            if (Ctx.IsDesignerFile)
+            {
+                Ctx.CurrentDeclaration.BaseTypes.Add(typeof(MonoBehaviour).ToCodeReference());
+            }
+
             Ctx.AddIterator("ControllerProperty", node => node.Children.OfType<ElementNode>());
         }
 
@@ -65,20 +74,17 @@ namespace uFrame.MVVM.Templates
             if (!Ctx.IsDesignerFile)
                 Ctx.CurrentMethod.invoke_base();
 
-            if (Ctx.IsDesignerFile)
-            {
-                foreach (var item in Ctx.Data.Children.OfType<ElementNode>().Distinct())
-                {
-                    Ctx._("Container.RegisterViewModelManager<{0}>(new ViewModelManager<{0}>())",
-                        item.Name.AsViewModel());
-                    Ctx._("Container.RegisterController<{0}>({0})", item.Name.AsController());
-                }
+            if (!Ctx.IsDesignerFile) return;
 
-                foreach (var item in Ctx.Data.Instances.Distinct())
-                {
-                    Ctx._("Container.RegisterViewModel<{0}>({1}, \"{1}\")", item.SourceItem.Name.AsViewModel(),
-                        item.Name, item.Name);
-                }
+            foreach (var item in Ctx.Data.Children.OfType<ElementNode>().Distinct())
+            {
+                Ctx._("Container.RegisterViewModelManager<{0}>(new ViewModelManager<{0}>())", item.Name.AsViewModel());
+                Ctx._("Container.RegisterController<{0}>({0})", item.Name.AsController());
+            }
+
+            foreach (var item in Ctx.Data.Instances.Distinct())
+            {
+                Ctx._("Container.RegisterViewModel<{0}>({1}, \"{1}\")", item.SourceItem.Name.AsViewModel(), item.Name, item.Name);
             }
         }
 
@@ -91,7 +97,7 @@ namespace uFrame.MVVM.Templates
                 Ctx.SetType(instance.SourceItem.Name.AsViewModel());
 
                 Ctx.AddAttribute(typeof(InjectAttribute))
-                    .Arguments.Add(new CodeAttributeArgument(new CodePrimitiveExpression(instance.Name)));
+                   .Arguments.Add(new CodeAttributeArgument(new CodePrimitiveExpression(instance.Name)));
 
                 Ctx._if("this.{0} == null", instance.Name.AsField())
                     .TrueStatements._("this.{0} = this.CreateViewModel<{1}>( \"{2}\")", instance.Name.AsField(),
@@ -101,10 +107,6 @@ namespace uFrame.MVVM.Templates
                 Ctx._("return {0}", instance.Name.AsField());
 
                 return null;
-            }
-            set
-            {
-                //_LocalPlayer = value;
             }
         }
 

@@ -25,11 +25,8 @@ namespace uFrame.MVVM.Templates
                 {
                     throw new Exception(Ctx.Data.Name + " Graph name is empty");
                 }
-                if(Ctx.IsDesignerFile)
-                {
-                    return Path2.Combine("Services.designer", Ctx.Data.Name + ".designer.cs");
-                }
-                return Path2.Combine("Service", Ctx.Data.Name + ".cs");
+                return Ctx.IsDesignerFile ? Path2.Combine(Ctx.Data.Graph.Name, "Services.designer.cs") 
+                                          : Path2.Combine(Ctx.Data.Graph.Name + "/Services", Ctx.Data.Name + ".cs");
             }
         }
 
@@ -52,14 +49,11 @@ namespace uFrame.MVVM.Templates
     [RequiresNamespace("uFrame.MVVM")]
     public partial class ServiceTemplate
     {
-        [GenerateMethod(TemplateLocation.Both, true), AsOverride]
+        [GenerateMethod, AsOverride, Inside(TemplateLocation.Both)]
         public void Setup()
         {
             Ctx.CurrentMethod.invoke_base();
-            Ctx.CurrentMethod.Comments.Add(new CodeCommentStatement("<summary>", true));
-            Ctx.CurrentMethod.Comments.Add(new CodeCommentStatement("This method is invoked whenever the kernel is loading", true));
-            Ctx.CurrentMethod.Comments.Add(new CodeCommentStatement("Since the kernel lives throughout the entire lifecycle  of the game, this will only be invoked once.", true));
-            Ctx.CurrentMethod.Comments.Add(new CodeCommentStatement("</summary>", true));
+
             if(Ctx.IsDesignerFile)
             {
                 foreach(var command in Ctx.Data.Handlers.Select(p => p.SourceItemObject).OfType<IClassTypeNode>())
@@ -69,7 +63,10 @@ namespace uFrame.MVVM.Templates
             }
             else
             {
-                Ctx.CurrentMethod.invoke_base();
+                Ctx.CurrentMethod.Comments.Add(new CodeCommentStatement("<summary>", true));
+                Ctx.CurrentMethod.Comments.Add(new CodeCommentStatement("This method is invoked whenever the kernel is loading", true));
+                Ctx.CurrentMethod.Comments.Add(new CodeCommentStatement("Since the kernel lives throughout the entire lifecycle  of the game, this will only be invoked once.", true));
+                Ctx.CurrentMethod.Comments.Add(new CodeCommentStatement("</summary>", true));
                 Ctx._comment("Use the line below to subscribe to events");
                 Ctx._comment("this.OnEvent<MyEvent>().Subscribe(myEventInstance => {{ TODO }});");
             }
@@ -80,11 +77,12 @@ namespace uFrame.MVVM.Templates
             get{ return Ctx.Data.Handlers.Select(p => p.SourceItemObject); }
         }
 
-        [ForEach("Handlers"), GenerateMethod(CallBase = true), Inside(TemplateLocation.Both)]
+        [ForEach("Handlers"), GenerateMethod, Inside(TemplateLocation.Both)]
         public virtual void _Name_Handler(ViewModelCommand data)
         {
             Ctx.CurrentMethod.Name = Ctx.Item.Name + "Handler";
             Ctx.CurrentMethod.Parameters[0].Type = new CodeTypeReference(Ctx.ItemAs<IClassTypeNode>().ClassName);
+            if(Ctx.IsDesignerFile) return;
             Ctx._comment("Process the commands information. Also, you can publish new events by using the line below.");
             Ctx._comment("this.Publish(new AnotherEvent())");
 
@@ -92,6 +90,7 @@ namespace uFrame.MVVM.Templates
             Ctx.CurrentMethod.Comments.Add(
                 new CodeCommentStatement(string.Format("This method is executed when using this.Publish(new {0}())", 
                     Ctx.ItemAs<IClassTypeNode>().ClassName)));
+            Ctx.CurrentMethod.Comments.Add(new CodeCommentStatement("</sumarry>", true));
         }
     }
 }

@@ -99,6 +99,14 @@ namespace uFrame.MVVM
             return base.CanOutputTo(input);
         }
 
+        public bool HasArgument
+        {
+            get
+            {
+                return !string.IsNullOrEmpty(this.RelatedTypeName) && !this.RelatedTypeName.Contains("Void");
+            }
+        }
+
         public override void Validate(List<ErrorInfo> errors)
         {
             base.Validate(errors);

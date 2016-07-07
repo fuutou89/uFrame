@@ -7,6 +7,7 @@ using UnityEngine;
 using uFrame.Attributes;
 using uFrame.IOC;
 using UniRx;
+using UnityEngine.SceneManagement;
 
 namespace uFrame.Kernel
 {
@@ -22,7 +23,7 @@ namespace uFrame.Kernel
 
         public static IEnumerator InstantiateSceneAsyncAdditively(string sceneName)
         {
-            var asyncOperation = Application.LoadLevelAdditiveAsync(sceneName);
+            var asyncOperation = SceneManager.LoadSceneAsync(sceneName); //Application.LoadLevelAdditiveAsync(sceneName);
             float lastProgress = -1;
             while (!asyncOperation.isDone)
             {

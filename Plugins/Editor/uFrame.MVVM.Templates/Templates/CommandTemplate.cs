@@ -12,7 +12,7 @@ namespace uFrame.MVVM.Templates
     [TemplateClass(TemplateLocation.DesignerFile, ClassNameFormat = "{0}Command"), AsPartial]
     [AutoNamespaces]
     [NamespacesFromItems]
-    public partial class CommandTemplate : ViewModelCommand, IClassTemplate<CommandNode>, ITemplateCustomFilename 
+    public partial class CommandTemplate :IClassTemplate<CommandNode>, ITemplateCustomFilename 
     {
         public TemplateContext<CommandNode> Ctx { get; set; }
 
@@ -24,7 +24,7 @@ namespace uFrame.MVVM.Templates
                 {
                     throw new Exception(Ctx.Data.Name + " Graph name is empty");
                 }
-                return Path2.Combine("Commands.designer", Ctx.Data.Name + "Command.designer.cs");
+                return Path2.Combine(Ctx.Data.Node.Graph.Name, "ViewModelCommands.designer.cs");
             }
         }
 
@@ -35,9 +35,6 @@ namespace uFrame.MVVM.Templates
 
         public void TemplateSetup()
         {
-            //Ctx.CurrentDeclaration.BaseTypes.Clear();
-            //Ctx.CurrentDeclaration.BaseTypes.Add(new CodeTypeReference("ViewModelCommand"));
-
             foreach (var property in Ctx.Data.ChildItemsWithInherited.OfType<ITypedItem>())
             {
                 var type = InvertApplication.FindTypeByNameExternal(property.RelatedTypeName);
@@ -49,11 +46,13 @@ namespace uFrame.MVVM.Templates
         }
     }
 
+    [ForceBaseType(typeof(ViewModelCommand))]
     [RequiresNamespace("UnityEngine")]
     [RequiresNamespace("uFrame.Kernel")]
     [RequiresNamespace("uFrame.MVVM")]
     [RequiresNamespace("uFrame.MVVM.Bindings")]
     [RequiresNamespace("uFrame.Kernel.Serialization")]
+    [RequiresNamespace("uFrame.MVVM.ViewModels")]
     public partial class CommandTemplate
     {
         [ForEach("Properties"), GenerateProperty, WithField]

@@ -2,7 +2,7 @@ using System;
 
 namespace uFrame.Editor.Graphs.Data
 {
-    [Obsolete]
+    //[Obsolete]
     public interface IClassTypeNode : IDiagramNodeItem
     {
         string ClassName { get; }

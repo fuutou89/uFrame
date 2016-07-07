@@ -23,11 +23,8 @@ namespace uFrame.MVVM.Templates
                 {
                     throw new Exception(Ctx.Data.Name + " Graph name is empty");
                 }
-                if (Ctx.IsDesignerFile)
-                {
-                    return Path2.Combine("SimpleClasses.designer", Ctx.Data.Name + "designer.cs");
-                }
-                return Path2.Combine("SimpleClasses", Ctx.Data.Name + ".cs");
+                return Ctx.IsDesignerFile ? Path2.Combine(Ctx.Data.Graph.Name, "SimpleClasses.designer.cs") 
+                                          : Path2.Combine(Ctx.Data.Graph.Name + "/SimpleClasses", Ctx.Data.Name + ".cs");
             }
         }
 
