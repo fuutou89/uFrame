@@ -7,14 +7,6 @@ namespace uFrame.MVVM
 
     public class CollectionsChildItem : CollectionsChildItemBase
     {
-        public override Type Type
-        {
-            get
-            {
-                return base.Type ?? typeof(int);
-            }
-        }
-
         public override bool CanOutputTo(IConnectable input)
         {
             return this.OutputTo<IClassTypeNode>() == null && base.CanOutputTo(input);

@@ -27,8 +27,9 @@ namespace uFrame.Editor.Graphs.Data
                 }
                 return SourceItemObject.Name;
             }
-            set { base.Name = value;
-                
+            set 
+            { 
+                base.Name = value;
             }
         }
         [JsonProperty]

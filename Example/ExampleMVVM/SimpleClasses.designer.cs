@@ -14,6 +14,7 @@ namespace Example {
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
+    using uFrame.Json;
     using uFrame.Kernel;
     using uFrame.Kernel.Serialization;
     using uFrame.MVVM;
@@ -43,9 +44,35 @@ namespace Example {
                 _Width = value;
             }
         }
+        
+        public virtual string Serialize() {
+            var jsonObject = new JSONClass();
+            jsonObject.Add("Height", new JSONData(this.Height));
+            jsonObject.Add("Width", new JSONData(this.Width));
+            return jsonObject.ToString();
+        }
+        
+        public virtual void Deserialize(string json) {
+            var node = JSON.Parse(json);
+            if (node["Height"] != null) {
+                this.Height = node["Height"].AsInt;
+            }
+            if (node["Width"] != null) {
+                this.Width = node["Width"].AsInt;
+            }
+        }
     }
     
     public class IntroFinishedEventBase : object {
+        
+        public virtual string Serialize() {
+            var jsonObject = new JSONClass();
+            return jsonObject.ToString();
+        }
+        
+        public virtual void Deserialize(string json) {
+            var node = JSON.Parse(json);
+        }
     }
     
     public class AssetLoadingProgressEventBase : object {
@@ -71,8 +98,34 @@ namespace Example {
                 _Progress = value;
             }
         }
+        
+        public virtual string Serialize() {
+            var jsonObject = new JSONClass();
+            jsonObject.Add("Message", new JSONData(this.Message));
+            jsonObject.Add("Progress", new JSONData(this.Progress));
+            return jsonObject.ToString();
+        }
+        
+        public virtual void Deserialize(string json) {
+            var node = JSON.Parse(json);
+            if (node["Message"] != null) {
+                this.Message = node["Message"].AsString;
+            }
+            if (node["Progress"] != null) {
+                this.Progress = node["Progress"].AsFloat;
+            }
+        }
     }
     
     public class StartAssetLoadingCommandBase : object {
+        
+        public virtual string Serialize() {
+            var jsonObject = new JSONClass();
+            return jsonObject.ToString();
+        }
+        
+        public virtual void Deserialize(string json) {
+            var node = JSON.Parse(json);
+        }
     }
 }

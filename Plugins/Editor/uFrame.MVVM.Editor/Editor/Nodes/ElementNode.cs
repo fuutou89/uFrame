@@ -1,4 +1,5 @@
 using uFrame.Editor.Graphs.Data;
+using uFrame.MVVM.Templates;
 
 namespace uFrame.MVVM
 {
@@ -275,7 +276,12 @@ namespace uFrame.MVVM
 
         public override string TypeName
         {
-            get { return this.Name + "ViewModel"; }
+            get { return this.Name.AsViewModel(); }
+        }
+
+        public override string ClassName
+        {
+            get { return this.Name.AsViewModel(); }
         }
     }
 

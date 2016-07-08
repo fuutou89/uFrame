@@ -22,6 +22,5 @@ namespace uFrame.MVVM.Templates
             }
             return string.Empty;
         }
-
     }
 }

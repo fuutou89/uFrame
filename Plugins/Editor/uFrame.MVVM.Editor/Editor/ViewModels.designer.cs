@@ -65,7 +65,7 @@ namespace uFrame.MVVM {
         
         public override uFrame.Editor.Platform.NodeStyle NodeStyle {
             get {
-                return NodeStyle.Minimalistic;
+                return NodeStyle.Normal;
             }
         }
     }

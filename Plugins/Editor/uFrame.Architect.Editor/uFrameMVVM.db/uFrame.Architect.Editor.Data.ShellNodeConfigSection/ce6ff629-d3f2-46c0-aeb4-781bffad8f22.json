@@ -1,8 +1,8 @@
 {
 	"SectionType":1	, 
-	"IsTyped":false	, 
+	"IsTyped":true	, 
 	"AllowAdding":true	, 
-	"IsEditable":false	, 
+	"IsEditable":true	, 
 	"AllowDuplicates":false	, 
 	"IsAutomatic":false	, 
 	"HasPredefinedOptions":false	, 

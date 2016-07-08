@@ -897,6 +897,12 @@ namespace uFrame.Json
             }
         }
 
+        public virtual string AsString
+        {
+            get { return Value; }
+            set { Value = value; }
+        }
+
         public virtual JSONClass AsObject
         {
             get

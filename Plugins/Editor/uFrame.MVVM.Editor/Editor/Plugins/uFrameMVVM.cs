@@ -47,6 +47,10 @@ namespace uFrame.MVVM
             MVVM.HasSubNode<TypeReferenceNode>();
             SubSystem.HasSubNode<TypeReferenceNode>();
             SubSystem.HasSubNode<EnumNode>();
+            Service.HasSubNode<TypeReferenceNode>();
+            Service.HasSubNode<EnumNode>();
+            Element.HasSubNode<TypeReferenceNode>();
+            Element.HasSubNode<EnumNode>();
 
             uFrameMVVM.BindingTypes = InvertGraphEditor.Container.Instances.Where(p => p.Key.Item1 == typeof(uFrameBindingType)).ToArray();
         }
@@ -155,7 +159,8 @@ namespace uFrame.MVVM
                 sceneLoaderContainer.SetParent(uFrameMVVMKernel.transform);
             }
 
-            var servicesNodes = node.Graph.AllGraphItems.OfType<ServiceNode>();
+            var servicesNodes = InvertApplication.Container.Resolve<WorkspaceService>().CurrentWorkspace.Graphs
+                                                           .SelectMany(g => g.AllGraphItems.OfType<ServiceNode>());
             foreach (var serviceNode in servicesNodes)
             {
                 var type = InvertApplication.FindType(serviceNode.FullName);
@@ -165,7 +170,8 @@ namespace uFrame.MVVM
                 }
             }
 
-            var systemNodes = node.Graph.AllGraphItems.OfType<SubSystemNode>();
+            var systemNodes = InvertApplication.Container.Resolve<WorkspaceService>().CurrentWorkspace.Graphs
+                                               .SelectMany(g => g.AllGraphItems.OfType<SubSystemNode>());
             foreach (var systemNode in systemNodes)
             {
                 var type = InvertApplication.FindType(string.Format("{0}Loader", systemNode.FullName));

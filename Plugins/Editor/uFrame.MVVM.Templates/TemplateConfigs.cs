@@ -43,18 +43,24 @@ namespace uFrame.MVVM.Templates
             RegisteredTemplateGeneratorsFactory.RegisterTemplate<ViewComponentNode, ViewComponentTemplate>();
 
             // Register bindable methods
-            container.AddBindingMethod(typeof(ViewBindings), "BindProperty", _ => _ is PropertiesChildItem || _ is ComputedPropertyNode)
-                     .SetNameFormat("{0} Changed")
-                     .ImplementWith(args =>
-                     {
-                         var sourceItem = args.SourceItem as ITypedItem;
+            AddBindingMethods(container);
+            AddBindingMethods_UGUIExtenstions(container);
+        }
 
-                         if (sourceItem.RelatedNode() is StateMachineNode)
-                         {
-                             args.Method.Parameters.Clear();
-                             args.Method.Parameters.Add(new CodeParameterDeclarationExpression(typeof(State), "State"));
-                         }
-                     });
+        private void AddBindingMethods(UFrameContainer container)
+        {
+            container.AddBindingMethod(typeof(ViewBindings), "BindProperty", _ => _ is PropertiesChildItem || _ is ComputedPropertyNode)
+         .SetNameFormat("{0} Changed")
+         .ImplementWith(args =>
+         {
+             var sourceItem = args.SourceItem as ITypedItem;
+
+             if (sourceItem.RelatedNode() is StateMachineNode)
+             {
+                 args.Method.Parameters.Clear();
+                 args.Method.Parameters.Add(new CodeParameterDeclarationExpression(typeof(State), "State"));
+             }
+         });
 
             container.AddBindingMethod(typeof(ViewBindings), "BindCollection", _ => _ is CollectionsChildItem)
                      .SetNameFormat("{0} Collection Changed")
@@ -117,6 +123,33 @@ namespace uFrame.MVVM.Templates
                          }
                          args.Method.Parameters[0].Type = "uFrame.MVVM.StateMachine.State".ToCodeReference();
                      });
+        }
+
+        private void AddBindingMethods_UGUIExtenstions(UFrameContainer container)
+        {
+            container.AddBindingMethod(typeof(UGUIExtensions), "BindInputFieldToProperty", // Registration
+                _ => _ is PropertiesChildItem && _.RelatedTypeName == typeof(string).Name) // Validation
+                .SetDescription("Binds a string property to an uGUI input field.  A field will be created on the view for specifying the uGUI field.")
+                .SetNameFormat("{0} To Input Field"); // Configuration
+
+            container.AddBindingMethod(typeof(UGUIExtensions), "BindButtonToCommand", _ => _ is CommandsChildItem)
+                .SetDescription("The ButtonToCommand binding will create a reference to a uGUI button on the view and automatically wire the click event to invoke the command.")
+                .SetNameFormat("{0} To Button");
+
+            container.AddBindingMethod(typeof(UGUIExtensions), "BindToggleToProperty",
+                _ => _ is PropertiesChildItem && _.RelatedTypeName == typeof(bool).Name)
+                .SetDescription("Bind toggle to property will bind a boolean property directly to a uGUI toggle box.")
+                .SetNameFormat("{0} To Toggle");
+
+            container.AddBindingMethod(typeof(UGUIExtensions), "BindTextToProperty",
+                _ => _ is PropertiesChildItem && _.RelatedTypeName == typeof(string).Name)
+                .SetDescription("Binds a string property to a uGUI text label.")
+                .SetNameFormat("{0} To Text");
+
+            container.AddBindingMethod(typeof(UGUIExtensions), "BindSliderToProperty",
+                _ => _ is PropertiesChildItem && _.RelatedTypeName == typeof(float).Name)
+                .SetDescription("Binds a slider to a float value.")
+                .SetNameFormat("{0} To Slider");
         }
     }
 

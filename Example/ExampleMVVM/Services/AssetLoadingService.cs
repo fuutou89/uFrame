@@ -30,6 +30,31 @@ namespace Example {
             base.StartAssetLoadingCommandHandler(data);
             // Process the commands information. Also, you can publish new events by using the line below.
             // this.Publish(new AnotherEvent())
+            StartCoroutine(LoadAssets());
+        }
+
+        private IEnumerator LoadAssets()
+        {
+
+            for (int i = 0; i < 100; i++)
+            {
+                Publish(new AssetLoadingProgressEvent()
+                {
+                    Message = string.Format("Loaded {0}% of game assets...", i),
+                    Progress = i / 100f
+                });
+                yield return new WaitForSeconds(0.03f);
+            }
+
+            /*
+             * Ensure, that we publish "1f progress" event with a different message, after we finish.
+             */
+            Publish(new AssetLoadingProgressEvent()
+            {
+                Message = "Loaded 100% of game assets!",
+                Progress = 1f
+            });
+
         }
     }
 }

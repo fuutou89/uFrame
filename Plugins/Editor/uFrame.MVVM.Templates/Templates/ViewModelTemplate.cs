@@ -257,7 +257,6 @@ namespace uFrame.MVVM.Templates
         {
             foreach (var viewModelPropertyData in Ctx.Data.LocalProperties)
             {
-
                 var relatedNode = viewModelPropertyData.RelatedTypeNode;
                 if (relatedNode is EnumNode)
                 {
@@ -293,8 +292,7 @@ namespace uFrame.MVVM.Templates
 
                     Ctx.PushStatements(Ctx._if("stream.DeepSerialize").TrueStatements);
                     Ctx._("this.{0}.Clear()", collection.Name);
-                    Ctx._("this.{0}.AddRange(stream.DeserializeObjectArray<{1}>(\"{0}\"))", collection.Name,
-                        elementNode.Name.AsViewModel());
+                    Ctx._("this.{0}.AddRange(stream.DeserializeObjectArray<{1}>(\"{0}\"))", collection.Name, elementNode.Name.AsViewModel());
                     Ctx.PopStatements();
                 }
             }

@@ -132,7 +132,7 @@ namespace uFrame.MVVM {
             }
         }
         
-        [uFrame.Editor.Configurations.ReferenceSection("Instances", SectionVisibility.Always, false, false, typeof(IInstancesConnectable), false, OrderIndex=0, HasPredefinedOptions=false, IsNewRow=true)]
+        [uFrame.Editor.Configurations.ReferenceSection("Instances", SectionVisibility.Always, false, false, typeof(IInstancesConnectable), true, OrderIndex=0, HasPredefinedOptions=false, IsNewRow=true)]
         public virtual System.Collections.Generic.IEnumerable<InstancesReference> Instances {
             get {
                 return PersistedItems.OfType<InstancesReference>();
@@ -143,7 +143,7 @@ namespace uFrame.MVVM {
     public partial interface ISubSystemConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
     }
     
-    public class ViewNodeBase : uFrame.Editor.Graphs.Data.GenericInheritableNode, uFrame.Editor.Graphs.Data.IClassTypeNode, IViewComponentConnectable {
+    public class ViewNodeBase : uFrame.Editor.Graphs.Data.GenericInheritableNode, uFrame.Editor.Graphs.Data.IClassTypeNode, IViewComponentConnectable, IViewConnectable {
         
         private string _ElementInputSlotId;
         
@@ -252,7 +252,7 @@ namespace uFrame.MVVM {
     public partial interface ISceneTypeConnectable : uFrame.Editor.Graphs.Data.IDiagramNodeItem, uFrame.Editor.Graphs.Data.IConnectable {
     }
     
-    public class ElementNodeBase : uFrame.Editor.Graphs.Data.GenericInheritableNode, uFrame.Editor.Graphs.Data.IClassTypeNode, IElementConnectable {
+    public class ElementNodeBase : uFrame.Editor.Graphs.Data.GenericInheritableNode, uFrame.Editor.Graphs.Data.IClassTypeNode, IInstancesConnectable, IElementConnectable {
         
         public virtual string ClassName {
             get {

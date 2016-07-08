@@ -14,6 +14,8 @@ namespace Example {
     public class AssetsLoadingSceneLoader : AssetsLoadingSceneLoaderBase {
         
         protected override IEnumerator LoadScene(AssetsLoadingScene scene, Action<float, string> progressDelegate) {
+            //We publish this event, so AssetsLoadingService can handle it and start loading assets.
+            Publish(new StartAssetLoadingCommand());
             yield break;
         }
         

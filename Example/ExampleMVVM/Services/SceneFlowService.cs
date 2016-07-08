@@ -30,6 +30,17 @@ namespace Example {
             base.IntroFinishedEventHandler(data);
             // Process the commands information. Also, you can publish new events by using the line below.
             // this.Publish(new AnotherEvent())
+
+            this.Publish(new UnloadSceneCommand() //Unload Intro scene
+            {
+                SceneName = "IntroScene"
+            });
+
+            this.Publish(new LoadSceneCommand() // Load AssetsLoadingScene
+            {
+                SceneName = "AssetsLoadingScene"
+            });
+
         }
         
         /// <sumarry>
@@ -39,6 +50,20 @@ namespace Example {
             base.AssetLoadingProgressEventHandler(data);
             // Process the commands information. Also, you can publish new events by using the line below.
             // this.Publish(new AnotherEvent())
+
+            Debug.Log("--- AssetLoadingProgressEventHandler ---");
+
+            if (data.Progress != 1f) return; //This is the key part: we check that asset loading procedure is finished
+
+            this.Publish(new UnloadSceneCommand() //Unload AssetsLoadingScene
+            {
+                SceneName = "AssetsLoadingScene"
+            });
+
+            this.Publish(new LoadSceneCommand() // Load MainMenuScene
+            {
+                SceneName = "MainMenuScene"
+            });
         }
     }
 }
