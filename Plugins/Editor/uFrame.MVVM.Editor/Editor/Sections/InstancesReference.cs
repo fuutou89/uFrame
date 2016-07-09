@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using uFrame.Editor.Core;
 using uFrame.Editor.Database.Data;
 using uFrame.Editor.Graphs.Data;
 using uFrame.Json;
@@ -14,12 +15,14 @@ namespace uFrame.MVVM
             get { return _name; }
             set
             {
-                _name = !string.IsNullOrEmpty(value) ? value : "RenameMe";
-
-                if (AutoFixName)
-                    _name = Regex.Replace(_name, @"[^a-zA-Z0-9_\.]+", "");
-
-                this.Changed("Name", ref _name, value);
+                if (this.Repository != null)
+                {
+                    this.Changed("Name", ref _name, value);
+                }
+                else
+                {
+                    _name = value;
+                }
             }
         }
 

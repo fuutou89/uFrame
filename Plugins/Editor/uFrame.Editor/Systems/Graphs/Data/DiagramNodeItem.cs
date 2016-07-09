@@ -13,8 +13,6 @@ namespace uFrame.Editor.Graphs.Data
     {
         public virtual string Title { get { return Name; } }
 
-
-
         public virtual string Group
         {
             get { return Node.Name; }

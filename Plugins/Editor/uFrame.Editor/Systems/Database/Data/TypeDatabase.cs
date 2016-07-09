@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using uFrame.Editor.Core;
+using UnityEditor;
 
 namespace uFrame.Editor.Database.Data
 {
@@ -256,7 +257,7 @@ namespace uFrame.Editor.Database.Data
 
         public void MarkDirty(IDataRecord graphData)
         {
-            
+            AssetDatabase.Refresh();
         }
 
         public string GetUniqueName(string s)

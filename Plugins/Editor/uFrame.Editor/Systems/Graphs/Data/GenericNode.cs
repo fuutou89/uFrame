@@ -300,7 +300,7 @@ namespace uFrame.Editor.Graphs.Data
                 newMirror.SourceIdentifier = item.Identifier;
                 Node.Repository.Add(newMirror);
             }
-            
+            Node.Repository.Commit();
             //Node.Project.AddItem(newMirror);
         }
         [Browsable(false)]

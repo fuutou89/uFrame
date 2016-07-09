@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using uFrame.Editor.Core;
 using uFrame.Editor.Graphs.Data;
 
 namespace uFrame.MVVM
@@ -22,6 +24,23 @@ namespace uFrame.MVVM
                 foreach (var item in Instances)
                 {
                     yield return item;
+                }
+            }
+        }
+
+        public override IEnumerable<IItem> PossibleInstances
+        {
+            get
+            {
+                foreach (var item in this.Repository.AllOf<IInstancesConnectable>())
+                {
+                    yield return new InstancesReference()
+                    {
+                        Repository = Repository,
+                        Node = this,
+                        Name = item.Name,
+                        SourceIdentifier = item.Identifier
+                    };
                 }
             }
         }
